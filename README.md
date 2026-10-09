@@ -4,6 +4,12 @@ Website tĩnh sử dụng HTML, CSS và JavaScript native. Không có dependency
 
 Website có sáu trang với hai ngôn ngữ Việt/Anh, dùng chung menu, footer, font và các tài sản đã có. Bản Anh có cùng đường dẫn dưới `/en/`; nút VI/EN chuyển tới cùng trang:
 
+Trang chủ được nâng cấp theo bản duyệt ngày 09/10/2026: hero ngắn, hai nhóm giải pháp, ảnh minh họa đội kỹ thuật và sơ đồ kết nối chạy một lần khi cuộn đến. Chi tiết và nguồn ảnh tại `docs/home-motion.md`; reduced motion và chế độ không JavaScript luôn có bản tĩnh đọc được.
+
+Trang Giới thiệu có bản thử Scrolltelling hai chương tại `/about/#about_story`: sơ đồ giữ vị trí trên desktop, chuyển từ nhu cầu kết nối sang kiến trúc cùng bảo mật và trở về khi cuộn ngược. Mobile, cửa sổ thấp, reduced motion và không JavaScript có minh họa tĩnh riêng. Nội dung workbook giữ đủ VI/EN; chi tiết tại `docs/about-scrolltelling.md`.
+
+Ảnh trên Home dùng WebP có hai kích thước; PNG gốc vẫn lưu trong dự án. Lệnh tái xuất tùy chọn `node scripts/optimize-home-images.mjs` dùng sharp trong môi trường phát triển, không bắt buộc khi chạy hoặc build website.
+
 | Trang | URL | Nội dung từ tài liệu |
 | --- | --- | --- |
 | Trang chủ | `/` | Hero, bốn giải pháp tổng quan, giới thiệu ngắn, trọng tâm công nghệ, cách tiếp cận |
@@ -29,3 +35,5 @@ Hai ảnh hạ tầng và hai ảnh infographic được tạo để minh họa,
 Logo PAY ORBIT gồm biểu tượng P màu xanh/Cyan và chữ dùng font hiện tại, có ở header, footer và favicon cho cả hai ngôn ngữ. Bộ PNG trong suốt dùng trên nền sáng hoặc tối nằm tại `public/assets/brand`; chi tiết tại `docs/logo.md`, nguồn và prompt tại `content/brand-assets.json`. Chạy `node scripts/export-logo.mjs` để xuất lại logo ngang và bản kích thước web từ biểu tượng gốc bằng font thật.
 
 Tài liệu XLSX cung cấp nội dung và hướng màu, không cung cấp mockup UI. Bố cục thực hiện dùng các mặc định responsive được ghi trong `.taste/implementation-notes.md`; không tuyên bố khớp pixel với ảnh tham chiếu chưa có.
+
+Trang `/about/#about_story` có Scrolltelling bốn chương từ nhu cầu, kiến trúc, triển khai đến hỗ trợ dài hạn. Desktop đủ rộng/cao giữ sơ đồ bên trái; tablet và các fallback desktop hiển thị bốn minh họa tĩnh. Mobile dưới 768px chỉ dùng timeline bốn bước, không có diagram hay nút mở diagram; nội dung vẫn đọc được khi tắt JavaScript. Chi tiết và cách kiểm tra nằm tại `docs/about-scrolltelling.md`.

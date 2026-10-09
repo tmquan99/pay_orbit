@@ -8,6 +8,6 @@
     "start": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "test": "node tests/pages.mjs && node tests/bilingual.mjs && node tests/logo.mjs && node tests/browser.mjs"
+    "test": "node tests/pages.mjs && node tests/bilingual.mjs && node tests/logo.mjs && node tests/browser.mjs && node tests/home-motion.mjs && node tests/about-story.mjs"
   }
 }

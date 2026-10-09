@@ -1,8 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { icon, badge, solutionIcon, serviceIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview } from './visuals.mjs';
+import { icon, badge, solutionIcon, serviceIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, connectionScene } from './visuals.mjs';
 import { translate, languageRoute, localizeContent, formMessages } from './localize.mjs';
+import { aboutStoryScene } from './about-story-markup.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
@@ -33,27 +34,30 @@ const jumpLinks = items => `<nav class="page-jumps" aria-label="Trong trang này
 const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Hãy chia sẻ nhu cầu về hạ tầng mạng hoặc an ninh mạng.</p></div>${button('Liên hệ tư vấn', '/contact/')}</div></section>`;
 
 function home() {
-  const [heading, ...support] = text('01_Home', 'C5').split('\n');
-  return `<section class="hero" id="hero" aria-labelledby="hero_heading">
+  const solutionGroup = (start, heading, visual) => `<div class="solution-panel ${start === 0 ? 'network-panel' : 'security-panel'}" data-reveal="rise" data-duration="600" data-delay="${start * 45}">
+    ${visual}<div class="solution-panel-copy"><h3>${heading}</h3><div class="solution-group">${solutions.slice(start, start + 2).map(([id, title, description], index) => `<article class="solution-card">${icon(solutionIcon(start + index))}<div><h4>${escape(title)}</h4><p>${escape(description)}</p><a class="card-link" href="/solutions/#${id}"><span>Tìm hiểu ${escape(title.toLocaleLowerCase('vi'))}</span>${icon('arrow-up-right')}</a></div></article>`).join('')}</div></div>
+  </div>`;
+  return `<section class="hero home-hero" id="hero" aria-labelledby="hero_heading">
     <div class="container"><div class="hero-content">
-      <h1 id="hero_heading" data-hero>${escape(heading)}</h1>
-      <p data-hero>${escape(support.join(' '))}</p>
+      <span class="hero-domain">Mạng doanh nghiệp &amp; an ninh mạng</span>
+      <h1 id="hero_heading" data-hero><span>Kết nối vững.</span><span>Bảo mật sâu.</span></h1>
+      <p data-hero>Giải pháp mạng và bảo mật, thiết kế theo nhu cầu doanh nghiệp.</p>
       <div class="actions" data-hero>${button('Liên hệ tư vấn', '/contact/')}${button('Khám phá giải pháp', '/solutions/', 'button-secondary')}</div>
     </div></div>
-    <figure class="hero-media" data-hero><img src="/assets/images/hero_infrastructure_photo.png" width="1672" height="941" alt="Ảnh minh họa rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></figure>
+    <figure class="hero-media" data-hero><picture><source media="(min-width: 1024px)" srcset="/assets/images/hero_infrastructure_photo.webp"><img src="/assets/images/hero_infrastructure_photo.webp" srcset="/assets/images/hero_infrastructure_photo-720.webp 720w, /assets/images/hero_infrastructure_photo.webp 1672w" sizes="100vw" width="1672" height="941" alt="Ảnh minh họa rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></picture></figure>
   </section>
-  <section class="section company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
-    <div class="company-copy"><h2 id="company_heading">PAY ORBIT kết nối hạ tầng với nhu cầu vận hành</h2>${paragraph('02_Company_Intro', 'C5')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div>${companyPhoto()}
+  <section class="section company home-company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
+    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2>${paragraph('02_Company_Intro', 'C5')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Ảnh minh họa kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"><figcaption>Ảnh minh họa</figcaption></figure>
   </div></section>
-  <section class="section solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
+  <section class="section solutions home-solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
     <h2 id="solutions_heading">Giải pháp theo nhu cầu hạ tầng</h2>
-    <div class="solution-grid">${solutions.map(([id, title, description], index) => `<article class="solution-card" data-reveal="rise" data-duration="520" data-delay="${index * 70}">${badge(solutionIcon(index))}<h3>${escape(title)}</h3><p>${escape(description)}</p><a class="card-link" href="/solutions/#${id}"><span>Tìm hiểu ${escape(title.toLocaleLowerCase('vi'))}</span>${icon('arrow-up-right')}</a></article>`).join('')}</div>
+    <div class="solution-panels">${solutionGroup(0, 'Kết nối doanh nghiệp', '<div class="panel-visual"><img src="/assets/images/company_infrastructure_photo.webp" srcset="/assets/images/company_infrastructure_photo-720.webp 720w, /assets/images/company_infrastructure_photo.webp 1536w" sizes="(max-width: 767px) 100vw, 45vw" width="1536" height="763" alt="Ảnh minh họa switch, patch panel và cáp mạng doanh nghiệp" loading="lazy" decoding="async"></div>')}${solutionGroup(2, 'Bảo vệ hạ tầng số', '<div class="panel-visual"><img src="/assets/images/digital-infrastructure-protection.webp" srcset="/assets/images/digital-infrastructure-protection-720.webp 720w, /assets/images/digital-infrastructure-protection.webp 1672w" sizes="(max-width: 767px) 100vw, 45vw" width="1672" height="941" alt="Minh họa lớp khiên bảo mật bảo vệ máy chủ và hạ tầng Cloud" loading="lazy" decoding="async"></div>')}</div>
     ${button('Xem tất cả giải pháp', '/solutions/', 'button-primary section-action')}
   </div></section>
-  <section class="section company" id="technology_focus" aria-labelledby="technology_heading"><div class="container technology-feature-grid">
-    <div><h2 id="technology_heading">Công nghệ Cisco và Palo Alto Networks</h2>${paragraph('01_Home', 'C7', ' class="section-description"')}${technologyOverview()}${button('Khám phá công nghệ', '/products/', 'button-outline section-action')}</div>${illustration('ecosystem', { reveal: true, lazy: true })}
+  <section class="section company home-technology" id="technology_focus" aria-labelledby="technology_heading"><div class="container technology-feature-grid">
+    <div><h2 id="technology_heading">Công nghệ Cisco và Palo Alto Networks</h2>${paragraph('01_Home', 'C7', ' class="section-description"')}${technologyOverview()}${button('Khám phá công nghệ', '/products/', 'button-outline section-action')}</div>${connectionScene()}
   </div></section>
-  <section class="section technology" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
+  <section class="section technology home-approach" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
     <h2 id="approach_heading">Cách tiếp cận của PAY ORBIT</h2>${paragraph('01_Home', 'C8', ' class="section-description"')}
     <ul class="principle-list"><li>${badge('target')}<h3>Tập trung vào giải pháp</h3><p>Tìm hiểu nhu cầu và môi trường vận hành trước khi đề xuất.</p></li><li>${badge('layers')}<h3>Thiết kế để mở rộng</h3><p>Xem xét khả năng quản lý và phát triển trong vòng đời hạ tầng.</p></li><li>${badge('headset')}<h3>Hỗ trợ xuyên suốt</h3><p>Từ tư vấn, cung cấp sản phẩm đến triển khai và hỗ trợ kỹ thuật.</p></li></ul>
     <div class="actions section-action">${button('Trao đổi với PAY ORBIT', '/contact/')}${button('Xem phạm vi dịch vụ', '/services/', 'button-outline')}</div>
@@ -61,15 +65,48 @@ function home() {
 }
 
 function about() {
+  const marker = index => `<span class="story-mobile-step" aria-hidden="true"><span>${String(index + 1).padStart(2, '0')}</span>${icon(['network', 'shield-check', 'cable', 'headset'][index])}</span>`;
+  const heading = title => `<h2><span class="story-heading-label">${escape(title)}</span><span class="story-heading-measure" aria-hidden="true">${escape(title)}</span></h2>`;
   return `<section class="section company about-opening"><div class="container company-layout">
     <div class="company-copy"><h1 data-hero>Giới thiệu PAY ORBIT</h1>${paragraph('02_Company_Intro', 'C5', ' data-hero')}<div class="actions section-action" data-hero>${button('Liên hệ tư vấn', '/contact/')}</div></div>${companyPhoto('data-hero', false)}
   </div></section>
-  <section class="section company about-content"><div class="container editorial-list">
-    <article class="editorial-row"><div class="editorial-heading">${badge('network')}<h2>Chúng tôi làm gì</h2></div><div>${paragraph('02_Company_Intro', 'C6')}${button('Khám phá giải pháp', '/solutions/', 'button-outline section-action')}</div></article>
-    <article class="editorial-row"><div class="editorial-heading">${badge('layers')}<h2>Cách tiếp cận công nghệ</h2></div><div>${paragraph('02_Company_Intro', 'C7')}${button('Xem sản phẩm & công nghệ', '/products/', 'button-outline section-action')}</div></article>
-    <article class="editorial-row"><div class="editorial-heading">${badge('workflow')}<h2>Cách chúng tôi làm việc</h2></div><div>${paragraph('02_Company_Intro', 'C8')}<div class="about-lifecycle">${lifecycle({ compact: true })}</div>${button('Tìm hiểu dịch vụ', '/services/', 'button-outline section-action')}</div></article>
-    <article class="editorial-row"><div class="editorial-heading">${badge('target')}<h2>Giá trị chúng tôi hướng tới</h2></div><div>${paragraph('02_Company_Intro', 'C9')}</div></article>
-  </div></section>${contactInvitation()}`;
+  <section class="section about-story" id="about_story"><div class="container story-shell" data-about-story>
+    ${aboutStoryScene({ desktop: true })}
+    <div class="story-chapters">
+      <article class="story-chapter" data-story-chapter="0">${aboutStoryScene()}${marker(0)}<div class="story-chapter-copy">${heading('Hiểu nhu cầu doanh nghiệp')}<div class="story-summary">
+        <p class="story-summary-lead">Chúng tôi kết hợp kết nối, bảo mật và dịch vụ kỹ thuật trong một giải pháp hạ tầng thống nhất.</p>
+        <ul class="story-summary-list">
+          <li><strong>Kết nối:</strong> <span>mạng doanh nghiệp và trung tâm dữ liệu.</span></li>
+          <li><strong>Bảo mật:</strong> <span>truy cập an toàn, an ninh mạng và Cloud.</span></li>
+          <li><strong>Dịch vụ:</strong> <span>tư vấn, triển khai và hỗ trợ kỹ thuật.</span></li>
+        </ul>
+        <p>Bắt đầu từ môi trường vận hành thực tế, PAY ORBIT đề xuất giải pháp phù hợp, dễ triển khai và quản lý.</p>
+      </div>${button('Khám phá giải pháp', '/solutions/', 'button-outline section-action')}</div></article>
+      <article class="story-chapter" data-story-chapter="1">${aboutStoryScene({ stage: 1 })}${marker(1)}<div class="story-chapter-copy">${heading('Xây kiến trúc thống nhất')}<div class="story-summary">
+        <p class="story-summary-lead">PAY ORBIT tập trung vào công nghệ doanh nghiệp phổ biến của Cisco và Palo Alto Networks.</p>
+        <ul class="story-summary-list">
+          <li><strong>Kết nối:</strong> <span>đáp ứng nhu cầu kết nối cốt lõi.</span></li>
+          <li><strong>Bảo mật:</strong> <span>giải quyết các yêu cầu an ninh mạng hiện đại.</span></li>
+        </ul>
+        <p>Kết hợp hai nhu cầu trong một kiến trúc công nghệ thống nhất.</p>
+      </div>${button('Xem sản phẩm & công nghệ', '/products/', 'button-outline section-action')}</div></article>
+      <article class="story-chapter" data-story-chapter="2">${aboutStoryScene({ stage: 2 })}${marker(2)}<div class="story-chapter-copy">${heading('Triển khai vào thực tế')}<div class="story-summary">
+        <p class="story-summary-lead">Đồng hành từ khảo sát nhu cầu đến hỗ trợ sau khi đưa hệ thống vào vận hành.</p>
+        <div class="about-lifecycle">${lifecycle({ compact: true })}</div>
+        <p>Hạ tầng đáp ứng yêu cầu kỹ thuật khi triển khai, dễ quản lý và có khả năng mở rộng trong suốt vòng đời sử dụng.</p>
+      </div>${button('Tìm hiểu dịch vụ', '/services/', 'button-outline section-action')}</div></article>
+      <article class="story-chapter" data-story-chapter="3">${aboutStoryScene({ stage: 3 })}${marker(3)}<div class="story-chapter-copy">${heading('Đồng hành dài hạn')}<div class="story-summary">
+        <p class="story-summary-lead">Ba nguyên tắc xuyên suốt cách PAY ORBIT đồng hành cùng khách hàng.</p>
+        <ul class="story-summary-list">
+          <li><strong>Giải pháp rõ ràng.</strong></li>
+          <li><strong>Triển khai tin cậy.</strong></li>
+          <li><strong>Hỗ trợ kỹ thuật dài hạn.</strong></li>
+        </ul>
+        <p>Đơn giản hóa các lựa chọn công nghệ để khách hàng tập trung vào kinh doanh, với một nền tảng số an toàn và ổn định.</p>
+      </div>${button('Xem phạm vi hỗ trợ', '/services/#support', 'button-outline section-action')}</div></article>
+    </div>
+  </div></section>
+  ${contactInvitation()}`;
 }
 
 function solutionPage() {
@@ -139,7 +176,7 @@ function documentPage(route, title, description, content, language = 'vi') {
     <link rel="alternate" hreflang="x-default" href="${route}">
     <link rel="preload" href="/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="/src/site.css">
-    <script type="module" src="/src/main.js"></script>
+${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">${t('Đến nội dung chính')}</a>

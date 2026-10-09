@@ -21,7 +21,7 @@ const evidenceDirectory = path.join(root, '.taste/verification');
 await fs.mkdir(evidenceDirectory, { recursive: true });
 const checks = [];
 const record = (name, detail) => checks.push({ name, detail });
-const context = await browser.newContext({ viewport: { width: 1440, height: 960 }, reducedMotion: 'no-preference' });
+const context = await browser.newContext({ viewport: { width: 1440, height: 760 }, reducedMotion: 'no-preference' });
 await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin });
 await context.addInitScript(() => {
   window.__motionChecks = [];
@@ -65,6 +65,7 @@ try {
   assert.equal(await page.locator('.solution-card').count(), 4);
   assert.equal(await page.locator('#consultation_form').count(), 0);
   assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/');
+  assert.ok(await page.locator('.hero .actions').evaluate(element => element.getBoundingClientRect().bottom <= innerHeight), 'Primary hero actions must fit the first desktop viewport');
   record('Home contract', 'Company overview, four solution previews, technology focus and approach lead to standalone pages');
   const font = await page.evaluate(async () => {
     await document.fonts.ready;
@@ -76,9 +77,12 @@ try {
   assert.ok(font.heading.includes('Bricolage Grotesque'));
   record('Font load', font);
   const images = await page.locator('main img').evaluateAll(elements => elements.map(element => ({ src: element.getAttribute('src'), complete: element.complete, width: element.naturalWidth, height: element.naturalHeight })));
-  assert.equal(images.length, 3);
-  assert.ok(images.slice(0, 2).every(image => image.complete && image.width >= 960 && image.height >= 360));
-  record('Initial imagery', 'Both existing photographs decode; the new below-fold infographic is checked after scrolling');
+  assert.equal(images.length, 5);
+  await page.waitForFunction(() => {
+    const hero = document.querySelector('main img');
+    return hero.complete && hero.naturalWidth >= 360 && hero.naturalHeight >= 200;
+  });
+  record('Initial imagery', 'Hero decodes; lazy team, solution photography and the connection illustration are checked after scrolling');
   const hero = await page.evaluate(() => window.__motionChecks.filter(entry => entry.hero));
   assert.equal(hero.length, 4);
   assert.ok(hero.every(entry => entry.duration === 650 && entry.keyframes.some(frame => frame.transform !== 'none')));
@@ -88,6 +92,11 @@ try {
   const mediaPlayback = await page.locator('.company-media').evaluate(element => ({ opacity: getComputedStyle(element).opacity, transform: getComputedStyle(element).transform }));
   record('Media actual playback', mediaPlayback);
   await page.waitForTimeout(850);
+  await page.waitForFunction(() => {
+    const team = document.querySelector('.team-media img');
+    return team.complete && team.naturalWidth >= 360 && team.naturalHeight >= 200;
+  });
+  record('Team imagery', 'Lazy illustrative team photograph decodes after entering its section');
   await page.locator('#core_solutions').scrollIntoViewIfNeeded();
   await page.waitForTimeout(850);
   const reveals = await page.evaluate(() => window.__motionChecks.filter(entry => entry.reveal && entry.played > 0));
@@ -132,14 +141,14 @@ try {
       await page.waitForTimeout(850);
       const hiddenAfterScroll = await page.locator('[data-reveal]').evaluateAll(elements => elements.filter(element => getComputedStyle(element).opacity !== '1').map(element => ({ type: element.dataset.reveal, played: element.dataset.revealPlayed, top: element.getBoundingClientRect().top, bottom: element.getBoundingClientRect().bottom, opacity: getComputedStyle(element).opacity })));
       assert.deepEqual(hiddenAfterScroll, [], `Every traversed group must be visible on ${route} at ${width}px`);
-      const unloadedImages = await page.locator('main img').evaluateAll(elements => elements.filter(element => !element.complete || element.naturalWidth === 0).map(element => element.src));
-      assert.deepEqual(unloadedImages, [], `Images must load on ${route} at ${width}px`);
       // Visit lazy media frames so Chromium paints them before a full-page capture.
       for (const media of await page.locator('main img').all()) {
         await media.scrollIntoViewIfNeeded();
         await media.evaluate(element => element.decode());
         await page.waitForTimeout(80);
       }
+      const unloadedImages = await page.locator('main img').evaluateAll(elements => elements.filter(element => !element.complete || element.naturalWidth === 0).map(element => element.currentSrc || element.src));
+      assert.deepEqual(unloadedImages, [], `Images must load when visited on ${route} at ${width}px`);
       await page.evaluate(() => scrollTo(0, 0));
       await page.waitForTimeout(100);
       const layout = await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, hits: [...document.querySelectorAll('a,button,summary,input,textarea')].filter(element => element.getClientRects().length).map(element => ({ label: element.textContent.trim().slice(0, 45) || element.id, width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })) }));

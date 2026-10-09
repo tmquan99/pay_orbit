@@ -6,8 +6,8 @@ Yêu cầu mới thay thế lựa chọn một trang dùng anchor của pha thi�
 
 | URL | Sheet / ô | Cách thực hiện |
 | --- | --- | --- |
-| `/` | `01_Home!C5:C8`, `02_Company_Intro!C5` | Giữ nội dung hero, gộp hai dòng hỗ trợ thành một đoạn; bốn thẻ dẫn tới giải pháp cụ thể; trọng tâm công nghệ và cách tiếp cận ngắn gọn. Có liên kết sang trang Giới thiệu. |
-| `/about/` | `02_Company_Intro!C5:C9` | Giữ đủ năm đoạn gốc: công ty, danh mục hoạt động, công nghệ, cách làm việc và giá trị hướng tới. Một ảnh công nghệ, năm giai đoạn theo `E8`. |
+| `/` | `01_Home!C7:C8`, `02_Company_Intro!C5`, tóm tắt từ `03_Solutions` | Hero rút gọn theo bản duyệt ngày 09/10/2026; bốn giải pháp trong hai nhóm kết nối/bảo mật; trọng tâm công nghệ, sơ đồ minh họa và cách tiếp cận. Có liên kết sang trang Giới thiệu. |
+| `/about/` | `02_Company_Intro!C5:C9` | C5 giữ nguyên; C6:C9 được duyệt diễn đạt gọn với câu dẫn, nhóm ý và đoạn kết. C8 dùng luồng năm bước để trình bày quy trình, giữ các liên kết dịch vụ. Một ảnh công nghệ, năm giai đoạn theo `E8`. |
 | `/solutions/` | `03_Solutions!C5:D8` | Giữ đủ bốn mô tả; tách lợi ích từ cột D thành danh sách. Không thêm SKU hoặc tên model. |
 | `/services/` | `04_Services!C5:D9` | Giữ đủ năm mô tả, tư vấn đặt đầu tiên. Dịch phạm vi điển hình từ cột D. Giữ điều kiện phạm vi hỗ trợ theo dự án hoặc thỏa thuận. |
 | `/products/` | `05_Products_Tech!C5:C11`, `E5:E11` | Giữ đầy đủ tên công nghệ, chia bốn nhóm Cisco và ba nhóm Palo Alto Networks. Mỗi nhóm có hành động Yêu cầu báo giá dẫn tới Liên hệ. |
@@ -15,6 +15,8 @@ Yêu cầu mới thay thế lựa chọn một trang dùng anchor của pha thi�
 | Footer chung | `00_Overview!B4,B7`, `07_SEO_Dev_Notes!C7` | Tên công ty, tagline tiếng Việt và ghi chú nhãn hiệu giữ nguyên. |
 
 Phần tổng quan giải pháp trên Home là mô tả rút gọn từ `03_Solutions`; các nguyên tắc trong phần cách tiếp cận được diễn đạt từ `01_Home!C8` và `02_Company_Intro!C6,C8,C9`. Không thêm khách hàng, dự án, số liệu, chứng nhận hoặc quan hệ đối tác.
+
+Người dùng đã duyệt thay copy hero Home C5 bằng “Kết nối vững. Bảo mật sâu.” và mô tả ngắn. Nội dung gốc vẫn nằm trong workbook; kiểm tra nguyên văn của các trang chi tiết giữ nguyên. Chi tiết giao diện và chuyển động tại `home-motion.md`.
 
 Không đưa các ghi chú nội bộ về UI, ưu tiên và nguồn vào nội dung công khai. Không xuất bản email `[Cập nhật sau]`. Hướng màu và chủ đề ảnh đến từ workbook; workbook không có mockup giao diện để đối chiếu pixel.
 

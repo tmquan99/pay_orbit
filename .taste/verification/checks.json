@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-09T10:23:03.394Z",
+  "checkedAt": "2026-10-09T17:53:59.658Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 0.924225)",
+        "transform": "matrix(1, 0, 0, 1, 0, 16)",
         "running": true
       }
     },
@@ -33,7 +33,7 @@
     },
     {
       "name": "Initial imagery",
-      "detail": "Both existing photographs decode; the new below-fold infographic is checked after scrolling"
+      "detail": "Hero decodes; lazy team, solution photography and the connection illustration are checked after scrolling"
     },
     {
       "name": "Hero entrance",
@@ -119,9 +119,13 @@
     {
       "name": "Media actual playback",
       "detail": {
-        "opacity": "0.998143",
-        "transform": "matrix(1, 0, 0, 1, 0.0222786, 0)"
+        "opacity": "0.131183",
+        "transform": "matrix(1, 0, 0, 1, 10.4258, 0)"
       }
+    },
+    {
+      "name": "Team imagery",
+      "detail": "Lazy illustrative team photograph decodes after entering its section"
     },
     {
       "name": "Distinct scroll entrances",
@@ -133,22 +137,12 @@
         },
         {
           "reveal": "rise",
-          "duration": 520,
+          "duration": 600,
           "played": 1
         },
         {
           "reveal": "rise",
-          "duration": 520,
-          "played": 1
-        },
-        {
-          "reveal": "rise",
-          "duration": 520,
-          "played": 1
-        },
-        {
-          "reveal": "rise",
-          "duration": 520,
+          "duration": 600,
           "played": 1
         }
       ]
@@ -172,7 +166,7 @@
       "name": "Viewport 1440 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 21,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -238,7 +232,7 @@
       "name": "Viewport 1440 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 21,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -304,7 +298,7 @@
       "name": "Viewport 1024 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -370,7 +364,7 @@
       "name": "Viewport 1024 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -436,7 +430,7 @@
       "name": "Viewport 768 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -502,7 +496,7 @@
       "name": "Viewport 768 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -568,7 +562,7 @@
       "name": "Viewport 390 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -634,7 +628,7 @@
       "name": "Viewport 390 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -700,7 +694,7 @@
       "name": "Viewport 360 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -766,7 +760,7 @@
       "name": "Viewport 360 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -848,7 +842,7 @@
     {
       "name": "Restored scroll",
       "detail": {
-        "scrollY": 1480,
+        "scrollY": 1409,
         "visible": true
       }
     },

@@ -3,14 +3,16 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startServer } from '../scripts/serve.mjs';
+import { translate } from '../scripts/localize.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = process.env.TEST_DIST === '1' ? path.join(root, 'dist') : root;
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
 const coverage = [
-  ['/', '01_Home', [5, 7, 8]],
-  ['/about/', '02_Company_Intro', [5, 6, 7, 8, 9]],
+  ['/', '01_Home', [7, 8]],
+  // Rows 6:9 use the approved grouped story copy rather than workbook paragraphs.
+  ['/about/', '02_Company_Intro', [5]],
   ['/solutions/', '03_Solutions', [5, 6, 7, 8]],
   ['/services/', '04_Services', [5, 6, 7, 8, 9]],
   ['/products/', '05_Products_Tech', [5, 6, 7, 8, 9, 10, 11]],
@@ -47,6 +49,25 @@ for (const language of ['vi', 'en']) {
       assert.ok(html.includes('Connecting Business. Securing the Future.'));
     }
   }
+}
+for (const language of ['vi', 'en']) {
+  const about = normalize(pages.get(localized('/about/', language)));
+  for (const copy of [
+    'Chúng tôi kết hợp kết nối, bảo mật và dịch vụ kỹ thuật trong một giải pháp hạ tầng thống nhất.',
+    'Kết nối:', 'mạng doanh nghiệp và trung tâm dữ liệu.',
+    'Bảo mật:', 'truy cập an toàn, an ninh mạng và Cloud.',
+    'Dịch vụ:', 'tư vấn, triển khai và hỗ trợ kỹ thuật.',
+    'Bắt đầu từ môi trường vận hành thực tế, PAY ORBIT đề xuất giải pháp phù hợp, dễ triển khai và quản lý.',
+    'PAY ORBIT tập trung vào công nghệ doanh nghiệp phổ biến của Cisco và Palo Alto Networks.',
+    'đáp ứng nhu cầu kết nối cốt lõi.',
+    'giải quyết các yêu cầu an ninh mạng hiện đại.',
+    'Kết hợp hai nhu cầu trong một kiến trúc công nghệ thống nhất.',
+    'Đồng hành từ khảo sát nhu cầu đến hỗ trợ sau khi đưa hệ thống vào vận hành.',
+    'Hạ tầng đáp ứng yêu cầu kỹ thuật khi triển khai, dễ quản lý và có khả năng mở rộng trong suốt vòng đời sử dụng.',
+    'Ba nguyên tắc xuyên suốt cách PAY ORBIT đồng hành cùng khách hàng.',
+    'Giải pháp rõ ràng.', 'Triển khai tin cậy.', 'Hỗ trợ kỹ thuật dài hạn.',
+    'Đơn giản hóa các lựa chọn công nghệ để khách hàng tập trung vào kinh doanh, với một nền tảng số an toàn và ổn định.',
+  ]) assert.ok(about.includes(translate(copy, language)), `Approved About summary copy in ${language}: ${copy}`);
 }
 for (const [url, html] of pages) {
   for (const [, tag, href] of html.matchAll(/(<a\b[^>]*href="([^"]+)"[^>]*>)/g)) {

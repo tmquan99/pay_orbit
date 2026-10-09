@@ -12,6 +12,7 @@
     <link rel="alternate" hreflang="x-default" href="/">
     <link rel="preload" href="/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/src/home.css">
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
@@ -21,10 +22,11 @@
       <nav id="site_navigation" aria-label="Điều hướng chính"><a href="/" aria-current="page">Trang chủ</a><a href="/about/">Giới thiệu</a><a href="/solutions/">Giải pháp</a><a href="/services/">Dịch vụ</a><a href="/products/">Sản phẩm &amp; công nghệ</a><a href="/contact/" class="navigation-contact">Liên hệ</a></nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="Ngôn ngữ"><a data-language="vi" href="/" hreflang="vi" lang="vi" aria-label="Tiếng Việt" aria-current="true">VI</a><a data-language="en" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a></div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
-    <main id="main"><section class="hero" id="hero" aria-labelledby="hero_heading">
+    <main id="main"><section class="hero home-hero" id="hero" aria-labelledby="hero_heading">
     <div class="container"><div class="hero-content">
-      <h1 id="hero_heading" data-hero>GIẢI PHÁP MẠNG DOANH NGHIỆP &amp; AN NINH MẠNG</h1>
-      <p data-hero>Xây dựng hạ tầng số kết nối, an toàn và có khả năng mở rộng. PAY ORBIT PTY. LTD cung cấp các giải pháp hạ tầng mạng, an ninh mạng và hạ tầng số cho các tổ chức có nhu cầu kết nối ổn định, tăng cường bảo mật và xây dựng nền tảng công nghệ linh hoạt.</p>
+      <span class="hero-domain">Mạng doanh nghiệp &amp; an ninh mạng</span>
+      <h1 id="hero_heading" data-hero><span>Kết nối vững.</span><span>Bảo mật sâu.</span></h1>
+      <p data-hero>Giải pháp mạng và bảo mật, thiết kế theo nhu cầu doanh nghiệp.</p>
       <div class="actions" data-hero><a class="button button-primary" href="/contact/"><span>Liên hệ tư vấn</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -55,10 +57,10 @@
 </svg>
 </a></div>
     </div></div>
-    <figure class="hero-media" data-hero><img src="/assets/images/hero_infrastructure_photo.png" width="1672" height="941" alt="Ảnh minh họa rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></figure>
+    <figure class="hero-media" data-hero><picture><source media="(min-width: 1024px)" srcset="/assets/images/hero_infrastructure_photo.webp"><img src="/assets/images/hero_infrastructure_photo.webp" srcset="/assets/images/hero_infrastructure_photo-720.webp 720w, /assets/images/hero_infrastructure_photo.webp 1672w" sizes="100vw" width="1672" height="941" alt="Ảnh minh họa rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></picture></figure>
   </section>
-  <section class="section company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
-    <div class="company-copy"><h2 id="company_heading">PAY ORBIT kết nối hạ tầng với nhu cầu vận hành</h2><p>PAY ORBIT PTY. LTD là doanh nghiệp công nghệ hoạt động tại Australia, tập trung vào hạ tầng mạng doanh nghiệp, an ninh mạng và hạ tầng số. Chúng tôi hỗ trợ các tổ chức xây dựng môi trường CNTT an toàn, có khả năng mở rộng và vận hành ổn định, phù hợp với sự thay đổi của nhu cầu kinh doanh và hoạt động thực tế.</p><a class="button button-outline section-action" href="/about/"><span>Tìm hiểu PAY ORBIT</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  <section class="section company home-company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
+    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2><p>PAY ORBIT PTY. LTD là doanh nghiệp công nghệ hoạt động tại Australia, tập trung vào hạ tầng mạng doanh nghiệp, an ninh mạng và hạ tầng số. Chúng tôi hỗ trợ các tổ chức xây dựng môi trường CNTT an toàn, có khả năng mở rộng và vận hành ổn định, phù hợp với sự thay đổi của nhu cầu kinh doanh và hoạt động thực tế.</p><a class="button button-outline section-action" href="/about/"><span>Tìm hiểu PAY ORBIT</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -72,11 +74,12 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></div><figure class="company-media" data-reveal="slide" data-duration="700"><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Ảnh minh họa switch, patch panel và cáp mạng doanh nghiệp" loading="lazy" decoding="async"></figure>
+</a></div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Ảnh minh họa kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"><figcaption>Ảnh minh họa</figcaption></figure>
   </div></section>
-  <section class="section solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
+  <section class="section solutions home-solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
     <h2 id="solutions_heading">Giải pháp theo nhu cầu hạ tầng</h2>
-    <div class="solution-grid"><article class="solution-card" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
+    <div class="solution-panels"><div class="solution-panel network-panel" data-reveal="rise" data-duration="600" data-delay="0">
+    <div class="panel-visual"><img src="/assets/images/company_infrastructure_photo.webp" srcset="/assets/images/company_infrastructure_photo-720.webp 720w, /assets/images/company_infrastructure_photo.webp 1536w" sizes="(max-width: 767px) 100vw, 45vw" width="1536" height="763" alt="Ảnh minh họa switch, patch panel và cáp mạng doanh nghiệp" loading="lazy" decoding="async"></div><div class="solution-panel-copy"><h3>Kết nối doanh nghiệp</h3><div class="solution-group"><article class="solution-card"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -93,7 +96,7 @@
   <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
   <path d="M12 12V8" />
 </svg>
-</span><h3>Mạng doanh nghiệp</h3><p>Kết nối văn phòng, chi nhánh và người dùng bằng hạ tầng mạng dễ quản trị và có khả năng mở rộng.</p><a class="card-link" href="/solutions/#enterprise-networking"><span>Tìm hiểu mạng doanh nghiệp</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+<div><h4>Mạng doanh nghiệp</h4><p>Kết nối văn phòng, chi nhánh và người dùng bằng hạ tầng mạng dễ quản trị và có khả năng mở rộng.</p><a class="card-link" href="/solutions/#enterprise-networking"><span>Tìm hiểu mạng doanh nghiệp</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -107,7 +110,7 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></article><article class="solution-card" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="server" aria-hidden="true" focusable="false"
+</a></div></article><article class="solution-card"><svg class="icon " data-icon="server" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -123,7 +126,7 @@
   <line x1="6" x2="6.01" y1="6" y2="6" />
   <line x1="6" x2="6.01" y1="18" y2="18" />
 </svg>
-</span><h3>Mạng trung tâm dữ liệu</h3><p>Kết nối máy chủ, lưu trữ và ứng dụng, chú trọng dự phòng và khả năng giám sát vận hành.</p><a class="card-link" href="/solutions/#data-center-networking"><span>Tìm hiểu mạng trung tâm dữ liệu</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+<div><h4>Mạng trung tâm dữ liệu</h4><p>Kết nối máy chủ, lưu trữ và ứng dụng, chú trọng dự phòng và khả năng giám sát vận hành.</p><a class="card-link" href="/solutions/#data-center-networking"><span>Tìm hiểu mạng trung tâm dữ liệu</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -137,7 +140,9 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></article><article class="solution-card" data-reveal="rise" data-duration="520" data-delay="140"><span class="icon-badge"><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
+</a></div></article></div></div>
+  </div><div class="solution-panel security-panel" data-reveal="rise" data-duration="600" data-delay="90">
+    <div class="panel-visual"><img src="/assets/images/digital-infrastructure-protection.webp" srcset="/assets/images/digital-infrastructure-protection-720.webp 720w, /assets/images/digital-infrastructure-protection.webp 1672w" sizes="(max-width: 767px) 100vw, 45vw" width="1672" height="941" alt="Minh họa lớp khiên bảo mật bảo vệ máy chủ và hạ tầng Cloud" loading="lazy" decoding="async"></div><div class="solution-panel-copy"><h3>Bảo vệ hạ tầng số</h3><div class="solution-group"><article class="solution-card"><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -151,7 +156,7 @@
   <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
   <path d="m9 12 2 2 4-4" />
 </svg>
-</span><h3>An ninh mạng</h3><p>Tăng cường bảo vệ hệ thống bằng tường lửa, kiểm soát truy cập và phân đoạn mạng.</p><a class="card-link" href="/solutions/#cybersecurity"><span>Tìm hiểu an ninh mạng</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+<div><h4>An ninh mạng</h4><p>Tăng cường bảo vệ hệ thống bằng tường lửa, kiểm soát truy cập và phân đoạn mạng.</p><a class="card-link" href="/solutions/#cybersecurity"><span>Tìm hiểu an ninh mạng</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -165,7 +170,7 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></article><article class="solution-card" data-reveal="rise" data-duration="520" data-delay="210"><span class="icon-badge"><svg class="icon " data-icon="cloud" aria-hidden="true" focusable="false"
+</a></div></article><article class="solution-card"><svg class="icon " data-icon="cloud" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -178,7 +183,7 @@
 >
   <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
 </svg>
-</span><h3>Bảo mật Cloud</h3><p>Bảo vệ workload và tăng khả năng quan sát trên môi trường Public, Private và Hybrid Cloud.</p><a class="card-link" href="/solutions/#cloud-security"><span>Tìm hiểu bảo mật cloud</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+<div><h4>Bảo mật Cloud</h4><p>Bảo vệ workload và tăng khả năng quan sát trên môi trường Public, Private và Hybrid Cloud.</p><a class="card-link" href="/solutions/#cloud-security"><span>Tìm hiểu bảo mật cloud</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -192,7 +197,8 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></article></div>
+</a></div></article></div></div>
+  </div></div>
     <a class="button button-primary section-action" href="/solutions/"><span>Xem tất cả giải pháp</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -209,7 +215,7 @@
 </svg>
 </a>
   </div></section>
-  <section class="section company" id="technology_focus" aria-labelledby="technology_heading"><div class="container technology-feature-grid">
+  <section class="section company home-technology" id="technology_focus" aria-labelledby="technology_heading"><div class="container technology-feature-grid">
     <div><h2 id="technology_heading">Công nghệ Cisco và Palo Alto Networks</h2><p class="section-description">Danh mục công nghệ tập trung vào các giải pháp của Cisco và Palo Alto Networks.</p><div class="technology-overview" aria-label="Nhóm công nghệ theo hãng"><a href="/products/#cisco" class="vendor-summary"><span class="icon-badge"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -283,9 +289,76 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></div><figure class="infographic-art" data-reveal="slide" data-duration="700"><img src="/assets/images/enterprise-ecosystem.png" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async"><figcaption>Hạ tầng kết nối và bảo mật<span>Ảnh minh họa</span></figcaption></figure>
+</a></div><figure class="connection-scene" data-connection-scene aria-labelledby="connection_caption">
+    <img class="connection-art" src="/assets/images/enterprise-ecosystem.webp" srcset="/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async">
+    <div class="connection-diagram" data-connection-diagram>
+      <span class="connection-track" aria-hidden="true"><span class="connection-flow" data-connection-flow></span></span>
+      <ol class="connection-stages"><li data-connection-stage><span class="connection-symbol"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect x="16" y="16" width="6" height="6" rx="1" />
+  <rect x="2" y="16" width="6" height="6" rx="1" />
+  <rect x="9" y="2" width="6" height="6" rx="1" />
+  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+  <path d="M12 12V8" />
+</svg>
+<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>Mạng doanh nghiệp</span></li><li data-connection-stage><span class="connection-symbol"><svg class="icon " data-icon="server" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+  <line x1="6" x2="6.01" y1="6" y2="6" />
+  <line x1="6" x2="6.01" y1="18" y2="18" />
+</svg>
+<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>Trung tâm dữ liệu</span></li><li data-connection-stage><span class="connection-symbol"><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>An ninh mạng</span></li><li data-connection-stage><span class="connection-symbol"><svg class="icon " data-icon="cloud" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+</svg>
+<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>Bảo mật Cloud</span></li></ol>
+    </div>
+    <figcaption id="connection_caption">Các lớp kết nối và bảo mật<span>Sơ đồ minh họa</span></figcaption>
+  </figure>
   </div></section>
-  <section class="section technology" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
+  <section class="section technology home-approach" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
     <h2 id="approach_heading">Cách tiếp cận của PAY ORBIT</h2><p class="section-description">Cách tiếp cận thực tế theo giải pháp, bao gồm tư vấn, cung cấp sản phẩm, triển khai và hỗ trợ kỹ thuật.</p>
     <ul class="principle-list"><li><span class="icon-badge"><svg class="icon " data-icon="target" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"

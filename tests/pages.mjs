@@ -9,7 +9,8 @@ const site = process.env.TEST_DIST === '1' ? path.join(root, 'dist') : root;
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
 const coverage = [
-  ['/about/', '02_Company_Intro', ['C5', 'C6', 'C7', 'C8', 'C9']],
+  // C6:C9 use the concise, grouped story copy approved for readability.
+  ['/about/', '02_Company_Intro', ['C5']],
   ['/solutions/', '03_Solutions', ['C5', 'C6', 'C7', 'C8']],
   ['/services/', '04_Services', ['C5', 'C6', 'C7', 'C8', 'C9']],
   ['/products/', '05_Products_Tech', ['C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11']],
@@ -29,7 +30,8 @@ for (const [route, sheet, cells] of coverage) {
   const text = normalize(pages.get(route));
   for (const cell of cells) assert.ok(text.includes(normalize(workbook.sheets[sheet][cell])), `${sheet}!${cell} must appear in full at ${route}`);
 }
-for (const cell of ['C5', 'C7', 'C8']) assert.ok(normalize(pages.get('/')).includes(normalize(workbook.sheets['01_Home'][cell])), `Home content ${cell}`);
+// Home C5 was replaced by the concise hero approved on 2026-10-09.
+for (const cell of ['C7', 'C8']) assert.ok(normalize(pages.get('/')).includes(normalize(workbook.sheets['01_Home'][cell])), `Home content ${cell}`);
 const linkPages = new Map(pages);
 for (const route of routes) {
   const english = '/en' + route;
@@ -78,5 +80,5 @@ try {
     }
   }
   assert.equal((await fetch(origin + '/not-a-page/')).status, 404);
-  console.log('PASS: six direct page routes, shared navigation, active states and all 21 source content blocks');
+  console.log('PASS: six direct page routes, shared navigation, active states and preserved workbook content');
 } finally { await new Promise(resolve => server.close(resolve)); }

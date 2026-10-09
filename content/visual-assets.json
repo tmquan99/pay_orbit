@@ -1,10 +1,27 @@
 {
-  "version": 1,
+  "version": 2,
   "assumptions": [
     "Ảnh minh họa khái niệm, không phải cấu hình, sản phẩm hãng hoặc dự án PAY ORBIT thực tế.",
     "Infographic dùng nhãn HTML để đọc được trên mobile và khi ảnh không tải."
   ],
   "images": [
+    {
+      "id": "infrastructure-team",
+      "purpose": "Minh họa phối hợp kiểm tra kết nối trong môi trường hạ tầng doanh nghiệp trên Home",
+      "destination": "public/assets/images/infrastructure-team-illustration.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-45304319-f972-4e19-a338-506096fa0f84"
+      },
+      "prompt": "Use case: photorealistic-natural. Asset type: a supporting editorial photograph for the PAY ORBIT enterprise networking and cybersecurity website, landscape 3:2. Create a restrained, believable documentary photograph of two adult network engineers collaborating at an open network cabinet in a clean, modest enterprise equipment room. One engineer in a navy overshirt is seen from behind and slightly to the side, calmly checking an unbranded laptop on a pull-out shelf, while a colleague's hand points at a tidy patch panel with blue Ethernet cables. Emphasis is on the actual process of checking connections together, not posing for the camera. Human presence at left third, detailed switch and cable equipment at right two thirds. Natural cool overhead lighting, navy and pale blue palette, realistic skin and fabric texture, balanced exposure, softly blurred background with depth. Professional B2B editorial quality, no dramatic sci-fi lighting, no glowing effects, no hologram, no shields, no text, letters, visible brand logos, identifiable company marks, watermark, dashboards, or readable laptop content. This is an illustrative fictional scene, not a photo of actual PAY ORBIT staff, customers, or projects. Keep faces mostly turned away. Entire composition should crop well to 4:3 on mobile and 3:2 on desktop.",
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2061681,
+        "sha256": "66403b323f2bddd9ae5e07ec5bf168ffdc73c92fcad6676ecadc511235f298e1"
+      }
+    },
     {
       "id": "ecosystem",
       "purpose": "Giải thích bốn nhóm hạ tầng mạng và bảo mật",
@@ -38,6 +55,43 @@
         "bytes": 1332040,
         "sha256": "b43a4a884df97d7bbad1bf58de084e12248b1fecfc16efa93ea15f493419fdf7"
       }
+    },
+    {
+      "id": "security-gateway",
+      "purpose": "Ảnh đồng bộ với panel mạng, minh họa thiết bị bảo mật trên trang chủ",
+      "destination": "public/assets/images/security-gateway-illustration.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-3e5416b6-5ce7-49c2-baa8-1552fd91a055",
+        "styleReference": "public/assets/images/company_infrastructure_photo.webp"
+      },
+      "prompt": "Use case: photorealistic-natural. Asset type: a companion wide photograph for the cybersecurity solution panel on PAY ORBIT's B2B infrastructure website. Input image 1 is a style and lighting reference only: match its photographic realism, cool navy palette, dark textured metal, restrained blue Ethernet cables and equipment-room setting. Generate a NEW scene, not an edited website screenshot. Subject: a pair of unbranded rack-mounted enterprise security gateway appliances in a black equipment cabinet, viewed close-up from a subtle three-quarter angle. Clear believable front panels with a modest number of network and fiber ports, tidy blue cables routed to the sides, tiny neutral green status lights. Include a second softly blurred equipment rack behind for depth. The security appliances, metal texture and orderly connections are the focal point, visually distinct from the dense patch-panel reference but belonging to the same photo shoot. Composition: landscape about 3:2, appliances in the central horizontal band, all important hardware inside middle 55 percent of image height so it crops naturally into a wide 2.5:1 website panel; purposeful close framing, no large blank area. Lighting: soft cool overhead equipment-room light with subtle blue reflections, realistic exposure, crisp foreground hardware, gentle background blur. Constraints: photograph only, no text, letters, numbers, company marks, product branding, logos, watermark, people, monitor screen, dashboard, hologram, overlay, lock icon, shield, cloud graphic, glowing circuit patterns or sci-fi effects. This is fictional illustrative equipment, not a specific vendor product or proof of an actual PAY ORBIT installation.",
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2116044,
+        "sha256": "f0781d10dff152f11ceb1e745f03ae1ead56da5e9dc2a400a528441a4e50f979"
+      },
+      "status": "superseded"
+    },
+    {
+      "id": "digital-infrastructure-protection",
+      "purpose": "Minh họa lớp bảo mật bảo vệ hệ thống máy chủ và Cloud trên panel Bảo vệ hạ tầng số",
+      "destination": "public/assets/images/digital-infrastructure-protection.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-deca3914-5166-4b83-8fd8-9ff1e39f7890",
+        "styleReference": "public/assets/images/company_infrastructure_photo.webp"
+      },
+      "prompt": "Use case: ads-marketing. Create a NEW conceptual image that immediately communicates PROTECTING DIGITAL INFRASTRUCTURE, for the cybersecurity and cloud-security panel of an enterprise website. The attached photo is ONLY a reference for dark navy colors, cool blue lighting and realistic equipment materials; do not simply generate another network equipment photograph. Main visual story: a large dimensional translucent blue security shield in the foreground visibly protecting a small group of realistic enterprise server cabinets behind it. A simple frosted-glass cloud-computing form is beside the cabinets, connected to them by two tidy blue paths, and these infrastructure elements are within the shield's protective boundary. Shield must be instantly recognizable and visibly surround/cover the vulnerable infrastructure; include a subtle engraved lock shape at its center, not a flat vector icon. Premium photorealistic 3D advertising illustration with carefully rendered dark metal rack hardware, blue optical glass and softly lit environment, restrained corporate style. Make the shield the clear main subject and server/cloud infrastructure the supporting subjects, so even a small thumbnail reads as cyber protection, not generic networking. Composition: very wide landscape 16:9, centered horizontal arrangement. Entire shield silhouette, the cloud and server cabinets must fit within the middle 55 percent of the image height with spacious dark navy margins above and below, because this will be cropped into a 2.5:1 banner. Large simple silhouettes, no excessive tiny details. Palette: deep navy, charcoal, cool blue matching reference, subtle cyan glass edges; gentle lighting with crisp subject separation, no extreme neon. No text, labels, digits, logos, vendor marks, watermark, people, hacker hoodies, UI screens, dashboards, charts, floating code, green matrix rain, stock padlock-only composition, arrows, red attack beams, excessive glow, or meaningless circuit web. This is a conceptual illustration, not a real deployment or vendor product.",
+      "metadata": {
+        "width": 1672,
+        "height": 941,
+        "bytes": 1854382,
+        "sha256": "22a081c411c9a3e4f4e3babe1f81ef0ab41a3c88ce8e6fade0c23425b886920d"
+      }
     }
   ],
   "icons": {
@@ -45,5 +99,97 @@
     "license": "ISC and MIT for Feather-derived icons",
     "provenance": "public/assets/icons/lucide/provenance.json",
     "licenseFile": "public/assets/icons/lucide/LICENSE.txt"
-  }
+  },
+  "webImages": [
+    {
+      "source": "public/assets/images/hero_infrastructure_photo.png",
+      "destination": "public/assets/images/hero_infrastructure_photo.webp",
+      "quality": 82,
+      "width": 1672,
+      "height": 941,
+      "bytes": 141976,
+      "sha256": "840556f47f4d2f5bbc47c2d2a7a9278234249f5eb79dd089de48f77180f2c7c0"
+    },
+    {
+      "source": "public/assets/images/hero_infrastructure_photo.png",
+      "destination": "public/assets/images/hero_infrastructure_photo-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 405,
+      "bytes": 41666,
+      "sha256": "fa748e9969aaf4c162651a08b708d2a0f70a2e140ab3a292454f724cc902c52a"
+    },
+    {
+      "source": "public/assets/images/company_infrastructure_photo.png",
+      "destination": "public/assets/images/company_infrastructure_photo.webp",
+      "quality": 82,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 163706,
+      "sha256": "9d957130797420672698b97a7c894a3554e0841b1be12194f1c9ffdfc5e4c720"
+    },
+    {
+      "source": "public/assets/images/company_infrastructure_photo.png",
+      "destination": "public/assets/images/company_infrastructure_photo-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 480,
+      "bytes": 53294,
+      "sha256": "b17d09b09a60f1c45c7ad97eb19b3a1049700c708b55c931bd54c64291950a47"
+    },
+    {
+      "source": "public/assets/images/infrastructure-team-illustration.png",
+      "destination": "public/assets/images/infrastructure-team-illustration.webp",
+      "quality": 82,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 118102,
+      "sha256": "9c11dd15b0125025007f2e347525cf4c3e2759622fbf4e2be5d94fffd7635387"
+    },
+    {
+      "source": "public/assets/images/infrastructure-team-illustration.png",
+      "destination": "public/assets/images/infrastructure-team-illustration-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 480,
+      "bytes": 42626,
+      "sha256": "35d814c2ce49792f4c28612a2e6bb7a9629b36ce058ef29d9dbfe9e64ba9128b"
+    },
+    {
+      "source": "public/assets/images/enterprise-ecosystem.png",
+      "destination": "public/assets/images/enterprise-ecosystem.webp",
+      "quality": 82,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 62034,
+      "sha256": "9acc1f8f54361de98e89252194e688cc55c341ab702aee70cfa718ada24d105e"
+    },
+    {
+      "source": "public/assets/images/enterprise-ecosystem.png",
+      "destination": "public/assets/images/enterprise-ecosystem-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 480,
+      "bytes": 19702,
+      "sha256": "35c19d3d5ea2a9e189b631fa690059bf29b3e3dce653fc545f9975bfe72934fb"
+    },
+    {
+      "source": "public/assets/images/digital-infrastructure-protection.png",
+      "destination": "public/assets/images/digital-infrastructure-protection.webp",
+      "quality": 82,
+      "width": 1672,
+      "height": 941,
+      "bytes": 83778,
+      "sha256": "2c66ed1edd9d5199746699aefec572e6a8f1c682425e9d4220bb18ec1f5485e5"
+    },
+    {
+      "source": "public/assets/images/digital-infrastructure-protection.png",
+      "destination": "public/assets/images/digital-infrastructure-protection-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 405,
+      "bytes": 23318,
+      "sha256": "82b7e287b101418e1c318d1fb4a2687cb9667e1174d2d1e0d99d0b9ecbf90208"
+    }
+  ]
 }

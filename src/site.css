@@ -65,7 +65,7 @@ p { max-width: 62ch; }
 .skip-link { position: fixed; top: 12px; left: 16px; z-index: 10; background: var(--surface); color: var(--text); padding: 12px 20px; border-radius: 8px; transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
 .site-header { background: var(--dark-canvas); color: var(--dark-text); }
-.header-inner { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .language-switch { display: flex; align-items: center; padding: 3px; border: 1px solid var(--dark-border); border-radius: 8px; gap: 2px; }
 .language-switch a { justify-content: center; min-width: 44px; min-height: 44px; padding: 8px; font-size: 14px; font-weight: 600; line-height: 1.2; color: var(--dark-text); border-radius: 5px; text-decoration: none; transition: background-color 160ms ease-out, color 160ms ease-out; }

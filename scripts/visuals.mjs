@@ -55,3 +55,15 @@ export function technologyOverview() {
     ['Palo Alto Networks', ['Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh'], 'shield-check', 'palo-alto-networks'],
   ].map(([name, groups, symbol, anchor]) => `<a href="/products/#${anchor}" class="vendor-summary">${badge(symbol)}<span><strong>${name}</strong><span>${groups.join(' · ')}</span></span>${icon('arrow-up-right')}</a>`).join('')}</div>`;
 }
+
+export function connectionScene() {
+  const stages = [['network', 'Mạng doanh nghiệp'], ['server', 'Trung tâm dữ liệu'], ['shield-check', 'An ninh mạng'], ['cloud', 'Bảo mật Cloud']];
+  return `<figure class="connection-scene" data-connection-scene aria-labelledby="connection_caption">
+    <img class="connection-art" src="/assets/images/enterprise-ecosystem.webp" srcset="/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async">
+    <div class="connection-diagram" data-connection-diagram>
+      <span class="connection-track" aria-hidden="true"><span class="connection-flow" data-connection-flow></span></span>
+      <ol class="connection-stages">${stages.map(([symbol, label]) => `<li data-connection-stage><span class="connection-symbol">${icon(symbol)}<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>${label}</span></li>`).join('')}</ol>
+    </div>
+    <figcaption id="connection_caption">Các lớp kết nối và bảo mật<span>Sơ đồ minh họa</span></figcaption>
+  </figure>`;
+}

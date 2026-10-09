@@ -1,4 +1,6 @@
 import { installReferenceReveals } from './reveals.js';
+import { installConnectionScene } from './connection-scene.js';
+import { installAboutStory } from './about-story.js';
 
 document.documentElement.classList.add('has-js');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -20,11 +22,18 @@ if (!reduced.matches && scrollY < 80 && document.visibilityState !== 'hidden') {
 const onMotionPreference = () => { if (reduced.matches) stopHero(); };
 reduced.addEventListener('change', onMotionPreference);
 const cleanupReveals = installReferenceReveals();
-addEventListener('pagehide', () => {
+const cleanupConnection = installConnectionScene();
+let cleanupAboutStory = installAboutStory();
+addEventListener('pagehide', event => {
   stopHero();
   cleanupReveals();
+  cleanupConnection();
+  cleanupAboutStory({ preserveLayout: event.persisted });
   reduced.removeEventListener('change', onMotionPreference);
-}, { once: true });
+});
+addEventListener('pageshow', event => {
+  if (event.persisted) cleanupAboutStory = installAboutStory();
+});
 
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.getElementById('site_navigation');

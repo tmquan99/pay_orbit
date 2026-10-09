@@ -4,7 +4,7 @@ Website dùng hai bản HTML cho mỗi trang: tiếng Việt giữ nguyên sáu 
 
 | Trang | Tiếng Việt | Tiếng Anh | Nguồn nội dung chính |
 | --- | --- | --- | --- |
-| Trang chủ | `/` | `/en/` | `01_Home!B5:B8,C5:C8`, `02_Company_Intro!B5,C5` |
+| Trang chủ | `/` | `/en/` | `01_Home!B7:B8,C7:C8`, `02_Company_Intro!B5,C5`; hero mới đã duyệt trong `ui.en.json` |
 | Giới thiệu | `/about/` | `/en/about/` | `02_Company_Intro!B5:B9,C5:C9` |
 | Giải pháp | `/solutions/` | `/en/solutions/` | `03_Solutions!B5:C8`, lợi ích tại `D5:D8` |
 | Dịch vụ | `/services/` | `/en/services/` | `04_Services!B5:D9` |
@@ -13,9 +13,9 @@ Website dùng hai bản HTML cho mỗi trang: tiếng Việt giữ nguyên sáu 
 
 `content/workbook.json` giữ nguyên bản trích tài liệu. Đã kiểm tra lại tệp trong Downloads bằng luồng đọc dùng chung khi Excel đang mở; SHA-256 khớp bản trích: `7f6e874867cb5cccff9918e4d9ff066665ec042246e30cbc21c00e07449b5411`.
 
-Các mô tả đầy đủ lấy trực tiếp từ cột B cho tiếng Anh và cột C cho tiếng Việt. Nội dung hero giữ nguyên các dòng gốc, gộp hai dòng hỗ trợ thành một đoạn như bản trước. Tagline dùng `00_Overview!B6` hoặc `B7`; tiêu đề, mô tả SEO trang chủ và ghi chú nhãn hiệu dùng `07_SEO_Dev_Notes!B5:B7,C5:C7`. Phạm vi dịch vụ tiếng Anh giữ nguyên các mục cột D. Lợi ích giải pháp cột D chỉ có tiếng Việt, nên bản Anh dùng bản dịch tương đương.
+Các mô tả đầy đủ lấy trực tiếp từ cột B cho tiếng Anh và cột C cho tiếng Việt. Riêng hero được người dùng duyệt rút gọn ngày 09/10/2026 thành “Kết nối vững. Bảo mật sâu.” / “Connected. Protected.” và mô tả ngắn trong `content/ui.en.json`, thay nguyên văn ô Home B5/C5. Tagline dùng `00_Overview!B6` hoặc `B7`; tiêu đề, mô tả SEO trang chủ và ghi chú nhãn hiệu dùng `07_SEO_Dev_Notes!B5:B7,C5:C7`. Phạm vi dịch vụ tiếng Anh giữ nguyên các mục cột D. Lợi ích giải pháp cột D chỉ có tiếng Việt, nên bản Anh dùng bản dịch tương đương.
 
-`content/ui.en.json` chứa bản dịch của nhãn giao diện, tiêu đề tổ chức trang, phần tóm tắt đã có, chú thích infographic, alt ảnh và thông báo biểu mẫu. Các phần này phục vụ cách trình bày, không phải các đoạn tiếng Anh mới thay thế mô tả trong workbook. Không bổ sung dữ kiện kinh doanh.
+`content/ui.en.json` chứa bản dịch của nhãn giao diện, tiêu đề tổ chức trang, phần tóm tắt đã có, chú thích infographic, alt ảnh và thông báo biểu mẫu. Ngoại lệ đã duyệt: các đoạn About B6:B9/C6:C9 dùng bản viết gọn với câu dẫn, nhóm ý hoặc luồng năm bước và đoạn kết; bản Anh tương ứng cũng nằm trong từ điển này. Không bổ sung dữ kiện kinh doanh.
 
 Nút VI/EN luôn có trên header, vùng bấm tối thiểu 44px, chỉ trạng thái ngôn ngữ hiện tại bằng `aria-current`. Chuyển ngôn ngữ dẫn tới cùng trang; khi JavaScript chạy, fragment của giải pháp hoặc dịch vụ cũng được giữ. Menu, footer, CTA và liên kết infographic tiếp tục dùng ngôn ngữ của URL. URL là nguồn xác định ngôn ngữ, không tự chuyển theo vị trí hoặc ngôn ngữ trình duyệt và không thêm lưu trữ dữ liệu biểu mẫu.
 
