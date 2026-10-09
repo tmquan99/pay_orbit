@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "hero_infrastructure_photo",
+      "kind": "image",
+      "status": "ready",
+      "purpose": "Ảnh hạ tầng mạng khổ ngang cho hero.",
+      "requirements": [
+        "Tệp PNG đã tạo, xem kiểm tra và sao chép vào dự án: 1672×941px, 1.573.352 pixel, 2.120.138 byte; đạt giới hạn kích thước.",
+        "Giữ tỷ lệ gốc 1672:941 và metadata; không đổi phần mở rộng hoặc kéo méo ảnh.",
+        "Ảnh minh họa được tạo mới, không chứng minh công trình, địa điểm hoặc năng lực triển khai thực tế của PAY ORBIT.",
+        "Không có logo hãng, chân dung, screenshot hoặc đồ họa trang trí.",
+        "Blueprint chưa có mockup UI; tỷ lệ này là tỷ lệ acquisition thực tế, không phải số đo từ reference. Cần kiểm tra crop trong bố cục desktop/mobile cuối cùng.",
+        "SHA-256: b2e986e268148066dbc19db8f1cf44307041242ed2d81dbe0a9685c09fef9305."
+      ],
+      "role": "photography",
+      "sectionIds": [
+        "hero"
+      ],
+      "aspectRatio": "1672:941",
+      "composition": "Ảnh kiến trúc hạ tầng nhìn ngang tầm mắt: rack mạng chiếm phần lớn nửa phải, hành lang tạo chiều sâu ở khoảng 35–45% chiều rộng. Vùng trái khoảng 30% là mặt rack tối, ít chi tiết, có thể hỗ trợ đặt chữ nếu đạt tương phản. Vật liệu kim loại và dây mạng rõ, ánh sáng lạnh tiết chế phù hợp Brand. Giữ hành lang và ít nhất một mặt rack trong crop mobile; không nhúng chữ.",
+      "source": {
+        "kind": "generated",
+        "reference": "image_gen.imagegen:01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-03e6cbb2-339b-43e5-a9d1-d7fe2225aead"
+      },
+      "destination": "public/assets/images/hero_infrastructure_photo.png"
+    },
+    {
+      "id": "company_infrastructure_photo",
+      "kind": "image",
+      "status": "ready",
+      "purpose": "Ảnh minh họa thiết bị mạng và hệ thống cáp cho phần giới thiệu công ty.",
+      "requirements": [
+        "Tệp PNG đã tạo, xem kiểm tra và sao chép vào dự án: 1536×1024px, 1.572.864 pixel, 2.250.128 byte; đạt giới hạn kích thước.",
+        "Giữ tỷ lệ 3:2 và metadata; không kéo méo thiết bị.",
+        "Ảnh minh họa được tạo mới, không được mô tả là thiết bị, văn phòng hoặc dự án thực của PAY ORBIT.",
+        "Không dùng như ảnh sản phẩm Cisco hoặc Palo Alto Networks; thiết bị không mang nhận diện hãng.",
+        "Blueprint chưa khóa khung media; cần kiểm tra crop cuối cùng, giữ phần switch và các kết nối chính.",
+        "SHA-256: ee5b2a7c9e358c1acf43f4c56bd32b322d85aecfe2fc6899fcce210e480d23ed."
+      ],
+      "role": "photography",
+      "sectionIds": [
+        "company_intro"
+      ],
+      "aspectRatio": "3:2",
+      "composition": "Ảnh cận vừa của một rack mạng, patch panel và switch nằm ở trung tâm lệch phải, dây xanh và xám được tổ chức rõ. Thiết bị chính chiếm khoảng 60–70% chiều rộng; rack phía sau mờ tạo chiều sâu. Điểm nét ở các cổng kết nối giữa ảnh, giữ được khi crop quanh trung tâm. Nền phía trên ít chi tiết nhưng không dành cho đoạn chữ dài; văn bản giới thiệu đặt ngoài ảnh.",
+      "source": {
+        "kind": "generated",
+        "reference": "image_gen.imagegen:01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-4032aac6-2e6a-481b-88ac-6beee4c43ab8"
+      },
+      "destination": "public/assets/images/company_infrastructure_photo.png"
+    },
+    {
+      "id": "bricolage_grotesque_variable_font",
+      "kind": "font",
+      "status": "ready",
+      "purpose": "Font đã được Brand chọn cho tên thương hiệu, tiêu đề, nội dung và điều khiển.",
+      "requirements": [
+        "Đã tải tệp TrueType thực từ kho Google Fonts chính thức, dung lượng 408.496 byte; family trong bảng name là Bricolage Grotesque.",
+        "Tệp variable có wght 200–800, wdth 75–100 và opsz 12–96; hỗ trợ đủ weight được duyệt: 400, 500, 600, 700.",
+        "Dùng font-style normal và width 100; không dựa vào weight mặc định 800 của tệp. Không có variant italic được yêu cầu hoặc tải.",
+        "Giấy phép đã tải tại public/assets/fonts/bricolage-grotesque/OFL.txt, dung lượng 4.403 byte; giữ cùng font khi phân phối.",
+        "Đã kiểm tra cmap: không thiếu ký tự trong title, heading, body và CTA của page blueprint.",
+        "Build phải khai báo @font-face bằng tệp local, chờ document.fonts.ready và xác minh FontFace cùng family/weight thực; chưa kiểm tra tải font trong browser ở pha Asset.",
+        "SHA-256: 413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682."
+      ],
+      "role": "font",
+      "sectionIds": [
+        "hero",
+        "company_intro",
+        "core_solutions",
+        "delivery_services",
+        "technology_portfolio",
+        "contact",
+        "footer"
+      ],
+      "composition": "Một family dùng xuyên suốt trang theo thang chữ của Brand; dùng các weight thực trong cùng tệp variable, không thay bằng font hệ thống.",
+      "source": {
+        "kind": "external",
+        "reference": "https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque",
+        "license": "SIL Open Font License 1.1. Copyright 2022 The Bricolage Grotesque Project Authors."
+      },
+      "destination": "public/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf"
+    }
+  ]
+}

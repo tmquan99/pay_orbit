@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "assumptions": [
+    "Ảnh minh họa khái niệm, không phải cấu hình, sản phẩm hãng hoặc dự án PAY ORBIT thực tế.",
+    "Infographic dùng nhãn HTML để đọc được trên mobile và khi ảnh không tải."
+  ],
+  "images": [
+    {
+      "id": "ecosystem",
+      "purpose": "Giải thích bốn nhóm hạ tầng mạng và bảo mật",
+      "destination": "public/assets/images/enterprise-ecosystem.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-6f4c4986-39ef-4a33-8d9d-c3fbfc992967"
+      },
+      "prompt": "Use case: infographic-diagram. Create a finished editorial illustration for a Vietnamese enterprise networking and cybersecurity company website. Landscape 3:2, approximately 1536x1024. The illustration explains four related infrastructure domains without any embedded text: a modest office building with laptops and a wireless access point at the lower left; two recognizable network/server racks at the center; a restrained secure-access firewall gateway with a small shield symbol between the office and racks; a cloud-computing cluster of servers at the upper right. Arrange these four areas as one coherent isometric scene, with a few purposeful blue connection paths showing the office connects to data-center and cloud resources through security controls. Clear silhouettes readable at 350 CSS pixels wide, generous whitespace around subjects, no extra areas. Premium soft 3D editorial style, matte white and navy devices, electric blue #1768E8 connections, subtle cyan details, soft grounded shadows. Solid pale blue #F2F7FF background. This is a general illustrative overview of enterprise networking, data-center networking, cybersecurity and cloud security, never an actual client topology or a vendor product. No numbers, labels, letters, logos, watermark, globe, orbit, dashboards, graphs, meaningless decorative network lines or glowing neon. Keep all subjects fully inside frame with at least 8% clear edge margin.",
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1473756,
+        "sha256": "271fb6e609aad425f513cd16659b0cc809dd6dc8801d76947151344b6144b594"
+      }
+    },
+    {
+      "id": "lifecycle",
+      "purpose": "Minh họa quy trình khảo sát, thiết kế, cung cấp, triển khai, hỗ trợ",
+      "destination": "public/assets/images/service-lifecycle.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-33ae2d10-9eb0-49d5-a511-0c2e9c397309"
+      },
+      "prompt": "Use case: infographic-diagram. Create an original companion editorial illustration for a Vietnamese B2B technology services website. Landscape 3:2, approximately 1536x1024. A clear five-stage project lifecycle in one isometric scene, arranged in a gently curved path from upper left through center to lower right with five evenly spaced visual islands: 1 assessment shown by a clipboard and magnifying lens next to a small network device; 2 solution design shown by architecture plan papers and a ruler; 3 supply shown by an unbranded switch and closed shipping carton; 4 implementation shown by a server rack with neatly connected cables and a small wrench; 5 support shown by a laptop with a simple gear mark and a headset. Purposeful short blue path segments connect the five islands in that order. No people, no charts or made-up measurements, no monitoring dashboard. Premium soft 3D editorial style, matte white and dark navy devices, electric blue #1768E8 primary detail and subtle cyan accents, soft grounded shadows on solid pale blue #F2F7FF background. Strong simple silhouettes and enough separation to be readable at 350 CSS pixels wide. No text, letters, digits, logo, watermark, decorative grid, orbit, unrelated symbols or neon. Entire scene contained with at least 8% edge margin. This is a conceptual illustration of assessment, design, supply, implementation and support, not proof of a real project.",
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1332040,
+        "sha256": "b43a4a884df97d7bbad1bf58de084e12248b1fecfc16efa93ea15f493419fdf7"
+      }
+    }
+  ],
+  "icons": {
+    "library": "Lucide",
+    "license": "ISC and MIT for Feather-derived icons",
+    "provenance": "public/assets/icons/lucide/provenance.json",
+    "licenseFile": "public/assets/icons/lucide/LICENSE.txt"
+  }
+}

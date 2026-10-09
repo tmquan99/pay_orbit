@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "verdict": "pass",
+  "summary": "Không còn lỗi thị giác cần sửa trong hai ảnh desktop và mobile. Crop hero đã giữ hành lang và rack; DOM audit không báo lỗi. Không có mockup UI để xác nhận độ khớp bố cục tham chiếu.",
+  "findings": []
+}

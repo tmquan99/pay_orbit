@@ -1,0 +1,151 @@
+{
+  "library": "Lucide",
+  "commit": "a04f228cd01185e09c188b7227b9600c08c565ec",
+  "license": "ISC, with MIT notice for icons derived from Feather",
+  "files": [
+    {
+      "name": "network",
+      "path": "public/assets/icons/lucide/network.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/network.svg",
+      "sha256": "626be730feea1e5ea7539fbf78b4a3fcb927ce5d7dc43364f2216908672ac792"
+    },
+    {
+      "name": "server",
+      "path": "public/assets/icons/lucide/server.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/server.svg",
+      "sha256": "f7bea54b609dc488f3b848995014041846b2443fd2a880653e9e583d7a034f61"
+    },
+    {
+      "name": "shield-check",
+      "path": "public/assets/icons/lucide/shield-check.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/shield-check.svg",
+      "sha256": "8d4fcdbde5bba4abb1a2f6fe53e37ceb6343a1d5449a9d88f6f97c1971d26c4e"
+    },
+    {
+      "name": "cloud",
+      "path": "public/assets/icons/lucide/cloud.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/cloud.svg",
+      "sha256": "28a34022ed00177eb1f218eea5d2b7af30d09b529187fe32219e4dd8ea2b9740"
+    },
+    {
+      "name": "search",
+      "path": "public/assets/icons/lucide/search.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/search.svg",
+      "sha256": "283d371c2e433817bb9c0c8310caa6c77fa4177c0f4f1168d9c83b97af7389dc"
+    },
+    {
+      "name": "workflow",
+      "path": "public/assets/icons/lucide/workflow.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/workflow.svg",
+      "sha256": "ae99ea8f56a2835a2cca35b2fbb57643ab73443610970dba23e24bd9df75cfec"
+    },
+    {
+      "name": "package-check",
+      "path": "public/assets/icons/lucide/package-check.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/package-check.svg",
+      "sha256": "ce6b0e8a3102a9dc0a00b68f613dfd43ca6fa45182bc13786aafc338c1961fcf"
+    },
+    {
+      "name": "cable",
+      "path": "public/assets/icons/lucide/cable.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/cable.svg",
+      "sha256": "939a8e577c9b0eaf824fd288b3f3b760d7eca3ef30c910dbee60da2e215baa16"
+    },
+    {
+      "name": "headset",
+      "path": "public/assets/icons/lucide/headset.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/headset.svg",
+      "sha256": "685de90f65108f523577a3fc9202f4e7f812ea7d4609a981aac3b36d3b33fc01"
+    },
+    {
+      "name": "router",
+      "path": "public/assets/icons/lucide/router.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/router.svg",
+      "sha256": "6266881cf691541259ea5e07e5e40ffeba1f61b95c76707d967ebe7827414428"
+    },
+    {
+      "name": "wifi",
+      "path": "public/assets/icons/lucide/wifi.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/wifi.svg",
+      "sha256": "5c4c795d014fa95d1e1038362df44a0f0f32ded9cb08c833ae72419ebadc9a91"
+    },
+    {
+      "name": "video",
+      "path": "public/assets/icons/lucide/video.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/video.svg",
+      "sha256": "d4fb6587f282c1152b953fe9494cd8ccafdf1e9f44957fbb7fe8dc7af0457597"
+    },
+    {
+      "name": "cloud-cog",
+      "path": "public/assets/icons/lucide/cloud-cog.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/cloud-cog.svg",
+      "sha256": "8df2c44626dd4ee7905dcba477bae75e85849c5eec314143c2dd841f83530280"
+    },
+    {
+      "name": "scan-eye",
+      "path": "public/assets/icons/lucide/scan-eye.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/scan-eye.svg",
+      "sha256": "343741486dfe4188a80628e3b8ae7a71f6ac63e0de5fbf474674b053c8f80721"
+    },
+    {
+      "name": "building",
+      "path": "public/assets/icons/lucide/building.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/building.svg",
+      "sha256": "62afdf63b5020448cba93267343a91c16ee4dffc7969e46b223ee531cf0bcd1c"
+    },
+    {
+      "name": "phone",
+      "path": "public/assets/icons/lucide/phone.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/phone.svg",
+      "sha256": "bd59dd10667cbe410a69e2fbbf4d9645d08abe862c8d89082bd4f533957859a8"
+    },
+    {
+      "name": "map-pin",
+      "path": "public/assets/icons/lucide/map-pin.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/map-pin.svg",
+      "sha256": "16f1042a62f1bda20ebab8bfc1cb79c0be285c980dea6c2c733a17902631405b"
+    },
+    {
+      "name": "user-round",
+      "path": "public/assets/icons/lucide/user-round.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/user-round.svg",
+      "sha256": "84870f26f3faf8da45da84174517519e81b9e8f00319c78954fcbb74f50038a1"
+    },
+    {
+      "name": "clipboard-copy",
+      "path": "public/assets/icons/lucide/clipboard-copy.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/clipboard-copy.svg",
+      "sha256": "dcf4cb2f3d3e418e51b0f94cd20b01ed69151a584010cd8e28b924e51787fadc"
+    },
+    {
+      "name": "arrow-up-right",
+      "path": "public/assets/icons/lucide/arrow-up-right.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/arrow-up-right.svg",
+      "sha256": "50b2503b9d11881142255466b7e3461d022b919735841c321d72003ac9959fe1"
+    },
+    {
+      "name": "arrow-right",
+      "path": "public/assets/icons/lucide/arrow-right.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/arrow-right.svg",
+      "sha256": "288397fdb73bb4f783cf9eabb726ff47357df1d4e3f1201dd748090579f108b9"
+    },
+    {
+      "name": "check",
+      "path": "public/assets/icons/lucide/check.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/check.svg",
+      "sha256": "7f33acc9a77a61659531044525fc008edebe215bf4dcf1c789c8674ad3277db0"
+    },
+    {
+      "name": "target",
+      "path": "public/assets/icons/lucide/target.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/target.svg",
+      "sha256": "96a6b16628825a1a207a77e9a5818f74c3e74ea3664783ff5c2a44e6347b90df"
+    },
+    {
+      "name": "layers",
+      "path": "public/assets/icons/lucide/layers.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/layers.svg",
+      "sha256": "ce16d0a955e3581cda17f6b2fd5c5bc2034b405f9cecc31c8ebb8495b4afc1bb"
+    }
+  ]
+}

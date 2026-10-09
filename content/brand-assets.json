@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "name": "PAY ORBIT",
+  "request": "Thiết kế logo cho website PAY ORBIT.",
+  "decision": "Biểu tượng chữ P với hai dải kết nối Electric Blue/Cyan, ghép với chữ PAY ORBIT bằng Bricolage Grotesque 700 có sẵn trong dự án. Giữ tên đầy đủ PAY ORBIT PTY. LTD ở footer.",
+  "symbol": {
+    "path": "public/assets/brand/pay-orbit-mark.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 525358,
+    "sha256": "e2da1bf416f9b4fb9f386051b1f9b4c86d40cfa9c98b12ed351e69b5eefa74dd",
+    "kind": "generated",
+    "tool": "image_gen.imagegen (built-in)",
+    "source": "C:/Users/tamin/.codex/generated_images/01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-6305967d-0ae0-4af1-b9c6-3e66af434342.png",
+    "transparent": true
+  },
+  "sourceConcept": "C:/Users/tamin/.codex/generated_images/01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-8cda2afe-ef47-413b-a981-76a91df23f50.png",
+  "prompts": {
+    "generate": "Use case: logo-brand. Asset type: a new original standalone brand symbol for the PAY ORBIT website, an Australian B2B enterprise networking and cybersecurity company. Create ONE finished, flat, vector-like letter P monogram on a genuinely transparent background. The P is built from two connected bold geometric bands with a single clear generous counter; the visible join should suggest infrastructure connecting reliably, but the symbol must first read as a P at 24px. Use a strong vertical stem, a slightly angular rounded rectangular upper bowl, and one short cyan linking band integrated into the form. Simple, distinctive silhouette, balanced optical proportions, precise clean edges, thick strokes, generous negative space. Main fill electric blue #4098FF, linking accent cyan #59D9EF. The symbol must work unchanged on both near-black #02060F and near-white #FCFDFF. Front view, no perspective. Square composition, symbol centered and occupying about 86 percent of the canvas with equal narrow clear margins. No words, no text, no slogan: PAY ORBIT will be typeset using the site's actual font outside this symbol. No orb, orbital ring, globe, shield, padlock, generic network nodes, thin lines, decorative circuits, enclosing tile, rectangle backdrop, gradient, shadow, glow, bevel, 3D, texture, watermark or mockup. Export clean transparent PNG with genuine alpha, not a checkerboard drawn into the image.",
+    "refine": "Edit the provided PAY ORBIT P monogram only to make it a final clean flat logo. Preserve the exact P silhouette, vertical stem, generous rectangular counter, rounded right-hand bowl and the integrated cyan band crossing the lower bowl into the stem. Preserve its proportions and centered square framing. Remove all texture, grain, irregular edge flecks, turquoise fringes and soft shading. Every filled interior pixel should be fully opaque. Use TWO uniform solid fills only: the main P #4098FF and the connection band #59D9EF, with smooth precise anti-aliased silhouette edges and a clean continuous curve on the band. This is a flat graphic logo, no gradient or lighting. Keep the counter and all surrounding canvas genuinely transparent. Do not draw black or checkerboard pixels in the background. No text, tile, added shapes, new symbol, border, shadow, glow, bevel, 3D or perspective. Deliver one high-resolution transparent square PNG, preserving this existing design rather than reimagining it."
+  },
+  "lockups": [
+    {
+      "path": "public/assets/brand/pay-orbit-logo-on-light.png",
+      "width": 1456,
+      "height": 448,
+      "bytes": 58150,
+      "sha256": "bad48a2045aaabdba2d205fafa2a3590a349d5171dc30e5c7bf67d4f68402a5d",
+      "textColor": "#0D1218",
+      "background": "transparent",
+      "use": "Nền sáng"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-on-dark.png",
+      "width": 1456,
+      "height": 448,
+      "bytes": 59495,
+      "sha256": "e693117d1c6fce1148a9f0b56dd7b757995933273370a2e0b35b20dfb9e359a8",
+      "textColor": "#E5ECF6",
+      "background": "transparent",
+      "use": "Nền tối"
+    }
+  ],
+  "webAssets": [
+    {
+      "path": "public/assets/brand/pay-orbit-mark-web.png",
+      "width": 192,
+      "height": 192,
+      "bytes": 12161,
+      "sha256": "841b970ed3a20fcc58a3f5dbb60e6f3bc611999615c2a639be51cbf60df5a386",
+      "kind": "Native Chromium rendition of the generated symbol, transparent PNG"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-favicon.png",
+      "width": 64,
+      "height": 64,
+      "bytes": 2414,
+      "sha256": "e1021034c199db8dcc7ed16604c585b383e5a500e953b531f5229c1475ef4ca0",
+      "kind": "Native Chromium rendition of the generated symbol, transparent PNG"
+    }
+  ],
+  "typesetting": {
+    "method": "Native Chromium rendering of the site's actual locally loaded font, not AI-rendered lettering",
+    "font": "public/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf",
+    "family": "Bricolage Grotesque",
+    "weight": 700,
+    "license": "public/assets/fonts/bricolage-grotesque/OFL.txt",
+    "exportScript": "scripts/export-logo.mjs"
+  },
+  "websiteUse": [
+    "Shared header and footer on all six pages in both languages",
+    "PNG favicon on every page"
+  ],
+  "assumptions": [
+    "User request authorizes a new site logo, replacing the earlier text-only identity.",
+    "Existing page content, bilingual URLs, typeface and palette remain unchanged.",
+    "The symbol is newly designed for this website; no vendor mark or claim of affiliation is introduced."
+  ]
+}
