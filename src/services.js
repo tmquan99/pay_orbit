@@ -142,8 +142,8 @@ export function installServices(root = document) {
     if (anchor && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
       const index = sections.findIndex(section => `#${section.id}` === anchor.hash);
       if (index >= 0) { event.preventDefault(); navigate(index, { reveal: true }); }
-    } else if (event.target.closest('[data-service-prev]')) navigate(current - 1, { reveal: true });
-    else if (event.target.closest('[data-service-next]')) navigate(current + 1, { reveal: true });
+    } else if (event.target.closest('[data-service-prev]')) navigate(current - 1);
+    else if (event.target.closest('[data-service-next]')) navigate(current + 1);
     else {
       const panel = event.target.closest('[data-service]');
       const index = sections.indexOf(panel);

@@ -25,6 +25,7 @@
 .solution-marker { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
 .solution-marker > span:last-child { color: var(--muted); font-size: 14px; }
 .solution-marker .icon-badge { width: 44px; height: 44px; border-radius: 10px; }
+.solution-detail[data-solution-active] .solution-marker .icon-badge { background: #FFFFFF; }
 .solution-family { font-size: 14px; color: var(--accent-text); font-weight: 500; margin-bottom: 10px; }
 .solution-heading h2 { position: relative; font-size: clamp(30px, 3vw, 40px); max-width: 18ch; }
 .solution-heading h2::before { content: ''; position: absolute; inset: 4px auto 4px -16px; width: 3px; max-height: 48px; border-radius: 3px; background: var(--accent); opacity: .15; pointer-events: none; }

@@ -29,6 +29,27 @@ try {
         throw error;
       }
     };
+    const clickControl = async (selector, id) => {
+      await page.evaluate(() => {
+        const controls = document.querySelector('[data-service-controls]');
+        scrollTo({ top: scrollY + controls.getBoundingClientRect().top - innerHeight * .75, behavior: 'instant' });
+      });
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      const positions = page.evaluate(() => new Promise(resolve => {
+        const samples = [scrollY];
+        const start = performance.now();
+        const sample = now => {
+          samples.push(scrollY);
+          if (now - start < 700) requestAnimationFrame(sample);
+          else resolve(samples);
+        };
+        requestAnimationFrame(sample);
+      }));
+      await page.locator(selector).click();
+      await current(id);
+      const samples = await positions;
+      assert.ok(Math.max(...samples) - Math.min(...samples) < 1, 'Carousel buttons preserve vertical scroll throughout the horizontal transition');
+    };
     assert.equal(await track.count(), 1, 'Desktop has a horizontal service list');
     assert.ok(await track.evaluate(el => el.scrollWidth > el.clientWidth * 3), 'Five services occupy a horizontal track');
     const progress = page.locator('.service-progress-fill');
@@ -40,8 +61,7 @@ try {
     }, expected);
     await progressAt(0);
     assert.equal(await page.locator('[data-service-prev]').isDisabled(), true);
-    await page.locator('[data-service-next]').click();
-    await current('design');
+    await clickControl('[data-service-next]', 'design');
     await progressAt(.25);
     const depth = await page.evaluate(() => ['consulting', 'design', 'supply'].map(id => {
       const grid = document.querySelector(`#${id} .service-detail-grid`);
@@ -79,8 +99,7 @@ try {
     const peek = await page.locator('#supply').evaluate(el => ({ x: Math.min(innerWidth - 24, el.getBoundingClientRect().left + 24), y: Math.max(document.querySelector('[data-service-nav]').getBoundingClientRect().bottom + 24, el.getBoundingClientRect().top + 90) }));
     await page.mouse.click(peek.x, peek.y);
     await current('supply');
-    await page.locator('[data-service-prev]').click();
-    await current('design');
+    await clickControl('[data-service-prev]', 'design');
     await track.focus();
     await page.keyboard.press('End');
     await current('support');
