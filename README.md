@@ -36,6 +36,7 @@ Nguồn nội dung là `PAY_ORBIT_Website_Content_v2_Simplified.xlsx`. Bản tr�
 - `npm run dev -- --host 127.0.0.1 --port 3000`: phục vụ website local.
 - `npm run check`: kiểm tra cú pháp, quy tắc chuyển động và tài sản.
 - `npm run build`: tạo lại 12 bản trang Việt/Anh và xuất thư mục `dist` để phục vụ bằng web server tĩnh có hỗ trợ `index.html` trong thư mục con.
+- GitHub Pages: workflow `.github/workflows/pages.yml` tự build và deploy khi push `main`. Bản public ở `https://tmquan99.github.io/pay_orbit/`. Biến `SITE_BASE_PATH=/pay_orbit` chỉ thêm tiền tố URL trong `dist`; website local giữ đường dẫn cũ. Workflow lấy đường dẫn từ `configure-pages`, nên cũng hỗ trợ custom domain. `node tests/deployment.mjs` kiểm tra đường dẫn bản build (dùng cùng `SITE_BASE_PATH` với build).
 - `npm test`: kiểm tra URL, menu, đủ nội dung gốc ở cả hai ngôn ngữ và browser với Playwright có sẵn trong môi trường Codex. Có thể đặt `NODE_PATH` hoặc `CHROME_PATH` khi dùng môi trường khác. Đặt `TEST_DIST=1` để kiểm tra bản build.
 
 Biểu mẫu trên trang Liên hệ chỉ chuẩn bị và sao chép nội dung, không gửi yêu cầu hoặc lưu dữ liệu. Kênh liên hệ chính là số điện thoại trong tài liệu. Email của công ty trong workbook là `[Cập nhật sau]`, nên không hiển thị địa chỉ giả và không hứa sẽ liên hệ lại từ thao tác sao chép.
