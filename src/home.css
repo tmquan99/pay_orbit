@@ -15,7 +15,6 @@
 .home-company h2 { max-width: 20ch; }
 .team-media { border-radius: 0; overflow: visible; }
 .team-media img { border-radius: 12px; }
-.team-media figcaption { font-size: 12px; color: var(--muted); text-align: right; margin-top: 12px; }
 .solution-panels { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 24px; margin-top: 40px; align-items: start; }
 .solution-panel { min-width: 0; overflow: hidden; border-radius: 16px; background: var(--surface); border: 1px solid var(--divider); }
 .security-panel { margin-top: 56px; background: #E6F0FF; }
@@ -46,7 +45,6 @@
 .connection-track { position: absolute; top: 27px; height: 2px; left: 12.5%; right: 12.5%; overflow: hidden; background: #AFC6E9; }
 .connection-flow { display: block; height: 100%; width: 100%; background: var(--accent); transform-origin: left center; }
 .connection-scene figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-top: 24px; font-size: 13px; line-height: 1.5; color: var(--muted); }
-.connection-scene figcaption > span { font-size: 12px; }
 .home-approach .principle-list { gap: 48px; }
 .home-approach .principle-list > li { padding-left: 24px; border-left: 2px solid #C3D6F4; }
 .home-approach .principle-list .icon-badge { width: 40px; height: 40px; background: transparent; justify-content: start; margin-bottom: 16px; }

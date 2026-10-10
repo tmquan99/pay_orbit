@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-09T17:53:59.658Z",
+  "checkedAt": "2026-10-10T07:19:13.855Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 16)",
+        "transform": "matrix(1, 0, 0, 1, 0, 3.92214)",
         "running": true
       }
     },
@@ -23,12 +23,58 @@
         ],
         "faces": [
           {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "unloaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
             "family": "Bricolage Grotesque",
             "status": "loaded",
             "weight": "200 800"
           }
         ],
-        "heading": "\"Bricolage Grotesque\", sans-serif"
+        "heading": "\"Bricolage Grotesque\", sans-serif",
+        "body": "\"Be Vietnam Pro\", sans-serif"
       }
     },
     {
@@ -119,8 +165,8 @@
     {
       "name": "Media actual playback",
       "detail": {
-        "opacity": "0.131183",
-        "transform": "matrix(1, 0, 0, 1, 10.4258, 0)"
+        "opacity": "0.943812",
+        "transform": "matrix(1, 0, 0, 1, 0.674253, 0)"
       }
     },
     {
@@ -177,7 +223,7 @@
       "name": "Viewport 1440 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 32,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -188,7 +234,7 @@
       "name": "Viewport 1440 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 31,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -243,7 +289,7 @@
       "name": "Viewport 1440 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 32,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -254,7 +300,7 @@
       "name": "Viewport 1440 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 31,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -309,7 +355,7 @@
       "name": "Viewport 1024 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 27,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -320,7 +366,7 @@
       "name": "Viewport 1024 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 26,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -375,7 +421,7 @@
       "name": "Viewport 1024 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 27,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -386,7 +432,7 @@
       "name": "Viewport 1024 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 26,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -441,7 +487,7 @@
       "name": "Viewport 768 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -452,7 +498,7 @@
       "name": "Viewport 768 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -507,7 +553,7 @@
       "name": "Viewport 768 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -518,7 +564,7 @@
       "name": "Viewport 768 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -573,7 +619,7 @@
       "name": "Viewport 390 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -584,7 +630,7 @@
       "name": "Viewport 390 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -639,7 +685,7 @@
       "name": "Viewport 390 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -650,7 +696,7 @@
       "name": "Viewport 390 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -705,7 +751,7 @@
       "name": "Viewport 360 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -716,7 +762,7 @@
       "name": "Viewport 360 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -771,7 +817,7 @@
       "name": "Viewport 360 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 11,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -782,7 +828,7 @@
       "name": "Viewport 360 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 12,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -809,6 +855,138 @@
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
         "capture": ".taste/verification/en-contact-360.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 19,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/home-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/about-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 23,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/solutions-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/services-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 16,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/products-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 14,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/contact-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 19,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-home-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-about-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 23,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-solutions-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-services-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 16,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-products-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 14,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": ".taste/verification/en-contact-320.png"
       }
     },
     {

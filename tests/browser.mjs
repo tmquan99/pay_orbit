@@ -37,7 +37,7 @@ await context.addInitScript(() => {
 });
 const page = await context.newPage();
 const errors = [];
-page.on('pageerror', error => errors.push(error.message));
+page.on('pageerror', error => errors.push(error.stack || error.message));
 const missing = [];
 page.on('response', response => { if (response.status() >= 400) missing.push(`${response.status()} ${response.url()}`); });
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
@@ -70,11 +70,13 @@ try {
   const font = await page.evaluate(async () => {
     await document.fonts.ready;
     await document.fonts.load('600 64px "Bricolage Grotesque"');
-    return { checks: [400, 500, 600, 700].map(weight => document.fonts.check(`${weight} 18px "Bricolage Grotesque"`)), faces: [...document.fonts].map(face => ({ family: face.family, status: face.status, weight: face.weight })), heading: getComputedStyle(document.querySelector('h1')).fontFamily };
+    return { checks: [400, 500, 600, 700].map(weight => document.fonts.check(`${weight} 18px "Bricolage Grotesque"`)), faces: [...document.fonts].map(face => ({ family: face.family, status: face.status, weight: face.weight })), heading: getComputedStyle(document.querySelector('h1')).fontFamily, body: getComputedStyle(document.body).fontFamily };
   });
   assert.ok(font.checks.every(Boolean));
   assert.ok(font.faces.some(face => face.family.includes('Bricolage Grotesque') && face.status === 'loaded'));
   assert.ok(font.heading.includes('Bricolage Grotesque'));
+  assert.ok(font.body.includes('Be Vietnam Pro'), 'Approved B typography uses Be Vietnam Pro for reading text');
+  for (const weight of ['400', '500', '600']) assert.ok(font.faces.some(face => face.family.includes('Be Vietnam Pro') && face.weight === weight && face.status === 'loaded'), `Real body font weight ${weight} loads without synthetic bold`);
   record('Font load', font);
   const images = await page.locator('main img').evaluateAll(elements => elements.map(element => ({ src: element.getAttribute('src'), complete: element.complete, width: element.naturalWidth, height: element.naturalHeight })));
   assert.equal(images.length, 5);
@@ -117,11 +119,14 @@ try {
   await page.evaluate(() => scrollTo(0, 0));
   assert.deepEqual(await page.evaluate(() => window.__motionChecks.filter(entry => entry.reveal).map(entry => entry.played)), playedBefore);
   record('Rapid scrolling', 'Two down/up cycles and a further cycle preserve visibility without replay');
-  for (const width of [1440, 1024, 768, 390, 360]) {
+  for (const width of [1440, 1024, 768, 390, 360, 320]) {
     await page.setViewportSize({ width, height: 960 });
     for (const route of reviewRoutes) {
       await page.goto(origin + route, { waitUntil: 'networkidle' });
       assert.equal(await page.locator('h1').count(), 1);
+      const typeRoles = await page.evaluate(() => ({ headings: [...document.querySelectorAll('h1,h2,h3,h4')].every(element => getComputedStyle(element).fontFamily.includes('Bricolage Grotesque')), navigation: getComputedStyle(document.querySelector('#site_navigation a')).fontFamily, reading: getComputedStyle(document.querySelector('main p')).fontFamily, brand: getComputedStyle(document.querySelector('.wordmark')).fontFamily }));
+      assert.ok(typeRoles.headings && typeRoles.brand.includes('Bricolage Grotesque'), `Display font remains on headings and brand at ${route}`);
+      assert.ok(typeRoles.navigation.includes('Be Vietnam Pro') && typeRoles.reading.includes('Be Vietnam Pro'), `Body and UI use approved B typography at ${route}`);
       assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), route);
       const logos = await page.locator('.brand-symbol').evaluateAll(elements => elements.map(element => ({
         decoded: element.complete && element.naturalWidth >= 192,
@@ -141,13 +146,13 @@ try {
       await page.waitForTimeout(850);
       const hiddenAfterScroll = await page.locator('[data-reveal]').evaluateAll(elements => elements.filter(element => getComputedStyle(element).opacity !== '1').map(element => ({ type: element.dataset.reveal, played: element.dataset.revealPlayed, top: element.getBoundingClientRect().top, bottom: element.getBoundingClientRect().bottom, opacity: getComputedStyle(element).opacity })));
       assert.deepEqual(hiddenAfterScroll, [], `Every traversed group must be visible on ${route} at ${width}px`);
-      // Visit lazy media frames so Chromium paints them before a full-page capture.
-      for (const media of await page.locator('main img').all()) {
+      // Visit visible lazy media; Solutions and Services omit hero art on mobile.
+      for (const media of await page.locator('main img:visible').all()) {
         await media.scrollIntoViewIfNeeded();
         await media.evaluate(element => element.decode());
         await page.waitForTimeout(80);
       }
-      const unloadedImages = await page.locator('main img').evaluateAll(elements => elements.filter(element => !element.complete || element.naturalWidth === 0).map(element => element.currentSrc || element.src));
+      const unloadedImages = await page.locator('main img:visible').evaluateAll(elements => elements.filter(element => !element.complete || element.naturalWidth === 0).map(element => element.currentSrc || element.src));
       assert.deepEqual(unloadedImages, [], `Images must load when visited on ${route} at ${width}px`);
       await page.evaluate(() => scrollTo(0, 0));
       await page.waitForTimeout(100);
@@ -178,10 +183,12 @@ try {
       assert.ok(readability.minimumContrast >= 4.5, `Insufficient rendered text contrast at ${width}px`);
       assert.deepEqual(readability.clipped, [], `Clipped text at ${width}px`);
       await assertVisibleContent();
+      assert.deepEqual(errors, [], `Runtime health on ${route} at ${width}px`);
       const name = route === '/' ? 'home' : route === '/en/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
       await page.screenshot({ path: path.join(evidenceDirectory, `${name}-${width}.png`), fullPage: true });
       record(`Viewport ${width} ${route}`, { overflow: false, interactiveTargets: layout.hits.length, minimumHitSize: 44, minimumTextContrast: readability.minimumContrast, clippedText: false, capture: `.taste/verification/${name}-${width}.png` });
     }
+    console.log(`PASS: 12 VI/EN routes at ${width}px`);
   }
   await page.goto(origin, { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
@@ -205,8 +212,8 @@ try {
   await page.goto(origin + '/solutions/#cybersecurity', { waitUntil: 'networkidle' });
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
   await page.goto(origin + '/services/', { waitUntil: 'networkidle' });
-  assert.equal(await page.locator('.detailed-services > li').count(), 5);
-  assert.equal(await page.locator('.detailed-services h2').first().textContent(), 'Tư vấn công nghệ');
+  assert.equal(await page.locator('[data-service]').count(), 5);
+  assert.equal(await page.locator('[data-service] h2').first().textContent(), 'Tư vấn công nghệ');
   await page.goto(origin + '/products/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('#cisco .product-card').count(), 4);
   assert.equal(await page.locator('#palo-alto-networks .product-card').count(), 3);

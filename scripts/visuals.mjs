@@ -31,13 +31,14 @@ export function lifecycle({ compact = false, linked = true } = {}) {
   return `<ol class="lifecycle${compact ? ' lifecycle-compact' : ''}">${steps.map(([label, description, anchor], index) => `<li><${linked ? `a href="/services/#${anchor}"` : 'div'} class="lifecycle-step"><span class="step-symbol">${icon(serviceIcon(index))}<span class="step-number">${index + 1}</span></span><strong>${label}</strong><span class="step-description">${description}</span></${linked ? 'a' : 'div'}>${index < steps.length - 1 ? icon('arrow-right', 'step-arrow') : ''}</li>`).join('')}</ol>`;
 }
 
-export function illustration(name, { reveal = false, caption = true, lazy = false } = {}) {
+export function illustration(name, { reveal = false, caption = true, lazy = false, responsive = false } = {}) {
   const labels = {
     ecosystem: ['Hạ tầng kết nối và bảo mật', 'Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud.'],
     lifecycle: ['Từ nhu cầu đến vận hành', 'Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ.'],
   };
   if (!labels[name]) throw new Error(`Unknown illustration: ${name}`);
-  return `<figure class="infographic-art"${reveal ? ' data-reveal="slide" data-duration="700"' : ''}><img src="/assets/images/${name === 'ecosystem' ? 'enterprise-ecosystem' : 'service-lifecycle'}.png" width="1536" height="1024" alt="${labels[name][1]}" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async">${caption ? `<figcaption>${labels[name][0]}<span>Ảnh minh họa</span></figcaption>` : ''}</figure>`;
+  const basename = name === 'ecosystem' ? 'enterprise-ecosystem' : 'service-lifecycle';
+  return `<figure class="infographic-art"${reveal ? ' data-reveal="slide" data-duration="700"' : ''}><img src="/assets/images/${basename}.${responsive ? 'webp' : 'png'}"${responsive ? ` srcset="/assets/images/${basename}-720.webp 720w, /assets/images/${basename}.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw"` : ''} width="1536" height="1024" alt="${labels[name][1]}" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async">${caption ? `<figcaption>${labels[name][0]}</figcaption>` : ''}</figure>`;
 }
 
 export function solutionOverview() {
@@ -64,6 +65,6 @@ export function connectionScene() {
       <span class="connection-track" aria-hidden="true"><span class="connection-flow" data-connection-flow></span></span>
       <ol class="connection-stages">${stages.map(([symbol, label]) => `<li data-connection-stage><span class="connection-symbol">${icon(symbol)}<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>${label}</span></li>`).join('')}</ol>
     </div>
-    <figcaption id="connection_caption">Các lớp kết nối và bảo mật<span>Sơ đồ minh họa</span></figcaption>
+    <figcaption id="connection_caption">Các lớp kết nối và bảo mật</figcaption>
   </figure>`;
 }

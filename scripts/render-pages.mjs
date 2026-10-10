@@ -1,9 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { icon, badge, solutionIcon, serviceIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, connectionScene } from './visuals.mjs';
+import { icon, badge, solutionIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, connectionScene } from './visuals.mjs';
 import { translate, languageRoute, localizeContent, formMessages } from './localize.mjs';
 import { aboutStoryScene } from './about-story-markup.mjs';
+import { solutionSections } from './solutions-markup.mjs';
+import { serviceSections } from './services-markup.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
@@ -27,9 +29,8 @@ const services = [
 ];
 const products = ['Switching doanh nghiệp và trung tâm dữ liệu', 'Routing và WAN', 'Wireless', 'Collaboration', 'Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh'];
 const brandSymbol = () => '<img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async">';
-const companyPhoto = (attributes = 'data-reveal="slide" data-duration="700"', lazy = true) => `<figure class="company-media" ${attributes}><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Ảnh minh họa switch, patch panel và cáp mạng doanh nghiệp" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`;
-const intro = (heading, description, extra = '', art = '') => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art ? illustration(art) : ''}</div></section>`;
-const list = items => `<ul class="scope-list">${items.map(item => `<li>${escape(item)}</li>`).join('')}</ul>`;
+const companyPhoto = (attributes = 'data-reveal="slide" data-duration="700"', lazy = true) => `<figure class="company-media" ${attributes}><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Switch, patch panel và cáp mạng doanh nghiệp" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`;
+const intro = (heading, description, extra = '', art = '', artOptions = {}) => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art ? illustration(art, artOptions) : ''}</div></section>`;
 const jumpLinks = items => `<nav class="page-jumps" aria-label="Trong trang này">${items.map(([id, label]) => `<a href="#${id}">${escape(label)}</a>`).join('')}</nav>`;
 const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Hãy chia sẻ nhu cầu về hạ tầng mạng hoặc an ninh mạng.</p></div>${button('Liên hệ tư vấn', '/contact/')}</div></section>`;
 
@@ -44,14 +45,14 @@ function home() {
       <p data-hero>Giải pháp mạng và bảo mật, thiết kế theo nhu cầu doanh nghiệp.</p>
       <div class="actions" data-hero>${button('Liên hệ tư vấn', '/contact/')}${button('Khám phá giải pháp', '/solutions/', 'button-secondary')}</div>
     </div></div>
-    <figure class="hero-media" data-hero><picture><source media="(min-width: 1024px)" srcset="/assets/images/hero_infrastructure_photo.webp"><img src="/assets/images/hero_infrastructure_photo.webp" srcset="/assets/images/hero_infrastructure_photo-720.webp 720w, /assets/images/hero_infrastructure_photo.webp 1672w" sizes="100vw" width="1672" height="941" alt="Ảnh minh họa rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></picture></figure>
+    <figure class="hero-media" data-hero><picture><source media="(min-width: 1024px)" srcset="/assets/images/hero_infrastructure_photo.webp"><img src="/assets/images/hero_infrastructure_photo.webp" srcset="/assets/images/hero_infrastructure_photo-720.webp 720w, /assets/images/hero_infrastructure_photo.webp 1672w" sizes="100vw" width="1672" height="941" alt="Rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></picture></figure>
   </section>
   <section class="section company home-company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
-    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2>${paragraph('02_Company_Intro', 'C5')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Ảnh minh họa kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"><figcaption>Ảnh minh họa</figcaption></figure>
+    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2>${paragraph('02_Company_Intro', 'C5')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"></figure>
   </div></section>
   <section class="section solutions home-solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
     <h2 id="solutions_heading">Giải pháp theo nhu cầu hạ tầng</h2>
-    <div class="solution-panels">${solutionGroup(0, 'Kết nối doanh nghiệp', '<div class="panel-visual"><img src="/assets/images/company_infrastructure_photo.webp" srcset="/assets/images/company_infrastructure_photo-720.webp 720w, /assets/images/company_infrastructure_photo.webp 1536w" sizes="(max-width: 767px) 100vw, 45vw" width="1536" height="763" alt="Ảnh minh họa switch, patch panel và cáp mạng doanh nghiệp" loading="lazy" decoding="async"></div>')}${solutionGroup(2, 'Bảo vệ hạ tầng số', '<div class="panel-visual"><img src="/assets/images/digital-infrastructure-protection.webp" srcset="/assets/images/digital-infrastructure-protection-720.webp 720w, /assets/images/digital-infrastructure-protection.webp 1672w" sizes="(max-width: 767px) 100vw, 45vw" width="1672" height="941" alt="Minh họa lớp khiên bảo mật bảo vệ máy chủ và hạ tầng Cloud" loading="lazy" decoding="async"></div>')}</div>
+    <div class="solution-panels">${solutionGroup(0, 'Kết nối doanh nghiệp', '<div class="panel-visual"><img src="/assets/images/company_infrastructure_photo.webp" srcset="/assets/images/company_infrastructure_photo-720.webp 720w, /assets/images/company_infrastructure_photo.webp 1536w" sizes="(max-width: 767px) 100vw, 45vw" width="1536" height="763" alt="Switch, patch panel và cáp mạng doanh nghiệp" loading="lazy" decoding="async"></div>')}${solutionGroup(2, 'Bảo vệ hạ tầng số', '<div class="panel-visual"><img src="/assets/images/digital-infrastructure-protection.webp" srcset="/assets/images/digital-infrastructure-protection-720.webp 720w, /assets/images/digital-infrastructure-protection.webp 1672w" sizes="(max-width: 767px) 100vw, 45vw" width="1672" height="941" alt="Minh họa lớp khiên bảo mật bảo vệ máy chủ và hạ tầng Cloud" loading="lazy" decoding="async"></div>')}</div>
     ${button('Xem tất cả giải pháp', '/solutions/', 'button-primary section-action')}
   </div></section>
   <section class="section company home-technology" id="technology_focus" aria-labelledby="technology_heading"><div class="container technology-feature-grid">
@@ -110,18 +111,14 @@ function about() {
 }
 
 function solutionPage() {
-  return `${intro('Giải pháp mạng và an ninh mạng', 'Kết nối mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và bảo mật Cloud theo nhu cầu vận hành.', solutionOverview(), 'ecosystem')}
-  <section class="section company"><div class="container editorial-list">
-    ${solutions.map(([id, title], index) => `<article class="editorial-row" id="${id}"><div class="editorial-heading">${badge(solutionIcon(index))}<h2>${escape(title)}</h2></div><div>${paragraph('03_Solutions', `C${index + 5}`)}<h3 class="scope-heading">Giá trị giải pháp hướng tới</h3>${list(text('03_Solutions', `D${index + 5}`).replace(/\.$/, '').split(';').map(item => item.trim()))}</div></article>`).join('')}
-  </div></section>${contactInvitation()}`;
+  return `<div class="solutions-page">${intro('Giải pháp mạng và an ninh mạng', 'Kết nối mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và bảo mật Cloud theo nhu cầu vận hành.', solutionOverview(), 'ecosystem', { responsive: true, lazy: true })}
+  ${solutionSections(solutions, workbook.sheets['03_Solutions'], button)}${contactInvitation()}</div>`;
 }
 
 function servicePage() {
-  return `${intro('Dịch vụ công nghệ', 'Từ tư vấn nhu cầu, thiết kế và cung ứng đến triển khai, tích hợp và hỗ trợ sau khi đưa hệ thống vào vận hành.', '', 'lifecycle')}
-  <section class="workflow-section" aria-labelledby="workflow_heading"><div class="container"><h2 id="workflow_heading">Từ khảo sát đến hỗ trợ vận hành</h2>${lifecycle()}</div></section>
-  <section class="section company"><ol class="container editorial-list detailed-services">
-    ${services.map(([id, title, scope], index) => `<li class="editorial-row" id="${id}"><div class="editorial-heading">${badge(serviceIcon(index))}<h2>${escape(title)}</h2></div><div>${paragraph('04_Services', `C${index + 5}`)}<h3 class="scope-heading">Phạm vi điển hình</h3>${list(scope)}</div></li>`).join('')}
-  </ol></section>${contactInvitation()}`;
+  return `<div class="services-page">${intro('Dịch vụ công nghệ', 'Đồng hành từ tư vấn, thiết kế đến triển khai và hỗ trợ vận hành hạ tầng.', `<div class="actions" data-hero>${button('Trao đổi nhu cầu', '/contact/#consultation_form')}<a class="service-explore" href="#consulting"><span>Khám phá dịch vụ</span>${icon('arrow-right')}</a></div>`, 'lifecycle', { lazy: true, responsive: true })}
+  ${serviceSections(services, workbook.sheets['04_Services'], button)}
+  <section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Phạm vi dịch vụ được thống nhất theo nhu cầu và môi trường vận hành.</p></div>${button('Trao đổi nhu cầu', '/contact/#consultation_form')}</div></section></div>`;
 }
 
 function productPage() {
@@ -175,8 +172,10 @@ function documentPage(route, title, description, content, language = 'vi') {
     <link rel="alternate" hreflang="en" href="${languageRoute(route, 'en')}">
     <link rel="alternate" hreflang="x-default" href="${route}">
     <link rel="preload" href="/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+${language === 'vi' ? '    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}    <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
-${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
+${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">${t('Đến nội dung chính')}</a>

@@ -190,6 +190,24 @@
       "height": 405,
       "bytes": 23318,
       "sha256": "82b7e287b101418e1c318d1fb4a2687cb9667e1174d2d1e0d99d0b9ecbf90208"
+    },
+    {
+      "source": "public/assets/images/service-lifecycle.png",
+      "destination": "public/assets/images/service-lifecycle.webp",
+      "quality": 82,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 52502,
+      "sha256": "df5f657e36f0a313f1557667be4a96db79e730523c2dde73ca96cb7939953639"
+    },
+    {
+      "source": "public/assets/images/service-lifecycle.png",
+      "destination": "public/assets/images/service-lifecycle-720.webp",
+      "quality": 82,
+      "width": 720,
+      "height": 480,
+      "bytes": 17498,
+      "sha256": "c345e466c967444cc2ff714575d4a8660082157f9dd4e4eb841e6240832fece9"
     }
   ]
 }

@@ -58,14 +58,16 @@ for (const [route, html] of pages) {
     assert.ok(svg[0].includes('data-icon='), 'Icons must come from the recorded library');
   }
 }
-for (const route of ['/about/', '/services/']) {
+for (const route of ['/about/']) {
   assert.ok(pages.get(route).includes('class="lifecycle'), `Readable lifecycle at ${route}`);
   for (const anchor of ['consulting', 'design', 'supply', 'implementation', 'support']) assert.ok(pages.get(route).includes(`/services/#${anchor}`), `Lifecycle link ${anchor} at ${route}`);
 }
-assert.ok(pages.get('/solutions/').includes('enterprise-ecosystem.png'));
+assert.ok(pages.get('/services/').includes('data-service-nav'), 'Compact service journey navigation');
+for (const anchor of ['consulting', 'design', 'supply', 'implementation', 'support']) assert.ok(pages.get('/services/').includes(`href="#${anchor}"`), `Service journey link ${anchor}`);
+assert.ok(pages.get('/solutions/').includes('enterprise-ecosystem.webp'));
 assert.ok(pages.get('/solutions/').includes('class="solution-overview"'));
 assert.ok(pages.get('/products/').includes('class="technology-overview"'));
-assert.ok(pages.get('/services/').includes('service-lifecycle.png'));
+assert.ok(pages.get('/services/').includes('service-lifecycle.webp'));
 const server = await startServer({ port: 0, host: '127.0.0.1', directory: process.env.TEST_DIST === '1' ? 'dist' : '.' });
 try {
   const origin = `http://127.0.0.1:${server.address().port}`;

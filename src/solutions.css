@@ -1,0 +1,126 @@
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.solutions-page) { scroll-behavior: smooth; }
+}
+.solutions-page .page-intro { padding-block: 64px 48px; }
+.solutions-page .page-intro h1 { font-size: clamp(40px, 4.2vw, 60px); }
+.solutions-page .overview-core { padding: 0; background: none; }
+.solutions-page .solution-overview a { padding: 14px; }
+.solution-nav { position: sticky; top: 0; z-index: 3; background: var(--surface); border-block: 1px solid var(--divider); }
+.solution-nav-inner { display: flex; align-items: center; gap: 32px; }
+.solution-nav-inner > span { flex-shrink: 0; font-size: 14px; color: var(--muted); }
+.solution-nav ul { display: flex; flex: 1; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.solution-nav li { flex: 1; min-width: 0; }
+.solution-nav a { position: relative; display: flex; align-items: center; gap: 10px; min-height: 72px; color: var(--muted); font-size: 15px; line-height: 1.4; font-weight: 500; text-decoration: none; }
+.solution-nav a::after { position: absolute; content: ''; height: 3px; inset: auto 0 -1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease-out; }
+.solution-nav-number { font-size: 12px; color: var(--accent-text); }
+.solution-nav a[aria-current='location'] { color: var(--accent-text); font-weight: 600; }
+.solution-nav a[aria-current='location']::after { transform: scaleX(1); }
+.solution-detail { background: var(--surface); padding-block: 64px; scroll-margin-top: 96px; }
+.solution-detail:nth-child(even) { background: var(--canvas); }
+.solution-detail + .solution-detail { border-top: 1px solid var(--divider); }
+.solution-detail-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 80px; }
+.solution-marker { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.solution-marker > span:last-child { color: var(--muted); font-size: 14px; }
+.solution-marker .icon-badge { width: 44px; height: 44px; border-radius: 10px; }
+.solution-family { font-size: 14px; color: var(--accent-text); font-weight: 500; margin-bottom: 10px; }
+.solution-heading h2 { font-size: clamp(30px, 3vw, 40px); max-width: 18ch; }
+.solution-audience { margin-top: 20px; color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 30ch; }
+.solution-body { min-width: 0; }
+.solution-detail .icon { min-width: 20px; min-height: 20px; }
+.solution-lead { font-size: 24px; line-height: 1.45; font-weight: 500; letter-spacing: -.012em; max-width: 46ch; }
+.solution-body h3 { font-size: 16px; font-weight: 600; line-height: 1.5; letter-spacing: 0; }
+.solution-scope { margin-top: 28px; }
+.solution-scope ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
+.solution-scope li { padding: 5px 10px; border: 1px solid var(--divider); border-radius: 6px; font-size: 14px; color: var(--muted); background: var(--surface); }
+.solution-benefits { margin-top: 24px; }
+.solution-benefits ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; margin: 12px 0 0; padding: 0; list-style: none; }
+.solution-benefits li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; line-height: 1.55; }
+.solution-benefits .icon { width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; color: var(--accent-text); }
+.solution-description { margin-top: 24px; border-block: 1px solid var(--divider); }
+.solution-description summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border: 0; border-radius: 0; background: transparent; font-size: 14px; font-weight: 500; color: var(--accent-text); list-style: none; cursor: pointer; }
+.solution-description summary::-webkit-details-marker { display: none; }
+.solution-description summary .icon { width: 18px; height: 18px; flex-shrink: 0; transform: rotate(90deg); transition: transform 180ms ease-out; }
+.solution-description[open] summary .icon { transform: rotate(270deg); }
+.solution-description > p { padding-block: 4px 20px; font-size: 16px; line-height: 1.65; color: var(--muted); }
+.solution-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+.solution-actions .button { font-size: 15px; padding-inline: 18px; }
+.solution-technology { gap: 8px; font-size: 14px; font-weight: 500; }
+.solution-technology .icon { width: 16px; height: 16px; }
+.solution-description summary, .solution-technology { min-height: 52px; }
+/* Stable article geometry keeps anchors and reading progress independent of zoom.
+   Named entry/exit ranges also keep tall solutions at full size while reading. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .solution-detail { view-timeline: --solution-focus block; view-timeline-inset: 100px 10vh; }
+    .solution-detail-grid {
+      --solution-rest-scale: .88;
+      --solution-active-scale: 1.025;
+      --solution-rest-opacity: .8;
+      transform-origin: center center;
+      animation: solution-scroll-focus linear both;
+      animation-timeline: --solution-focus;
+    }
+    /* Fade reading copy separately so white text on blue CTAs keeps contrast. */
+    .solution-heading, .solution-lead, .solution-scope, .solution-benefits {
+      animation: solution-reading-focus linear both;
+      animation-timeline: --solution-focus;
+    }
+    @keyframes solution-scroll-focus {
+      0%, 100% { transform: scale(var(--solution-rest-scale)); }
+      entry 100%, exit 0% { transform: scale(var(--solution-active-scale)); }
+    }
+    @keyframes solution-reading-focus {
+      0%, 100% { opacity: var(--solution-rest-opacity); }
+      entry 100%, exit 0% { opacity: 1; }
+    }
+    .solution-detail:is(:focus-within, :has(details[open])) :is(.solution-detail-grid, .solution-heading, .solution-lead, .solution-scope, .solution-benefits) { animation: none; }
+    .solution-detail:is(:focus-within, :has(details[open])) .solution-detail-grid { transform: scale(var(--solution-active-scale)); }
+  }
+}
+@media (hover: hover) {
+  .solution-nav a:hover { color: var(--accent-text); }
+  .solution-description summary:hover { background: transparent; color: var(--accent-hover); }
+}
+@media (max-width: 1100px) {
+  .solution-nav-inner { gap: 20px; }
+  .solution-nav-inner > span { display: none; }
+  .solution-detail-grid { gap: 48px; }
+}
+@media (max-width: 1023px) {
+  .solution-detail { view-timeline-inset: 24px 8vh; }
+  .solution-detail .solution-detail-grid { --solution-rest-scale: .95; --solution-active-scale: 1.01; --solution-rest-opacity: .87; }
+  .solution-nav { display: none; }
+  .solution-detail { scroll-margin-top: 24px; padding-block: 44px; }
+  .solution-detail-grid { grid-template-columns: 1fr; gap: 24px; }
+  .solution-marker { margin-bottom: 16px; }
+  .solution-audience { max-width: 60ch; margin-top: 12px; }
+  .solutions-page .infographic-art { display: none; }
+}
+@media (max-width: 639px) {
+  .solutions-page .page-intro { padding-block: 40px 32px; }
+  .solutions-page .page-intro h1 { font-size: 36px; }
+  .solutions-page .solution-overview { margin-top: 24px; }
+  .solutions-page .solution-overview ul { gap: 8px; margin-top: 12px; }
+  .solutions-page .solution-overview a { align-items: center; padding: 12px; gap: 10px; }
+  .solutions-page .solution-overview a > .icon { width: 20px; height: 20px; margin: 0; flex-shrink: 0; }
+  .solutions-page .solution-overview a > .overview-arrow { width: 16px; height: 16px; }
+  .solutions-page .solution-overview a span span { margin-top: 3px; font-size: 13px; }
+  .solution-detail { padding-block: 32px; }
+  .solution-detail-grid { gap: 20px; }
+  .solution-heading { display: grid; grid-template-columns: 36px minmax(0, 1fr); column-gap: 12px; align-items: start; }
+  .solution-marker { grid-column: 1; grid-row: 1; margin: 0; }
+  .solution-marker .icon-badge { width: 36px; height: 36px; border-radius: 8px; }
+  .solution-marker .icon { width: 20px; height: 20px; }
+  .solution-marker > span:last-child, .solution-family { display: none; }
+  .solution-heading h2 { grid-column: 2; grid-row: 1; align-self: center; font-size: 28px; text-wrap: initial; }
+  .solution-audience { grid-column: 1 / -1; font-size: 14px; margin-top: 12px; }
+  .solution-lead { font-size: 20px; line-height: 1.5; }
+  .solution-scope { margin-top: 20px; }
+  .solution-benefits { margin-top: 20px; }
+  .solution-benefits ul { grid-template-columns: 1fr; gap: 8px; }
+  .solution-actions { gap: 8px 16px; margin-top: 20px; }
+  .solution-actions .button { min-height: 48px; font-size: 14px; padding-inline: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .solution-nav a::after, .solution-description summary .icon { transition: none; }
+}

@@ -34,6 +34,8 @@ try {
   await page.locator('[data-connection-diagram]').scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector('[data-connection-scene]').getAnimations({ subtree: true }).some(animation => animation.playState === 'running'));
   await page.emulateMedia({ reducedMotion: 'reduce' });
+  // Media-query change notifications are delivered on the next browser frame.
+  await page.waitForFunction(() => document.querySelector('[data-connection-scene]').getAnimations({ subtree: true }).every(animation => animation.playState !== 'running'), null, { timeout: 1000 });
   assert.equal(await sceneRunning(), 0, 'Reduced motion must cancel an explanation already running');
   await page.reload({ waitUntil: 'networkidle' });
   await page.locator('[data-connection-diagram]').scrollIntoViewIfNeeded();
@@ -50,6 +52,7 @@ try {
   assert.ok(mobile.every(item => !/[À-ỹ]/u.test(item.text)), 'English diagram labels must be localized');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Mobile diagram must fit the viewport');
   await page.setViewportSize({ width: 1440, height: 900 });
+  await page.waitForFunction(() => document.querySelector('[data-connection-scene]').getAnimations({ subtree: true }).every(animation => animation.playState !== 'running'), null, { timeout: 1000 });
   assert.equal(await sceneRunning(), 0, 'Switching diagram axis must settle the current explanation');
 
   const noScript = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });

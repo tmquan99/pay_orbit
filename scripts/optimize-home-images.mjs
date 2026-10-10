@@ -10,7 +10,7 @@ try { sharp = require('sharp'); }
 catch { sharp = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp')); }
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const directory = 'public/assets/images';
-const sources = ['hero_infrastructure_photo', 'company_infrastructure_photo', 'infrastructure-team-illustration', 'enterprise-ecosystem', 'digital-infrastructure-protection'];
+const sources = ['hero_infrastructure_photo', 'company_infrastructure_photo', 'infrastructure-team-illustration', 'enterprise-ecosystem', 'digital-infrastructure-protection', 'service-lifecycle'];
 const webImages = [];
 for (const name of sources) {
   const source = `${directory}/${name}.png`;
@@ -27,4 +27,4 @@ const ledgerPath = path.join(root, 'content/visual-assets.json');
 const ledger = JSON.parse(await fs.readFile(ledgerPath, 'utf8'));
 ledger.webImages = webImages;
 await fs.writeFile(ledgerPath, JSON.stringify(ledger, null, 2) + '\n');
-console.log(`Exported ${webImages.length} WebP files; full-size Home imagery: ${Math.round(webImages.filter(image => !image.destination.includes('-720.')).reduce((sum, image) => sum + image.bytes, 0) / 1024)} KiB`);
+console.log(`Exported ${webImages.length} WebP files; full-size imagery: ${Math.round(webImages.filter(image => !image.destination.includes('-720.')).reduce((sum, image) => sum + image.bytes, 0) / 1024)} KiB`);

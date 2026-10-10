@@ -1,6 +1,8 @@
 import { installReferenceReveals } from './reveals.js';
 import { installConnectionScene } from './connection-scene.js';
 import { installAboutStory } from './about-story.js';
+import { installSolutions } from './solutions.js';
+import { installServices } from './services.js';
 
 document.documentElement.classList.add('has-js');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -24,15 +26,23 @@ reduced.addEventListener('change', onMotionPreference);
 const cleanupReveals = installReferenceReveals();
 const cleanupConnection = installConnectionScene();
 let cleanupAboutStory = installAboutStory();
+let cleanupSolutions = installSolutions();
+let cleanupServices = installServices();
 addEventListener('pagehide', event => {
   stopHero();
   cleanupReveals();
   cleanupConnection();
   cleanupAboutStory({ preserveLayout: event.persisted });
+  cleanupSolutions();
+  cleanupServices();
   reduced.removeEventListener('change', onMotionPreference);
 });
 addEventListener('pageshow', event => {
-  if (event.persisted) cleanupAboutStory = installAboutStory();
+  if (event.persisted) {
+    cleanupAboutStory = installAboutStory();
+    cleanupSolutions = installSolutions();
+    cleanupServices = installServices();
+  }
 });
 
 const menu = document.querySelector('.menu-toggle');
