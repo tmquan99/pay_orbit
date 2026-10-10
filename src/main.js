@@ -3,6 +3,10 @@ import { installConnectionScene } from './connection-scene.js';
 import { installAboutStory } from './about-story.js';
 import { installSolutions } from './solutions.js';
 import { installServices } from './services.js';
+import { installSmoothScroll } from './smooth-scroll.js';
+import { installProducts } from './products.js';
+import { installHeroGraphics } from './hero-graphics.js';
+import { installBackToTop } from './back-to-top.js';
 
 document.documentElement.classList.add('has-js');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -24,10 +28,14 @@ if (!reduced.matches && scrollY < 80 && document.visibilityState !== 'hidden') {
 const onMotionPreference = () => { if (reduced.matches) stopHero(); };
 reduced.addEventListener('change', onMotionPreference);
 const cleanupReveals = installReferenceReveals();
-const cleanupConnection = installConnectionScene();
+let cleanupConnection = installConnectionScene();
 let cleanupAboutStory = installAboutStory();
 let cleanupSolutions = installSolutions();
 let cleanupServices = installServices();
+let cleanupProducts = installProducts();
+let cleanupHeroGraphics = installHeroGraphics();
+let cleanupSmoothScroll = installSmoothScroll();
+let cleanupBackToTop = installBackToTop();
 addEventListener('pagehide', event => {
   stopHero();
   cleanupReveals();
@@ -35,13 +43,22 @@ addEventListener('pagehide', event => {
   cleanupAboutStory({ preserveLayout: event.persisted });
   cleanupSolutions();
   cleanupServices();
+  cleanupProducts();
+  cleanupHeroGraphics();
+  cleanupSmoothScroll();
+  cleanupBackToTop();
   reduced.removeEventListener('change', onMotionPreference);
 });
 addEventListener('pageshow', event => {
   if (event.persisted) {
+    cleanupConnection = installConnectionScene();
     cleanupAboutStory = installAboutStory();
     cleanupSolutions = installSolutions();
     cleanupServices = installServices();
+    cleanupProducts = installProducts();
+    cleanupHeroGraphics = installHeroGraphics();
+    cleanupSmoothScroll = installSmoothScroll();
+    cleanupBackToTop = installBackToTop();
   }
 });
 
@@ -77,6 +94,9 @@ document.addEventListener('keydown', event => {
 const form = document.getElementById('consultation_form');
 if (form) {
   const messages = JSON.parse(document.getElementById('form_messages').textContent);
+  const requestedProduct = new URLSearchParams(location.search).get('product');
+  const selectedProduct = Object.hasOwn(messages.products || {}, requestedProduct) ? messages.products[requestedProduct] : null;
+  if (selectedProduct && !form.elements.requirement.value.trim()) form.elements.requirement.value = selectedProduct;
   const status = document.getElementById('form_status');
   const fallback = document.getElementById('copy_fallback');
   const copyText = document.getElementById('copy_text');

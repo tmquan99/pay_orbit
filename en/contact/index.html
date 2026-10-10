@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Contact PAY ORBIT PTY. LTD in Australia at +61 433 024 689 to discuss your infrastructure requirements.">
     <meta name="theme-color" content="#02060F">
-    <link rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/brand/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>Contact | PAY ORBIT</title>
     <link rel="alternate" hreflang="vi" href="/contact/">
     <link rel="alternate" hreflang="en" href="/en/contact/">
@@ -14,12 +18,15 @@
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="wordmark" href="/en/" aria-label="PAY ORBIT, home"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT</span></a>
+      <a class="wordmark" href="/en/" aria-label="PAY ORBIT, home"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span class="brand-name">PAY ORBIT</span></a>
       <nav id="site_navigation" aria-label="Main navigation"><a href="/en/">Home</a><a href="/en/about/">About Us</a><a href="/en/solutions/">Solutions</a><a href="/en/services/">Services</a><a href="/en/products/">Products &amp; Technology</a><a href="/en/contact/" aria-current="page" class="navigation-contact">Contact</a></nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="Language"><a data-language="vi" href="/contact/" hreflang="vi" lang="vi" aria-label="Tiếng Việt">VI</a><a data-language="en" href="/en/contact/" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a></div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
@@ -111,11 +118,26 @@
 <span>Copy enquiry</span></button>
       <p id="form_status" class="form-status" role="status" aria-live="polite"></p>
       <div id="copy_fallback" class="copy-fallback" hidden><label for="copy_text">Enquiry to copy</label><textarea id="copy_text" rows="7" readonly></textarea></div>
-    <script type="application/json" id="form_messages">{"labels":{"name":"Name","company":"Company","email":"Email","phone":"Phone","requirement":"Requirement"},"nameRequired":"Enter your name.","requirementRequired":"Enter your requirements.","emailInvalid":"Enter a valid email address.","copied":"Enquiry copied.","manualCopy":"Select the text below to copy it manually."}</script></form>
+    <script type="application/json" id="form_messages">{"labels":{"name":"Name","company":"Company","email":"Email","phone":"Phone","requirement":"Requirement"},"nameRequired":"Enter your name.","requirementRequired":"Enter your requirements.","emailInvalid":"Enter a valid email address.","copied":"Enquiry copied.","manualCopy":"Select the text below to copy it manually.","products":{"switching":"Cisco: Enterprise & Data Center Switching","routing":"Cisco: Routing & WAN","wireless":"Cisco: Wireless","collaboration":"Cisco: Collaboration","network-security":"Palo Alto Networks: Network Security","cloud-security":"Palo Alto Networks: Cloud Security","security-operations":"Palo Alto Networks: Security Operations"}}</script></form>
   </div></section></main>
     <footer class="site-footer" id="footer"><div class="container footer-inner">
-      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Connecting Business. Securing the Future.</p></div>
+      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Connecting Business. Securing the Future.</p></div>
       <a href="/en/contact/">Contact</a><p class="trademark-notice">Cisco, Palo Alto Networks and other trademarks mentioned on this website are the property of their respective owners. Product names are used for identification and solution-reference purposes.</p>
     </div></footer>
+    <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" title="Back to top" hidden><svg class="icon " data-icon="arrow-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</button>
   </body>
 </html>

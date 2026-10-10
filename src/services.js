@@ -18,6 +18,7 @@ export function installServices(root = document) {
   let horizontal = false;
   let pending = null;
   let manual = false;
+  let manualOrigin = 0;
   let internalHash = false;
   let readingLine = 100;
   let current = Math.max(0, sections.findIndex(section => section.id === experience.dataset.currentService || (!experience.dataset.currentService && `#${section.id}` === location.hash)));
@@ -77,13 +78,20 @@ export function installServices(root = document) {
     pending = null;
     if (horizontal) {
       select(nearest());
-      if (manual) writeHash(current, true);
+      if (manual && current !== manualOrigin) {
+        writeHash(current, true);
+        manual = false;
+      }
+    } else {
+      manual = false;
     }
-    manual = false;
   };
   const interrupt = () => {
+    if (!manual) manualOrigin = current;
     if (pending !== null) track.scrollTo({ left: track.scrollLeft, behavior: 'instant' });
     pending = null;
+    // A canceled smooth scroll may emit its old scrollend before the wheel
+    // moves. Keep this gesture pending until it reaches a different service.
     manual = true;
   };
   const enable = () => {

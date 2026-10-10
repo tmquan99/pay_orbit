@@ -1,0 +1,34 @@
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.products-page) { scroll-behavior: smooth; }
+}
+.products-page .product-card {
+  position: relative;
+  isolation: isolate;
+  opacity: 1;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--divider), 0 3px 12px rgb(0 58 147 / .025);
+  transition: box-shadow 240ms ease-out, background-color 240ms ease-out, opacity 240ms ease-out;
+}
+.products-page .product-card > .icon-badge { position: relative; overflow: hidden; background: var(--surface-alt); }
+.products-page .product-card .icon :is(path, rect, circle, polygon, polyline) { transform-box: fill-box; transform-origin: center; }
+.products-page .product-card:focus-within { box-shadow: inset 0 0 0 1px var(--accent), 0 12px 28px rgb(0 58 147 / .09); }
+.products-page .product-section { scroll-margin-top: 28px; }
+.products-page .product-section h2 { position: relative; width: fit-content; }
+.products-page .product-section h2::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 40px; height: 3px; border-radius: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 480ms cubic-bezier(.22, 1, .36, 1); }
+.products-page .product-section[data-product-seen] h2::after { transform: scaleX(1); }
+.products-page .vendor-summary .icon-badge { transition: background-color 160ms ease-out; }
+.products-page .vendor-summary:focus-visible .icon-badge { background: var(--surface); }
+[data-product-kind='security-operations'] .icon-badge::after { content: ''; position: absolute; width: 30px; height: 2px; top: 12px; left: 13px; background: var(--accent); opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-product-kind='security-operations'][data-product-animating] .icon-badge::after { animation: product-scan 720ms ease-in-out; }
+  @keyframes product-scan { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: .6; } 80% { opacity: .6; } 100% { transform: translateY(30px); opacity: 0; } }
+}
+@media (hover: hover) and (pointer: fine) {
+  .products-page:has(.product-card:hover) .product-card:not(:hover) { opacity: .75; }
+  .products-page .vendor-summary:hover .icon-badge { background: var(--surface); }
+  .products-page .product-card:hover { background: var(--surface-alt); box-shadow: inset 0 0 0 1px #84AFF1, 0 12px 28px rgb(0 58 147 / .09); }
+  .products-page .product-card:hover > .icon-badge { background: var(--surface); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .products-page .product-card, .products-page .product-section h2::after, .products-page .vendor-summary .icon-badge { transition: none; }
+}

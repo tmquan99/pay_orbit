@@ -1,54 +1,66 @@
-import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-import { startServer } from './serve.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-let chromium;
-for (const candidate of ['playwright', path.join(process.env.USERPROFILE || '', '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')]) {
-  try { ({ chromium } = require(candidate)); break; } catch {}
+let sharp;
+for (const candidate of ['sharp', path.join(process.env.USERPROFILE || '', '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp')]) {
+  try { sharp = require(candidate); break; } catch {}
 }
-assert.ok(chromium, 'Use the available browser runtime to export the actual brand font');
-const server = await startServer({ port: 0, host: '127.0.0.1', directory: '.' });
-const origin = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
-try {
-  const page = await browser.newPage({ viewport: { width: 1600, height: 700 }, deviceScaleFactor: 2 });
-  await page.goto(origin);
-  await page.setContent(`<!doctype html><html><head><style>
-    @font-face { font-family: 'Bricolage Grotesque'; src: url('${origin}/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf') format('truetype'); font-weight: 200 800; font-style: normal; }
-    html, body { margin: 0; background: transparent; }
-    .logo-export { width: fit-content; display: inline-flex; align-items: center; gap: 48px; padding: 32px; color: #0D1218; font: 700 96px/1 'Bricolage Grotesque'; font-synthesis: none; letter-spacing: .035em; white-space: nowrap; }
-    img { width: 160px; height: 160px; object-fit: contain; }
-  </style></head><body><div class="logo-export"><img src="${origin}/assets/brand/pay-orbit-mark.png" alt=""><span>PAY ORBIT</span></div></body></html>`, { waitUntil: 'networkidle' });
-  const font = await page.evaluate(async () => {
-    await document.fonts.ready;
-    return { loaded: document.fonts.check('700 96px "Bricolage Grotesque"'), faces: [...document.fonts].map(face => ({ family: face.family, status: face.status })) };
-  });
-  assert.ok(font.loaded && font.faces.some(face => face.family === 'Bricolage Grotesque' && face.status === 'loaded'));
-  assert.ok(await page.locator('img').evaluate(element => element.complete && element.naturalWidth > 0));
-  const destination = path.join(root, 'public/assets/brand');
-  await fs.mkdir(destination, { recursive: true });
-  for (const [variant, color] of [['on-light', '#0D1218'], ['on-dark', '#E5ECF6']]) {
-    await page.locator('.logo-export').evaluate((element, value) => { element.style.color = value; }, color);
-    await page.locator('.logo-export').screenshot({ path: path.join(destination, `pay-orbit-logo-${variant}.png`), omitBackground: true });
-    console.log(`Exported public/assets/brand/pay-orbit-logo-${variant}.png with the loaded Bricolage Grotesque font`);
-  }
-  // Export the same native image frame at web sizes, retaining the full-size
-  // generated source separately and preserving the transparent background.
-  for (const [name, size] of [['pay-orbit-mark-web', 96], ['pay-orbit-favicon', 32]]) {
-    await page.locator('img').evaluate((element, pixels) => {
-      element.style.width = `${pixels}px`;
-      element.style.height = `${pixels}px`;
-    }, size);
-    await page.locator('img').screenshot({ path: path.join(destination, `${name}.png`), omitBackground: true });
-    console.log(`Exported public/assets/brand/${name}.png at ${size * 2}x${size * 2}`);
-  }
-  await page.close();
-} finally {
-  await browser.close();
-  await new Promise(resolve => server.close(resolve));
+if (!sharp) throw new Error('Logo PNG export requires sharp in the development environment. SVG website assets need no runtime dependency.');
+const destination = path.join(root, 'public/assets/brand');
+const relative = file => path.relative(root, file).replaceAll('\\', '/');
+const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const raster = async (source, name, width, height) => {
+  const pipeline = sharp(path.join(destination, source)).resize(width, height, { fit: 'contain', background: '#00000000' }).ensureAlpha().png();
+  const output = path.join(destination, name);
+  await pipeline.toFile(output);
+  const data = await fs.readFile(output);
+  const meta = await sharp(data).metadata();
+  return { path: relative(output), width: meta.width, height: meta.height, bytes: data.length, sha256: digest(data), background: 'transparent' };
+};
+
+const symbol = await raster('pay-orbit-mark.svg', 'pay-orbit-mark.png', 1024, 1024);
+const lockups = [];
+for (const variant of ['on-light', 'on-dark']) lockups.push(await raster(`pay-orbit-logo-${variant}.svg`, `pay-orbit-logo-${variant}.png`, 1600));
+const webAssets = [
+  await raster('pay-orbit-mark.svg', 'pay-orbit-mark-web.png', 192, 192),
+  await raster('pay-orbit-favicon.svg', 'pay-orbit-favicon.png', 64, 64),
+];
+for (const size of [16, 32, 48]) await raster('pay-orbit-favicon.svg', `favicon-${size}.png`, size, size);
+for (const [name, size] of [['apple-touch-icon',180], ['icon-192',192], ['icon-512',512], ['maskable-512',512]]) await raster(name === 'maskable-512' || name === 'apple-touch-icon' ? 'pay-orbit-maskable.svg' : 'pay-orbit-app-icon.svg', `${name}.png`, size, size);
+const pngFrames = await Promise.all([16,32,48].map(size => fs.readFile(path.join(destination, `favicon-${size}.png`))));
+const icoHeader = Buffer.alloc(6 + pngFrames.length*16);
+icoHeader.writeUInt16LE(1,2); icoHeader.writeUInt16LE(pngFrames.length,4);
+let offset = icoHeader.length;
+pngFrames.forEach((frame, index) => {
+  const entry = 6 + index*16; const size = [16,32,48][index];
+  icoHeader[entry] = size; icoHeader[entry+1] = size;
+  icoHeader.writeUInt16LE(1,entry+4); icoHeader.writeUInt16LE(32,entry+6);
+  icoHeader.writeUInt32LE(frame.length,entry+8); icoHeader.writeUInt32LE(offset,entry+12);
+  offset += frame.length;
+});
+await fs.writeFile(path.join(destination,'favicon.ico'),Buffer.concat([icoHeader,...pngFrames]));
+await fs.writeFile(path.join(destination,'site.webmanifest'), JSON.stringify({
+  name:'PAY ORBIT', short_name:'PAY ORBIT', start_url:'/', display:'browser', background_color:'#02060F', theme_color:'#02060F',
+  icons:[{src:'/assets/brand/icon-192.png',sizes:'192x192',type:'image/png'},{src:'/assets/brand/icon-512.png',sizes:'512x512',type:'image/png'},{src:'/assets/brand/maskable-512.png',sizes:'512x512',type:'image/png',purpose:'maskable'}]
+},null,2)+'\n');
+const vectorAssets = [];
+for (const file of (await fs.readdir(destination)).filter(name => name.endsWith('.svg')).sort()) {
+  const full = path.join(destination,file); const data = await fs.readFile(full);
+  vectorAssets.push({path:relative(full),bytes:data.length,sha256:digest(data)});
 }
+const ledger = {
+  version:2, name:'PAY ORBIT', approved:'2026-10-11: Biểu tượng A Relay và typography 01 Manrope 600.',
+  decision:'Hai nhánh kết nối phẳng màu xanh; tên PAY ORBIT bằng Manrope 600, tracking .015em, chữ SVG đã outline.',
+  symbol:{...symbol,kind:'original geometric vector rendered to transparent PNG',source:'public/assets/brand/pay-orbit-mark.svg',transparent:true},
+  lockups, webAssets, vectorAssets,
+  typesetting:{family:'Manrope',weight:600,trackingEm:.015,wordGapEm:15/72,method:'Static Manrope 600 shaped with HarfBuzz and outlined with fontTools',font:'public/assets/fonts/manrope/Manrope-600-brand.woff2',license:'public/assets/fonts/manrope/OFL.txt',exportScript:'scripts/export-logo.mjs',vectorBuildScript:'scripts/build-logo-vectors.py'},
+  colors:{lightBlue:'#1768E8',darkBlue:'#4098FF',lightText:'#0D1218',darkText:'#E5ECF6',darkBackground:'#02060F'},
+  websiteUse:['Shared header and footer on all 12 VI/EN routes','SVG favicon with PNG fallback, Apple touch icon, webmanifest'],
+};
+await fs.writeFile(path.join(root,'content/brand-assets.json'),JSON.stringify(ledger,null,2)+'\n');
+console.log(`Exported ${vectorAssets.length} outlined SVG masters, transparent PNG logo variants, icon set and provenance.`);

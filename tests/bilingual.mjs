@@ -29,6 +29,8 @@ for (const language of ['vi', 'en']) {
     pages.set(url, html);
     assert.ok(html.includes(`<html lang="${language}">`), `Document language at ${url}`);
     assert.equal((html.match(/<h1\b/g) || []).length, 1);
+    assert.ok(!/<figcaption\b/i.test(html), `Image captions removed at ${url}`);
+    assert.ok(!html.includes('aria-labelledby="connection_caption"'), `No removed caption references at ${url}`);
     for (const alternate of ['vi', 'en']) {
       const destination = localized(route, alternate);
       assert.ok(html.includes(`hreflang="${alternate}" href="${destination}"`), `Search alternate ${alternate} on ${url}`);
@@ -72,7 +74,9 @@ for (const language of ['vi', 'en']) {
 for (const [url, html] of pages) {
   for (const [, tag, href] of html.matchAll(/(<a\b[^>]*href="([^"]+)"[^>]*>)/g)) {
     if (href.startsWith('tel:')) continue;
-    const [destination, anchor] = href.split('#');
+    const parsed = new URL(href, `https://pay-orbit.invalid${url}`);
+    const destination = parsed.pathname;
+    const anchor = parsed.hash.slice(1);
     const target = pages.get(destination || url);
     assert.ok(target, `Working page link ${href} on ${url}`);
     if (anchor) assert.ok(target.includes(`id="${anchor}"`), `Working anchor ${href} on ${url}`);

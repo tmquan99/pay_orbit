@@ -1,0 +1,31 @@
+{
+  "brand": "PAY ORBIT",
+  "tagline": "Kết nối vững chắc. Hạ tầng an toàn.",
+  "brief": "Logo mới tối giản cho doanh nghiệp cung cấp giải pháp hạ tầng mạng và bảo mật. Người dùng đã chọn biểu tượng A Relay và typography 01 Manrope 600; giữ tông xanh của website.",
+  "adjectives": ["Tối giản", "Chính xác", "Đáng tin", "Rõ ở kích thước nhỏ"],
+  "criteria": "Một ý tưởng, màu phẳng, không phụ thuộc font trong artwork SVG; ứng dụng rõ ở header và favicon.",
+  "industry": "services",
+  "mockups": ["website", "favicon-tab", "business-card", "signage", "badge", "app-icon"],
+  "nav": ["Giới thiệu", "Giải pháp", "Dịch vụ"],
+  "brand_color": "#1768E8",
+  "greyscale": false,
+  "round": 3,
+  "concepts": [
+    {
+      "name": "Relay / Manrope 600",
+      "symbol": "E:/project/pay_orbit/public/assets/brand/pay-orbit-mark-on-light.svg",
+      "symbol_on_tile": "E:/project/pay_orbit/public/assets/brand/pay-orbit-mark.svg",
+      "tile_color": "#02060F",
+      "lockup": "E:/project/pay_orbit/public/assets/brand/pay-orbit-logo-on-light.svg",
+      "lockup_on_dark": "E:/project/pay_orbit/public/assets/brand/pay-orbit-logo-on-dark.svg",
+      "idea": "Hai tuyến đối nhau mở về một khoảng chung; chữ gọn, vững và rõ.",
+      "rationale": [
+        "Biểu tượng hai nhánh được dựng từ hình học đơn giản, không cần hiệu ứng.",
+        "Manrope 600 tạo độ đầy đặn và nhịp chữ tự nhiên hơn bản đầu.",
+        "SVG đã outline; có bản nền sáng/tối và favicon đóng khung gần hơn."
+      ]
+    }
+  ],
+  "recommendation": "Hướng đã được người dùng chọn: Relay + typography 01 Manrope 600.",
+  "next_steps": ["Sử dụng bộ SVG/PNG theo nền", "Giữ khoảng trống và tỷ lệ quy định", "Tra cứu nhãn hiệu riêng trước khi mở rộng đăng ký thương hiệu"]
+}

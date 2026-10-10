@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Technology consulting, solution design, product supply, implementation and integration, and technical support.">
     <meta name="theme-color" content="#02060F">
-    <link rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/brand/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>Services | PAY ORBIT</title>
     <link rel="alternate" hreflang="vi" href="/services/">
     <link rel="alternate" hreflang="en" href="/en/services/">
@@ -14,13 +18,16 @@
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+
     <link rel="stylesheet" href="/src/services.css">
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="wordmark" href="/en/" aria-label="PAY ORBIT, home"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT</span></a>
+      <a class="wordmark" href="/en/" aria-label="PAY ORBIT, home"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span class="brand-name">PAY ORBIT</span></a>
       <nav id="site_navigation" aria-label="Main navigation"><a href="/en/">Home</a><a href="/en/about/">About Us</a><a href="/en/solutions/">Solutions</a><a href="/en/services/" aria-current="page">Services</a><a href="/en/products/">Products &amp; Technology</a><a href="/en/contact/" class="navigation-contact">Contact</a></nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="Language"><a data-language="vi" href="/services/" hreflang="vi" lang="vi" aria-label="Tiếng Việt">VI</a><a data-language="en" href="/en/services/" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a></div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
@@ -52,7 +59,7 @@
   <path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" />
 </svg>
-</a></div></div><figure class="infographic-art"><img src="/assets/images/service-lifecycle.webp" srcset="/assets/images/service-lifecycle-720.webp 720w, /assets/images/service-lifecycle.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Illustration of the assess, design, supply, deploy and support stages." loading="lazy" decoding="async"><figcaption>From requirements to operations</figcaption></figure></div></section>
+</a></div></div><figure class="infographic-art"><img src="/assets/images/service-lifecycle.webp" srcset="/assets/images/service-lifecycle-720.webp 720w, /assets/images/service-lifecycle.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Illustration of the assess, design, supply, deploy and support stages." loading="lazy" decoding="async"></figure></div></section>
   <div class="service-experience" data-service-experience><nav class="service-journey" data-service-nav aria-label="Service navigation"><div class="container service-journey-inner">
     <h2>From requirements to operations</h2><div class="service-journey-steps"><div class="service-progress" aria-hidden="true"><span class="service-progress-fill"></span></div><ol><li><a href="#consulting"><span class="service-stage-number" aria-hidden="true">1</span><span>Consult</span></a></li><li><a href="#design"><span class="service-stage-number" aria-hidden="true">2</span><span>Design</span></a></li><li><a href="#supply"><span class="service-stage-number" aria-hidden="true">3</span><span>Supply</span></a></li><li><a href="#implementation"><span class="service-stage-number" aria-hidden="true">4</span><span>Deploy</span></a></li><li><a href="#support"><span class="service-stage-number" aria-hidden="true">5</span><span>Support</span></a></li></ol></div>
   </div></nav>
@@ -679,8 +686,23 @@
 </svg>
 </a></div></section></div></main>
     <footer class="site-footer" id="footer"><div class="container footer-inner">
-      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Connecting Business. Securing the Future.</p></div>
+      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Connecting Business. Securing the Future.</p></div>
       <a href="/en/contact/">Contact</a><p class="trademark-notice">Cisco, Palo Alto Networks and other trademarks mentioned on this website are the property of their respective owners. Product names are used for identification and solution-reference purposes.</p>
     </div></footer>
+    <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" title="Back to top" hidden><svg class="icon " data-icon="arrow-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</button>
   </body>
 </html>

@@ -7,6 +7,8 @@
 .story-chapter[data-story-current="true"]::after { opacity: 1; }
 .story-chapter + .story-chapter { border-top: 1px solid var(--divider); }
 .story-chapter h2 { display: grid; align-items: start; max-width: 20ch; margin-bottom: 24px; font-size: clamp(34.56px, 3.348vw, 47.52px); }
+/* Reserve two lines at both ends of the font-size emphasis range. */
+html[lang="en"] .story-chapter:is([data-story-chapter="1"], [data-story-chapter="3"]) h2 { max-width: 15ch; }
 .story-heading-label, .story-heading-measure { grid-area: 1 / 1; min-width: 0; }
 .story-heading-measure { visibility: hidden; pointer-events: none; }
 .story-heading-label { font-size: .925926em; }
@@ -52,7 +54,6 @@
 .story-deployment-mark { position: absolute; right: -8px; top: -8px; display: grid; place-items: center; width: 24px; height: 24px; border: 2px solid var(--surface); border-radius: 50%; background: var(--accent); color: var(--on-accent); opacity: 0; transform: scale(.85); }
 .story-deployment-mark > .icon { width: 20px; height: 20px; }
 .story-scene-description { min-height: 48px; margin-top: 8px; color: var(--accent-text); font-size: 15px; line-height: 1.5; }
-.story-scene figcaption { margin-top: 16px; font-size: 12px; line-height: 1.5; color: var(--muted); }
 .story-scene:not([data-story-stage="0"]) .story-security-zone { opacity: 1; transform: none; }
 .story-scene[data-story-stage="1"] .story-secure-symbol, .story-scene[data-story-stage="2"] .story-deploy-symbol, .story-scene[data-story-stage="3"] .story-support-symbol { opacity: 1; transform: none; }
 .story-scene:not([data-story-stage="0"]) .story-wire { opacity: 1; }
@@ -117,16 +118,16 @@
 }
 @media (max-width: 767px) {
   .story-chapter [data-story-inline] { display: none; }
-  .story-chapters { padding-left: 40px; }
+  .story-chapters { padding-left: 32px; }
   .story-chapter { position: relative; padding: 0 0 40px; }
   .story-chapter + .story-chapter { border-top: 0; }
   .story-chapter:last-child { padding-bottom: 0; }
-  .story-chapter:not(:last-child)::before { content: ''; position: absolute; left: -26px; top: 18px; bottom: -18px; width: 1px; background: var(--divider); }
-  .story-mobile-step { display: grid; justify-items: center; gap: 10px; position: absolute; left: -40px; top: 4px; width: 28px; padding-bottom: 8px; background: var(--canvas); color: var(--accent-text); }
+  .story-chapter:not(:last-child)::before { content: ''; position: absolute; left: -30px; top: 18px; bottom: -18px; width: 1px; background: var(--divider); }
+  .story-mobile-step { display: grid; justify-items: center; gap: 10px; position: absolute; left: -44px; top: 4px; width: 28px; padding-bottom: 8px; background: var(--canvas); color: var(--accent-text); }
   .story-mobile-step > span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--divider); border-radius: 50%; background: var(--surface); font-size: 11px; font-weight: 600; line-height: 1; }
   .story-mobile-step > .icon { width: 20px; height: 20px; }
   .story-chapter h2 { margin-bottom: 16px; font-size: clamp(25.92px, 6.912vw, 30.24px); }
-  .story-chapter::after { inset: -12px -12px 24px; }
+  .story-chapter::after { inset: -12px -12px 24px -8px; }
   .story-chapter:last-child::after { bottom: -12px; }
   .story-chapter-copy > p { font-size: 16px; line-height: 1.75; }
   .story-chapter .section-action { margin-top: 20px; min-height: 48px; max-width: 100%; padding-inline: 16px; font-size: 14px; }

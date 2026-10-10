@@ -40,8 +40,9 @@ for (const route of routes) {
 for (const [route, html] of pages) {
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
     if (href.startsWith('tel:') || href.startsWith('/src/') || href.startsWith('/assets/')) continue;
-    const [destination, anchor] = href.split('#');
-    const target = linkPages.get(destination || route);
+    const parsed = new URL(href, `https://pay-orbit.invalid${route}`);
+    const anchor = parsed.hash.slice(1);
+    const target = linkPages.get(parsed.pathname);
     assert.ok(target, `Internal page exists: ${href} on ${route}`);
     if (anchor) assert.ok(target.includes(`id="${anchor}"`), `Anchor exists: ${href} on ${route}`);
   }
@@ -55,7 +56,7 @@ for (const [route, html] of pages) {
   assert.ok(html.includes('data-icon='), `Meaningful icon cues must render at ${route}`);
   for (const svg of html.matchAll(/<svg\b[^>]*>/g)) {
     assert.ok(svg[0].includes('aria-hidden="true"'), 'Decorative icons must not duplicate accessible labels');
-    assert.ok(svg[0].includes('data-icon='), 'Icons must come from the recorded library');
+    assert.ok(svg[0].includes('data-icon=') || (['/', '/solutions/'].includes(route) && svg[0].includes('data-connection-graphic') && svg[0].includes('viewBox="0 0 1536 1024"')), 'Icons must come from the recorded library; the shared cable overlay is a separate graphic');
   }
 }
 for (const route of ['/about/']) {

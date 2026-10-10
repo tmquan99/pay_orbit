@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { icon, badge, solutionIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, connectionScene } from './visuals.mjs';
+import { icon, badge, solutionIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, technologyGraphic, connectionScene } from './visuals.mjs';
 import { translate, languageRoute, localizeContent, formMessages } from './localize.mjs';
 import { aboutStoryScene } from './about-story-markup.mjs';
 import { solutionSections } from './solutions-markup.mjs';
@@ -12,6 +12,13 @@ const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.
 const text = (sheet, cell) => workbook.sheets[sheet][cell];
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const paragraph = (sheet, cell, attributes = '') => `<p${attributes}>${escape(text(sheet, cell))}</p>`;
+function formatCompanyIntroduction(copy, language, hero = false) {
+  const keywords = language === 'en'
+    ? ['enterprise networking,', 'cybersecurity', 'digital infrastructure.', 'secure,', 'scalable', 'resilient']
+    : ['mạng doanh nghiệp,', 'an ninh mạng', 'hạ tầng số.', 'an toàn,', 'mở rộng', 'vận hành ổn định,'];
+  const paragraphs = copy.split(/(?<=\.)\s+(?=Chúng tôi|We support)/u);
+  return `<div class="company-introduction"${hero ? ' data-hero' : ''}>${paragraphs.map(value => `<p>${keywords.reduce((markup, keyword) => markup.replace(escape(keyword), `<strong>${escape(keyword)}</strong>`), value)}</p>`).join('')}</div>`;
+}
 const button = (label, href, classes = 'button-primary') => `<a class="button ${classes}" href="${href}">${href.startsWith('tel:') ? icon('phone') : ''}<span>${escape(label)}</span>${href.startsWith('tel:') ? '' : icon('arrow-up-right')}</a>`;
 const links = [['Trang chủ', '/'], ['Giới thiệu', '/about/'], ['Giải pháp', '/solutions/'], ['Dịch vụ', '/services/'], ['Sản phẩm & công nghệ', '/products/'], ['Liên hệ', '/contact/']];
 const solutions = [
@@ -28,9 +35,10 @@ const services = [
   ['support', 'Hỗ trợ kỹ thuật', ['Xử lý sự cố', 'Tối ưu hệ thống', 'Hỗ trợ cấu hình', 'Phối hợp với hãng công nghệ']],
 ];
 const products = ['Switching doanh nghiệp và trung tâm dữ liệu', 'Routing và WAN', 'Wireless', 'Collaboration', 'Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh'];
-const brandSymbol = () => '<img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async">';
+const productIds = ['switching', 'routing', 'wireless', 'collaboration', 'network-security', 'cloud-security', 'security-operations'];
+const brandSymbol = () => '<img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async">';
 const companyPhoto = (attributes = 'data-reveal="slide" data-duration="700"', lazy = true) => `<figure class="company-media" ${attributes}><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Switch, patch panel và cáp mạng doanh nghiệp" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`;
-const intro = (heading, description, extra = '', art = '', artOptions = {}) => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art ? illustration(art, artOptions) : ''}</div></section>`;
+const intro = (heading, description, extra = '', art = '', artOptions = {}) => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art === 'technology' ? technologyGraphic() : art ? illustration(art, artOptions) : ''}</div></section>`;
 const jumpLinks = items => `<nav class="page-jumps" aria-label="Trong trang này">${items.map(([id, label]) => `<a href="#${id}">${escape(label)}</a>`).join('')}</nav>`;
 const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Hãy chia sẻ nhu cầu về hạ tầng mạng hoặc an ninh mạng.</p></div>${button('Liên hệ tư vấn', '/contact/')}</div></section>`;
 
@@ -48,7 +56,7 @@ function home() {
     <figure class="hero-media" data-hero><picture><source media="(min-width: 1024px)" srcset="/assets/images/hero_infrastructure_photo.webp"><img src="/assets/images/hero_infrastructure_photo.webp" srcset="/assets/images/hero_infrastructure_photo-720.webp 720w, /assets/images/hero_infrastructure_photo.webp 1672w" sizes="100vw" width="1672" height="941" alt="Rack mạng và hành lang trung tâm dữ liệu" fetchpriority="high" decoding="async"></picture></figure>
   </section>
   <section class="section company home-company" id="company_intro" aria-labelledby="company_heading"><div class="container company-layout">
-    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2>${paragraph('02_Company_Intro', 'C5')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"></figure>
+    <div class="company-copy"><h2 id="company_heading">Hạ tầng tốt bắt đầu từ nhu cầu thực tế.</h2>${paragraph('02_Company_Intro', 'C5', ' data-company-introduction')}${button('Tìm hiểu PAY ORBIT', '/about/', 'button-outline section-action')}</div><figure class="company-media team-media" data-reveal="slide" data-duration="700"><img src="/assets/images/infrastructure-team-illustration.webp" srcset="/assets/images/infrastructure-team-illustration-720.webp 720w, /assets/images/infrastructure-team-illustration.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Kỹ sư phối hợp kiểm tra kết nối tại tủ mạng" loading="lazy" decoding="async"></figure>
   </div></section>
   <section class="section solutions home-solutions" id="core_solutions" aria-labelledby="solutions_heading"><div class="container">
     <h2 id="solutions_heading">Giải pháp theo nhu cầu hạ tầng</h2>
@@ -69,7 +77,7 @@ function about() {
   const marker = index => `<span class="story-mobile-step" aria-hidden="true"><span>${String(index + 1).padStart(2, '0')}</span>${icon(['network', 'shield-check', 'cable', 'headset'][index])}</span>`;
   const heading = title => `<h2><span class="story-heading-label">${escape(title)}</span><span class="story-heading-measure" aria-hidden="true">${escape(title)}</span></h2>`;
   return `<section class="section company about-opening"><div class="container company-layout">
-    <div class="company-copy"><h1 data-hero>Giới thiệu PAY ORBIT</h1>${paragraph('02_Company_Intro', 'C5', ' data-hero')}<div class="actions section-action" data-hero>${button('Liên hệ tư vấn', '/contact/')}</div></div>${companyPhoto('data-hero', false)}
+    <div class="company-copy"><h1 data-hero>Giới thiệu PAY ORBIT</h1>${paragraph('02_Company_Intro', 'C5', ' data-company-introduction data-hero')}<div class="actions section-action" data-hero>${button('Liên hệ tư vấn', '/contact/')}</div></div>${companyPhoto('data-hero', false)}
   </div></section>
   <section class="section about-story" id="about_story"><div class="container story-shell" data-about-story>
     ${aboutStoryScene({ desktop: true })}
@@ -111,7 +119,7 @@ function about() {
 }
 
 function solutionPage() {
-  return `<div class="solutions-page">${intro('Giải pháp mạng và an ninh mạng', 'Kết nối mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và bảo mật Cloud theo nhu cầu vận hành.', solutionOverview(), 'ecosystem', { responsive: true, lazy: true })}
+  return `<div class="solutions-page">${intro('Giải pháp mạng và an ninh mạng', 'Kết nối mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và bảo mật Cloud theo nhu cầu vận hành.', solutionOverview(), 'ecosystem', { responsive: true, connectionMotion: true })}
   ${solutionSections(solutions, workbook.sheets['03_Solutions'], button)}${contactInvitation()}</div>`;
 }
 
@@ -124,9 +132,9 @@ function servicePage() {
 function productPage() {
   const vendor = (name, start, count, id) => `<section class="section product-section" id="${id}" aria-labelledby="${id}_heading"><div class="container"><h2 id="${id}_heading">${name}</h2><div class="product-grid">${Array.from({ length: count }, (_, index) => {
     const productIndex = start + index;
-    return `<article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="${index * 70}">${badge(productIcon(productIndex))}<h3>${escape(products[productIndex])}</h3>${paragraph('05_Products_Tech', `C${productIndex + 5}`)}${button('Yêu cầu báo giá', '/contact/', 'button-outline')}</article>`;
+    return `<article class="solution-card product-card" data-product-kind="${productIds[productIndex]}" data-reveal="rise" data-duration="520" data-delay="${index % 2 * 70}">${badge(productIcon(productIndex))}<h3>${escape(products[productIndex])}</h3>${paragraph('05_Products_Tech', `C${productIndex + 5}`)}${button('Yêu cầu báo giá', `/contact/?product=${productIds[productIndex]}#consultation_form`, 'button-outline')}</article>`;
   }).join('')}</div></div></section>`;
-  return `${intro('Sản phẩm & công nghệ', text('01_Home', 'C7'), technologyOverview(), 'ecosystem')}${vendor('Cisco', 0, 4, 'cisco')}${vendor('Palo Alto Networks', 4, 3, 'palo-alto-networks')}${contactInvitation()}`;
+  return `<div class="products-page" data-products>${intro('Sản phẩm & công nghệ', text('01_Home', 'C7'), technologyOverview(), 'technology')}${vendor('Cisco', 0, 4, 'cisco')}${vendor('Palo Alto Networks', 4, 3, 'palo-alto-networks')}${contactInvitation()}</div>`;
 }
 
 function contact() {
@@ -155,8 +163,10 @@ function documentPage(route, title, description, content, language = 'vi') {
   const t = value => escape(translate(value, language));
   const url = languageRoute(route, language);
   let localizedContent = localizeContent(content, language);
+  // Format after localization so the original workbook paragraph translates as a unit.
+  localizedContent = localizedContent.replace(/<p data-company-introduction( data-hero)?>(.*?)<\/p>/gs, (_, hero, copy) => formatCompanyIntroduction(copy, language, Boolean(hero)));
   if (localizedContent.includes('id="consultation_form"')) {
-    const messages = JSON.stringify(formMessages(language)).replaceAll('<', '\\u003c');
+    const messages = JSON.stringify({ ...formMessages(language), products: Object.fromEntries(productIds.map((id, index) => [id, `${index < 4 ? 'Cisco' : 'Palo Alto Networks'}: ${translate(products[index], language)}`])) }).replaceAll('<', '\\u003c');
     localizedContent = localizedContent.replace('</form>', `<script type="application/json" id="form_messages">${messages}</script></form>`);
   }
   return `<!doctype html>
@@ -166,7 +176,11 @@ function documentPage(route, title, description, content, language = 'vi') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="${t(description)}">
     <meta name="theme-color" content="#02060F">
-    <link rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/brand/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>${t(title)}</title>
     <link rel="alternate" hreflang="vi" href="${route}">
     <link rel="alternate" hreflang="en" href="${languageRoute(route, 'en')}">
@@ -175,12 +189,15 @@ function documentPage(route, title, description, content, language = 'vi') {
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${language === 'vi' ? '    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}    <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
-${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+${['/', '/solutions/', '/products/'].includes(route) ? '    <link rel="stylesheet" href="/src/hero-graphics.css">\n' : ''}
+${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : route === '/products/' ? '    <link rel="stylesheet" href="/src/products.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">${t('Đến nội dung chính')}</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="wordmark" href="${languageRoute('/', language)}" aria-label="${t('PAY ORBIT, trang chủ')}">${brandSymbol()}<span>PAY ORBIT</span></a>
+      <a class="wordmark" href="${languageRoute('/', language)}" aria-label="${t('PAY ORBIT, trang chủ')}">${brandSymbol()}<span class="brand-name">PAY ORBIT</span></a>
       <nav id="site_navigation" aria-label="${t('Điều hướng chính')}">${links.map(([label, href]) => `<a href="${languageRoute(href, language)}"${href === route ? ' aria-current="page"' : ''}${href === '/contact/' ? ' class="navigation-contact"' : ''}>${t(label)}</a>`).join('')}</nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="${t('Ngôn ngữ')}">${['vi', 'en'].map(locale => `<a data-language="${locale}" href="${languageRoute(route, locale)}" hreflang="${locale}" lang="${locale}" aria-label="${locale === 'vi' ? 'Tiếng Việt' : 'English'}"${locale === language ? ' aria-current="true"' : ''}>${locale.toUpperCase()}</a>`).join('')}</div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
@@ -189,6 +206,7 @@ ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route =
       <div><p class="footer-name"><span class="brand-lockup">${brandSymbol()}<span>${escape(text('00_Overview', 'B4'))}</span></span></p><p class="tagline">${t(text('00_Overview', 'B7'))}</p></div>
       <a href="${languageRoute('/contact/', language)}">${t('Liên hệ')}</a><p class="trademark-notice">${t(text('07_SEO_Dev_Notes', 'C7'))}</p>
     </div></footer>
+    <button class="back-to-top" data-back-to-top type="button" aria-label="${t('Lên đầu trang')}" title="${t('Lên đầu trang')}" hidden>${icon('arrow-right')}</button>
   </body>
 </html>
 `;

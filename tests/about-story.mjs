@@ -72,6 +72,32 @@ async function staticFigures() {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Story must not overflow horizontally');
 }
 try {
+  const typographyPage = await context.newPage();
+  try {
+    for (const width of [1440, 1024, 768, 480, 435, 390, 360, 320]) {
+      await typographyPage.setViewportSize({ width, height: 900 });
+      await typographyPage.goto(origin + '/en/about/');
+      await typographyPage.evaluate(() => document.fonts.ready);
+      await typographyPage.addStyleTag({ content: '.story-heading-label { transition: none !important; }' });
+      const headings = await typographyPage.evaluate(() => [1, 3].map(index => {
+        const chapter = document.querySelector(`[data-story-chapter="${index}"]`);
+        const heading = chapter.querySelector('h2');
+        const label = chapter.querySelector('.story-heading-label');
+        const states = [false, true].map(active => {
+          chapter.dataset.storyCurrent = String(active);
+          const range = document.createRange();
+          range.selectNodeContents(label);
+          return { lines: range.getClientRects().length, height: heading.getBoundingClientRect().height, summaryTop: chapter.querySelector('.story-summary').getBoundingClientRect().top, font: parseFloat(getComputedStyle(label).fontSize) };
+        });
+        return { index, states };
+      }));
+      for (const { index, states } of headings) {
+        assert.deepEqual(states.map(state => state.lines), [2, 2], `English chapter ${index} keeps two heading lines with and without focus at ${width}px`);
+        assert.ok(states[1].font > states[0].font, 'The heading still grows on focus');
+        assert.ok(Math.abs(states[0].height - states[1].height) < 1 && Math.abs(states[0].summaryTop - states[1].summaryTop) < 1, 'Heading focus keeps the text block in place');
+      }
+    }
+  } finally { await typographyPage.close(); }
   await page.goto(origin + '/about/');
   assert.equal(await page.locator('[data-about-story]').count(), 1, 'About must contain the approved four-chapter story');
   assert.equal(await page.locator('[data-story-chapter]').count(), 4);

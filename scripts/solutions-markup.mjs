@@ -33,7 +33,7 @@ export function solutionSections(solutions, workbook, button) {
   <section class="solution-sections" aria-label="Chi tiết bốn giải pháp">${solutions.map(([id, title], index) => {
     const item = content[index];
     const benefits = workbook[`D${index + 5}`].replace(/\.$/, '').split(';').map(value => value.trim());
-    return `<article class="solution-detail" id="${id}" data-solution aria-labelledby="${id}-heading"><div class="container solution-detail-grid">
+    return `<article class="solution-detail" id="${id}" data-solution aria-labelledby="${id}-heading"><span class="solution-focus-anchor" aria-hidden="true"></span><div class="container solution-detail-grid">
       <div class="solution-heading"><div class="solution-marker">${badge(solutionIcon(index))}<span aria-hidden="true">${String(index + 1).padStart(2, '0')}</span></div><p class="solution-family">${index < 2 ? 'Kết nối doanh nghiệp' : 'Bảo vệ hạ tầng số'}</p><h2 id="${id}-heading">${escape(title)}</h2><p class="solution-audience">${escape(item.audience)}</p></div>
       <div class="solution-body"><p class="solution-lead">${escape(item.lead)}</p>
         <div class="solution-scope"><h3>Phạm vi có thể bao gồm</h3><ul>${item.scope.map(label => `<li>${escape(label)}</li>`).join('')}</ul></div>

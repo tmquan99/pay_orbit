@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Tư vấn công nghệ, thiết kế giải pháp, cung cấp sản phẩm, triển khai và tích hợp, hỗ trợ kỹ thuật.">
     <meta name="theme-color" content="#02060F">
-    <link rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/brand/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>Dịch vụ | PAY ORBIT</title>
     <link rel="alternate" hreflang="vi" href="/services/">
     <link rel="alternate" hreflang="en" href="/en/services/">
@@ -15,13 +19,16 @@
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+
     <link rel="stylesheet" href="/src/services.css">
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">Đến nội dung chính</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="wordmark" href="/" aria-label="PAY ORBIT, trang chủ"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT</span></a>
+      <a class="wordmark" href="/" aria-label="PAY ORBIT, trang chủ"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span class="brand-name">PAY ORBIT</span></a>
       <nav id="site_navigation" aria-label="Điều hướng chính"><a href="/">Trang chủ</a><a href="/about/">Giới thiệu</a><a href="/solutions/">Giải pháp</a><a href="/services/" aria-current="page">Dịch vụ</a><a href="/products/">Sản phẩm &amp; công nghệ</a><a href="/contact/" class="navigation-contact">Liên hệ</a></nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="Ngôn ngữ"><a data-language="vi" href="/services/" hreflang="vi" lang="vi" aria-label="Tiếng Việt" aria-current="true">VI</a><a data-language="en" href="/en/services/" hreflang="en" lang="en" aria-label="English">EN</a></div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
@@ -53,7 +60,7 @@
   <path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" />
 </svg>
-</a></div></div><figure class="infographic-art"><img src="/assets/images/service-lifecycle.webp" srcset="/assets/images/service-lifecycle-720.webp 720w, /assets/images/service-lifecycle.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ." loading="lazy" decoding="async"><figcaption>Từ nhu cầu đến vận hành</figcaption></figure></div></section>
+</a></div></div><figure class="infographic-art"><img src="/assets/images/service-lifecycle.webp" srcset="/assets/images/service-lifecycle-720.webp 720w, /assets/images/service-lifecycle.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ." loading="lazy" decoding="async"></figure></div></section>
   <div class="service-experience" data-service-experience><nav class="service-journey" data-service-nav aria-label="Điều hướng dịch vụ"><div class="container service-journey-inner">
     <h2>Từ nhu cầu đến vận hành</h2><div class="service-journey-steps"><div class="service-progress" aria-hidden="true"><span class="service-progress-fill"></span></div><ol><li><a href="#consulting"><span class="service-stage-number" aria-hidden="true">1</span><span>Tư vấn</span></a></li><li><a href="#design"><span class="service-stage-number" aria-hidden="true">2</span><span>Thiết kế</span></a></li><li><a href="#supply"><span class="service-stage-number" aria-hidden="true">3</span><span>Cung cấp</span></a></li><li><a href="#implementation"><span class="service-stage-number" aria-hidden="true">4</span><span>Triển khai</span></a></li><li><a href="#support"><span class="service-stage-number" aria-hidden="true">5</span><span>Hỗ trợ</span></a></li></ol></div>
   </div></nav>
@@ -680,8 +687,23 @@
 </svg>
 </a></div></section></div></main>
     <footer class="site-footer" id="footer"><div class="container footer-inner">
-      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Kết nối doanh nghiệp. Bảo vệ tương lai số.</p></div>
+      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Kết nối doanh nghiệp. Bảo vệ tương lai số.</p></div>
       <a href="/contact/">Liên hệ</a><p class="trademark-notice">Cisco, Palo Alto Networks và các nhãn hiệu khác được đề cập trên website thuộc quyền sở hữu của các chủ sở hữu tương ứng. Tên sản phẩm được sử dụng nhằm mục đích nhận diện và giới thiệu giải pháp.</p>
     </div></footer>
+    <button class="back-to-top" data-back-to-top type="button" aria-label="Lên đầu trang" title="Lên đầu trang" hidden><svg class="icon " data-icon="arrow-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</button>
   </body>
 </html>

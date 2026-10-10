@@ -11,7 +11,8 @@ for (const route of [...routes, ...routes.map(route => '/en' + route)]) {
   const html = await fs.readFile(path.join(site, route.slice(1), 'index.html'), 'utf8');
   assert.ok(/<a class="wordmark"[^>]*>\s*<img class="brand-symbol"/.test(html), `Logo must appear in the header at ${route}`);
   assert.ok(/class="footer-name"[^>]*>\s*<span class="brand-lockup">\s*<img class="brand-symbol"/.test(html), `Matching logo must appear in the footer at ${route}`);
-  assert.ok(html.includes('rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png"'), `Tab icon at ${route}`);
+  assert.ok(html.includes('rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg"'), `Vector tab icon at ${route}`);
+  assert.ok(html.includes('src="/assets/brand/pay-orbit-mark.svg"'), `Scalable approved symbol at ${route}`);
   assert.equal((html.match(/class="brand-symbol"/g) || []).length, 2, `No extra decorative logos on ${route}`);
   assert.ok(html.includes('alt="" aria-hidden="true"'), 'The mark must not duplicate the accessible brand name');
 }
@@ -29,4 +30,10 @@ for (const asset of [...ledger.lockups, ...ledger.webAssets]) {
   assert.equal(image[25], 6, 'Exported logo retains transparency');
   assert.equal(crypto.createHash('sha256').update(image).digest('hex'), asset.sha256);
 }
-console.log('PASS: header/footer logo and favicon on 12 routes, accessible labels, square alpha PNG and provenance');
+for (const asset of ledger.vectorAssets) {
+  const vector = await fs.readFile(path.join(root, asset.path), 'utf8');
+  assert.ok(vector.includes('<svg') && vector.includes('viewBox='));
+  assert.ok(!/<(?:text|image|filter)\b/.test(vector), `Portable outlined artwork: ${asset.path}`);
+  assert.equal(crypto.createHash('sha256').update(vector).digest('hex'), asset.sha256);
+}
+console.log('PASS: approved vector logo and favicon on 12 routes, accessible labels, transparent PNGs and outlined SVG provenance');

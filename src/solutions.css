@@ -5,6 +5,7 @@
 .solutions-page .page-intro h1 { font-size: clamp(40px, 4.2vw, 60px); }
 .solutions-page .overview-core { padding: 0; background: none; }
 .solutions-page .solution-overview a { padding: 14px; }
+.solutions-page .closing-cta { background: var(--surface); border-top: 1px solid var(--divider); }
 .solution-nav { position: sticky; top: 0; z-index: 3; background: var(--surface); border-block: 1px solid var(--divider); }
 .solution-nav-inner { display: flex; align-items: center; gap: 32px; }
 .solution-nav-inner > span { flex-shrink: 0; font-size: 14px; color: var(--muted); }
@@ -15,15 +16,18 @@
 .solution-nav-number { font-size: 12px; color: var(--accent-text); }
 .solution-nav a[aria-current='location'] { color: var(--accent-text); font-weight: 600; }
 .solution-nav a[aria-current='location']::after { transform: scaleX(1); }
-.solution-detail { background: var(--surface); padding-block: 64px; scroll-margin-top: 96px; }
-.solution-detail:nth-child(even) { background: var(--canvas); }
+.solution-detail { position: relative; isolation: isolate; background: var(--surface); padding-block: 64px; scroll-margin-top: 96px; }
+.solution-focus-anchor { position: absolute; inset: 0 0 auto; block-size: calc(100% - var(--solution-description-height, 0px)); pointer-events: none; }
+.solution-detail::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--surface-alt); opacity: 0; pointer-events: none; transition: opacity 260ms ease-out; }
+.solution-detail[data-solution-active]::before { opacity: 1; }
 .solution-detail + .solution-detail { border-top: 1px solid var(--divider); }
 .solution-detail-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 80px; }
 .solution-marker { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
 .solution-marker > span:last-child { color: var(--muted); font-size: 14px; }
 .solution-marker .icon-badge { width: 44px; height: 44px; border-radius: 10px; }
 .solution-family { font-size: 14px; color: var(--accent-text); font-weight: 500; margin-bottom: 10px; }
-.solution-heading h2 { font-size: clamp(30px, 3vw, 40px); max-width: 18ch; }
+.solution-heading h2 { position: relative; font-size: clamp(30px, 3vw, 40px); max-width: 18ch; }
+.solution-heading h2::before { content: ''; position: absolute; inset: 4px auto 4px -16px; width: 3px; max-height: 48px; border-radius: 3px; background: var(--accent); opacity: .15; pointer-events: none; }
 .solution-audience { margin-top: 20px; color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 30ch; }
 .solution-body { min-width: 0; }
 .solution-detail .icon { min-width: 20px; min-height: 20px; }
@@ -41,40 +45,68 @@
 .solution-description summary::-webkit-details-marker { display: none; }
 .solution-description summary .icon { width: 18px; height: 18px; flex-shrink: 0; transform: rotate(90deg); transition: transform 180ms ease-out; }
 .solution-description[open] summary .icon { transform: rotate(270deg); }
-.solution-description > p { padding-block: 4px 20px; font-size: 16px; line-height: 1.65; color: var(--muted); }
+/* Keep all text spacing inside the animated content so closing reaches zero. */
+.solution-description > p { margin: 0; padding-block: 20px; font-size: 16px; line-height: 1.65; color: var(--muted); }
 .solution-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
 .solution-actions .button { font-size: 15px; padding-inline: 18px; }
 .solution-technology { gap: 8px; font-size: 14px; font-weight: 500; }
 .solution-technology .icon { width: 16px; height: 16px; }
 .solution-description summary, .solution-technology { min-height: 52px; }
-/* Stable article geometry keeps anchors and reading progress independent of zoom.
-   Named entry/exit ranges also keep tall solutions at full size while reading. */
-@supports (animation-timeline: view()) {
+@media (prefers-reduced-motion: no-preference) {
+  .solution-description summary .icon { transition: transform 360ms cubic-bezier(.22, 1, .36, 1); }
+  @supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+    .solution-description { interpolate-size: allow-keywords; }
+    .solution-description::details-content {
+      block-size: 0;
+      overflow: clip;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: block-size 360ms cubic-bezier(.22, 1, .36, 1), content-visibility 360ms allow-discrete, opacity 220ms ease-out, transform 360ms cubic-bezier(.22, 1, .36, 1);
+    }
+    .solution-description[open]::details-content { block-size: auto; opacity: 1; transform: none; }
+  }
+}
+/* The timeline excludes expanded copy, so disclosure height cannot trigger zoom.
+   Named entry/exit ranges keep tall solutions at full size while reading. */
+@supports (animation-timeline: view()) and (timeline-scope: --solution-focus) {
   @media (prefers-reduced-motion: no-preference) {
-    .solution-detail { view-timeline: --solution-focus block; view-timeline-inset: 100px 10vh; }
+    .solution-detail { timeline-scope: --solution-focus; view-timeline-inset: 100px 10vh; }
+    .solution-focus-anchor { view-timeline: --solution-focus block; view-timeline-inset: inherit; }
     .solution-detail-grid {
       --solution-rest-scale: .88;
       --solution-active-scale: 1.025;
-      --solution-rest-opacity: .8;
+      --solution-rest-opacity: .6;
       transform-origin: center center;
       animation: solution-scroll-focus linear both;
       animation-timeline: --solution-focus;
     }
-    /* Fade reading copy separately so white text on blue CTAs keeps contrast. */
-    .solution-heading, .solution-lead, .solution-scope, .solution-benefits {
-      animation: solution-reading-focus linear both;
+    /* Fade the complete inactive solution, including its CTA. Keep exactly one
+       foreground surface synchronized with the navigation reading marker. */
+    .solution-sections[data-solutions-ready] .solution-detail-grid { opacity: var(--solution-rest-opacity); transition: opacity 260ms ease-out; }
+    .solution-sections[data-solutions-ready] .solution-detail[data-solution-active] .solution-detail-grid { opacity: 1; }
+    .solution-audience, .solution-scope li { color: #303844; }
+    .solution-heading h2::before {
+      animation: solution-surface-focus linear both;
+      animation-timeline: --solution-focus;
+    }
+    .solution-heading h2 {
+      animation: solution-title-focus linear both;
       animation-timeline: --solution-focus;
     }
     @keyframes solution-scroll-focus {
       0%, 100% { transform: scale(var(--solution-rest-scale)); }
       entry 100%, exit 0% { transform: scale(var(--solution-active-scale)); }
     }
-    @keyframes solution-reading-focus {
-      0%, 100% { opacity: var(--solution-rest-opacity); }
+    @keyframes solution-surface-focus {
+      0%, 100% { opacity: 0; }
       entry 100%, exit 0% { opacity: 1; }
     }
-    .solution-detail:is(:focus-within, :has(details[open])) :is(.solution-detail-grid, .solution-heading, .solution-lead, .solution-scope, .solution-benefits) { animation: none; }
-    .solution-detail:is(:focus-within, :has(details[open])) .solution-detail-grid { transform: scale(var(--solution-active-scale)); }
+    @keyframes solution-title-focus {
+      0%, 100% { color: var(--text); }
+      entry 100%, exit 0% { color: var(--accent-text); }
+    }
+    /* Opening/closing descriptions and moving keyboard focus never override
+       scroll-driven zoom, title color, or the active reading marker. */
   }
 }
 @media (hover: hover) {
@@ -88,7 +120,7 @@
 }
 @media (max-width: 1023px) {
   .solution-detail { view-timeline-inset: 24px 8vh; }
-  .solution-detail .solution-detail-grid { --solution-rest-scale: .95; --solution-active-scale: 1.01; --solution-rest-opacity: .87; }
+  .solution-detail .solution-detail-grid { --solution-rest-scale: .95; --solution-active-scale: 1.01; --solution-rest-opacity: .75; }
   .solution-nav { display: none; }
   .solution-detail { scroll-margin-top: 24px; padding-block: 44px; }
   .solution-detail-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -122,5 +154,5 @@
   .solution-actions .button { min-height: 48px; font-size: 14px; padding-inline: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .solution-nav a::after, .solution-description summary .icon { transition: none; }
+  .solution-nav a::after, .solution-description summary .icon, .solution-detail::before { transition: none; }
 }

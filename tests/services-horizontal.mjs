@@ -52,6 +52,14 @@ try {
     assert.ok(depth[0].height < .9 && depth[2].height < .9, 'Both neighboring service surfaces recede visibly');
     assert.ok(depth[0].opacity < .65 && depth[2].opacity < .65, 'Neighboring services stay subdued');
     assert.notEqual(depth[1].shadow, 'none', 'Center service has a raised surface');
+    const shadowSpacing = await page.evaluate(() => {
+      const track = document.querySelector('[data-service-track]');
+      const controls = document.querySelector('.service-carousel-controls');
+      const cardsBottom = Math.max(...[...track.querySelectorAll('[data-service]')].map(el => el.getBoundingClientRect().bottom));
+      return { paintRoom: track.getBoundingClientRect().bottom - cardsBottom, gap: controls.getBoundingClientRect().top - cardsBottom };
+    });
+    assert.ok(shadowSpacing.paintRoom >= 35.5, 'Track reserves room for the raised card shadow without clipping');
+    assert.ok(Math.abs(shadowSpacing.gap - 36) < 1, 'Shadow clearance preserves the compact card-to-controls gap');
     assert.ok(depth[0].transform.startsWith('matrix3d') && depth[2].transform.startsWith('matrix3d'), 'Side surfaces have perspective depth');
     await track.evaluate(el => {
       el.style.scrollSnapType = 'none';
@@ -109,7 +117,12 @@ try {
     const distance = await page.locator('#design').evaluate(el => el.offsetWidth + 24);
     await page.mouse.wheel(distance, 0);
     await current('design');
-    await page.waitForFunction(() => location.hash === '#design' && [...document.querySelectorAll('[data-language]')].every(link => new URL(link.href).hash === '#design'));
+    try {
+      await page.waitForFunction(() => location.hash === '#design' && [...document.querySelectorAll('[data-language]')].every(link => new URL(link.href).hash === '#design'), null, { timeout: 3000 });
+    } catch (error) {
+      console.log(await page.evaluate(() => ({ hash: location.hash, languages: [...document.querySelectorAll('[data-language]')].map(link => link.href), selected: document.querySelector('[data-service-nav] [aria-current]')?.hash, smooth: document.documentElement.className, x: document.querySelector('[data-service-track]').scrollLeft })));
+      throw error;
+    }
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.waitForFunction(() => [...document.querySelectorAll('[data-service] .service-detail-grid')].every(el => !el.getAnimations().length));
     await page.locator('[data-service-next]').click();

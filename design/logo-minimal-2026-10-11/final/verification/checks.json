@@ -1,0 +1,1056 @@
+{
+  "checkedAt": "2026-10-10T18:59:24.071Z",
+  "checks": [
+    {
+      "name": "Hero actual playback",
+      "detail": {
+        "transform": "matrix(1, 0, 0, 1, 0, 16)",
+        "running": true
+      }
+    },
+    {
+      "name": "Home contract",
+      "detail": "Company overview, four solution previews, technology focus and approach lead to standalone pages"
+    },
+    {
+      "name": "Font load",
+      "detail": {
+        "checks": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "faces": [
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "400"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "unloaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "500"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
+            "family": "Be Vietnam Pro",
+            "status": "loaded",
+            "weight": "600"
+          },
+          {
+            "family": "Bricolage Grotesque",
+            "status": "loaded",
+            "weight": "200 800"
+          },
+          {
+            "family": "Manrope",
+            "status": "loaded",
+            "weight": "600"
+          }
+        ],
+        "heading": "\"Bricolage Grotesque\", sans-serif",
+        "body": "\"Be Vietnam Pro\", sans-serif"
+      }
+    },
+    {
+      "name": "Initial imagery",
+      "detail": "Hero decodes; lazy team, solution photography and the connection illustration are checked after scrolling"
+    },
+    {
+      "name": "Hero entrance",
+      "detail": [
+        {
+          "duration": 650,
+          "keyframes": [
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "translateY(16px)",
+              "computedOffset": 0
+            },
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "none",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "duration": 650,
+          "keyframes": [
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "translateY(16px)",
+              "computedOffset": 0
+            },
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "none",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "duration": 650,
+          "keyframes": [
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "translateY(16px)",
+              "computedOffset": 0
+            },
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "none",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "duration": 650,
+          "keyframes": [
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "translateY(12px)",
+              "computedOffset": 0
+            },
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "none",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Media actual playback",
+      "detail": {
+        "opacity": "0.384619",
+        "transform": "matrix(1, 0, 0, 1, 7.38457, 0)"
+      }
+    },
+    {
+      "name": "Team imagery",
+      "detail": "Lazy illustrative team photograph decodes after entering its section"
+    },
+    {
+      "name": "Distinct scroll entrances",
+      "detail": [
+        {
+          "reveal": "slide",
+          "duration": 700,
+          "played": 1
+        },
+        {
+          "reveal": "rise",
+          "duration": 600,
+          "played": 1
+        },
+        {
+          "reveal": "rise",
+          "duration": 600,
+          "played": 1
+        }
+      ]
+    },
+    {
+      "name": "Rapid scrolling",
+      "detail": "Two down/up cycles and a further cycle preserve visibility without replay"
+    },
+    {
+      "name": "Viewport 1440 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 23,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 33,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 32,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 22,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 23,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 33,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 32,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 22,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1440 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-1440.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 28,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 27,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 28,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 27,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 1024 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-1024.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-768.png"
+      }
+    },
+    {
+      "name": "Viewport 768 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-768.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-390.png"
+      }
+    },
+    {
+      "name": "Viewport 390 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-390.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-360.png"
+      }
+    },
+    {
+      "name": "Viewport 360 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-360.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/home-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/about-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/solutions-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/services-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/products-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/contact-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 20,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-home-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/about/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 18,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-about-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/solutions/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 24,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-solutions-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/services/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 25,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-services-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/products/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 17,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-products-320.png"
+      }
+    },
+    {
+      "name": "Viewport 320 /en/contact/",
+      "detail": {
+        "overflow": false,
+        "interactiveTargets": 15,
+        "minimumHitSize": 44,
+        "minimumTextContrast": 5.021765105198983,
+        "clippedText": false,
+        "capture": "design/logo-minimal-2026-10-11/final/verification/en-contact-320.png"
+      }
+    },
+    {
+      "name": "Compact navigation",
+      "detail": "Menu opens, Escape closes it and focus returns to its button"
+    },
+    {
+      "name": "Standalone navigation",
+      "detail": "Every menu link changes URL and active state; pages without a form run without script errors"
+    },
+    {
+      "name": "Detail pages",
+      "detail": "Solutions deep links resolve; consulting is the first of five services; technology shows four Cisco and three Palo Alto Networks groups"
+    },
+    {
+      "name": "Contact preparation",
+      "detail": "Required fields and optional email validate; actual clipboard succeeds; denied clipboard exposes manual copy without false success"
+    },
+    {
+      "name": "Bilingual switching",
+      "detail": "Keyboard switching on all six pages retains the page and localizes every navigation destination; Vietnamese links return to the same page"
+    },
+    {
+      "name": "Bilingual deep links and history",
+      "detail": "The selected section survives language switching and Back restores the Vietnamese page"
+    },
+    {
+      "name": "English contact form",
+      "detail": "Field names, required and invalid-email messages, clipboard labels, success and denied-clipboard fallback are English; data survives validation and clipboard errors"
+    },
+    {
+      "name": "Restored scroll",
+      "detail": {
+        "scrollY": 1378,
+        "visible": true
+      }
+    },
+    {
+      "name": "Reduced motion",
+      "detail": "No hero or reveal animation; all content and equivalent controls remain visible"
+    },
+    {
+      "name": "Preference change during playback",
+      "detail": "Owned animations cancel and visibility restores"
+    },
+    {
+      "name": "Language switch without JavaScript",
+      "detail": "All 12 routes render native content and the language links work without scripting"
+    },
+    {
+      "name": "Script failure fallback",
+      "detail": "Content, navigation and phone links stay available; Enter does not transmit personal form values"
+    },
+    {
+      "name": "Runtime health",
+      "detail": "No page errors or missing resources"
+    }
+  ],
+  "limitations": [
+    "No UI mockup was supplied. Captures verify the implemented document-led layout, not pixel fidelity to an unavailable reference."
+  ]
+}

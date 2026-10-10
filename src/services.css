@@ -60,12 +60,13 @@
     align-items: start;
     gap: 24px;
     overflow-x: auto;
+    /* Reserve shadow paint space inside the scrollport; keep controls close below. */
     padding: 40px var(--panel-gutter) 36px;
     scroll-padding-inline: var(--panel-gutter);
     scroll-snap-type: x mandatory;
     scroll-margin-top: 100px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--divider) transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     scroll-timeline: --service-reading inline;
   }
   .service-experience[data-horizontal] .service-detail {
@@ -89,7 +90,8 @@
   .service-experience[data-horizontal] .service-lead { font-size: 22px; }
   .service-experience[data-horizontal] .service-scope li { font-size: 15px; }
   .service-experience[data-horizontal] .service-outcome { padding: 14px 16px; }
-  .service-carousel-controls { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 16px; }
+  .service-sections::-webkit-scrollbar { display: none; }
+  .service-carousel-controls { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 0; }
   .service-carousel-controls output { color: var(--muted); font-size: 14px; }
   .service-carousel-buttons { display: flex; gap: 10px; }
   .service-carousel-buttons button { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--control-border); border-radius: 8px; background: var(--surface); color: var(--accent-text); cursor: pointer; }

@@ -1,0 +1,26 @@
+{
+  "name": "PAY ORBIT",
+  "short_name": "PAY ORBIT",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#02060F",
+  "theme_color": "#02060F",
+  "icons": [
+    {
+      "src": "/assets/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

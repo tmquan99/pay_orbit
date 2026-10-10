@@ -1,44 +1,35 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "PAY ORBIT",
-  "request": "Thiết kế logo cho website PAY ORBIT.",
-  "decision": "Biểu tượng chữ P với hai dải kết nối Electric Blue/Cyan, ghép với chữ PAY ORBIT bằng Bricolage Grotesque 700 có sẵn trong dự án. Giữ tên đầy đủ PAY ORBIT PTY. LTD ở footer.",
+  "approved": "2026-10-11: Biểu tượng A Relay và typography 01 Manrope 600.",
+  "decision": "Hai nhánh kết nối phẳng màu xanh; tên PAY ORBIT bằng Manrope 600, tracking .015em, chữ SVG đã outline.",
   "symbol": {
     "path": "public/assets/brand/pay-orbit-mark.png",
-    "width": 1254,
-    "height": 1254,
-    "bytes": 525358,
-    "sha256": "e2da1bf416f9b4fb9f386051b1f9b4c86d40cfa9c98b12ed351e69b5eefa74dd",
-    "kind": "generated",
-    "tool": "image_gen.imagegen (built-in)",
-    "source": "C:/Users/tamin/.codex/generated_images/01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-6305967d-0ae0-4af1-b9c6-3e66af434342.png",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 15851,
+    "sha256": "b8177a22a01194588c02538d283b40d8f782dad7ec299c740b7b422de3a041ee",
+    "background": "transparent",
+    "kind": "original geometric vector rendered to transparent PNG",
+    "source": "public/assets/brand/pay-orbit-mark.svg",
     "transparent": true
-  },
-  "sourceConcept": "C:/Users/tamin/.codex/generated_images/01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-8cda2afe-ef47-413b-a981-76a91df23f50.png",
-  "prompts": {
-    "generate": "Use case: logo-brand. Asset type: a new original standalone brand symbol for the PAY ORBIT website, an Australian B2B enterprise networking and cybersecurity company. Create ONE finished, flat, vector-like letter P monogram on a genuinely transparent background. The P is built from two connected bold geometric bands with a single clear generous counter; the visible join should suggest infrastructure connecting reliably, but the symbol must first read as a P at 24px. Use a strong vertical stem, a slightly angular rounded rectangular upper bowl, and one short cyan linking band integrated into the form. Simple, distinctive silhouette, balanced optical proportions, precise clean edges, thick strokes, generous negative space. Main fill electric blue #4098FF, linking accent cyan #59D9EF. The symbol must work unchanged on both near-black #02060F and near-white #FCFDFF. Front view, no perspective. Square composition, symbol centered and occupying about 86 percent of the canvas with equal narrow clear margins. No words, no text, no slogan: PAY ORBIT will be typeset using the site's actual font outside this symbol. No orb, orbital ring, globe, shield, padlock, generic network nodes, thin lines, decorative circuits, enclosing tile, rectangle backdrop, gradient, shadow, glow, bevel, 3D, texture, watermark or mockup. Export clean transparent PNG with genuine alpha, not a checkerboard drawn into the image.",
-    "refine": "Edit the provided PAY ORBIT P monogram only to make it a final clean flat logo. Preserve the exact P silhouette, vertical stem, generous rectangular counter, rounded right-hand bowl and the integrated cyan band crossing the lower bowl into the stem. Preserve its proportions and centered square framing. Remove all texture, grain, irregular edge flecks, turquoise fringes and soft shading. Every filled interior pixel should be fully opaque. Use TWO uniform solid fills only: the main P #4098FF and the connection band #59D9EF, with smooth precise anti-aliased silhouette edges and a clean continuous curve on the band. This is a flat graphic logo, no gradient or lighting. Keep the counter and all surrounding canvas genuinely transparent. Do not draw black or checkerboard pixels in the background. No text, tile, added shapes, new symbol, border, shadow, glow, bevel, 3D or perspective. Deliver one high-resolution transparent square PNG, preserving this existing design rather than reimagining it."
   },
   "lockups": [
     {
       "path": "public/assets/brand/pay-orbit-logo-on-light.png",
-      "width": 1456,
-      "height": 448,
-      "bytes": 58150,
-      "sha256": "bad48a2045aaabdba2d205fafa2a3590a349d5171dc30e5c7bf67d4f68402a5d",
-      "textColor": "#0D1218",
-      "background": "transparent",
-      "use": "Nền sáng"
+      "width": 1600,
+      "height": 311,
+      "bytes": 24289,
+      "sha256": "5d0844100f2b18115140b6c26c0288ef8635749151e93e5993f15189b114f24c",
+      "background": "transparent"
     },
     {
       "path": "public/assets/brand/pay-orbit-logo-on-dark.png",
-      "width": 1456,
-      "height": 448,
-      "bytes": 59495,
-      "sha256": "e693117d1c6fce1148a9f0b56dd7b757995933273370a2e0b35b20dfb9e359a8",
-      "textColor": "#E5ECF6",
-      "background": "transparent",
-      "use": "Nền tối"
+      "width": 1600,
+      "height": 311,
+      "bytes": 24784,
+      "sha256": "7a9a0e27a6dc2da929418ed1d68058e8be833c3949a037d71f14e4625b5d1a52",
+      "background": "transparent"
     }
   ],
   "webAssets": [
@@ -46,34 +37,166 @@
       "path": "public/assets/brand/pay-orbit-mark-web.png",
       "width": 192,
       "height": 192,
-      "bytes": 12161,
-      "sha256": "841b970ed3a20fcc58a3f5dbb60e6f3bc611999615c2a639be51cbf60df5a386",
-      "kind": "Native Chromium rendition of the generated symbol, transparent PNG"
+      "bytes": 1506,
+      "sha256": "effe9c013b9de672b897a877367fa647553cfc70ab4e5531f5cdf36f4c338508",
+      "background": "transparent"
     },
     {
       "path": "public/assets/brand/pay-orbit-favicon.png",
       "width": 64,
       "height": 64,
-      "bytes": 2414,
-      "sha256": "e1021034c199db8dcc7ed16604c585b383e5a500e953b531f5229c1475ef4ca0",
-      "kind": "Native Chromium rendition of the generated symbol, transparent PNG"
+      "bytes": 639,
+      "sha256": "af420b85b72987bda4bf72878d7cd934eebc57d42ced8d9b85b8150d7987d627",
+      "background": "transparent"
+    }
+  ],
+  "vectorAssets": [
+    {
+      "path": "public/assets/brand/pay-orbit-app-icon.svg",
+      "bytes": 410,
+      "sha256": "0a9799d6edc924541bfdc0859be1cbeef5d84d7ca4ef3c92447973b24b99edfd"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-favicon.svg",
+      "bytes": 357,
+      "sha256": "399ce0ee721cc92cdfd2d11b83f6b3881a8f891ebedc2795e8a5d538b3eebb10"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-black.svg",
+      "bytes": 7806,
+      "sha256": "51473faa3a2f90595fcf707fa7c1aab429ceee210cfb77c22f13080c9a36e17c"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-blue.svg",
+      "bytes": 7806,
+      "sha256": "703811f237846cec61a807ee061d05dbf5fa426ab9a3fd98688a2a0c626e8111"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-on-dark.svg",
+      "bytes": 7806,
+      "sha256": "ab25433015f45cc45fd60b2488ab1336e9565cd75b1eb4538b368943bd462a92"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-on-light.svg",
+      "bytes": 7806,
+      "sha256": "8cba95b0d72e12fe63e13fc08b72750e2da1943f1b7b0ab55516abf6f654e494"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-logo-white.svg",
+      "bytes": 7806,
+      "sha256": "b814a61c1776514fe11dcccb83d3d70e0b49cec2f96994f904559b74d8b89e01"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-black.svg",
+      "bytes": 355,
+      "sha256": "dccaef53de2e7d528206684c9aca5c9fed15217860fc0ba0209675a9f33b3032"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-blue.svg",
+      "bytes": 355,
+      "sha256": "f79557916a0a9aa3198a9352145fa1c9a0486183be13f5cd923503fe9e0e25d5"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-on-dark.svg",
+      "bytes": 355,
+      "sha256": "15ae09d0e756a11c1532bf09bd634fba98755cf2516acc7e6b655e6edb3febc7"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-on-light.svg",
+      "bytes": 355,
+      "sha256": "f79557916a0a9aa3198a9352145fa1c9a0486183be13f5cd923503fe9e0e25d5"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-small.svg",
+      "bytes": 357,
+      "sha256": "399ce0ee721cc92cdfd2d11b83f6b3881a8f891ebedc2795e8a5d538b3eebb10"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark-white.svg",
+      "bytes": 355,
+      "sha256": "b0cbaad03008ebb19b7382ec1237e6daf2556d3136fb70169adc61a514649d8e"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-mark.svg",
+      "bytes": 355,
+      "sha256": "15ae09d0e756a11c1532bf09bd634fba98755cf2516acc7e6b655e6edb3febc7"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-maskable.svg",
+      "bytes": 452,
+      "sha256": "157a80aec78918fac8eb9b1541c799087a92758aac2718d7dd0098f31cc0afcc"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-stacked-black.svg",
+      "bytes": 7843,
+      "sha256": "a08f2e7fe02c4ea547c96ce0b2925e7ccf96a7e41b3591cc0d63c76b669ff073"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-stacked-blue.svg",
+      "bytes": 7843,
+      "sha256": "56ffac1e58015a50419f4a53c448af00aca567d65bedad4fc5d84a04821170f4"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-stacked-on-dark.svg",
+      "bytes": 7843,
+      "sha256": "d7637472cc1a000c8cb9e916e6db9dca4c7509612882582d2363b974290427de"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-stacked-on-light.svg",
+      "bytes": 7843,
+      "sha256": "811b543924e71d0cb33016913f1289725a5af45f6bcd71971e89a7f331d8b363"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-stacked-white.svg",
+      "bytes": 7843,
+      "sha256": "0aa1b10ed19209ca58f0245b0b44590ce9843373d15fa3acfc8eea2bd0639f27"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-wordmark-black.svg",
+      "bytes": 7626,
+      "sha256": "02b90ac178034a1158674b507828c9205752f148e1bda281f5fd404e4de5a26e"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-wordmark-blue.svg",
+      "bytes": 7626,
+      "sha256": "ff30223e17f5822d0b3a5006fa80c6aa1acc336f00ef4e9f50e83525d4a132df"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-wordmark-on-dark.svg",
+      "bytes": 7626,
+      "sha256": "aa4939022b6a01cf8b6996fc79f88ec475548de1fcedc19d26cc24ae4e428f66"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-wordmark-on-light.svg",
+      "bytes": 7626,
+      "sha256": "33dac03bbc31cb7e2dbccc7f67f9d9a7dc39d57d7510551df439f7f9694f96c5"
+    },
+    {
+      "path": "public/assets/brand/pay-orbit-wordmark-white.svg",
+      "bytes": 7626,
+      "sha256": "c40f7e957bc9b15a4c5012f0edb17c435c3217a37db5fe5573cdb3e848a85aa9"
     }
   ],
   "typesetting": {
-    "method": "Native Chromium rendering of the site's actual locally loaded font, not AI-rendered lettering",
-    "font": "public/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf",
-    "family": "Bricolage Grotesque",
-    "weight": 700,
-    "license": "public/assets/fonts/bricolage-grotesque/OFL.txt",
-    "exportScript": "scripts/export-logo.mjs"
+    "family": "Manrope",
+    "weight": 600,
+    "trackingEm": 0.015,
+    "wordGapEm": 0.20833333333333334,
+    "method": "Static Manrope 600 shaped with HarfBuzz and outlined with fontTools",
+    "font": "public/assets/fonts/manrope/Manrope-600-brand.woff2",
+    "license": "public/assets/fonts/manrope/OFL.txt",
+    "exportScript": "scripts/export-logo.mjs",
+    "vectorBuildScript": "scripts/build-logo-vectors.py"
+  },
+  "colors": {
+    "lightBlue": "#1768E8",
+    "darkBlue": "#4098FF",
+    "lightText": "#0D1218",
+    "darkText": "#E5ECF6",
+    "darkBackground": "#02060F"
   },
   "websiteUse": [
-    "Shared header and footer on all six pages in both languages",
-    "PNG favicon on every page"
-  ],
-  "assumptions": [
-    "User request authorizes a new site logo, replacing the earlier text-only identity.",
-    "Existing page content, bilingual URLs, typeface and palette remain unchanged.",
-    "The symbol is newly designed for this website; no vendor mark or claim of affiliation is introduced."
+    "Shared header and footer on all 12 VI/EN routes",
+    "SVG favicon with PNG fallback, Apple touch icon, webmanifest"
   ]
 }

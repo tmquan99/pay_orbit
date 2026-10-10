@@ -19,6 +19,5 @@ export function aboutStoryScene({ stage = 0, desktop = false } = {}) {
     </div>
     <div class="story-scene-description">${descriptions.map((description, index) => copy(index, description)).join('')}</div>
     <div class="story-scene-detail">${details.map((items, index) => `<ol class="story-checkpoints" data-story-detail="${index}"${index === stage ? '' : ' hidden'}>${items.map(item => `<li>${item}</li>`).join('')}</ol>`).join('')}</div>
-    <figcaption>Minh họa khái niệm, không phải cấu hình triển khai.</figcaption>
   </figure>`;
 }

@@ -31,14 +31,36 @@ export function lifecycle({ compact = false, linked = true } = {}) {
   return `<ol class="lifecycle${compact ? ' lifecycle-compact' : ''}">${steps.map(([label, description, anchor], index) => `<li><${linked ? `a href="/services/#${anchor}"` : 'div'} class="lifecycle-step"><span class="step-symbol">${icon(serviceIcon(index))}<span class="step-number">${index + 1}</span></span><strong>${label}</strong><span class="step-description">${description}</span></${linked ? 'a' : 'div'}>${index < steps.length - 1 ? icon('arrow-right', 'step-arrow') : ''}</li>`).join('')}</ol>`;
 }
 
-export function illustration(name, { reveal = false, caption = true, lazy = false, responsive = false } = {}) {
+function connectionGraphic(image) {
+  // These graphic paths follow the visible cables in the source illustration.
+  // They are a decorative motion overlay, separate from library-sourced icons.
+  return `<div class="connection-art-frame" data-hero-graphic="connection">${image}<svg class="connection-signal-graphic" data-connection-graphic viewBox="0 0 1536 1024" aria-hidden="true" focusable="false">
+    <path data-connection-signal d="M486 700 L563 657 Q575 650 575 641 Q575 637 583 636 L593 632" pathLength="100"/>
+    <path data-connection-signal d="M716 600 L800 554 Q811 548 811 536 L812 532 L846 514" pathLength="100"/>
+    <path data-connection-signal d="M1040 440 L1180 359 Q1190 353 1190 336 L1190 328 Q1190 324 1198 320 L1220 308" pathLength="100"/>
+    <ellipse class="connection-firewall-pulse" data-connection-firewall cx="626" cy="604" rx="46" ry="58"/>
+  </svg></div>`;
+}
+
+export function illustration(name, { reveal = false, lazy = false, responsive = false, connectionMotion = false } = {}) {
   const labels = {
-    ecosystem: ['Hạ tầng kết nối và bảo mật', 'Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud.'],
-    lifecycle: ['Từ nhu cầu đến vận hành', 'Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ.'],
+    ecosystem: 'Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud.',
+    lifecycle: 'Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ.',
   };
   if (!labels[name]) throw new Error(`Unknown illustration: ${name}`);
   const basename = name === 'ecosystem' ? 'enterprise-ecosystem' : 'service-lifecycle';
-  return `<figure class="infographic-art"${reveal ? ' data-reveal="slide" data-duration="700"' : ''}><img src="/assets/images/${basename}.${responsive ? 'webp' : 'png'}"${responsive ? ` srcset="/assets/images/${basename}-720.webp 720w, /assets/images/${basename}.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw"` : ''} width="1536" height="1024" alt="${labels[name][1]}" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async">${caption ? `<figcaption>${labels[name][0]}</figcaption>` : ''}</figure>`;
+  const image = `<img src="/assets/images/${basename}.${responsive ? 'webp' : 'png'}"${responsive ? ` srcset="/assets/images/${basename}-720.webp 720w, /assets/images/${basename}.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw"` : ''} width="1536" height="1024" alt="${labels[name]}" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async">`;
+  const media = connectionMotion ? connectionGraphic(image) : image;
+  return `<figure class="infographic-art"${reveal ? ' data-reveal="slide" data-duration="700"' : ''}>${media}</figure>`;
+}
+
+export function technologyGraphic() {
+  const groups = [
+    ['Cisco', 'Kết nối doanh nghiệp', ['Switching', 'Routing', 'Wireless', 'Collaboration']],
+    ['Palo Alto Networks', 'Bảo vệ hạ tầng số', ['Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh']],
+  ];
+  let index = 0;
+  return `<figure class="infographic-art technology-art" aria-label="Nhóm công nghệ theo hãng"><div class="technology-stage" data-hero-graphic="technology" aria-hidden="true">${groups.map(([name, family, labels], group) => `<div class="technology-board technology-board-${group}"><div class="technology-board-heading"><strong>${name}</strong><span>${family}</span></div><div class="technology-modules">${labels.map(label => `<div class="technology-module" data-technology-module>${icon(productIcon(index++))}<span>${label}</span></div>`).join('')}</div></div>`).join('')}</div></figure>`;
 }
 
 export function solutionOverview() {
@@ -59,12 +81,12 @@ export function technologyOverview() {
 
 export function connectionScene() {
   const stages = [['network', 'Mạng doanh nghiệp'], ['server', 'Trung tâm dữ liệu'], ['shield-check', 'An ninh mạng'], ['cloud', 'Bảo mật Cloud']];
-  return `<figure class="connection-scene" data-connection-scene aria-labelledby="connection_caption">
-    <img class="connection-art" src="/assets/images/enterprise-ecosystem.webp" srcset="/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async">
+  const image = '<img class="connection-art" src="/assets/images/enterprise-ecosystem.webp" srcset="/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async">';
+  return `<figure class="connection-scene" data-connection-scene aria-label="Các lớp kết nối và bảo mật">
+    ${connectionGraphic(image)}
     <div class="connection-diagram" data-connection-diagram>
       <span class="connection-track" aria-hidden="true"><span class="connection-flow" data-connection-flow></span></span>
       <ol class="connection-stages">${stages.map(([symbol, label]) => `<li data-connection-stage><span class="connection-symbol">${icon(symbol)}<span class="connection-halo" data-connection-halo aria-hidden="true"></span></span><span>${label}</span></li>`).join('')}</ol>
     </div>
-    <figcaption id="connection_caption">Các lớp kết nối và bảo mật</figcaption>
   </figure>`;
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "family": "manrope",
+    "file": "Manrope[wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf",
+    "sha256": "3AE11C49DB0455A3CC33E37D380F20FDB8C7F8B41DC07625C177E3D87A9D6AE6"
+  },
+  {
+    "family": "manrope",
+    "file": "OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt",
+    "sha256": "58172E0C0FAC2CDA8A37B348164BB55E44B0E69051E557E92B1D3F6910141F7B"
+  },
+  {
+    "family": "plusjakartasans",
+    "file": "OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/plusjakartasans/OFL.txt",
+    "sha256": "995C7199CAB65954F545996326755DAEE7B63CC6B42B06C13DA1F9502AB08A99"
+  },
+  {
+    "family": "plusjakartasans",
+    "file": "PlusJakartaSans[wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/plusjakartasans/PlusJakartaSans%5Bwght%5D.ttf",
+    "sha256": "89B3FB38AA0D275D7A731D0D817A4F1622B316B4D7FBDEDCF02EE9099FF68BC8"
+  },
+  {
+    "family": "sora",
+    "file": "OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/OFL.txt",
+    "sha256": "BA0B9729C9428BA79A0459AB8EC575791B51509DBEC213E383D0316D37FEC299"
+  },
+  {
+    "family": "sora",
+    "file": "Sora[wght].ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/Sora%5Bwght%5D.ttf",
+    "sha256": "84FF7096AE3EC6C8BE47D906D1A0BA4DE7F2CE78C615275C77301964A316E16C"
+  }
+]

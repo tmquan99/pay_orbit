@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-10T07:19:13.855Z",
+  "checkedAt": "2026-10-10T19:29:53.001Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 3.92214)",
+        "transform": "matrix(1, 0, 0, 1, 0, 16)",
         "running": true
       }
     },
@@ -71,6 +71,11 @@
             "family": "Bricolage Grotesque",
             "status": "loaded",
             "weight": "200 800"
+          },
+          {
+            "family": "Manrope",
+            "status": "loaded",
+            "weight": "600"
           }
         ],
         "heading": "\"Bricolage Grotesque\", sans-serif",
@@ -165,8 +170,8 @@
     {
       "name": "Media actual playback",
       "detail": {
-        "opacity": "0.943812",
-        "transform": "matrix(1, 0, 0, 1, 0.674253, 0)"
+        "opacity": "0.131153",
+        "transform": "matrix(1, 0, 0, 1, 10.4262, 0)"
       }
     },
     {
@@ -201,7 +206,7 @@
       "name": "Viewport 1440 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -212,7 +217,7 @@
       "name": "Viewport 1440 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -223,7 +228,7 @@
       "name": "Viewport 1440 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 32,
+        "interactiveTargets": 33,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -234,7 +239,7 @@
       "name": "Viewport 1440 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 31,
+        "interactiveTargets": 32,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -245,7 +250,7 @@
       "name": "Viewport 1440 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 21,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -256,7 +261,7 @@
       "name": "Viewport 1440 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -267,7 +272,7 @@
       "name": "Viewport 1440 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -278,7 +283,7 @@
       "name": "Viewport 1440 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -289,7 +294,7 @@
       "name": "Viewport 1440 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 32,
+        "interactiveTargets": 33,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -300,7 +305,7 @@
       "name": "Viewport 1440 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 31,
+        "interactiveTargets": 32,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -311,7 +316,7 @@
       "name": "Viewport 1440 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 21,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -322,7 +327,7 @@
       "name": "Viewport 1440 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -333,7 +338,7 @@
       "name": "Viewport 1024 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -344,7 +349,7 @@
       "name": "Viewport 1024 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -355,7 +360,7 @@
       "name": "Viewport 1024 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 27,
+        "interactiveTargets": 28,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -366,7 +371,7 @@
       "name": "Viewport 1024 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 26,
+        "interactiveTargets": 27,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -377,7 +382,7 @@
       "name": "Viewport 1024 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -388,7 +393,7 @@
       "name": "Viewport 1024 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -399,7 +404,7 @@
       "name": "Viewport 1024 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -410,7 +415,7 @@
       "name": "Viewport 1024 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -421,7 +426,7 @@
       "name": "Viewport 1024 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 27,
+        "interactiveTargets": 28,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -432,7 +437,7 @@
       "name": "Viewport 1024 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 26,
+        "interactiveTargets": 27,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -443,7 +448,7 @@
       "name": "Viewport 1024 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -454,7 +459,7 @@
       "name": "Viewport 1024 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -465,7 +470,7 @@
       "name": "Viewport 768 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -476,7 +481,7 @@
       "name": "Viewport 768 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -487,7 +492,7 @@
       "name": "Viewport 768 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -498,7 +503,7 @@
       "name": "Viewport 768 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -509,7 +514,7 @@
       "name": "Viewport 768 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -520,7 +525,7 @@
       "name": "Viewport 768 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -531,7 +536,7 @@
       "name": "Viewport 768 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -542,7 +547,7 @@
       "name": "Viewport 768 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -553,7 +558,7 @@
       "name": "Viewport 768 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -564,7 +569,7 @@
       "name": "Viewport 768 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -575,7 +580,7 @@
       "name": "Viewport 768 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -586,7 +591,7 @@
       "name": "Viewport 768 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -597,7 +602,7 @@
       "name": "Viewport 390 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -608,7 +613,7 @@
       "name": "Viewport 390 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -619,7 +624,7 @@
       "name": "Viewport 390 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -630,7 +635,7 @@
       "name": "Viewport 390 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -641,7 +646,7 @@
       "name": "Viewport 390 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -652,7 +657,7 @@
       "name": "Viewport 390 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -663,7 +668,7 @@
       "name": "Viewport 390 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -674,7 +679,7 @@
       "name": "Viewport 390 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -685,7 +690,7 @@
       "name": "Viewport 390 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -696,7 +701,7 @@
       "name": "Viewport 390 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -707,7 +712,7 @@
       "name": "Viewport 390 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -718,7 +723,7 @@
       "name": "Viewport 390 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -729,7 +734,7 @@
       "name": "Viewport 360 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -740,7 +745,7 @@
       "name": "Viewport 360 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -751,7 +756,7 @@
       "name": "Viewport 360 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -762,7 +767,7 @@
       "name": "Viewport 360 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -773,7 +778,7 @@
       "name": "Viewport 360 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -784,7 +789,7 @@
       "name": "Viewport 360 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -795,7 +800,7 @@
       "name": "Viewport 360 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -806,7 +811,7 @@
       "name": "Viewport 360 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -817,7 +822,7 @@
       "name": "Viewport 360 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -828,7 +833,7 @@
       "name": "Viewport 360 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -839,7 +844,7 @@
       "name": "Viewport 360 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -850,7 +855,7 @@
       "name": "Viewport 360 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -861,7 +866,7 @@
       "name": "Viewport 320 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -872,7 +877,7 @@
       "name": "Viewport 320 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -883,7 +888,7 @@
       "name": "Viewport 320 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -894,7 +899,7 @@
       "name": "Viewport 320 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -905,7 +910,7 @@
       "name": "Viewport 320 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -916,7 +921,7 @@
       "name": "Viewport 320 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -927,7 +932,7 @@
       "name": "Viewport 320 /en/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 19,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -938,7 +943,7 @@
       "name": "Viewport 320 /en/about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -949,7 +954,7 @@
       "name": "Viewport 320 /en/solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 24,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -960,7 +965,7 @@
       "name": "Viewport 320 /en/services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -971,7 +976,7 @@
       "name": "Viewport 320 /en/products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 16,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -982,7 +987,7 @@
       "name": "Viewport 320 /en/contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 14,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -1020,7 +1025,7 @@
     {
       "name": "Restored scroll",
       "detail": {
-        "scrollY": 1409,
+        "scrollY": 1378,
         "visible": true
       }
     },

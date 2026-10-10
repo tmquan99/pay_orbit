@@ -17,7 +17,7 @@ const server = await startServer({ port: 0, host: '127.0.0.1', directory: proces
 const origin = `http://127.0.0.1:${server.address().port}`;
 const executablePath = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const browser = await chromium.launch({ headless: true, executablePath });
-const evidenceDirectory = path.join(root, '.taste/verification');
+const evidenceDirectory = path.resolve(root, process.env.VERIFICATION_DIR || '.taste/verification');
 await fs.mkdir(evidenceDirectory, { recursive: true });
 const checks = [];
 const record = (name, detail) => checks.push({ name, detail });
@@ -125,9 +125,20 @@ try {
       await page.goto(origin + route, { waitUntil: 'networkidle' });
       assert.equal(await page.locator('h1').count(), 1);
       const typeRoles = await page.evaluate(() => ({ headings: [...document.querySelectorAll('h1,h2,h3,h4')].every(element => getComputedStyle(element).fontFamily.includes('Bricolage Grotesque')), navigation: getComputedStyle(document.querySelector('#site_navigation a')).fontFamily, reading: getComputedStyle(document.querySelector('main p')).fontFamily, brand: getComputedStyle(document.querySelector('.wordmark')).fontFamily }));
-      assert.ok(typeRoles.headings && typeRoles.brand.includes('Bricolage Grotesque'), `Display font remains on headings and brand at ${route}`);
+      assert.ok(typeRoles.headings && typeRoles.brand.includes('Manrope'), `Approved Manrope logo and existing heading typography at ${route}`);
+      assert.ok(await page.evaluate(() => document.fonts.check('600 24px "Manrope"') && [...document.fonts].some(face => face.family.includes('Manrope') && face.status === 'loaded')), `Real brand font loaded at ${route}`);
       assert.ok(typeRoles.navigation.includes('Be Vietnam Pro') && typeRoles.reading.includes('Be Vietnam Pro'), `Body and UI use approved B typography at ${route}`);
       assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), route);
+      if (width === 1440) {
+        await page.mouse.move(0, 0);
+        const active = page.locator('#site_navigation a[aria-current="page"]');
+        const colors = link => link.evaluate(element => ({ color: getComputedStyle(element).color, background: getComputedStyle(element).backgroundColor }));
+        const resting = await colors(active);
+        await active.hover();
+        await page.waitForTimeout(200);
+        assert.deepEqual(await colors(active), resting, `Active menu colors stay readable on hover at ${route}`);
+        await page.mouse.move(0, 0);
+      }
       const logos = await page.locator('.brand-symbol').evaluateAll(elements => elements.map(element => ({
         decoded: element.complete && element.naturalWidth >= 192,
         width: element.getBoundingClientRect().width,
@@ -143,7 +154,8 @@ try {
       assert.ok(await page.locator('svg.icon').count() > 0, `Icon cues at ${route}`);
       assert.deepEqual(iconIssues, [], `Sourced icons must render accessibly at ${width}px on ${route}`);
       await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
-      await page.waitForTimeout(850);
+      // Wait for the actual entrance completion, including stagger, under browser load.
+      await page.waitForFunction(() => [...document.querySelectorAll('[data-reveal]')].every(element => getComputedStyle(element).opacity === '1'), null, { timeout: 2500 });
       const hiddenAfterScroll = await page.locator('[data-reveal]').evaluateAll(elements => elements.filter(element => getComputedStyle(element).opacity !== '1').map(element => ({ type: element.dataset.reveal, played: element.dataset.revealPlayed, top: element.getBoundingClientRect().top, bottom: element.getBoundingClientRect().bottom, opacity: getComputedStyle(element).opacity })));
       assert.deepEqual(hiddenAfterScroll, [], `Every traversed group must be visible on ${route} at ${width}px`);
       // Visit visible lazy media; Solutions and Services omit hero art on mobile.
@@ -166,6 +178,9 @@ try {
           return channel <= .04045 ? channel / 12.92 : ((channel + .055) / 1.055) ** 2.4;
         }).reduce((sum, value, index) => sum + value * [.2126, .7152, .0722][index], 0);
         const background = element => {
+          // The compact language pill paints its visible fill in ::before.
+          // Measure that surface rather than the dark header behind the pill.
+          if (element.matches('.language-switch a[aria-current="true"]')) return rgb(getComputedStyle(element, '::before').backgroundColor);
           for (let parent = element; parent; parent = parent.parentElement) {
             const color = rgb(getComputedStyle(parent).backgroundColor);
             if (color.length === 3 || color[3] === 1) return color;
@@ -178,15 +193,15 @@ try {
           const surface = luminance(background(element));
           return (Math.max(foreground, surface) + .05) / (Math.min(foreground, surface) + .05);
         });
-        return { minimumContrast: Math.min(...ratios), clipped: elements.filter(element => !['INPUT', 'TEXTAREA'].includes(element.tagName) && element.clientWidth > 0 && element.scrollWidth > element.clientWidth + 1).map(element => element.textContent.trim().slice(0, 60)) };
+        return { minimumContrast: Math.min(...ratios), lowContrast: ratios.map((ratio, index) => ({ ratio, label: elements[index].textContent.trim().slice(0, 60) })).filter(item => item.ratio < 4.5), clipped: elements.filter(element => !['INPUT', 'TEXTAREA'].includes(element.tagName) && element.clientWidth > 0 && element.scrollWidth > element.clientWidth + 1).map(element => element.textContent.trim().slice(0, 60)) };
       });
-      assert.ok(readability.minimumContrast >= 4.5, `Insufficient rendered text contrast at ${width}px`);
+      assert.ok(readability.minimumContrast >= 4.5, `Insufficient rendered text contrast at ${width}px on ${route}: ${JSON.stringify(readability.lowContrast)}`);
       assert.deepEqual(readability.clipped, [], `Clipped text at ${width}px`);
       await assertVisibleContent();
       assert.deepEqual(errors, [], `Runtime health on ${route} at ${width}px`);
       const name = route === '/' ? 'home' : route === '/en/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
       await page.screenshot({ path: path.join(evidenceDirectory, `${name}-${width}.png`), fullPage: true });
-      record(`Viewport ${width} ${route}`, { overflow: false, interactiveTargets: layout.hits.length, minimumHitSize: 44, minimumTextContrast: readability.minimumContrast, clippedText: false, capture: `.taste/verification/${name}-${width}.png` });
+      record(`Viewport ${width} ${route}`, { overflow: false, interactiveTargets: layout.hits.length, minimumHitSize: 44, minimumTextContrast: readability.minimumContrast, clippedText: false, capture: path.relative(root, path.join(evidenceDirectory, `${name}-${width}.png`)).replaceAll('\\', '/') });
     }
     console.log(`PASS: 12 VI/EN routes at ${width}px`);
   }
@@ -258,6 +273,7 @@ try {
   await page.goto(origin + '/solutions/#cybersecurity', { waitUntil: 'networkidle' });
   await page.locator('[data-language="en"]').click();
   await page.waitForURL(origin + '/en/solutions/#cybersecurity');
+  await page.waitForFunction(() => document.getElementById('cybersecurity')?.getBoundingClientRect().top < innerHeight, null, { timeout: 3000 });
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
   await page.goBack({ waitUntil: 'networkidle' });
   assert.equal(new URL(page.url()).pathname, '/solutions/');
@@ -339,7 +355,7 @@ try {
   assert.deepEqual(missing, []);
   record('Runtime health', 'No page errors or missing resources');
   await fs.writeFile(path.join(evidenceDirectory, 'checks.json'), JSON.stringify({ checkedAt: new Date().toISOString(), checks, limitations: ['No UI mockup was supplied. Captures verify the implemented document-led layout, not pixel fidelity to an unavailable reference.'] }, null, 2));
-  console.log(`PASS: ${checks.length} browser checks. Evidence: .taste/verification/checks.json`);
+  console.log(`PASS: ${checks.length} browser checks. Evidence: ${path.relative(root, evidenceDirectory)}/checks.json`);
 } finally {
   await context.close();
   await browser.close();

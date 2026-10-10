@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Bảy nhóm công nghệ Cisco và Palo Alto Networks cho kết nối doanh nghiệp, an ninh mạng và bảo mật Cloud.">
     <meta name="theme-color" content="#02060F">
-    <link rel="icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/pay-orbit-favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/brand/pay-orbit-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/brand/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>Sản phẩm &amp; công nghệ | PAY ORBIT</title>
     <link rel="alternate" hreflang="vi" href="/products/">
     <link rel="alternate" hreflang="en" href="/en/products/">
@@ -15,16 +19,21 @@
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+    <link rel="stylesheet" href="/src/hero-graphics.css">
+
+    <link rel="stylesheet" href="/src/products.css">
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">Đến nội dung chính</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="wordmark" href="/" aria-label="PAY ORBIT, trang chủ"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT</span></a>
+      <a class="wordmark" href="/" aria-label="PAY ORBIT, trang chủ"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span class="brand-name">PAY ORBIT</span></a>
       <nav id="site_navigation" aria-label="Điều hướng chính"><a href="/">Trang chủ</a><a href="/about/">Giới thiệu</a><a href="/solutions/">Giải pháp</a><a href="/services/">Dịch vụ</a><a href="/products/" aria-current="page">Sản phẩm &amp; công nghệ</a><a href="/contact/" class="navigation-contact">Liên hệ</a></nav>
       <div class="header-actions"><div class="language-switch" role="group" aria-label="Ngôn ngữ"><a data-language="vi" href="/products/" hreflang="vi" lang="vi" aria-label="Tiếng Việt" aria-current="true">VI</a><a data-language="en" href="/en/products/" hreflang="en" lang="en" aria-label="English">EN</a></div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
-    <main id="main"><section class="page-intro"><div class="container intro-grid"><div class="intro-copy"><h1 data-hero>Sản phẩm &amp; công nghệ</h1><p data-hero>Danh mục công nghệ tập trung vào các giải pháp của Cisco và Palo Alto Networks.</p><div class="technology-overview" aria-label="Nhóm công nghệ theo hãng"><a href="/products/#cisco" class="vendor-summary"><span class="icon-badge"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
+    <main id="main"><div class="products-page" data-products><section class="page-intro"><div class="container intro-grid"><div class="intro-copy"><h1 data-hero>Sản phẩm &amp; công nghệ</h1><p data-hero>Danh mục công nghệ tập trung vào các giải pháp của Cisco và Palo Alto Networks.</p><div class="technology-overview" aria-label="Nhóm công nghệ theo hãng"><a href="/products/#cisco" class="vendor-summary"><span class="icon-badge"><svg class="icon " data-icon="network" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -83,7 +92,7 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></div></div><figure class="infographic-art"><img src="/assets/images/enterprise-ecosystem.png" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." fetchpriority="high" decoding="async"><figcaption>Hạ tầng kết nối và bảo mật</figcaption></figure></div></section><section class="section product-section" id="cisco" aria-labelledby="cisco_heading"><div class="container"><h2 id="cisco_heading">Cisco</h2><div class="product-grid"><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="layers" aria-hidden="true" focusable="false"
+</a></div></div><figure class="infographic-art technology-art" aria-label="Nhóm công nghệ theo hãng"><div class="technology-stage" data-hero-graphic="technology" aria-hidden="true"><div class="technology-board technology-board-0"><div class="technology-board-heading"><strong>Cisco</strong><span>Kết nối doanh nghiệp</span></div><div class="technology-modules"><div class="technology-module" data-technology-module><svg class="icon " data-icon="layers" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -98,21 +107,7 @@
   <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
   <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
 </svg>
-</span><h3>Switching doanh nghiệp và trung tâm dữ liệu</h3><p>Cisco Catalyst; Cisco Nexus cho mạng doanh nghiệp và Data Center.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="router" aria-hidden="true" focusable="false"
+<span>Switching</span></div><div class="technology-module" data-technology-module><svg class="icon " data-icon="router" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -130,21 +125,7 @@
   <path d="M17.84 7.17a4 4 0 0 0-5.66 0" />
   <path d="M20.66 4.34a8 8 0 0 0-11.31 0" />
 </svg>
-</span><h3>Routing và WAN</h3><p>Router doanh nghiệp; SD-WAN; kết nối chi nhánh.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="140"><span class="icon-badge"><svg class="icon " data-icon="wifi" aria-hidden="true" focusable="false"
+<span>Routing</span></div><div class="technology-module" data-technology-module><svg class="icon " data-icon="wifi" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -160,21 +141,7 @@
   <path d="M5 12.859a10 10 0 0 1 14 0" />
   <path d="M8.5 16.429a5 5 0 0 1 7 0" />
 </svg>
-</span><h3>Wireless</h3><p>Wireless doanh nghiệp; Access Point; quản trị Wi-Fi.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="210"><span class="icon-badge"><svg class="icon " data-icon="video" aria-hidden="true" focusable="false"
+<span>Wireless</span></div><div class="technology-module" data-technology-module><svg class="icon " data-icon="video" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -188,21 +155,7 @@
   <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" />
   <rect x="2" y="6" width="14" height="12" rx="2" />
 </svg>
-</span><h3>Collaboration</h3><p>Cisco Webex; điện thoại IP; thiết bị cộng tác.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article></div></div></section><section class="section product-section" id="palo-alto-networks" aria-labelledby="palo-alto-networks_heading"><div class="container"><h2 id="palo-alto-networks_heading">Palo Alto Networks</h2><div class="product-grid"><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
+<span>Collaboration</span></div></div></div><div class="technology-board technology-board-1"><div class="technology-board-heading"><strong>Palo Alto Networks</strong><span>Bảo vệ hạ tầng số</span></div><div class="technology-modules"><div class="technology-module" data-technology-module><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -216,21 +169,7 @@
   <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
   <path d="m9 12 2 2 4-4" />
 </svg>
-</span><h3>Bảo mật mạng</h3><p>NGFW; VM-Series; CN-Series; Secure Access; SASE; Threat Prevention.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="cloud-cog" aria-hidden="true" focusable="false"
+<span>Bảo mật mạng</span></div><div class="technology-module" data-technology-module><svg class="icon " data-icon="cloud-cog" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -251,21 +190,7 @@
   <path d="m9.228 15.852-.923-.383" />
   <path d="m9.228 18.148-.923.383" />
 </svg>
-</span><h3>Bảo mật Cloud</h3><p>Prisma Cloud; bảo mật workload; CSPM; bảo mật Container &amp; Kubernetes.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M7 7h10v10" />
-  <path d="M7 17 17 7" />
-</svg>
-</a></article><article class="solution-card product-card" data-reveal="rise" data-duration="520" data-delay="140"><span class="icon-badge"><svg class="icon " data-icon="scan-eye" aria-hidden="true" focusable="false"
+<span>Bảo mật Cloud</span></div><div class="technology-module" data-technology-module><svg class="icon " data-icon="scan-eye" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -283,7 +208,207 @@
   <circle cx="12" cy="12" r="1" />
   <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0" />
 </svg>
-</span><h3>Vận hành an ninh</h3><p>Cortex XDR; Cortex XSIAM; Cortex XSOAR; Cortex ITDR.</p><a class="button button-outline" href="/contact/"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+<span>Vận hành an ninh</span></div></div></div></div></figure></div></section><section class="section product-section" id="cisco" aria-labelledby="cisco_heading"><div class="container"><h2 id="cisco_heading">Cisco</h2><div class="product-grid"><article class="solution-card product-card" data-product-kind="switching" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="layers" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg>
+</span><h3>Switching doanh nghiệp và trung tâm dữ liệu</h3><p>Cisco Catalyst; Cisco Nexus cho mạng doanh nghiệp và Data Center.</p><a class="button button-outline" href="/contact/?product=switching#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article><article class="solution-card product-card" data-product-kind="routing" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="router" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="8" x="2" y="14" rx="2" />
+  <path d="M6.01 18H6" />
+  <path d="M10.01 18H10" />
+  <path d="M15 10v4" />
+  <path d="M17.84 7.17a4 4 0 0 0-5.66 0" />
+  <path d="M20.66 4.34a8 8 0 0 0-11.31 0" />
+</svg>
+</span><h3>Routing và WAN</h3><p>Router doanh nghiệp; SD-WAN; kết nối chi nhánh.</p><a class="button button-outline" href="/contact/?product=routing#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article><article class="solution-card product-card" data-product-kind="wireless" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="wifi" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 20h.01" />
+  <path d="M2 8.82a15 15 0 0 1 20 0" />
+  <path d="M5 12.859a10 10 0 0 1 14 0" />
+  <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+</svg>
+</span><h3>Wireless</h3><p>Wireless doanh nghiệp; Access Point; quản trị Wi-Fi.</p><a class="button button-outline" href="/contact/?product=wireless#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article><article class="solution-card product-card" data-product-kind="collaboration" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="video" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" />
+  <rect x="2" y="6" width="14" height="12" rx="2" />
+</svg>
+</span><h3>Collaboration</h3><p>Cisco Webex; điện thoại IP; thiết bị cộng tác.</p><a class="button button-outline" href="/contact/?product=collaboration#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article></div></div></section><section class="section product-section" id="palo-alto-networks" aria-labelledby="palo-alto-networks_heading"><div class="container"><h2 id="palo-alto-networks_heading">Palo Alto Networks</h2><div class="product-grid"><article class="solution-card product-card" data-product-kind="network-security" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="shield-check" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+</span><h3>Bảo mật mạng</h3><p>NGFW; VM-Series; CN-Series; Secure Access; SASE; Threat Prevention.</p><a class="button button-outline" href="/contact/?product=network-security#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article><article class="solution-card product-card" data-product-kind="cloud-security" data-reveal="rise" data-duration="520" data-delay="70"><span class="icon-badge"><svg class="icon " data-icon="cloud-cog" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m10.852 19.772-.383.924" />
+  <path d="m13.148 14.228.383-.923" />
+  <path d="M13.148 19.772a3 3 0 1 0-2.296-5.544l-.383-.923" />
+  <path d="m13.53 20.696-.382-.924a3 3 0 1 1-2.296-5.544" />
+  <path d="m14.772 15.852.923-.383" />
+  <path d="m14.772 18.148.923.383" />
+  <path d="M4.2 15.1a7 7 0 1 1 9.93-9.858A7 7 0 0 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.2" />
+  <path d="m9.228 15.852-.923-.383" />
+  <path d="m9.228 18.148-.923.383" />
+</svg>
+</span><h3>Bảo mật Cloud</h3><p>Prisma Cloud; bảo mật workload; CSPM; bảo mật Container &amp; Kubernetes.</p><a class="button button-outline" href="/contact/?product=cloud-security#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></article><article class="solution-card product-card" data-product-kind="security-operations" data-reveal="rise" data-duration="520" data-delay="0"><span class="icon-badge"><svg class="icon " data-icon="scan-eye" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+  <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+  <circle cx="12" cy="12" r="1" />
+  <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0" />
+</svg>
+</span><h3>Vận hành an ninh</h3><p>Cortex XDR; Cortex XSIAM; Cortex XSOAR; Cortex ITDR.</p><a class="button button-outline" href="/contact/?product=security-operations#consultation_form"><span>Yêu cầu báo giá</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -311,10 +436,25 @@
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg>
-</a></div></section></main>
+</a></div></section></div></main>
     <footer class="site-footer" id="footer"><div class="container footer-inner">
-      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark-web.png" width="40" height="40" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Kết nối doanh nghiệp. Bảo vệ tương lai số.</p></div>
+      <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Kết nối doanh nghiệp. Bảo vệ tương lai số.</p></div>
       <a href="/contact/">Liên hệ</a><p class="trademark-notice">Cisco, Palo Alto Networks và các nhãn hiệu khác được đề cập trên website thuộc quyền sở hữu của các chủ sở hữu tương ứng. Tên sản phẩm được sử dụng nhằm mục đích nhận diện và giới thiệu giải pháp.</p>
     </div></footer>
+    <button class="back-to-top" data-back-to-top type="button" aria-label="Lên đầu trang" title="Lên đầu trang" hidden><svg class="icon " data-icon="arrow-right" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</button>
   </body>
 </html>

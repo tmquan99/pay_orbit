@@ -1,0 +1,45 @@
+.connection-art-frame { position: relative; }
+.connection-signal-graphic { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+/* Leave enough empty stroke to prevent a second dash wrapping to the start. */
+[data-connection-signal] { fill: none; stroke: #EAF8FF; stroke-width: 10; stroke-linecap: round; stroke-dasharray: 13 200; opacity: 0; }
+.connection-firewall-pulse { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+
+.technology-art { container-type: inline-size; }
+.technology-stage { position: relative; aspect-ratio: 3 / 2; perspective: 900px; isolation: isolate; }
+.technology-board {
+  position: absolute;
+  padding: clamp(12px, 2.7cqi, 16px);
+  border: 1px solid #B8CCE9;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 6px 0 #D4E2F6, 0 7px 0 #B8CCE9, 0 20px 32px rgb(0 58 147 / .09);
+}
+.technology-board-0 { top: 6%; left: 2%; width: 84%; transform: rotateX(7deg) rotateY(-9deg) rotateZ(-3deg); }
+.technology-board-1 { top: 56%; right: 4%; width: 84%; transform: rotateX(7deg) rotateY(-9deg) rotateZ(-3deg); }
+.technology-board-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: clamp(10px, 2.3cqi, 12px); }
+.technology-board-heading strong { font-family: var(--font-display); font-size: clamp(16px, 3.5cqi, 20px); font-weight: 600; line-height: 1.15; letter-spacing: -.025em; color: var(--text); }
+.technology-board-heading > span { font-size: clamp(10px, 2.2cqi, 12px); color: var(--muted); }
+.technology-modules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(6px, 1.8cqi, 10px); }
+.technology-board-1 .technology-modules { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.technology-module {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  min-width: 0; min-height: clamp(64px, 14cqi, 80px); padding: 10px 4px;
+  border: 1px solid var(--divider); border-radius: 10px;
+  background: var(--surface); color: var(--accent-text);
+}
+.technology-module .icon { width: clamp(22px, 5.5cqi, 32px); height: clamp(22px, 5.5cqi, 32px); flex-shrink: 0; }
+.technology-module > span { font-size: clamp(10px, 2.1cqi, 12px); line-height: 1.45; text-align: center; color: var(--accent-text); }
+@container (max-width: 460px) {
+  .technology-stage { aspect-ratio: 1.25; min-height: 340px; }
+}
+@container (max-width: 380px) {
+  .technology-stage { aspect-ratio: .85; min-height: 0; }
+  .technology-board-0 { top: 3%; left: 2%; width: 92%; }
+  .technology-board-1 { top: 55%; right: 2%; width: 92%; }
+  .technology-board-0 .technology-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-board-0 .technology-module { flex-direction: row; justify-content: flex-start; min-height: 40px; gap: 6px; padding: 8px 6px; }
+  .technology-board-0 .technology-module > span { text-align: left; font-size: 10px; }
+  .technology-module > span { font-size: 11px; }
+  .technology-board-heading strong { font-size: 18px; }
+  .technology-board-heading > span { display: none; }
+}
