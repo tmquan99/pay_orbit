@@ -5,6 +5,9 @@
 .home-hero h1 { font-size: clamp(60px, 5.4vw, 80px); line-height: 1.08; letter-spacing: -.045em; max-width: none; }
 .home-hero h1 > span { display: block; }
 .home-hero h1 > span:last-child { color: var(--dark-accent); }
+@media (min-width: 320px) {
+  .home-hero:lang(en) h1 > span { white-space: nowrap; }
+}
 @media (min-width: 1024px) {
   .home-hero:lang(en) h1 { font-size: clamp(56px, 5vw, 72px); }
 }

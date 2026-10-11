@@ -233,6 +233,7 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
 .technology-overview { display: grid; gap: 12px; margin-top: 32px; }
 .vendor-summary { display: grid; grid-template-columns: 48px minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: 20px; border: 1px solid var(--divider); border-radius: 12px; background: var(--surface); text-decoration: none; transition: border-color 160ms ease-out, background-color 160ms ease-out; }
 .vendor-summary .icon-badge { width: 48px; height: 48px; border-radius: 12px; }
+.vendor-summary > .icon { transition: transform 160ms ease-out; }
 .vendor-summary strong { display: block; color: var(--text); font-size: 20px; line-height: 1.35; }
 .vendor-summary span span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .workflow-section { padding-block: 24px 64px; background: var(--canvas); }
@@ -263,7 +264,7 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
   .site-header nav a:not([aria-current='page']):hover { background: var(--dark-surface-alt); }
   .language-switch a:hover:not([aria-current])::before { background: var(--dark-surface-alt); }
   summary:hover { background: var(--surface-alt); }
-  .button:hover > .icon:last-child, .card-link:hover > .icon { transform: translate(2px, -2px); }
+  .button:hover > .icon:last-child, .card-link:hover > .icon, .vendor-summary:hover > .icon { transform: translate(2px, -2px); }
   .solution-overview a:hover, .vendor-summary:hover, .lifecycle-step:hover { background: var(--surface-alt); border-color: var(--accent); }
 }
 @media (max-width: 1100px) {
@@ -381,7 +382,7 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
   .lifecycle-compact > li > .step-arrow { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .button, .button .icon, .card-link .icon, .site-header nav a, .language-switch a, .language-switch a::before, .disclosure-indicator, input, textarea, .solution-overview a, .vendor-summary, .lifecycle-step { transition: none; }
+  .button, .button .icon, .card-link .icon, .site-header nav a, .language-switch a, .language-switch a::before, .disclosure-indicator, input, textarea, .solution-overview a, .vendor-summary, .vendor-summary > .icon, .lifecycle-step { transition: none; }
   .button:active { transform: none; }
-  .button:hover > .icon:last-child, .card-link:hover > .icon { transform: none; }
+  .button:hover > .icon:last-child, .card-link:hover > .icon, .vendor-summary:hover > .icon { transform: none; }
 }
