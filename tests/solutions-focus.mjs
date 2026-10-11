@@ -33,7 +33,7 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.stack || error.message));
-    for (const prefix of ['', '/en']) {
+    for (const prefix of ['/vi', '']) {
       await page.goto(`${origin}${prefix}/solutions/`);
       await page.evaluate(() => document.fonts.ready);
       // A disclosure may stay open/focused after the reader moves on.

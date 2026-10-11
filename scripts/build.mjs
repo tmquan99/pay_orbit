@@ -8,6 +8,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const destination = path.join(root, 'dist');
 const basePath = normalizeBasePath(process.env.SITE_BASE_PATH);
 await renderPages();
+// Always publish a fresh output so removed language routes cannot survive a rebuild.
+await fs.rm(destination, { recursive: true, force: true });
 await fs.mkdir(destination, { recursive: true });
 for (const route of pageRoutes) {
   const relative = route === '/' ? 'index.html' : route.slice(1) + 'index.html';

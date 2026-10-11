@@ -19,7 +19,7 @@ const coverage = [
   ['/contact/', '06_Contact', [5, 6, 7, 8]],
 ];
 const normalize = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-const localized = (route, language) => language === 'en' ? `/en${route}` : route;
+const localized = (route, language) => language === 'vi' ? `/vi${route}` : route;
 const pages = new Map();
 for (const language of ['vi', 'en']) {
   for (const route of routes) {
@@ -80,14 +80,14 @@ for (const [url, html] of pages) {
     const target = pages.get(destination || url);
     assert.ok(target, `Working page link ${href} on ${url}`);
     if (anchor) assert.ok(target.includes(`id="${anchor}"`), `Working anchor ${href} on ${url}`);
-    if (!tag.includes('data-language=') && destination) assert.equal(destination.startsWith('/en/'), url.startsWith('/en/'), `Content link must retain language: ${href} on ${url}`);
+    if (!tag.includes('data-language=') && destination) assert.equal(destination.startsWith('/vi/'), url.startsWith('/vi/'), `Content link must retain language: ${href} on ${url}`);
   }
 }
 for (let row = 5; row <= 9; row += 1) {
   for (const scope of workbook.sheets['04_Services']['D' + row].replace(/\.$/, '').split(';')) {
     const label = scope.trim();
     const sentenceCase = label.charAt(0).toUpperCase() + label.slice(1);
-    assert.ok(normalize(pages.get('/en/services/')).includes(sentenceCase), `Original service scope D${row}, sentence case: ${scope}`);
+    assert.ok(normalize(pages.get('/services/')).includes(sentenceCase), `Original service scope D${row}, sentence case: ${scope}`);
   }
 }
 const server = await startServer({ port: 0, host: '127.0.0.1', directory: process.env.TEST_DIST === '1' ? 'dist' : '.' });

@@ -14,11 +14,13 @@ const server = await startServer({ port: 0, directory: process.env.TEST_DIST ===
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
 try {
-  for (const blockedStorage of [false, true]) {
-    const context = await browser.newContext();
-    if (blockedStorage) await context.addInitScript(() => {
-      Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('Storage blocked', 'SecurityError'); } });
-    });
+  const response = await fetch(origin + '/about');
+  assert.equal(new URL(response.url).pathname, '/about/', 'Slash normalization keeps the English root route');
+  assert.match(await response.text(), /<html lang="en">/, 'English is the actual default HTML, without a language redirect');
+  for (const javaScriptEnabled of [true, false]) {
+    const context = await browser.newContext({ javaScriptEnabled });
+    // Old browser preferences must never override the language in the URL.
+    await context.addInitScript(() => localStorage.setItem(`pay-orbit-language:${location.pathname}`, 'vi'));
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
@@ -27,30 +29,30 @@ try {
       url.pathname = url.pathname.slice(base.length);
       await route.fulfill({ response: await route.fetch({ url: url.href }) });
     });
-    await page.goto(`${origin}${base}/?source=test#footer`);
-    await page.waitForURL(`${origin}${base}/en/?source=test#footer`);
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en', 'First visit defaults to English');
-    await page.locator('[data-language="vi"]').click();
-    await page.waitForFunction(() => document.documentElement.lang === 'vi');
-    assert.equal(new URL(page.url()).pathname, `${base}/`, 'VI switch reaches Vietnamese home');
-    assert.equal(new URL(page.url()).hash, '#footer', 'Language switch preserves anchor');
-    await page.reload();
-    assert.equal(await page.locator('html').getAttribute('lang'), 'vi', 'Reload keeps explicit VI choice');
-    if (!blockedStorage) {
-      await page.goto(`${origin}${base}/`);
-      assert.equal(await page.locator('html').getAttribute('lang'), 'vi', 'Return visit remembers VI');
+    for (const route of ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/']) {
+      await page.goto(`${origin}${base}${route}`);
+      assert.equal(new URL(page.url()).pathname, `${base}${route}`, 'English stays at the root URL');
+      assert.equal(await page.locator('html').getAttribute('lang'), 'en');
+      await page.locator('[data-language="vi"]').click();
+      await page.waitForURL(`${origin}${base}/vi${route}`);
+      assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
+      await page.reload();
+      assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
+      await page.locator('[data-language="en"]').click();
+      await page.waitForURL(`${origin}${base}${route}`);
+      assert.equal(await page.locator('html').getAttribute('lang'), 'en');
     }
-    await page.goto(`${origin}${base}/solutions/`);
-    assert.equal(await page.locator('html').getAttribute('lang'), 'vi', 'Direct Vietnamese links remain available');
-    await page.locator('[data-language="en"]').click();
-    await page.waitForURL(`${origin}${base}/en/solutions/`);
-    await page.goto(`${origin}${base}/`);
-    await page.waitForURL(`${origin}${base}/en/`);
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en', 'EN selection restores English entry');
+    if (javaScriptEnabled) {
+      await page.goto(`${origin}${base}/solutions/#cybersecurity`);
+      await page.locator('[data-language="vi"]').click();
+      await page.waitForURL(`${origin}${base}/vi/solutions/#cybersecurity`);
+      await page.locator('[data-language="en"]').click();
+      await page.waitForURL(`${origin}${base}/solutions/#cybersecurity`);
+    }
     assert.deepEqual(errors, [], 'Language navigation has no uncaught errors');
     await context.close();
   }
-  console.log(`PASS: English default, remembered VI selection, anchors, deep links and blocked storage under ${base || '/'}`);
+  console.log(`PASS: English root URLs, Vietnamese /vi/ URLs, all six language switches, anchors and no-JS under ${base || '/'}`);
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

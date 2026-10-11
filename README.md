@@ -2,7 +2,7 @@
 
 Website tĩnh sử dụng HTML, CSS và JavaScript native; không cần bundler. Lenis được lưu cục bộ và khóa phiên bản để thử cuộn mượt trên desktop.
 
-Website có sáu trang với hai ngôn ngữ Việt/Anh, dùng chung menu, footer, font và các tài sản đã có. Lần đầu mở trang chủ sẽ chuyển sang bản Anh tại `/en/`; nút VI/EN chuyển tới cùng trang và ghi nhớ lựa chọn trên trình duyệt. Các URL tiếng Việt trực tiếp vẫn hoạt động.
+Website có sáu trang với hai ngôn ngữ Việt/Anh, dùng chung menu, footer, font và các tài sản đã có. Tiếng Anh là bản mặc định tại `/`, `/about/`, …; tiếng Việt dùng `/vi/`, `/vi/about/`, … Nút VI/EN chuyển tới cùng trang, ngôn ngữ luôn theo URL và hoạt động cả khi tắt JavaScript.
 
 Trang chủ được nâng cấp theo bản duyệt ngày 09/10/2026: hero ngắn, hai nhóm giải pháp, ảnh minh họa đội kỹ thuật và sơ đồ kết nối lặp chu kỳ 4 giây khi cuộn đến, có nhịp nghỉ và tạm dừng khi ngoài viewport hoặc tab bị ẩn. Chi tiết và nguồn ảnh tại `docs/home-motion.md`; reduced motion và chế độ không JavaScript luôn có bản tĩnh đọc được.
 

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = process.env.TEST_DIST === '1' ? path.join(root, 'dist') : root;
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-for (const route of [...routes, ...routes.map(route => '/en' + route)]) {
+for (const route of [...routes, ...routes.map(route => '/vi' + route)]) {
   const html = await fs.readFile(path.join(site, route.slice(1), 'index.html'), 'utf8');
   assert.ok(/<a class="wordmark"[^>]*>\s*<img class="brand-symbol"/.test(html), `Logo must appear in the header at ${route}`);
   assert.ok(/class="footer-name"[^>]*>\s*<span class="brand-lockup">\s*<img class="brand-symbol"/.test(html), `Matching logo must appear in the footer at ${route}`);

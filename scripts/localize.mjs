@@ -31,7 +31,7 @@ export function translate(value, language = 'vi') {
   if (/[À-ỹ]/u.test(value)) throw new Error(`Missing English interface label: ${value}`);
   return value;
 }
-export const languageRoute = (route, language) => language === 'en' ? `/en${route}` : route;
+export const languageRoute = (route, language) => language === 'vi' ? `/vi${route}` : route;
 const escapedEnglish = new Map([...english].map(([vi, en]) => [escape(vi), escape(en)]));
 function translateMarkupText(value) {
   const text = value.trim();
@@ -42,11 +42,10 @@ function translateMarkupText(value) {
   return value;
 }
 export function localizeContent(html, language = 'vi') {
-  if (language === 'vi') return html;
   return html.split(/(<[^>]*>)/g).map(token => {
-    if (!token.startsWith('<')) return translateMarkupText(token);
+    if (!token.startsWith('<')) return language === 'en' ? translateMarkupText(token) : token;
     return token
-      .replace(/\b(alt|aria-label)="([^"]*)"/g, (_, name, value) => `${name}="${translateMarkupText(value)}"`)
+      .replace(/\b(alt|aria-label)="([^"]*)"/g, (_, name, value) => `${name}="${language === 'en' ? translateMarkupText(value) : value}"`)
       .replace(/\bhref="(\/(?!assets\/|src\/)[^"]*)"/g, (_, href) => `href="${languageRoute(href, language)}"`);
   }).join('');
 }

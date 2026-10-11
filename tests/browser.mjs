@@ -40,8 +40,8 @@ const errors = [];
 page.on('pageerror', error => errors.push(error.stack || error.message));
 const missing = [];
 page.on('response', response => { if (response.status() >= 400) missing.push(`${response.status()} ${response.url()}`); });
-const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-const reviewRoutes = [...routes, ...routes.map(route => '/en' + route)];
+const routes = ['/vi/', '/vi/about/', '/vi/solutions/', '/vi/services/', '/vi/products/', '/vi/contact/'];
+const reviewRoutes = [...routes, ...routes.map(route => route.slice(3))];
 const ids = ['hero', 'company_intro', 'core_solutions', 'technology_focus', 'why_pay_orbit', 'footer'];
 async function assertVisibleContent() {
   const hidden = await page.evaluate(ids => ids.filter(id => {
@@ -55,11 +55,7 @@ async function assertVisibleContent() {
   assert.equal(hiddenGroups, 0, 'Already visited groups must remain fully visible');
 }
 try {
-  // This suite verifies the Vietnamese home contract before both language routes.
-  await page.goto(origin + '/en/');
-  await page.locator('[data-language="vi"]').click();
-  await page.waitForURL(origin + '/');
-  await page.goto(origin, { waitUntil: 'domcontentloaded' });
+  await page.goto(origin + '/vi/', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => window.__motionChecks.filter(entry => entry.hero).length === 4);
   const heroPlayback = await page.locator('h1').evaluate(element => ({ transform: getComputedStyle(element).transform, running: element.getAnimations().some(animation => animation.playState === 'running' && animation.currentTime !== null) }));
   assert.ok(heroPlayback.running && heroPlayback.transform !== 'none', 'Hero must visibly move, not merely declare a timeline');
@@ -68,7 +64,7 @@ try {
   for (const id of ids) assert.equal(await page.locator(`#${id}`).count(), 1);
   assert.equal(await page.locator('.solution-card').count(), 4);
   assert.equal(await page.locator('#consultation_form').count(), 0);
-  assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/');
+  assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/vi/');
   assert.ok(await page.locator('.hero .actions').evaluate(element => element.getBoundingClientRect().bottom <= innerHeight), 'Primary hero actions must fit the first desktop viewport');
   record('Home contract', 'Company overview, four solution previews, technology focus and approach lead to standalone pages');
   const font = await page.evaluate(async () => {
@@ -151,7 +147,7 @@ try {
       })));
       assert.equal(logos.length, 2, `Shared brand lockups on ${route}`);
       assert.ok(logos.every(logo => logo.decoded && logo.width === logo.height && logo.width >= 32 && logo.decorative), `Crisp, square logo without duplicated accessible name on ${route} at ${width}px`);
-      assert.equal(await page.locator('.wordmark').getAttribute('href'), route.startsWith('/en/') ? '/en/' : '/');
+      assert.equal(await page.locator('.wordmark').getAttribute('href'), route.startsWith('/vi/') ? '/vi/' : '/');
       const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
       assert.equal((await page.request.get(origin + favicon)).status(), 200, `Loaded favicon on ${route}`);
       const iconIssues = await page.locator('svg.icon').evaluateAll(elements => elements.filter(element => element.getClientRects().length).filter(element => element.getAttribute('aria-hidden') !== 'true' || !element.dataset.icon || element.getBoundingClientRect().width < 16).map(element => element.dataset.icon));
@@ -203,13 +199,13 @@ try {
       assert.deepEqual(readability.clipped, [], `Clipped text at ${width}px`);
       await assertVisibleContent();
       assert.deepEqual(errors, [], `Runtime health on ${route} at ${width}px`);
-      const name = route === '/' ? 'home' : route === '/en/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
+      const name = route === '/vi/' ? 'home' : route === '/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
       await page.screenshot({ path: path.join(evidenceDirectory, `${name}-${width}.png`), fullPage: true });
       record(`Viewport ${width} ${route}`, { overflow: false, interactiveTargets: layout.hits.length, minimumHitSize: 44, minimumTextContrast: readability.minimumContrast, clippedText: false, capture: path.relative(root, path.join(evidenceDirectory, `${name}-${width}.png`)).replaceAll('\\', '/') });
     }
     console.log(`PASS: 12 VI/EN routes at ${width}px`);
   }
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'true');
   const menuHits = await page.locator('#site_navigation a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })));
@@ -228,16 +224,16 @@ try {
     assert.equal(await page.locator('#site_navigation a').count(), 6);
   }
   record('Standalone navigation', 'Every menu link changes URL and active state; pages without a form run without script errors');
-  await page.goto(origin + '/solutions/#cybersecurity', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/solutions/#cybersecurity', { waitUntil: 'networkidle' });
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
-  await page.goto(origin + '/services/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/services/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('[data-service]').count(), 5);
   assert.equal(await page.locator('[data-service] h2').first().textContent(), 'Tư vấn công nghệ');
-  await page.goto(origin + '/products/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/products/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('#cisco .product-card').count(), 4);
   assert.equal(await page.locator('#palo-alto-networks .product-card').count(), 3);
   record('Detail pages', 'Solutions deep links resolve; consulting is the first of five services; technology shows four Cisco and three Palo Alto Networks groups');
-  await page.goto(origin + '/contact/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/contact/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('a[href="tel:+61433024689"]').count(), 2);
   await page.getByRole('button', { name: 'Sao chép nội dung trao đổi', exact: true }).click();
   assert.equal(await page.locator('#name').getAttribute('aria-invalid'), 'true');
@@ -263,27 +259,27 @@ try {
     await page.goto(origin + route, { waitUntil: 'networkidle' });
     await page.locator('[data-language="en"]').focus();
     await page.keyboard.press('Enter');
-    await page.waitForURL(origin + '/en' + route);
+    await page.waitForURL(origin + route.slice(3));
     assert.equal(await page.locator('html').getAttribute('lang'), 'en');
     assert.equal(await page.locator('[data-language="en"]').getAttribute('aria-current'), 'true');
-    assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/en' + route);
+    assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), route.slice(3));
     const destinations = await page.locator('#site_navigation a').evaluateAll(elements => elements.map(element => element.getAttribute('href')));
-    assert.deepEqual(destinations, routes.map(destination => '/en' + destination));
+    assert.deepEqual(destinations, routes.map(destination => destination.slice(3)));
     await page.locator('[data-language="vi"]').click();
     await page.waitForURL(origin + route);
     assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
   }
   record('Bilingual switching', 'Keyboard switching on all six pages retains the page and localizes every navigation destination; Vietnamese links return to the same page');
-  await page.goto(origin + '/solutions/#cybersecurity', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/solutions/#cybersecurity', { waitUntil: 'networkidle' });
   await page.locator('[data-language="en"]').click();
-  await page.waitForURL(origin + '/en/solutions/#cybersecurity');
+  await page.waitForURL(origin + '/solutions/#cybersecurity');
   await page.waitForFunction(() => document.getElementById('cybersecurity')?.getBoundingClientRect().top < innerHeight, null, { timeout: 3000 });
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
   await page.goBack({ waitUntil: 'networkidle' });
-  assert.equal(new URL(page.url()).pathname, '/solutions/');
+  assert.equal(new URL(page.url()).pathname, '/vi/solutions/');
   assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
   record('Bilingual deep links and history', 'The selected section survives language switching and Back restores the Vietnamese page');
-  await page.goto(origin + '/en/contact/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/contact/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('a[href="tel:+61433024689"]').count(), 2);
   await page.getByRole('button', { name: 'Copy enquiry', exact: true }).click();
   assert.equal(await page.locator('#name_error').textContent(), 'Enter your name.');
@@ -308,7 +304,7 @@ try {
   assert.equal(await page.locator('#name').inputValue(), 'Test contact');
   record('English contact form', 'Field names, required and invalid-email messages, clipboard labels, success and denied-clipboard fallback are English; data survives validation and clipboard errors');
   await page.setViewportSize({ width: 1440, height: 960 });
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/', { waitUntil: 'networkidle' });
   await page.locator('#core_solutions').scrollIntoViewIfNeeded();
   await page.reload({ waitUntil: 'networkidle' });
   await assertVisibleContent();
@@ -340,12 +336,12 @@ try {
       assert.equal(await noScriptPage.locator('h1').count(), 1);
       assert.equal(await noScriptPage.locator('#site_navigation a:visible').count(), 6);
     }
-    await noScriptPage.goto(origin + '/en/services/', { waitUntil: 'networkidle' });
+    await noScriptPage.goto(origin + '/services/', { waitUntil: 'networkidle' });
     await noScriptPage.locator('[data-language="vi"]').click();
-    await noScriptPage.waitForURL(origin + '/services/');
+    await noScriptPage.waitForURL(origin + '/vi/services/');
     assert.equal(await noScriptPage.locator('html').getAttribute('lang'), 'vi');
     record('Language switch without JavaScript', 'All 12 routes render native content and the language links work without scripting');
-    await noScriptPage.goto(origin + '/contact/', { waitUntil: 'networkidle' });
+    await noScriptPage.goto(origin + '/vi/contact/', { waitUntil: 'networkidle' });
     await noScriptPage.locator('#name').fill('Người kiểm thử');
     await noScriptPage.locator('#requirement').fill('Nhu cầu riêng tư');
     await noScriptPage.locator('#name').press('Enter');

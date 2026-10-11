@@ -24,6 +24,6 @@ Chọn các trang HTML độc lập thay vì một SPA dùng router: tận dụn
 
 Các bổ sung hình ảnh theo yêu cầu tiếp theo được ghi tại `visual-enhancements.md`: icon Lucide, hai ảnh khái niệm và infographic HTML theo đúng nhóm nội dung và thứ tự quy trình của tài liệu. Các đoạn gốc trong bốn trang chi tiết tiếp tục giữ nguyên.
 
-Website được bổ sung bản tiếng Anh theo yêu cầu tiếp theo: cùng sáu trang dưới `/en/`, lấy các mô tả trực tiếp từ cột B, giữ bản Việt ở cột C. Nội dung và hành vi chuyển ngôn ngữ được đối chiếu tại `bilingual-content.md`; thông tin liên hệ, tài sản và chức năng clipboard giữ nguyên.
+Website được bổ sung bản tiếng Anh theo yêu cầu tiếp theo: bản Anh dùng sáu URL gốc và lấy các mô tả trực tiếp từ cột B; bản Việt dùng `/vi/` và giữ nội dung cột C. Nội dung và hành vi chuyển ngôn ngữ được đối chiếu tại `bilingual-content.md`; thông tin liên hệ, tài sản và chức năng clipboard giữ nguyên.
 
 Verify before publishing: thông tin công ty và liên hệ là nội dung người dùng cung cấp. Hai ảnh hạ tầng và hai infographic là ảnh minh họa được tạo, không chứng minh công trình hoặc địa điểm của PAY ORBIT. Biểu mẫu chỉ sao chép nội dung; việc nhận yêu cầu trực tuyến cần một email hoặc endpoint thực được xác nhận riêng.

@@ -14,7 +14,7 @@ const page = await context.newPage();
 const sceneRunning = () => page.locator('[data-connection-diagram]').evaluate(element => element.getAnimations({ subtree: true }).filter(animation => animation.playState === 'running').length);
 const cableRunning = () => page.locator('[data-hero-graphic="connection"]').evaluate(element => element.getAnimations({ subtree: true }).filter(animation => animation.playState === 'running').length);
 try {
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/vi/', { waitUntil: 'networkidle' });
   const heroResolution = await page.locator('.hero-media img').evaluate(image => {
     const frame = image.getBoundingClientRect();
     return Math.min(image.naturalWidth / frame.width, image.naturalHeight / frame.height);
@@ -44,7 +44,7 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-hero-graphic="connection"]').getAnimations({ subtree: true }).filter(animation => animation.playState === 'running').length === 4);
   await page.evaluate(() => addEventListener('pageshow', event => { window.__homeRestored = event.persisted; }));
   await page.locator('#technology_focus a.button').click();
-  await page.waitForURL(origin + '/products/');
+  await page.waitForURL(origin + '/vi/products/');
   await page.goBack({ waitUntil: 'commit' });
   await page.waitForFunction(() => window.__homeRestored === true);
   await page.locator('[data-connection-diagram]').scrollIntoViewIfNeeded();
@@ -69,7 +69,7 @@ try {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.waitForFunction(() => document.querySelector('[data-connection-flow]').getAnimations().some(animation => animation.playState === 'running'));
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(origin + '/en/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/', { waitUntil: 'networkidle' });
   await page.locator('[data-hero-graphic="connection"]').scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector('[data-hero-graphic="connection"]').getAnimations({ subtree: true }).filter(animation => animation.playState === 'running').length === 4);
   await page.locator('[data-connection-diagram]').scrollIntoViewIfNeeded();
@@ -86,10 +86,10 @@ try {
   const noScript = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   try {
     const staticPage = await noScript.newPage();
-    await staticPage.goto(origin, { waitUntil: 'networkidle' });
+    await staticPage.goto(origin + '/vi/', { waitUntil: 'networkidle' });
     assert.equal(await staticPage.locator('[data-connection-stage]:visible').count(), 4);
     assert.equal(await staticPage.locator('.connection-art').isVisible(), true, 'Home graphic retains its image without JavaScript');
-    assert.equal(await staticPage.locator('#core_solutions a[href^="/solutions/#"]').count(), 4);
+    assert.equal(await staticPage.locator('#core_solutions a[href^="/vi/solutions/#"]').count(), 4);
   } finally { await noScript.close(); }
   console.log('PASS: Home shares the sequential Solutions cable motion without trailing flashes; diagram repeats, pauses offscreen, restores BFCache, adapts its axis, respects reduced motion and stays readable without JavaScript');
 } finally {

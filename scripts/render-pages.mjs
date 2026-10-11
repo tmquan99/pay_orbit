@@ -183,10 +183,9 @@ function documentPage(route, title, description, content, language = 'vi') {
     <link rel="manifest" href="/assets/brand/site.webmanifest">
     <link rel="preload" href="/assets/fonts/manrope/Manrope-600-brand.woff2" as="font" type="font/woff2" crossorigin>
     <title>${t(title)}</title>
-    <link rel="alternate" hreflang="vi" href="${route}">
+    <link rel="alternate" hreflang="vi" href="${languageRoute(route, 'vi')}">
     <link rel="alternate" hreflang="en" href="${languageRoute(route, 'en')}">
     <link rel="alternate" hreflang="x-default" href="${languageRoute(route, 'en')}">
-    <script src="/src/language.js"${route === '/' && language === 'vi' ? ' data-default-entry' : ''}></script>
     <link rel="preload" href="/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${language === 'vi' ? '    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}    <link rel="stylesheet" href="/src/fonts.css">
@@ -216,7 +215,7 @@ ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route =
 }
 
 const baseRoutes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-export const pageRoutes = [...baseRoutes, ...baseRoutes.map(route => languageRoute(route, 'en'))];
+export const pageRoutes = [...baseRoutes, ...baseRoutes.map(route => languageRoute(route, 'vi'))];
 export async function renderPages() {
   const pages = [
     ['/', text('07_SEO_Dev_Notes', 'C5'), text('07_SEO_Dev_Notes', 'C6'), home()],

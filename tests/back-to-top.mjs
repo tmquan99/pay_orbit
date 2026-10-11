@@ -11,16 +11,13 @@ const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google
 try {
   for (const width of [1440, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce', hasTouch: width === 390 });
-    await page.goto(origin + '/en/');
-    await page.locator('[data-language="vi"]').click();
-    await page.waitForURL(origin + '/');
-    for (const prefix of ['', '/en']) {
+    for (const prefix of ['/vi', '']) {
       for (const route of ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/']) {
         await page.goto(origin + prefix + route);
         await page.evaluate(() => document.fonts.ready);
         const button = page.locator('[data-back-to-top]');
         assert.equal(await button.count(), 1, `One shared control at ${prefix}${route}`);
-        assert.equal(await button.getAttribute('aria-label'), prefix ? 'Back to top' : 'Lên đầu trang');
+        assert.equal(await button.getAttribute('aria-label'), prefix ? 'Lên đầu trang' : 'Back to top');
         assert.equal(await button.isVisible(), false, 'The control stays hidden at the top');
         await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
         await page.waitForFunction(() => document.querySelector('[data-back-to-top]').dataset.visible === 'true');

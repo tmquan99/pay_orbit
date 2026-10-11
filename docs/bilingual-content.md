@@ -1,17 +1,17 @@
 # Nội dung Việt / Anh
 
-Website dùng hai bản HTML cho mỗi trang: tiếng Việt giữ nguyên sáu URL hiện có, tiếng Anh nằm dưới `/en/`. Các trang dùng cùng template, CSS, ảnh, icon và JavaScript, không tạo ứng dụng hoặc pipeline thứ hai.
+Website dùng hai bản HTML cho mỗi trang: tiếng Anh dùng sáu URL gốc, tiếng Việt nằm dưới `/vi/`. Các trang dùng cùng template, CSS, ảnh, icon và JavaScript, không tạo ứng dụng hoặc pipeline thứ hai.
 
-Khi có JavaScript, lần đầu vào trang chủ `/` sẽ chuyển sang `/en/` trước khi hiển thị nội dung, giữ query và fragment. `src/language.js` ghi nhớ lựa chọn VI/EN trong localStorage, tách theo đường dẫn triển khai; nếu người dùng đã chọn VI thì trang chủ giữ VI. Khi trình duyệt chặn lưu trữ, nút VI về trang chủ dùng `?lang=vi` để tránh chuyển hướng lặp. Link trực tiếp tới các trang chi tiết giữ ngôn ngữ trong URL. Không JavaScript tiếp tục dùng các bản HTML tĩnh và nút VI/EN. Các alternate `x-default` trỏ đến bản Anh.
+Ngôn ngữ được xác định hoàn toàn bằng URL: `/about/` là tiếng Anh, `/vi/about/` là tiếng Việt; quy tắc áp dụng cho cả sáu trang và cả khi tắt JavaScript. Không chuyển hướng theo localStorage hoặc ngôn ngữ trình duyệt. Nút VI/EN giữ đúng trang và fragment khi có JavaScript. Các alternate `x-default` trỏ đến bản Anh.
 
 | Trang | Tiếng Việt | Tiếng Anh | Nguồn nội dung chính |
 | --- | --- | --- | --- |
-| Trang chủ | `/` | `/en/` | `01_Home!B7:B8,C7:C8`, `02_Company_Intro!B5,C5`; hero mới đã duyệt trong `ui.en.json` |
-| Giới thiệu | `/about/` | `/en/about/` | `02_Company_Intro!B5:B9,C5:C9` |
-| Giải pháp | `/solutions/` | `/en/solutions/` | `03_Solutions!B5:C8`, lợi ích tại `D5:D8` |
-| Dịch vụ | `/services/` | `/en/services/` | `04_Services!B5:D9` |
-| Sản phẩm & công nghệ | `/products/` | `/en/products/` | `05_Products_Tech!B5:C11` |
-| Liên hệ | `/contact/` | `/en/contact/` | `06_Contact!B5:C8`, nhãn trường tại `D10` |
+| Trang chủ | `/vi/` | `/` | `01_Home!B7:B8,C7:C8`, `02_Company_Intro!B5,C5`; hero mới đã duyệt trong `ui.en.json` |
+| Giới thiệu | `/vi/about/` | `/about/` | `02_Company_Intro!B5:B9,C5:C9` |
+| Giải pháp | `/vi/solutions/` | `/solutions/` | `03_Solutions!B5:C8`, lợi ích tại `D5:D8` |
+| Dịch vụ | `/vi/services/` | `/services/` | `04_Services!B5:D9` |
+| Sản phẩm & công nghệ | `/vi/products/` | `/products/` | `05_Products_Tech!B5:C11` |
+| Liên hệ | `/vi/contact/` | `/contact/` | `06_Contact!B5:C8`, nhãn trường tại `D10` |
 
 `content/workbook.json` giữ nguyên bản trích tài liệu. Đã kiểm tra lại tệp trong Downloads bằng luồng đọc dùng chung khi Excel đang mở; SHA-256 khớp bản trích: `7f6e874867cb5cccff9918e4d9ff066665ec042246e30cbc21c00e07449b5411`.
 

@@ -14,8 +14,10 @@ assert.equal(rebaseSiteFile('<a href="//example.com">x</a><a href="#section">y</
 
 const destination = path.join(root, 'dist');
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-for (const route of [...routes, ...routes.map(route => '/en' + route)]) {
+for (const route of [...routes, ...routes.map(route => '/vi' + route)]) {
   const html = await fs.readFile(path.join(destination, route.slice(1), 'index.html'), 'utf8');
+  assert.ok(html.includes(`<html lang="${route.startsWith('/vi/') ? 'vi' : 'en'}">`), `Published language matches URL: ${route}`);
+  assert.ok(!html.includes('/src/language.js'), 'Language is served directly without preference redirects');
   for (const match of html.matchAll(/\b(href|src|srcset)="([^"]*)"/g)) {
     const urls = match[1] === 'srcset' ? match[2].split(',').map(value => value.trim().split(/\s+/)[0]) : [match[2]];
     for (const url of urls) {
@@ -27,6 +29,8 @@ for (const route of [...routes, ...routes.map(route => '/en' + route)]) {
   }
 }
 const css = await fs.readFile(path.join(destination, 'src/site.css'), 'utf8');
+assert.equal(await fs.stat(path.join(destination, 'en/index.html')).catch(() => null), null, 'Removed /en/ output must not survive rebuilding');
+assert.equal(await fs.stat(path.join(destination, 'src/language.js')).catch(() => null), null, 'Removed language redirect must not survive rebuilding');
 assert.ok(css.includes(`url('${base}/assets/fonts/`), 'Published font URLs use the deployment path');
 const smoothScroll = await fs.readFile(path.join(destination, 'src/smooth-scroll.js'), 'utf8');
 assert.ok(smoothScroll.includes(`import('${base}/assets/vendor/lenis/lenis.js')`), 'Dynamic Lenis import uses the deployment path');

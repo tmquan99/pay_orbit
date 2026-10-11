@@ -8,7 +8,7 @@ const server = await startServer({ port: 0, directory: process.env.TEST_DIST ===
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, ignoreDefaultArgs: ['--disable-back-forward-cache'] });
 try {
-  for (const prefix of ['', '/en']) {
+  for (const prefix of ['/vi', '']) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const errors = [];
     page.on('pageerror', e => errors.push(e.stack || e.message));
