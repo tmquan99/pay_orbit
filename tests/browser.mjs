@@ -55,6 +55,10 @@ async function assertVisibleContent() {
   assert.equal(hiddenGroups, 0, 'Already visited groups must remain fully visible');
 }
 try {
+  // This suite verifies the Vietnamese home contract before both language routes.
+  await page.goto(origin + '/en/');
+  await page.locator('[data-language="vi"]').click();
+  await page.waitForURL(origin + '/');
   await page.goto(origin, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => window.__motionChecks.filter(entry => entry.hero).length === 4);
   const heroPlayback = await page.locator('h1').evaluate(element => ({ transform: getComputedStyle(element).transform, running: element.getAnimations().some(animation => animation.playState === 'running' && animation.currentTime !== null) }));

@@ -185,7 +185,8 @@ function documentPage(route, title, description, content, language = 'vi') {
     <title>${t(title)}</title>
     <link rel="alternate" hreflang="vi" href="${route}">
     <link rel="alternate" hreflang="en" href="${languageRoute(route, 'en')}">
-    <link rel="alternate" hreflang="x-default" href="${route}">
+    <link rel="alternate" hreflang="x-default" href="${languageRoute(route, 'en')}">
+    <script src="/src/language.js"${route === '/' && language === 'vi' ? ' data-default-entry' : ''}></script>
     <link rel="preload" href="/assets/fonts/bricolage-grotesque/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${language === 'vi' ? '    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}    <link rel="stylesheet" href="/src/fonts.css">

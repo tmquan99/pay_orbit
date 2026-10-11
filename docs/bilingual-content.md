@@ -2,6 +2,8 @@
 
 Website dùng hai bản HTML cho mỗi trang: tiếng Việt giữ nguyên sáu URL hiện có, tiếng Anh nằm dưới `/en/`. Các trang dùng cùng template, CSS, ảnh, icon và JavaScript, không tạo ứng dụng hoặc pipeline thứ hai.
 
+Khi có JavaScript, lần đầu vào trang chủ `/` sẽ chuyển sang `/en/` trước khi hiển thị nội dung, giữ query và fragment. `src/language.js` ghi nhớ lựa chọn VI/EN trong localStorage, tách theo đường dẫn triển khai; nếu người dùng đã chọn VI thì trang chủ giữ VI. Khi trình duyệt chặn lưu trữ, nút VI về trang chủ dùng `?lang=vi` để tránh chuyển hướng lặp. Link trực tiếp tới các trang chi tiết giữ ngôn ngữ trong URL. Không JavaScript tiếp tục dùng các bản HTML tĩnh và nút VI/EN. Các alternate `x-default` trỏ đến bản Anh.
+
 | Trang | Tiếng Việt | Tiếng Anh | Nguồn nội dung chính |
 | --- | --- | --- | --- |
 | Trang chủ | `/` | `/en/` | `01_Home!B7:B8,C7:C8`, `02_Company_Intro!B5,C5`; hero mới đã duyệt trong `ui.en.json` |
