@@ -81,7 +81,7 @@ html[lang="en"] .story-chapter:is([data-story-chapter="1"], [data-story-chapter=
 }
 @media (prefers-reduced-motion: no-preference) {
   .story-chapter::after { transition: opacity 240ms ease-out; }
-  .story-heading-label { transition: font-size 350ms cubic-bezier(.22, 1, .36, 1); }
+  .story-heading-label { transition: font-size 350ms cubic-bezier(.22, 1, .36, 1), width 350ms cubic-bezier(.22, 1, .36, 1); }
   [data-story-desktop]:not([data-story-instant]) [data-story-flow] { transition: transform 800ms cubic-bezier(.22, 1, .36, 1); }
   [data-story-desktop]:not([data-story-instant]) .story-security-zone, [data-story-desktop]:not([data-story-instant]) .story-gateway-symbol > .icon { transition: opacity 450ms ease-out, transform 650ms cubic-bezier(.22, 1, .36, 1); }
   [data-story-desktop]:not([data-story-instant]) .story-deployment-mark { transition: opacity 450ms ease-out, transform 650ms cubic-bezier(.22, 1, .36, 1); }
@@ -126,7 +126,10 @@ html[lang="en"] .story-chapter:is([data-story-chapter="1"], [data-story-chapter=
   .story-mobile-step { display: grid; justify-items: center; gap: 10px; position: absolute; left: -44px; top: 4px; width: 28px; padding-bottom: 8px; background: var(--canvas); color: var(--accent-text); }
   .story-mobile-step > span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--divider); border-radius: 50%; background: var(--surface); font-size: 11px; font-weight: 600; line-height: 1; }
   .story-mobile-step > .icon { width: 20px; height: 20px; }
-  .story-chapter h2 { margin-bottom: 16px; font-size: clamp(25.92px, 6.912vw, 30.24px); }
+  .story-chapter h2 { margin-bottom: 16px; font-size: clamp(25.92px, 6.912vw, 30.24px); text-wrap: wrap; }
+  /* Match the font-size ratio so words keep their lines throughout focus growth. */
+  .story-heading-label { width: 92.5926%; letter-spacing: -.025em; }
+  .story-chapter[data-story-current="true"] .story-heading-label { width: 100%; }
   .story-chapter::after { inset: -12px -12px 24px -8px; }
   .story-chapter:last-child::after { bottom: -12px; }
   .story-chapter-copy > p { font-size: 16px; line-height: 1.75; }

@@ -85,7 +85,9 @@ for (const [url, html] of pages) {
 }
 for (let row = 5; row <= 9; row += 1) {
   for (const scope of workbook.sheets['04_Services']['D' + row].replace(/\.$/, '').split(';')) {
-    assert.ok(normalize(pages.get('/en/services/')).includes(scope.trim()), `Original service scope D${row}: ${scope}`);
+    const label = scope.trim();
+    const sentenceCase = label.charAt(0).toUpperCase() + label.slice(1);
+    assert.ok(normalize(pages.get('/en/services/')).includes(sentenceCase), `Original service scope D${row}, sentence case: ${scope}`);
   }
 }
 const server = await startServer({ port: 0, host: '127.0.0.1', directory: process.env.TEST_DIST === '1' ? 'dist' : '.' });

@@ -74,6 +74,42 @@ async function staticFigures() {
 try {
   const typographyPage = await context.newPage();
   try {
+    for (const language of ['vi', 'en']) {
+      for (const width of [320, 360, 390, 435, 480, 600, 767]) {
+        await typographyPage.setViewportSize({ width, height: 844 });
+        await typographyPage.goto(origin + (language === 'en' ? '/en/about/' : '/about/'));
+        await typographyPage.evaluate(() => document.fonts.ready);
+        await typographyPage.addStyleTag({ content: '.story-heading-label { transition: none !important; }' });
+        const headings = await typographyPage.evaluate(() => [...document.querySelectorAll('[data-story-chapter]')].map(chapter => {
+          const label = chapter.querySelector('.story-heading-label');
+          return [false, true].map(active => {
+            chapter.dataset.storyCurrent = String(active);
+            // Check words per line as well as line count: equal counts can still rewrap.
+            const words = [...label.textContent.matchAll(/\S+/g)];
+            const lines = [];
+            for (const word of words) {
+              const range = document.createRange();
+              range.setStart(label.firstChild, word.index);
+              range.setEnd(label.firstChild, word.index + word[0].length);
+              const top = range.getBoundingClientRect().top;
+              if (!lines.length || Math.abs(lines.at(-1).top - top) > 1) lines.push({ top, words: [] });
+              lines.at(-1).words.push(word[0]);
+            }
+            return {
+              lines: lines.map(line => line.words.join(' ')),
+              font: parseFloat(getComputedStyle(label).fontSize),
+              height: chapter.querySelector('h2').getBoundingClientRect().height,
+              summaryTop: chapter.querySelector('.story-summary').getBoundingClientRect().top,
+            };
+          });
+        }));
+        headings.forEach((states, index) => {
+          assert.deepEqual(states[0].lines, states[1].lines, `${language} chapter ${index} keeps the same words on each line at ${width}px`);
+          assert.ok(states[1].font > states[0].font, 'Mobile headings still grow on focus');
+          assert.ok(Math.abs(states[0].height - states[1].height) < 1 && Math.abs(states[0].summaryTop - states[1].summaryTop) < 1, 'Mobile focus keeps the following text in place');
+        });
+      }
+    }
     for (const width of [1440, 1024, 768, 480, 435, 390, 360, 320]) {
       await typographyPage.setViewportSize({ width, height: 900 });
       await typographyPage.goto(origin + '/en/about/');
