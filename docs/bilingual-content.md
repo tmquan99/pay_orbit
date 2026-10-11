@@ -15,7 +15,7 @@ Ngôn ngữ được xác định hoàn toàn bằng URL: `/about/` là tiếng 
 
 `content/workbook.json` giữ nguyên bản trích tài liệu. Đã kiểm tra lại tệp trong Downloads bằng luồng đọc dùng chung khi Excel đang mở; SHA-256 khớp bản trích: `7f6e874867cb5cccff9918e4d9ff066665ec042246e30cbc21c00e07449b5411`.
 
-Các mô tả đầy đủ lấy trực tiếp từ cột B cho tiếng Anh và cột C cho tiếng Việt. Riêng hero được người dùng duyệt rút gọn ngày 09/10/2026 thành “Kết nối vững. Bảo mật sâu.” / “Connected. Protected.” và mô tả ngắn trong `content/ui.en.json`, thay nguyên văn ô Home B5/C5. Tagline dùng `00_Overview!B6` hoặc `B7`; tiêu đề, mô tả SEO trang chủ và ghi chú nhãn hiệu dùng `07_SEO_Dev_Notes!B5:B7,C5:C7`. Phạm vi dịch vụ tiếng Anh giữ nguyên các mục cột D. Lợi ích giải pháp cột D chỉ có tiếng Việt, nên bản Anh dùng bản dịch tương đương.
+Các mô tả đầy đủ lấy trực tiếp từ cột B cho tiếng Anh và cột C cho tiếng Việt. Riêng hero dùng copy đã duyệt “Kết nối vững. Bảo mật sâu.” / “Built to Connect. Designed to Protect.” và mô tả ngắn trong `content/ui.en.json`, thay nguyên văn ô Home B5/C5. Tagline dùng `00_Overview!B6` hoặc `B7`; tiêu đề, mô tả SEO trang chủ và ghi chú nhãn hiệu dùng `07_SEO_Dev_Notes!B5:B7,C5:C7`. Phạm vi dịch vụ tiếng Anh giữ nguyên các mục cột D. Lợi ích giải pháp cột D chỉ có tiếng Việt, nên bản Anh dùng bản dịch tương đương.
 
 `content/ui.en.json` chứa bản dịch của nhãn giao diện, tiêu đề tổ chức trang, phần tóm tắt đã có, chú thích infographic, alt ảnh và thông báo biểu mẫu. Ngoại lệ đã duyệt: các đoạn About B6:B9/C6:C9 dùng bản viết gọn với câu dẫn, nhóm ý hoặc luồng năm bước và đoạn kết; bản Anh tương ứng cũng nằm trong từ điển này. Không bổ sung dữ kiện kinh doanh.
 

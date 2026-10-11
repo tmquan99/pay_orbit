@@ -2,7 +2,7 @@
 
 Hướng được người dùng duyệt: giữ thương hiệu xanh và Bricolage Grotesque, rút gọn hero, tạo nhịp cho bốn giải pháp và thêm một chuyển động giải thích kết nối.
 
-Hero mới “Kết nối vững. Bảo mật sâu.” / “Connected. Protected.” thay copy Home C5. Hai nhóm kết nối và bảo mật giữ đủ bốn giải pháp và liên kết tới các phần chi tiết. Nội dung nguyên bản trên About, Solutions, Services và Products giữ nguyên. Header chung giảm từ 88px xuống 72px ở desktop; các trang chi tiết không tải stylesheet Home.
+Hero dùng slogan đã duyệt “Kết nối vững. Bảo mật sâu.” / “Built to Connect. Designed to Protect.” thay copy Home C5. Hai nhóm kết nối và bảo mật giữ đủ bốn giải pháp và liên kết tới các phần chi tiết. Nội dung nguyên bản trên About, Solutions, Services và Products giữ nguyên. Header chung giảm từ 88px xuống 72px ở desktop; các trang chi tiết không tải stylesheet Home.
 
 `src/home.css` quản lý bố cục Home. `connectionScene()` trong `scripts/visuals.mjs` tạo minh họa và bốn nhãn HTML. Theo yêu cầu cập nhật, `src/connection-scene.js` dùng IntersectionObserver và Web Animations API để lặp chu kỳ 4 giây: đường nối mở dần trong 1,8 giây, bốn điểm sáng lần lượt, giữ một nhịp nghỉ rồi đường nối mờ dần trước lượt tiếp theo. Các điểm dùng chung chu kỳ để luôn sáng đúng thứ tự. Cảnh tạm dừng khi dưới 20% diagram nằm trong viewport hoặc tab bị ẩn, tiếp tục khi quay lại; reduced motion hủy animation và giữ bản tĩnh. Đổi trục mobile/desktop tạo lại đúng một bộ animation, quay lại trang bằng BFCache khởi tạo lại playback. Không thêm scroll hijack, timer hay dependency ứng dụng. Sơ đồ chỉ biểu thị các nhóm giải pháp, không mô tả một kiến trúc hay dữ liệu vận hành thực tế.
 

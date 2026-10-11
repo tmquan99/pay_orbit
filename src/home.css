@@ -5,6 +5,9 @@
 .home-hero h1 { font-size: clamp(60px, 5.4vw, 80px); line-height: 1.08; letter-spacing: -.045em; max-width: none; }
 .home-hero h1 > span { display: block; }
 .home-hero h1 > span:last-child { color: var(--dark-accent); }
+@media (min-width: 1024px) {
+  .home-hero:lang(en) h1 { font-size: clamp(56px, 5vw, 72px); }
+}
 .home-hero p { max-width: 35ch; font-size: 20px; line-height: 1.6; color: #CBD6E5; }
 .home-hero .hero-media { left: calc((100% - min(1200px, calc(100% - 96px))) / 2 + min(1200px, calc(100% - 96px)) * .55); }
 .home-hero .hero-media img { object-position: 58% 50%; }
@@ -84,6 +87,7 @@
   .home-hero .hero-content { padding-block: 44px 48px; gap: 24px; }
   .hero-domain { font-size: 12px; }
   .home-hero h1 { font-size: clamp(40px, 11vw, 58px); line-height: 1.12; }
+  .home-hero:lang(en) h1 { font-size: clamp(32px, 10vw, 58px); }
   .home-hero p { font-size: 17px; max-width: 31ch; }
   .home-hero .button { font-size: 16px; }
   .home-hero .hero-media { aspect-ratio: 16 / 9; }
