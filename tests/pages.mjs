@@ -56,7 +56,8 @@ for (const [route, html] of pages) {
   assert.ok(html.includes('data-icon='), `Meaningful icon cues must render at ${route}`);
   for (const svg of html.matchAll(/<svg\b[^>]*>/g)) {
     assert.ok(svg[0].includes('aria-hidden="true"'), 'Decorative icons must not duplicate accessible labels');
-    assert.ok(svg[0].includes('data-icon=') || (['/', '/solutions/'].includes(route) && svg[0].includes('data-connection-graphic') && svg[0].includes('viewBox="0 0 1536 1024"')), 'Icons must come from the recorded library; the shared cable overlay is a separate graphic');
+    const footerGraphic = /data-footer-graphic="upper"[^>]*viewBox="40 40 176 104"|data-footer-graphic="lower"[^>]*viewBox="40 112 176 104"/.test(svg[0]);
+    assert.ok(svg[0].includes('data-icon=') || footerGraphic || (['/', '/solutions/'].includes(route) && svg[0].includes('data-connection-graphic') && svg[0].includes('viewBox="0 0 1536 1024"')), 'Icons must come from the recorded library; cable and approved logo backgrounds are separate graphics');
   }
 }
 for (const route of ['/about/']) {

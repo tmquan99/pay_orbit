@@ -1,0 +1,26 @@
+/* Approved study E: folded, stretched logo shapes behind the shared footer. */
+.site-footer { --footer-canvas: #020813; position: relative; isolation: isolate; overflow: hidden; container: footer / inline-size; background: var(--footer-canvas); border-top: 1px solid rgb(95 167 255 / .12); }
+.footer-inner { position: relative; z-index: 1; }
+.site-footer .footer-contact { min-height: 44px; padding: 8px 20px; border: 1px solid currentColor; background: transparent; color: var(--dark-accent-text); text-decoration: none; }
+@media (hover: hover) {
+  .site-footer .footer-contact:hover { color: var(--dark-accent-hover); }
+}
+.site-footer .trademark-notice { max-width: 78ch; }
+.footer-fold-art { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .72; }
+.footer-fold-scene { position: absolute; width: 780px; height: 430px; right: -160px; bottom: -60px; transform: rotate(-24deg); }
+.footer-fold-piece { position: absolute; width: 100%; height: 68%; overflow: visible; }
+.footer-fold-upper { left: 0; top: 0; filter: drop-shadow(0 20px 0 #082F66) drop-shadow(0 27px 0 #041B3E); }
+/* Extend the lower edge beyond the footer so no dark wedge appears at the corner. */
+.footer-fold-lower { left: 105px; bottom: -34px; filter: drop-shadow(0 20px 0 #073574) drop-shadow(0 27px 0 #041B3E); }
+.footer-fold-seam { fill: none; stroke: #7ABBFF; stroke-width: .55; opacity: .45; }
+.footer-fold-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--footer-canvas) 30%, rgb(2 8 19 / .94) 52%, rgb(2 8 19 / .4) 73%, transparent); }
+@container footer (max-width: 1099px) {
+  .footer-fold-scene { right: -260px; }
+  .footer-fold-art::after { background: linear-gradient(90deg, var(--footer-canvas) 20%, rgb(2 8 19 / .92) 50%, rgb(2 8 19 / .65) 77%, transparent); }
+}
+@container footer (max-width: 639px) {
+  .footer-name { font-size: 20px; }
+  .footer-fold-scene { width: 620px; height: 490px; right: -365px; bottom: -180px; transform: rotate(-33deg); }
+  .footer-fold-lower { bottom: -10px; }
+  .footer-fold-art::after { background: linear-gradient(90deg, var(--footer-canvas) 12%, rgb(2 8 19 / .9) 46%, rgb(2 8 19 / .7) 80%, rgb(2 8 19 / .35)); }
+}

@@ -6,6 +6,7 @@ import { translate, languageRoute, localizeContent, formMessages } from './local
 import { aboutStoryScene } from './about-story-markup.mjs';
 import { solutionSections } from './solutions-markup.mjs';
 import { serviceSections } from './services-markup.mjs';
+import { footerGraphic } from './footer-graphic.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
@@ -40,7 +41,7 @@ const brandSymbol = () => '<img class="brand-symbol" src="/assets/brand/pay-orbi
 const companyPhoto = (attributes = 'data-reveal="slide" data-duration="700"', lazy = true) => `<figure class="company-media" ${attributes}><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Switch, patch panel và cáp mạng doanh nghiệp" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`;
 const intro = (heading, description, extra = '', art = '', artOptions = {}) => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art === 'technology' ? technologyGraphic() : art ? illustration(art, artOptions) : ''}</div></section>`;
 const jumpLinks = items => `<nav class="page-jumps" aria-label="Trong trang này">${items.map(([id, label]) => `<a href="#${id}">${escape(label)}</a>`).join('')}</nav>`;
-const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Hãy chia sẻ nhu cầu về hạ tầng mạng hoặc an ninh mạng.</p></div>${button('Liên hệ tư vấn', '/contact/')}</div></section>`;
+const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout" data-reveal="cta" data-duration="960"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Hãy chia sẻ nhu cầu về hạ tầng mạng hoặc an ninh mạng.</p></div>${button('Liên hệ tư vấn', '/contact/')}</div></section>`;
 
 function home() {
   const solutionGroup = (start, heading, visual) => `<div class="solution-panel ${start === 0 ? 'network-panel' : 'security-panel'}" data-reveal="rise" data-duration="600" data-delay="${start * 45}">
@@ -126,7 +127,7 @@ function solutionPage() {
 function servicePage() {
   return `<div class="services-page">${intro('Dịch vụ công nghệ', 'Đồng hành từ tư vấn, thiết kế đến triển khai và hỗ trợ vận hành hạ tầng.', `<div class="actions" data-hero>${button('Trao đổi nhu cầu', '/contact/#consultation_form')}<a class="service-explore" href="#consulting"><span>Khám phá dịch vụ</span>${icon('arrow-right')}</a></div>`, 'lifecycle', { lazy: true, responsive: true })}
   ${serviceSections(services, workbook.sheets['04_Services'], button)}
-  <section class="section closing-cta"><div class="container closing-layout"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Phạm vi dịch vụ được thống nhất theo nhu cầu và môi trường vận hành.</p></div>${button('Trao đổi nhu cầu', '/contact/#consultation_form')}</div></section></div>`;
+  <section class="section closing-cta"><div class="container closing-layout" data-reveal="cta" data-duration="960"><div><h2>Trao đổi nhu cầu của doanh nghiệp</h2><p>Phạm vi dịch vụ được thống nhất theo nhu cầu và môi trường vận hành.</p></div>${button('Trao đổi nhu cầu', '/contact/#consultation_form')}</div></section></div>`;
 }
 
 function productPage() {
@@ -189,6 +190,7 @@ function documentPage(route, title, description, content, language = 'vi') {
     <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${language === 'vi' ? '    <link rel="preload" href="/assets/fonts/be-vietnam-pro/be-vietnam-pro-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin>\n' : ''}    <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/site.css">
+    <link rel="stylesheet" href="/src/footer.css">
     <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
 ${['/', '/solutions/', '/products/'].includes(route) ? '    <link rel="stylesheet" href="/src/hero-graphics.css">\n' : ''}
 ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : route === '/products/' ? '    <link rel="stylesheet" href="/src/products.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
@@ -202,9 +204,9 @@ ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route =
       <div class="header-actions"><div class="language-switch" role="group" aria-label="${t('Ngôn ngữ')}">${['vi', 'en'].map(locale => `<a data-language="${locale}" href="${languageRoute(route, locale)}" hreflang="${locale}" lang="${locale}" aria-label="${locale === 'vi' ? 'Tiếng Việt' : 'English'}"${locale === language ? ' aria-current="true"' : ''}>${locale.toUpperCase()}</a>`).join('')}</div><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
     <main id="main">${localizedContent}</main>
-    <footer class="site-footer" id="footer"><div class="container footer-inner">
+    <footer class="site-footer" id="footer">${footerGraphic()}<div class="container footer-inner">
       <div><p class="footer-name"><span class="brand-lockup">${brandSymbol()}<span>${escape(text('00_Overview', 'B4'))}</span></span></p><p class="tagline">${t(text('00_Overview', 'B7'))}</p></div>
-      <a href="${languageRoute('/contact/', language)}">${t('Liên hệ')}</a><p class="trademark-notice">${t(text('07_SEO_Dev_Notes', 'C7'))}</p>
+      <a class="button footer-contact" href="${languageRoute('/contact/', language)}">${t('Liên hệ')}</a><p class="trademark-notice">${t(text('07_SEO_Dev_Notes', 'C7'))}</p>
     </div></footer>
     <button class="back-to-top" data-back-to-top type="button" aria-label="${t('Lên đầu trang')}" title="${t('Lên đầu trang')}" hidden>${icon('arrow-right')}</button>
   </body>

@@ -7,6 +7,7 @@ import { installSmoothScroll } from './smooth-scroll.js';
 import { installProducts } from './products.js';
 import { installHeroGraphics } from './hero-graphics.js';
 import { installBackToTop } from './back-to-top.js';
+import { installFooterMotion } from './footer.js';
 
 document.documentElement.classList.add('has-js');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -36,6 +37,7 @@ let cleanupProducts = installProducts();
 let cleanupHeroGraphics = installHeroGraphics();
 let cleanupSmoothScroll = installSmoothScroll();
 let cleanupBackToTop = installBackToTop();
+let cleanupFooter = installFooterMotion();
 addEventListener('pagehide', event => {
   stopHero();
   cleanupReveals();
@@ -47,6 +49,7 @@ addEventListener('pagehide', event => {
   cleanupHeroGraphics();
   cleanupSmoothScroll();
   cleanupBackToTop();
+  cleanupFooter();
   reduced.removeEventListener('change', onMotionPreference);
 });
 addEventListener('pageshow', event => {
@@ -59,6 +62,7 @@ addEventListener('pageshow', event => {
     cleanupHeroGraphics = installHeroGraphics();
     cleanupSmoothScroll = installSmoothScroll();
     cleanupBackToTop = installBackToTop();
+    cleanupFooter = installFooterMotion();
   }
 });
 

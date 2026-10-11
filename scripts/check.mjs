@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-for (const file of ['src/smooth-scroll.js', 'src/back-to-top.js', 'src/products.js', 'src/hero-graphics.js', 'scripts/vendor-lenis.mjs', 'scripts/site-base.mjs', 'tests/deployment.mjs', 'tests/smooth-scroll.mjs', 'tests/back-to-top.mjs', 'tests/products-motion.mjs', 'tests/hero-graphics.mjs', 'tests/connection-regression.mjs']) {
+for (const file of ['src/smooth-scroll.js', 'src/back-to-top.js', 'src/products.js', 'src/hero-graphics.js', 'src/footer.js', 'scripts/footer-graphic.mjs', 'scripts/vendor-lenis.mjs', 'scripts/site-base.mjs', 'tests/deployment.mjs', 'tests/smooth-scroll.mjs', 'tests/back-to-top.mjs', 'tests/products-motion.mjs', 'tests/hero-graphics.mjs', 'tests/connection-regression.mjs']) {
   const result = spawnSync(process.execPath, ['--check', path.join(root, file)], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }
