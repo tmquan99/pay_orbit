@@ -10,7 +10,7 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, ignoreDefaultArgs: ['--disable-back-forward-cache'] });
 try {
   for (const width of [1440, 768, 390, 320]) {
-    for (const prefix of ['/vi', '']) {
+    for (const prefix of ['']) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -134,7 +134,7 @@ try {
   assert.ok(await plain.locator('.product-card').evaluateAll(elements => elements.every(element => getComputedStyle(element).opacity === '1')), 'Touch interaction never leaves product cards dimmed');
   assert.equal(await plain.locator('[data-technology-module]:visible').count(), 7, 'No-JS catalogue retains all technology groups');
   await plain.close();
-  console.log('PASS: Products layout preserved at four widths in VI/EN, visible hero motion, finite icons, vendor navigation, reduced motion, quote context, draft preservation and no-JS content');
+  console.log('PASS: Products layout preserved at four widths in English, visible hero motion, finite icons, vendor navigation, reduced motion, quote context, draft preservation and no-JS content');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

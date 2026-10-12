@@ -1,5 +1,7 @@
 # Nâng cấp trang chủ, 09/10/2026
 
+> Tài liệu lịch sử. Home đã được thay bằng mockup A ngày 12/10/2026; xem `home-a.md`. Sơ đồ kết nối lặp mô tả bên dưới không còn trên Home. Chuyển động trên trang chi tiết vẫn được kiểm tra riêng.
+
 Hướng được người dùng duyệt: giữ thương hiệu xanh và Bricolage Grotesque, rút gọn hero, tạo nhịp cho bốn giải pháp và thêm một chuyển động giải thích kết nối.
 
 Hero dùng slogan đã duyệt “Kết nối vững. Bảo mật sâu.” / “Built to Connect. Designed to Protect.” thay copy Home C5. Hai nhóm kết nối và bảo mật giữ đủ bốn giải pháp và liên kết tới các phần chi tiết. Nội dung nguyên bản trên About, Solutions, Services và Products giữ nguyên. Header chung giảm từ 88px xuống 72px ở desktop; các trang chi tiết không tải stylesheet Home.

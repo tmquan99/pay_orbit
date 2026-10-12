@@ -68,15 +68,6 @@ addEventListener('pageshow', event => {
 
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.getElementById('site_navigation');
-function syncLanguageAnchors() {
-  document.querySelectorAll('[data-language]').forEach(link => {
-    const destination = new URL(link.href, location.href);
-    destination.hash = location.hash;
-    link.setAttribute('href', destination.pathname + destination.hash);
-  });
-}
-syncLanguageAnchors();
-addEventListener('hashchange', syncLanguageAnchors);
 function closeMenu(returnFocus = false) {
   navigation.classList.remove('is-open');
   menu.setAttribute('aria-expanded', 'false');

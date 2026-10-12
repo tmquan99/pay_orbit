@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = process.env.TEST_DIST === '1' ? path.join(root, 'dist') : root;
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-for (const route of [...routes, ...routes.map(route => '/vi' + route)]) {
+for (const route of routes) {
   const html = await fs.readFile(path.join(site, route.slice(1), 'index.html'), 'utf8');
   assert.ok(/<a class="wordmark"[^>]*>\s*<img class="brand-symbol"/.test(html), `Logo must appear in the header at ${route}`);
   assert.ok(/class="footer-name"[^>]*>\s*<span class="brand-lockup">\s*<img class="brand-symbol"/.test(html), `Matching logo must appear in the footer at ${route}`);
@@ -36,4 +36,4 @@ for (const asset of ledger.vectorAssets) {
   assert.ok(!/<(?:text|image|filter)\b/.test(vector), `Portable outlined artwork: ${asset.path}`);
   assert.equal(crypto.createHash('sha256').update(vector).digest('hex'), asset.sha256);
 }
-console.log('PASS: approved vector logo and favicon on 12 routes, accessible labels, transparent PNGs and outlined SVG provenance');
+console.log('PASS: approved vector logo and favicon on six routes, accessible labels, transparent PNGs and outlined SVG provenance');

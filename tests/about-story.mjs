@@ -74,10 +74,10 @@ async function staticFigures() {
 try {
   const typographyPage = await context.newPage();
   try {
-    for (const language of ['vi', 'en']) {
+    for (const language of ['en']) {
       for (const width of [320, 360, 390, 435, 480, 600, 767]) {
         await typographyPage.setViewportSize({ width, height: 844 });
-        await typographyPage.goto(origin + (language === 'en' ? '/about/' : '/vi/about/'));
+        await typographyPage.goto(origin + (language === 'en' ? '/about/' : '/about/'));
         await typographyPage.evaluate(() => document.fonts.ready);
         await typographyPage.addStyleTag({ content: '.story-heading-label { transition: none !important; }' });
         const headings = await typographyPage.evaluate(() => [...document.querySelectorAll('[data-story-chapter]')].map(chapter => {
@@ -134,7 +134,7 @@ try {
       }
     }
   } finally { await typographyPage.close(); }
-  await page.goto(origin + '/vi/about/');
+  await page.goto(origin + '/about/');
   assert.equal(await page.locator('[data-about-story]').count(), 1, 'About must contain the approved four-chapter story');
   assert.equal(await page.locator('[data-story-chapter]').count(), 4);
   await page.waitForFunction(() => document.querySelector('[data-about-story]')?.dataset.storyEnhanced === 'true');
@@ -159,7 +159,7 @@ try {
   assert.equal(await page.locator('[data-story-desktop] [data-story-copy="1"]:visible').count(), 3);
   assert.equal(await page.locator('[data-story-desktop] [data-story-copy="0"]:visible').count(), 0);
 
-  for (const [index, symbol, detail] of [[2, 'cable', 'Kiểm thử'], [3, 'headset', 'Tối ưu']]) {
+  for (const [index, symbol, detail] of [[2, 'cable', "Test"], [3, 'headset', "Optimize"]]) {
     await moveToChapter(index);
     await stage(index);
     await page.waitForFunction(() => document.querySelector('[data-story-desktop] .story-gateway-symbol').getAnimations({ subtree: true }).some(animation => animation.playState === 'running'), null, { timeout: 3000 });
@@ -209,12 +209,12 @@ try {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
 
   await page.setViewportSize({ width: 320, height: 568 });
-  for (const route of ['/vi/about/', '/about/']) {
+  for (const route of ['/about/']) {
     await page.goto(origin + route);
     await staticFigures();
     await page.evaluate(() => document.fonts.ready);
     const collapsed = await page.locator('[data-about-story]').evaluate(story => story.getBoundingClientRect().height);
-    assert.ok(collapsed < (route === '/vi/about/' ? 4279 : 4338) * .75, 'The mobile story must be at least 25% shorter than the repeated-diagram layout at 320px');
+    assert.ok(collapsed < 4338 * .75, 'The mobile story must be at least 25% shorter than the repeated-diagram layout at 320px');
     assert.equal(await page.locator('.about-lifecycle a:visible').count(), 5, 'All five service links must remain available');
     assert.ok(await page.locator('.about-lifecycle').evaluate(flow => flow.getBoundingClientRect().height < 160), 'Mobile deployment links must fit in a compact text flow');
     await moveToChapter(2);
@@ -235,7 +235,7 @@ try {
   assert.equal(await page.locator('.story-mobile-diagram:visible').count(), 0, 'Tablet must retain the existing inline diagrams');
 
   await page.setViewportSize({ width: 1280, height: 760 });
-  await page.goto(origin + '/vi/about/');
+  await page.goto(origin + '/about/');
   await page.waitForFunction(() => document.querySelector('[data-about-story]')?.dataset.storyEnhanced === 'true');
   await moveToChapter(2);
   await stage(2);
@@ -246,7 +246,7 @@ try {
   for (let visit = 0; visit < 2; visit++) {
     const before = await page.locator('[data-story-chapter="2"]').evaluate(chapter => ({ scroll: scrollY, top: chapter.getBoundingClientRect().top }));
     await page.locator('[data-story-chapter="2"] .story-chapter-copy > a').click();
-    await page.waitForURL(origin + '/vi/services/');
+    await page.waitForURL(origin + '/services/');
     await page.goBack({ waitUntil: 'commit', timeout: 5000 });
     await page.waitForFunction(() => window.__aboutBFCacheRestored === true);
     assert.equal(await page.evaluate(() => window.__aboutCacheMarker), true, 'Back must actually use BFCache, not reload the page');
@@ -266,7 +266,7 @@ try {
 
   const noJS = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
   const plain = await noJS.newPage();
-  await plain.goto(origin + '/vi/about/');
+  await plain.goto(origin + '/about/');
   assert.equal(await plain.locator('[data-story-inline]:visible').count(), 4, 'Without JavaScript each chapter must retain its own readable illustration');
   assert.equal(await plain.locator('.story-chapter-copy > a').count(), 4);
   assert.ok((await plain.locator('[data-about-story]').innerText()).includes('Palo Alto Networks'));

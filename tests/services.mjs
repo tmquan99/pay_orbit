@@ -38,8 +38,8 @@ async function checkDescriptionMotion(page) {
   }
 }
 try {
-  for (const language of ['vi', 'en']) {
-    const prefix = language === 'vi' ? '/vi' : '';
+  for (const language of ['en']) {
+    const prefix = '';
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));

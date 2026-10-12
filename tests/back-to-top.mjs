@@ -11,13 +11,13 @@ const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google
 try {
   for (const width of [1440, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce', hasTouch: width === 390 });
-    for (const prefix of ['/vi', '']) {
+    for (const prefix of ['']) {
       for (const route of ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/']) {
         await page.goto(origin + prefix + route);
         await page.evaluate(() => document.fonts.ready);
         const button = page.locator('[data-back-to-top]');
         assert.equal(await button.count(), 1, `One shared control at ${prefix}${route}`);
-        assert.equal(await button.getAttribute('aria-label'), prefix ? 'Lên đầu trang' : 'Back to top');
+        assert.equal(await button.getAttribute('aria-label'), prefix ? "Back to top" : 'Back to top');
         assert.equal(await button.isVisible(), false, 'The control stays hidden at the top');
         await page.evaluate(() => scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
         await page.waitForFunction(() => document.querySelector('[data-back-to-top]').dataset.visible === 'true');
@@ -66,7 +66,7 @@ try {
   await plain.goto(origin);
   assert.equal(await plain.locator('[data-back-to-top]').isVisible(), false, 'No nonfunctional control is shown without JavaScript');
   await plain.close();
-  console.log('PASS: Back-to-top on all 12 routes, desktop/mobile, keyboard focus, reduced motion, Lenis/native smooth motion, anchor history, BFCache and no-JS fallback');
+  console.log('PASS: Back-to-top on all six routes, desktop/mobile, keyboard focus, reduced motion, Lenis/native smooth motion, anchor history, BFCache and no-JS fallback');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

@@ -11,7 +11,7 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, ignoreDefaultArgs: ['--disable-back-forward-cache'] });
 try {
   for (const width of [1440, 1024, 768, 390, 360, 320]) {
-    for (const prefix of ['/vi', '']) {
+    for (const prefix of ['']) {
       for (const [route, kind, count] of [['solutions', 'connection', 4], ['products', 'technology', 7]]) {
         const page = await browser.newPage({ viewport: { width, height: 900 } });
         const errors = [];
@@ -93,7 +93,7 @@ try {
     else assert.ok(await page.locator('[data-connection-signal]').evaluateAll(paths => paths.every(el => getComputedStyle(el).opacity === '0')));
     await page.close();
   }
-  console.log('PASS: Distinct hero graphics in VI/EN at six widths; sequential motion, no trailing flashes, readable frames, viewport pause, reduced motion, BFCache and no-JS fallback');
+  console.log('PASS: Distinct hero graphics in English at six widths; sequential motion, no trailing flashes, readable frames, viewport pause, reduced motion, BFCache and no-JS fallback');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

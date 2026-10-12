@@ -14,9 +14,9 @@ assert.equal(rebaseSiteFile('<a href="//example.com">x</a><a href="#section">y</
 
 const destination = path.join(root, 'dist');
 const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
-for (const route of [...routes, ...routes.map(route => '/vi' + route)]) {
+for (const route of routes) {
   const html = await fs.readFile(path.join(destination, route.slice(1), 'index.html'), 'utf8');
-  assert.ok(html.includes(`<html lang="${route.startsWith('/vi/') ? 'vi' : 'en'}">`), `Published language matches URL: ${route}`);
+  assert.ok(html.includes(`<html lang="${'en'}">`), `Published language matches URL: ${route}`);
   assert.ok(!html.includes('/src/language.js'), 'Language is served directly without preference redirects');
   for (const match of html.matchAll(/\b(href|src|srcset)="([^"]*)"/g)) {
     const urls = match[1] === 'srcset' ? match[2].split(',').map(value => value.trim().split(/\s+/)[0]) : [match[2]];
@@ -28,6 +28,7 @@ for (const route of [...routes, ...routes.map(route => '/vi' + route)]) {
     }
   }
 }
+assert.equal(await fs.stat(path.join(destination, 'vi')).catch(() => null), null, 'Vietnamese output must not survive rebuilding');
 const css = await fs.readFile(path.join(destination, 'src/site.css'), 'utf8');
 assert.equal(await fs.stat(path.join(destination, 'en/index.html')).catch(() => null), null, 'Removed /en/ output must not survive rebuilding');
 assert.equal(await fs.stat(path.join(destination, 'src/language.js')).catch(() => null), null, 'Removed language redirect must not survive rebuilding');
@@ -38,4 +39,4 @@ const manifest = JSON.parse(await fs.readFile(path.join(destination, 'assets/bra
 assert.equal(manifest.start_url, `${base}/`);
 assert.ok(manifest.icons.every(icon => icon.src.startsWith(`${base}/assets/brand/`)));
 assert.ok((await fs.stat(path.join(destination, '.nojekyll'))).isFile());
-console.log(`PASS: all 12 published routes, assets, fonts, dynamic imports and manifest under ${base || '/'}`);
+console.log(`PASS: all six published routes, assets, fonts, dynamic imports and manifest under ${base || '/'}`);

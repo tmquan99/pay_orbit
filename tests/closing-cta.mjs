@@ -28,7 +28,7 @@ try {
       };
     });
     const page = await context.newPage();
-    for (const route of ['/vi/about/', '/vi/solutions/', '/vi/services/', '/vi/products/', '/about/', '/solutions/', '/services/', '/products/']) {
+    for (const route of ['/about/', '/solutions/', '/services/', '/products/']) {
       await page.goto(origin + route);
       await page.evaluate(() => document.fonts.ready);
       await page.locator('.closing-layout').evaluate(element => scrollTo({ top: scrollY + element.getBoundingClientRect().top - innerHeight - 50, behavior: 'instant' }));
@@ -55,7 +55,7 @@ try {
       await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
       await page.locator('.closing-cta').scrollIntoViewIfNeeded();
       assert.equal(await page.evaluate(() => window.__ctaPlays), 3, 'Revisiting the CTA must not replay its entrance');
-      await page.goto(origin + '/vi/contact/');
+      await page.goto(origin + '/contact/');
       await page.goto(origin + route + '#footer');
       await page.waitForFunction(() => window.__ctaPlays === 3);
       await page.waitForFunction(() => document.querySelector('.closing-layout').getAnimations({ subtree: true }).length === 0);
@@ -72,7 +72,7 @@ try {
     assert.ok(await page.locator('.closing-layout').evaluate(element => [...element.querySelectorAll('h2, p, .button')].every(child => getComputedStyle(child).opacity === '1')));
     await context.close();
   }
-  console.log('PASS: CTA heading, description and action stagger visibly on all eight VI/EN pages at desktop/mobile sizes, support footer links, play once and remain readable with reduced motion or no JavaScript');
+  console.log('PASS: CTA heading, description and action stagger visibly on all four detail pages at desktop/mobile sizes, support footer links, play once and remain readable with reduced motion or no JavaScript');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

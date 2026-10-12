@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-11T09:15:41.038Z",
+  "checkedAt": "2026-10-12T10:20:40.286Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 16)",
+        "transform": "matrix(1, 0, 0, 1, 0, 7.52783)",
         "running": true
       }
     },
@@ -24,23 +24,13 @@
         "faces": [
           {
             "family": "Be Vietnam Pro",
-            "status": "loaded",
+            "status": "unloaded",
             "weight": "400"
           },
           {
             "family": "Be Vietnam Pro",
             "status": "loaded",
             "weight": "400"
-          },
-          {
-            "family": "Be Vietnam Pro",
-            "status": "loaded",
-            "weight": "400"
-          },
-          {
-            "family": "Be Vietnam Pro",
-            "status": "loaded",
-            "weight": "500"
           },
           {
             "family": "Be Vietnam Pro",
@@ -54,12 +44,7 @@
           },
           {
             "family": "Be Vietnam Pro",
-            "status": "loaded",
-            "weight": "600"
-          },
-          {
-            "family": "Be Vietnam Pro",
-            "status": "loaded",
+            "status": "unloaded",
             "weight": "600"
           },
           {
@@ -84,7 +69,7 @@
     },
     {
       "name": "Initial imagery",
-      "detail": "Hero decodes; lazy team, solution photography and the connection illustration are checked after scrolling"
+      "detail": "Panoramic hero decodes; the lazy solutions illustration and two vendor logos are checked after scrolling"
     },
     {
       "name": "Hero entrance",
@@ -168,32 +153,30 @@
       ]
     },
     {
-      "name": "Media actual playback",
-      "detail": {
-        "opacity": "0.0531292",
-        "transform": "matrix(1, 0, 0, 1, 11.3624, 0)"
-      }
-    },
-    {
-      "name": "Team imagery",
-      "detail": "Lazy illustrative team photograph decodes after entering its section"
+      "name": "Home A imagery",
+      "detail": "Panoramic hero and shared solutions illustration decode in the needs-led composition"
     },
     {
       "name": "Distinct scroll entrances",
       "detail": [
         {
+          "reveal": "rise",
+          "duration": 600,
+          "played": 1
+        },
+        {
+          "reveal": "rise",
+          "duration": 600,
+          "played": 1
+        },
+        {
+          "reveal": "rise",
+          "duration": 600,
+          "played": 1
+        },
+        {
           "reveal": "slide",
           "duration": 700,
-          "played": 1
-        },
-        {
-          "reveal": "rise",
-          "duration": 600,
-          "played": 1
-        },
-        {
-          "reveal": "rise",
-          "duration": 600,
           "played": 1
         }
       ]
@@ -206,7 +189,7 @@
       "name": "Viewport 1440 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 28,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -217,7 +200,7 @@
       "name": "Viewport 1440 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 21,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -228,7 +211,7 @@
       "name": "Viewport 1440 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 33,
+        "interactiveTargets": 31,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -239,7 +222,7 @@
       "name": "Viewport 1440 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 32,
+        "interactiveTargets": 30,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -250,7 +233,7 @@
       "name": "Viewport 1440 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 20,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -261,7 +244,7 @@
       "name": "Viewport 1440 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 18,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -269,76 +252,10 @@
       }
     },
     {
-      "name": "Viewport 1440 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 25,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-1440.png"
-      }
-    },
-    {
-      "name": "Viewport 1440 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 23,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-1440.png"
-      }
-    },
-    {
-      "name": "Viewport 1440 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 33,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-1440.png"
-      }
-    },
-    {
-      "name": "Viewport 1440 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 32,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-1440.png"
-      }
-    },
-    {
-      "name": "Viewport 1440 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 22,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-1440.png"
-      }
-    },
-    {
-      "name": "Viewport 1440 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-1440.png"
-      }
-    },
-    {
       "name": "Viewport 1024 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -349,7 +266,7 @@
       "name": "Viewport 1024 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 18,
+        "interactiveTargets": 16,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -360,7 +277,7 @@
       "name": "Viewport 1024 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 28,
+        "interactiveTargets": 26,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -371,7 +288,7 @@
       "name": "Viewport 1024 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 27,
+        "interactiveTargets": 25,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -382,7 +299,7 @@
       "name": "Viewport 1024 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -393,7 +310,7 @@
       "name": "Viewport 1024 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 15,
+        "interactiveTargets": 13,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -401,76 +318,10 @@
       }
     },
     {
-      "name": "Viewport 1024 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-1024.png"
-      }
-    },
-    {
-      "name": "Viewport 1024 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 18,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-1024.png"
-      }
-    },
-    {
-      "name": "Viewport 1024 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 28,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-1024.png"
-      }
-    },
-    {
-      "name": "Viewport 1024 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 27,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-1024.png"
-      }
-    },
-    {
-      "name": "Viewport 1024 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 17,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-1024.png"
-      }
-    },
-    {
-      "name": "Viewport 1024 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 15,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-1024.png"
-      }
-    },
-    {
       "name": "Viewport 768 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -481,7 +332,7 @@
       "name": "Viewport 768 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 18,
+        "interactiveTargets": 16,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -492,7 +343,7 @@
       "name": "Viewport 768 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -503,7 +354,7 @@
       "name": "Viewport 768 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -514,7 +365,7 @@
       "name": "Viewport 768 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -525,7 +376,7 @@
       "name": "Viewport 768 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 15,
+        "interactiveTargets": 13,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -533,76 +384,10 @@
       }
     },
     {
-      "name": "Viewport 768 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-768.png"
-      }
-    },
-    {
-      "name": "Viewport 768 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 18,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-768.png"
-      }
-    },
-    {
-      "name": "Viewport 768 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 24,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-768.png"
-      }
-    },
-    {
-      "name": "Viewport 768 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 25,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-768.png"
-      }
-    },
-    {
-      "name": "Viewport 768 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 17,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-768.png"
-      }
-    },
-    {
-      "name": "Viewport 768 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 15,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-768.png"
-      }
-    },
-    {
       "name": "Viewport 390 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -613,7 +398,7 @@
       "name": "Viewport 390 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 18,
+        "interactiveTargets": 16,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -624,7 +409,7 @@
       "name": "Viewport 390 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -635,7 +420,7 @@
       "name": "Viewport 390 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -646,7 +431,7 @@
       "name": "Viewport 390 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -657,7 +442,7 @@
       "name": "Viewport 390 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 15,
+        "interactiveTargets": 13,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -665,76 +450,10 @@
       }
     },
     {
-      "name": "Viewport 390 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-390.png"
-      }
-    },
-    {
-      "name": "Viewport 390 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 18,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-390.png"
-      }
-    },
-    {
-      "name": "Viewport 390 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 24,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-390.png"
-      }
-    },
-    {
-      "name": "Viewport 390 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 25,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-390.png"
-      }
-    },
-    {
-      "name": "Viewport 390 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 17,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-390.png"
-      }
-    },
-    {
-      "name": "Viewport 390 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 15,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-390.png"
-      }
-    },
-    {
       "name": "Viewport 360 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -745,7 +464,7 @@
       "name": "Viewport 360 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 18,
+        "interactiveTargets": 16,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -756,7 +475,7 @@
       "name": "Viewport 360 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -767,7 +486,7 @@
       "name": "Viewport 360 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -778,7 +497,7 @@
       "name": "Viewport 360 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -789,7 +508,7 @@
       "name": "Viewport 360 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 15,
+        "interactiveTargets": 13,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -797,76 +516,10 @@
       }
     },
     {
-      "name": "Viewport 360 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-360.png"
-      }
-    },
-    {
-      "name": "Viewport 360 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 18,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-360.png"
-      }
-    },
-    {
-      "name": "Viewport 360 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 24,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-360.png"
-      }
-    },
-    {
-      "name": "Viewport 360 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 25,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-360.png"
-      }
-    },
-    {
-      "name": "Viewport 360 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 17,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-360.png"
-      }
-    },
-    {
-      "name": "Viewport 360 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 15,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-360.png"
-      }
-    },
-    {
       "name": "Viewport 320 /",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 20,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -877,7 +530,7 @@
       "name": "Viewport 320 /about/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 18,
+        "interactiveTargets": 16,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -888,7 +541,7 @@
       "name": "Viewport 320 /solutions/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 24,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -899,7 +552,7 @@
       "name": "Viewport 320 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 23,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -910,7 +563,7 @@
       "name": "Viewport 320 /products/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 17,
+        "interactiveTargets": 15,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -921,77 +574,11 @@
       "name": "Viewport 320 /contact/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 15,
+        "interactiveTargets": 13,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
         "capture": ".taste/verification/contact-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 20,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-home-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/about/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 18,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-about-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/solutions/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 24,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-solutions-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/services/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 25,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-services-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/products/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 17,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-products-320.png"
-      }
-    },
-    {
-      "name": "Viewport 320 /en/contact/",
-      "detail": {
-        "overflow": false,
-        "interactiveTargets": 15,
-        "minimumHitSize": 44,
-        "minimumTextContrast": 5.021765105198983,
-        "clippedText": false,
-        "capture": ".taste/verification/en-contact-320.png"
       }
     },
     {
@@ -1011,21 +598,13 @@
       "detail": "Required fields and optional email validate; actual clipboard succeeds; denied clipboard exposes manual copy without false success"
     },
     {
-      "name": "Bilingual switching",
-      "detail": "Keyboard switching on all six pages retains the page and localizes every navigation destination; Vietnamese links return to the same page"
-    },
-    {
-      "name": "Bilingual deep links and history",
-      "detail": "The selected section survives language switching and Back restores the Vietnamese page"
-    },
-    {
       "name": "English contact form",
       "detail": "Field names, required and invalid-email messages, clipboard labels, success and denied-clipboard fallback are English; data survives validation and clipboard errors"
     },
     {
       "name": "Restored scroll",
       "detail": {
-        "scrollY": 1378,
+        "scrollY": 1249,
         "visible": true
       }
     },
@@ -1038,8 +617,8 @@
       "detail": "Owned animations cancel and visibility restores"
     },
     {
-      "name": "Language switch without JavaScript",
-      "detail": "All 12 routes render native content and the language links work without scripting"
+      "name": "English-only without JavaScript",
+      "detail": "All six routes render English content and native navigation without scripting"
     },
     {
       "name": "Script failure fallback",
@@ -1051,6 +630,6 @@
     }
   ],
   "limitations": [
-    "No UI mockup was supplied. Captures verify the implemented document-led layout, not pixel fidelity to an unavailable reference."
+    "Home A is compared separately with the approved mockup in design-qa.md; detail-page captures verify their existing layouts."
   ]
 }

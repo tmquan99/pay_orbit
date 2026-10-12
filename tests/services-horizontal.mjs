@@ -8,7 +8,7 @@ const server = await startServer({ port: 0, directory: process.env.TEST_DIST ===
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, ignoreDefaultArgs: ['--disable-back-forward-cache'] });
 try {
-  for (const prefix of ['/vi', '']) {
+  for (const prefix of ['']) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const errors = [];
     page.on('pageerror', e => errors.push(e.stack || e.message));
@@ -137,9 +137,9 @@ try {
     await page.mouse.wheel(distance, 0);
     await current('design');
     try {
-      await page.waitForFunction(() => location.hash === '#design' && [...document.querySelectorAll('[data-language]')].every(link => new URL(link.href).hash === '#design'), null, { timeout: 3000 });
+      await page.waitForFunction(() => location.hash === '#design', null, { timeout: 3000 });
     } catch (error) {
-      console.log(await page.evaluate(() => ({ hash: location.hash, languages: [...document.querySelectorAll('[data-language]')].map(link => link.href), selected: document.querySelector('[data-service-nav] [aria-current]')?.hash, smooth: document.documentElement.className, x: document.querySelector('[data-service-track]').scrollLeft })));
+      console.log(await page.evaluate(() => ({ hash: location.hash, selected: document.querySelector('[data-service-nav] [aria-current]')?.hash, smooth: document.documentElement.className, x: document.querySelector('[data-service-track]').scrollLeft })));
       throw error;
     }
     await page.emulateMedia({ reducedMotion: 'reduce' });

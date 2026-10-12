@@ -56,8 +56,8 @@ async function checkDescriptionMotion(page, id = 'enterprise-networking') {
   assert.equal(await details.evaluate(el => el.offsetHeight), collapsed, 'Interrupted closing leaves no residual spacing');
 }
 try {
-  for (const language of ['vi', 'en']) {
-    const prefix = language === 'vi' ? '/vi' : '';
+  for (const language of ['en']) {
+    const prefix = '';
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
@@ -154,7 +154,7 @@ try {
     assert.notEqual(await plain.locator('#cloud-security details').getAttribute('open'), null, 'Full content stays available without JavaScript');
     await plain.close();
   }
-  console.log('PASS: Solutions navigation, scroll tracking, keyboard details, contextual actions, VI/EN, mobile 320/390, reduced motion and no-JS content');
+  console.log('PASS: Solutions navigation, scroll tracking, keyboard details, contextual actions, English, mobile 320/390, reduced motion and no-JS content');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

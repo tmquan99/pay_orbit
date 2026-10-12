@@ -40,8 +40,8 @@ const errors = [];
 page.on('pageerror', error => errors.push(error.stack || error.message));
 const missing = [];
 page.on('response', response => { if (response.status() >= 400) missing.push(`${response.status()} ${response.url()}`); });
-const routes = ['/vi/', '/vi/about/', '/vi/solutions/', '/vi/services/', '/vi/products/', '/vi/contact/'];
-const reviewRoutes = [...routes, ...routes.map(route => route.slice(3))];
+const routes = ['/', '/about/', '/solutions/', '/services/', '/products/', '/contact/'];
+const reviewRoutes = routes;
 const ids = ['hero', 'company_intro', 'core_solutions', 'technology_focus', 'why_pay_orbit', 'footer'];
 async function assertVisibleContent() {
   const hidden = await page.evaluate(ids => ids.filter(id => {
@@ -55,7 +55,7 @@ async function assertVisibleContent() {
   assert.equal(hiddenGroups, 0, 'Already visited groups must remain fully visible');
 }
 try {
-  await page.goto(origin + '/vi/', { waitUntil: 'domcontentloaded' });
+  await page.goto(origin + '/', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => window.__motionChecks.filter(entry => entry.hero).length === 4);
   const heroPlayback = await page.locator('h1').evaluate(element => ({ transform: getComputedStyle(element).transform, running: element.getAnimations().some(animation => animation.playState === 'running' && animation.currentTime !== null) }));
   assert.ok(heroPlayback.running && heroPlayback.transform !== 'none', 'Hero must visibly move, not merely declare a timeline');
@@ -64,8 +64,8 @@ try {
   for (const id of ids) assert.equal(await page.locator(`#${id}`).count(), 1);
   assert.equal(await page.locator('.solution-card').count(), 4);
   assert.equal(await page.locator('#consultation_form').count(), 0);
-  assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/vi/');
-  assert.ok(await page.locator('.hero .actions').evaluate(element => element.getBoundingClientRect().bottom <= innerHeight), 'Primary hero actions must fit the first desktop viewport');
+  assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), '/');
+  assert.ok(await page.locator('.home-hero .actions').evaluate(element => element.getBoundingClientRect().bottom <= innerHeight), 'Primary hero actions must fit the first desktop viewport');
   record('Home contract', 'Company overview, four solution previews, technology focus and approach lead to standalone pages');
   const font = await page.evaluate(async () => {
     await document.fonts.ready;
@@ -79,28 +79,24 @@ try {
   for (const weight of ['400', '500', '600']) assert.ok(font.faces.some(face => face.family.includes('Be Vietnam Pro') && face.weight === weight && face.status === 'loaded'), `Real body font weight ${weight} loads without synthetic bold`);
   record('Font load', font);
   const images = await page.locator('main img').evaluateAll(elements => elements.map(element => ({ src: element.getAttribute('src'), complete: element.complete, width: element.naturalWidth, height: element.naturalHeight })));
-  assert.equal(images.length, 5);
+  assert.equal(images.length, 4, 'Home contains two illustrations and two vendor logos');
+  assert.equal(await page.locator('.home-panorama img, .home-map-art img').count(), 2);
+  assert.deepEqual(await page.locator('.home-vendors img').evaluateAll(elements => elements.map(image => image.alt)), ['Cisco', 'Palo Alto Networks']);
   await page.waitForFunction(() => {
     const hero = document.querySelector('main img');
     return hero.complete && hero.naturalWidth >= 360 && hero.naturalHeight >= 200;
   });
-  record('Initial imagery', 'Hero decodes; lazy team, solution photography and the connection illustration are checked after scrolling');
+  record('Initial imagery', 'Panoramic hero decodes; the lazy solutions illustration and two vendor logos are checked after scrolling');
   const hero = await page.evaluate(() => window.__motionChecks.filter(entry => entry.hero));
   assert.equal(hero.length, 4);
   assert.ok(hero.every(entry => entry.duration === 650 && entry.keyframes.some(frame => frame.transform !== 'none')));
   record('Hero entrance', hero.map(entry => ({ duration: entry.duration, keyframes: entry.keyframes })));
-  await page.locator('#company_intro').scrollIntoViewIfNeeded();
-  await page.waitForFunction(() => Number(getComputedStyle(document.querySelector('.company-media')).opacity) > 0 && Number(getComputedStyle(document.querySelector('.company-media')).opacity) < 1);
-  const mediaPlayback = await page.locator('.company-media').evaluate(element => ({ opacity: getComputedStyle(element).opacity, transform: getComputedStyle(element).transform }));
-  record('Media actual playback', mediaPlayback);
+  await page.locator('#customer_needs').scrollIntoViewIfNeeded();
   await page.waitForTimeout(850);
-  await page.waitForFunction(() => {
-    const team = document.querySelector('.team-media img');
-    return team.complete && team.naturalWidth >= 360 && team.naturalHeight >= 200;
-  });
-  record('Team imagery', 'Lazy illustrative team photograph decodes after entering its section');
-  await page.locator('#core_solutions').scrollIntoViewIfNeeded();
+  await page.locator('.home-map-art').scrollIntoViewIfNeeded();
   await page.waitForTimeout(850);
+  await page.locator('.home-map-art img').evaluate(image => image.decode());
+  record('Home A imagery', 'Panoramic hero and shared solutions illustration decode in the needs-led composition');
   const reveals = await page.evaluate(() => window.__motionChecks.filter(entry => entry.reveal && entry.played > 0));
   assert.ok(reveals.some(entry => entry.reveal === 'slide'));
   assert.ok(reveals.some(entry => entry.reveal === 'rise'));
@@ -147,7 +143,7 @@ try {
       })));
       assert.equal(logos.length, 2, `Shared brand lockups on ${route}`);
       assert.ok(logos.every(logo => logo.decoded && logo.width === logo.height && logo.width >= 32 && logo.decorative), `Crisp, square logo without duplicated accessible name on ${route} at ${width}px`);
-      assert.equal(await page.locator('.wordmark').getAttribute('href'), route.startsWith('/vi/') ? '/vi/' : '/');
+      assert.equal(await page.locator('.wordmark').getAttribute('href'), route.startsWith('/') ? '/' : '/');
       const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
       assert.equal((await page.request.get(origin + favicon)).status(), 200, `Loaded favicon on ${route}`);
       const iconIssues = await page.locator('svg.icon').evaluateAll(elements => elements.filter(element => element.getClientRects().length).filter(element => element.getAttribute('aria-hidden') !== 'true' || !element.dataset.icon || element.getBoundingClientRect().width < 16).map(element => element.dataset.icon));
@@ -180,7 +176,6 @@ try {
         const background = element => {
           // The compact language pill paints its visible fill in ::before.
           // Measure that surface rather than the dark header behind the pill.
-          if (element.matches('.language-switch a[aria-current="true"]')) return rgb(getComputedStyle(element, '::before').backgroundColor);
           for (let parent = element; parent; parent = parent.parentElement) {
             const color = rgb(getComputedStyle(parent).backgroundColor);
             if (color.length === 3 || color[3] === 1) return color;
@@ -199,13 +194,13 @@ try {
       assert.deepEqual(readability.clipped, [], `Clipped text at ${width}px`);
       await assertVisibleContent();
       assert.deepEqual(errors, [], `Runtime health on ${route} at ${width}px`);
-      const name = route === '/vi/' ? 'home' : route === '/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
+      const name = route === '/' ? 'home' : route === '/' ? 'en-home' : route.slice(1, -1).replaceAll('/', '-');
       await page.screenshot({ path: path.join(evidenceDirectory, `${name}-${width}.png`), fullPage: true });
       record(`Viewport ${width} ${route}`, { overflow: false, interactiveTargets: layout.hits.length, minimumHitSize: 44, minimumTextContrast: readability.minimumContrast, clippedText: false, capture: path.relative(root, path.join(evidenceDirectory, `${name}-${width}.png`)).replaceAll('\\', '/') });
     }
-    console.log(`PASS: 12 VI/EN routes at ${width}px`);
+    console.log(`PASS: six English routes at ${width}px`);
   }
-  await page.goto(origin + '/vi/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'true');
   const menuHits = await page.locator('#site_navigation a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })));
@@ -224,61 +219,37 @@ try {
     assert.equal(await page.locator('#site_navigation a').count(), 6);
   }
   record('Standalone navigation', 'Every menu link changes URL and active state; pages without a form run without script errors');
-  await page.goto(origin + '/vi/solutions/#cybersecurity', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/solutions/#cybersecurity', { waitUntil: 'networkidle' });
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
-  await page.goto(origin + '/vi/services/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/services/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('[data-service]').count(), 5);
-  assert.equal(await page.locator('[data-service] h2').first().textContent(), 'Tư vấn công nghệ');
-  await page.goto(origin + '/vi/products/', { waitUntil: 'networkidle' });
+  assert.equal(await page.locator('[data-service] h2').first().textContent(), "Technology Consulting");
+  await page.goto(origin + '/products/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('#cisco .product-card').count(), 4);
   assert.equal(await page.locator('#palo-alto-networks .product-card').count(), 3);
   record('Detail pages', 'Solutions deep links resolve; consulting is the first of five services; technology shows four Cisco and three Palo Alto Networks groups');
-  await page.goto(origin + '/vi/contact/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/contact/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('a[href="tel:+61433024689"]').count(), 2);
-  await page.getByRole('button', { name: 'Sao chép nội dung trao đổi', exact: true }).click();
+  await page.getByRole('button', { name: "Copy enquiry", exact: true }).click();
   assert.equal(await page.locator('#name').getAttribute('aria-invalid'), 'true');
   assert.equal(await page.locator('#requirement').getAttribute('aria-invalid'), 'true');
   assert.equal(await page.locator('#form_status').textContent(), '');
-  await page.locator('#name').fill('Người kiểm thử');
-  await page.locator('#requirement').fill('Tư vấn kết nối mạng cho văn phòng.');
+  await page.locator('#name').fill('Test person');
+  await page.locator('#requirement').fill("Office networking enquiry.");
   await page.locator('#email').fill('invalid');
-  await page.getByRole('button', { name: 'Sao chép nội dung trao đổi', exact: true }).click();
+  await page.getByRole('button', { name: "Copy enquiry", exact: true }).click();
   assert.equal(await page.locator('#email').getAttribute('aria-invalid'), 'true');
   await page.locator('#email').fill('');
-  await page.getByRole('button', { name: 'Sao chép nội dung trao đổi', exact: true }).click();
-  await page.waitForFunction(() => document.querySelector('#form_status').textContent === 'Đã sao chép nội dung trao đổi.');
+  await page.getByRole('button', { name: "Copy enquiry", exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#form_status').textContent === "Enquiry copied.");
   const clipboard = await page.evaluate(() => navigator.clipboard.readText());
-  assert.ok(clipboard.includes('Người kiểm thử') && clipboard.includes('Tư vấn kết nối mạng cho văn phòng.'));
+  assert.ok(clipboard.includes('Test person') && clipboard.includes("Office networking enquiry."));
   await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: () => Promise.reject(new Error('Clipboard denied')) } }));
-  await page.getByRole('button', { name: 'Sao chép nội dung trao đổi', exact: true }).click();
+  await page.getByRole('button', { name: "Copy enquiry", exact: true }).click();
   await page.waitForFunction(() => !document.querySelector('#copy_fallback').hidden);
-  assert.ok((await page.locator('#copy_text').inputValue()).includes('Người kiểm thử'));
-  assert.ok(!(await page.locator('#form_status').textContent()).includes('Đã sao chép'));
+  assert.ok((await page.locator('#copy_text').inputValue()).includes('Test person'));
+  assert.ok(!(await page.locator('#form_status').textContent()).includes('Enquiry copied'));
   record('Contact preparation', 'Required fields and optional email validate; actual clipboard succeeds; denied clipboard exposes manual copy without false success');
-  for (const route of routes) {
-    await page.goto(origin + route, { waitUntil: 'networkidle' });
-    await page.locator('[data-language="en"]').focus();
-    await page.keyboard.press('Enter');
-    await page.waitForURL(origin + route.slice(3));
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-    assert.equal(await page.locator('[data-language="en"]').getAttribute('aria-current'), 'true');
-    assert.equal(await page.locator('#site_navigation a[aria-current="page"]').getAttribute('href'), route.slice(3));
-    const destinations = await page.locator('#site_navigation a').evaluateAll(elements => elements.map(element => element.getAttribute('href')));
-    assert.deepEqual(destinations, routes.map(destination => destination.slice(3)));
-    await page.locator('[data-language="vi"]').click();
-    await page.waitForURL(origin + route);
-    assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
-  }
-  record('Bilingual switching', 'Keyboard switching on all six pages retains the page and localizes every navigation destination; Vietnamese links return to the same page');
-  await page.goto(origin + '/vi/solutions/#cybersecurity', { waitUntil: 'networkidle' });
-  await page.locator('[data-language="en"]').click();
-  await page.waitForURL(origin + '/solutions/#cybersecurity');
-  await page.waitForFunction(() => document.getElementById('cybersecurity')?.getBoundingClientRect().top < innerHeight, null, { timeout: 3000 });
-  assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
-  await page.goBack({ waitUntil: 'networkidle' });
-  assert.equal(new URL(page.url()).pathname, '/vi/solutions/');
-  assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
-  record('Bilingual deep links and history', 'The selected section survives language switching and Back restores the Vietnamese page');
   await page.goto(origin + '/contact/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('a[href="tel:+61433024689"]').count(), 2);
   await page.getByRole('button', { name: 'Copy enquiry', exact: true }).click();
@@ -304,7 +275,7 @@ try {
   assert.equal(await page.locator('#name').inputValue(), 'Test contact');
   record('English contact form', 'Field names, required and invalid-email messages, clipboard labels, success and denied-clipboard fallback are English; data survives validation and clipboard errors');
   await page.setViewportSize({ width: 1440, height: 960 });
-  await page.goto(origin + '/vi/', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/', { waitUntil: 'networkidle' });
   await page.locator('#core_solutions').scrollIntoViewIfNeeded();
   await page.reload({ waitUntil: 'networkidle' });
   await assertVisibleContent();
@@ -336,14 +307,10 @@ try {
       assert.equal(await noScriptPage.locator('h1').count(), 1);
       assert.equal(await noScriptPage.locator('#site_navigation a:visible').count(), 6);
     }
-    await noScriptPage.goto(origin + '/services/', { waitUntil: 'networkidle' });
-    await noScriptPage.locator('[data-language="vi"]').click();
-    await noScriptPage.waitForURL(origin + '/vi/services/');
-    assert.equal(await noScriptPage.locator('html').getAttribute('lang'), 'vi');
-    record('Language switch without JavaScript', 'All 12 routes render native content and the language links work without scripting');
-    await noScriptPage.goto(origin + '/vi/contact/', { waitUntil: 'networkidle' });
-    await noScriptPage.locator('#name').fill('Người kiểm thử');
-    await noScriptPage.locator('#requirement').fill('Nhu cầu riêng tư');
+    record('English-only without JavaScript', 'All six routes render English content and native navigation without scripting');
+    await noScriptPage.goto(origin + '/contact/', { waitUntil: 'networkidle' });
+    await noScriptPage.locator('#name').fill('Test person');
+    await noScriptPage.locator('#requirement').fill("Private enquiry");
     await noScriptPage.locator('#name').press('Enter');
     await noScriptPage.waitForTimeout(200);
     assert.deepEqual(submittedQueries, [], 'A script failure must never send form values in a GET request');
@@ -354,7 +321,7 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual(missing, []);
   record('Runtime health', 'No page errors or missing resources');
-  await fs.writeFile(path.join(evidenceDirectory, 'checks.json'), JSON.stringify({ checkedAt: new Date().toISOString(), checks, limitations: ['No UI mockup was supplied. Captures verify the implemented document-led layout, not pixel fidelity to an unavailable reference.'] }, null, 2));
+  await fs.writeFile(path.join(evidenceDirectory, 'checks.json'), JSON.stringify({ checkedAt: new Date().toISOString(), checks, limitations: ['Home A is compared separately with the approved mockup in design-qa.md; detail-page captures verify their existing layouts.'] }, null, 2));
   console.log(`PASS: ${checks.length} browser checks. Evidence: ${path.relative(root, evidenceDirectory)}/checks.json`);
 } finally {
   await context.close();

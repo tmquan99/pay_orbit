@@ -33,26 +33,23 @@ try {
       await page.goto(`${origin}${base}${route}`);
       assert.equal(new URL(page.url()).pathname, `${base}${route}`, 'English stays at the root URL');
       assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-      await page.locator('[data-language="vi"]').click();
-      await page.waitForURL(`${origin}${base}/vi${route}`);
-      assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
+      assert.equal(await page.locator('[data-language], .language-switch').count(), 0);
+      assert.ok(!/[À-ỹ]/u.test(await page.locator('body').innerText()));
       await page.reload();
-      assert.equal(await page.locator('html').getAttribute('lang'), 'vi');
-      await page.locator('[data-language="en"]').click();
-      await page.waitForURL(`${origin}${base}${route}`);
       assert.equal(await page.locator('html').getAttribute('lang'), 'en');
     }
     if (javaScriptEnabled) {
       await page.goto(`${origin}${base}/solutions/#cybersecurity`);
-      await page.locator('[data-language="vi"]').click();
-      await page.waitForURL(`${origin}${base}/vi/solutions/#cybersecurity`);
-      await page.locator('[data-language="en"]').click();
-      await page.waitForURL(`${origin}${base}/solutions/#cybersecurity`);
+      assert.equal(new URL(page.url()).hash, '#cybersecurity');
+      await page.locator('#site_navigation a[href$="/services/"]').click();
+      await page.waitForURL(`${origin}${base}/services/`);
+      await page.goBack();
+      assert.equal(new URL(page.url()).hash, '#cybersecurity');
     }
     assert.deepEqual(errors, [], 'Language navigation has no uncaught errors');
     await context.close();
   }
-  console.log(`PASS: English root URLs, Vietnamese /vi/ URLs, all six language switches, anchors and no-JS under ${base || '/'}`);
+  console.log(`PASS: English-only root URLs, anchors, native navigation and no-JS under ${base || '/'}`);
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

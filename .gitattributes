@@ -4,5 +4,6 @@ public/assets/fonts/bricolage-grotesque/OFL.txt whitespace=-blank-at-eol
 public/assets/vendor/lenis/LICENSE -text whitespace=cr-at-eol
 # Generated vectors also have byte-level hashes in the brand asset ledger.
 public/assets/brand/*.svg -text whitespace=cr-at-eol
+public/assets/brand/vendors/*.svg -text whitespace=cr-at-eol
 # Keep upstream font licenses verbatim, including their trailing spaces.
 **/OFL.txt whitespace=-blank-at-eol

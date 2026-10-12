@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-10-12",
+  "mode": "built-in image_gen",
+  "reference": "design/home-a-mockup-2026-10-12/home-a-desktop.png",
+  "assets": [
+    {
+      "path": "public/assets/images/home-a-network-panorama.png",
+      "width": 2172,
+      "height": 724,
+      "prompt": "Use case: stylized-concept. Asset type: PAY ORBIT homepage hero infrastructure panorama. Input image 1 is a style and composition reference only: study the narrow network panorama in the supplied full-page mockup, and generate just that artwork, not the webpage. Create a polished airy pale blue and white isometric 3D illustration on a solid almost-white #FCFDFF background. Wide low panoramic 3:1 composition, all subjects across the lower half with generous clean whitespace above and around them: from left to right a white glass mid-rise main office with blue windows and small soft green trees, a smaller branch office, a small dark blue network gateway appliance, a taller dark navy and cyan glass data center group, and a sculptural pale blue cloud. Connect all five nodes with a thin cobalt blue gently curving network route and small blue endpoint dots at ground level. Pale desaturated blue distant city silhouette behind, extremely soft shadows, clean architectural detail, restrained elegant corporate aesthetic. Match reference scale, spacing, palette and illustration medium closely. Objects remain fully inside canvas with whitespace at left and right; intended display 1200x280. Absolutely NO text, captions, labels, letters, numerals, logos, watermark, icons, webpage navigation or UI. Output only the infrastructure illustration.",
+      "generatedSource": "C:/Users/tamin/.codex/generated_images/01a12f1c-05f7-79e1-9592-6a77c6266404/exec-e8a4b24d-b2ac-4a9d-a651-cd3e3bc1ee67.png"
+    },
+    {
+      "path": "public/assets/images/home-a-solutions-map.png",
+      "width": 1448,
+      "height": 1086,
+      "prompt": "Use case: stylized-concept. Asset type: center illustration for PAY ORBIT solutions diagram. Input image 1 is style and composition reference only: use the central isometric enterprise building and server group in the pale blue solutions section of the supplied homepage mockup. Generate ONLY that central artwork with surrounding connector routes, no webpage, no text. Near square 4:3 composition. Solid restrained pale blue #F2F7FF backdrop, generous whitespace all around. In center, a white and blue modern mid-rise enterprise tower, lower white office wings, and a dark navy/cyan data-center server building on a floating rounded white isometric plinth. Small minimal rooftop details and soft pale blue shadows. Four delicate cobalt blue curved connector routes radiate symmetrically to four small endpoint dots near the upper-left, upper-right, lower-left and lower-right, without icons at their ends. A thin oval network orbit encircles the central group. Keep the buildings centered and small enough to leave room for HTML icons outside the asset boundaries in final layout. Match reference illustration style closely: clean airy polished isometric 3D, blue glass, white architecture, elegant corporate network infrastructure. Intended displayed image about450x330. Do not include any circular icon containers, network node icons, shield, cloud icon, server icon, logos, labels, text, letters, numerals, watermark, webpage navigation or UI. Only central building cluster and four simple routes.",
+      "generatedSource": "C:/Users/tamin/.codex/generated_images/01a12f1c-05f7-79e1-9592-6a77c6266404/exec-6350fe05-4056-45df-82c9-6ec313034ff8.png"
+    }
+  ],
+  "companyCorner": {
+  "path": "public/assets/images/home-a-company-corner.png",
+  "webpPath": "public/assets/images/home-a-company-corner.webp",
+  "width": 1774,
+  "height": 887,
+  "prompt": "Use case: stylized-concept. Asset type: decorative architecture illustration for PAY ORBIT homepage company strip. Input image 1 is style and composition reference only: study the pale blue glass building corner decoration at the far right of the company/about strip near the bottom of the provided webpage mockup (immediately above the bright blue CTA), and produce only this decoration, not the webpage. Wide 2:1 composition. Airy pale blue and white architectural close-up of the sharp right corner of a modern mid-rise office glass building. Straight white mullions form a regular subtle window grid, blue-tinted glass panels reflect soft sky. The building is cropped along the bottom and right edges, its highest corner at roughly 82% across and 28% down the canvas; left facade roofline slopes down toward the lower middle, right facade slopes toward right edge. Reserve the left 55% as nearly empty restrained pale blue #F2F7FF background for HTML text outside the asset. Soft polished architectural illustration, delicate clean lines and low contrast, consistent with the reference. Avoid surrounding city, trees, people, ground, extra buildings, route connectors or cloud objects. Absolutely no text, letters, logos, watermarks, captions, UI, webpage/navigation. Output only pale glass architecture and empty background.",
+  "generatedSource": "C:/Users/tamin/.codex/generated_images/01a12f1c-05f7-79e1-9592-6a77c6266404/exec-4d24a5b0-e686-46e6-8cae-1d7409d2b844.png"
+},
+  "optimization": "Companion WebP images encoded with bundled sharp at quality 88 without resizing."
+}

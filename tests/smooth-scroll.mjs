@@ -12,7 +12,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  for (const prefix of ['/vi', '']) {
+  for (const prefix of ['']) {
     await page.goto(`${origin}${prefix}/about/`);
     await page.waitForFunction(() => document.documentElement.classList.contains('lenis'), null, { timeout: 2500 });
     const sample = page.evaluate(async () => {

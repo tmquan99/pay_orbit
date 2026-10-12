@@ -33,7 +33,7 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.stack || error.message));
-    for (const prefix of ['/vi', '']) {
+    for (const prefix of ['']) {
       await page.goto(`${origin}${prefix}/solutions/`);
       await page.evaluate(() => document.fonts.ready);
       // A disclosure may stay open/focused after the reader moves on.
@@ -171,7 +171,7 @@ try {
     assert.deepEqual(errors, [], 'Scroll, resize and restored pages remain error free');
     await page.close();
   }
-  console.log('PASS: Solution focus at six widths in VI/EN, continuous/reverse scroll, visual depth, keyboard, expanded copy, reduced motion, BFCache, resize and touch targets');
+  console.log('PASS: Solution focus at six widths in English, continuous/reverse scroll, visual depth, keyboard, expanded copy, reduced motion, BFCache, resize and touch targets');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

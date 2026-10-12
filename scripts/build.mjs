@@ -32,4 +32,4 @@ if (basePath) {
   await rebaseDirectory(destination);
 }
 await fs.writeFile(path.join(destination, '.nojekyll'), '');
-console.log('Build complete: dist/ (12 static pages in Vietnamese and English, CSS, JavaScript and local assets)');
+console.log('Build complete: dist/ (6 English-only static pages, CSS, JavaScript and local assets)');

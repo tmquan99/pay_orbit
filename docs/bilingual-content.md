@@ -1,3 +1,5 @@
+> Cập nhật 12/10/2026: website chỉ còn tiếng Anh. Quyết định này thay thế mọi mô tả song ngữ bên dưới; xem `english-only.md`.
+
 # Nội dung Việt / Anh
 
 Website dùng hai bản HTML cho mỗi trang: tiếng Anh dùng sáu URL gốc, tiếng Việt nằm dưới `/vi/`. Các trang dùng cùng template, CSS, ảnh, icon và JavaScript, không tạo ứng dụng hoặc pipeline thứ hai.

@@ -22,11 +22,11 @@ export const productIcon = index => productKeys[index];
 
 export function lifecycle({ compact = false, linked = true } = {}) {
   const steps = [
-    ['Khảo sát', 'Hiểu nhu cầu và hiện trạng', 'consulting'],
-    ['Thiết kế', 'Xây dựng phương án phù hợp', 'design'],
-    ['Cung cấp', 'Thiết bị, bản quyền và subscription', 'supply'],
-    ['Triển khai', 'Tích hợp, kiểm thử và nghiệm thu', 'implementation'],
-    ['Hỗ trợ', 'Theo phạm vi đã thỏa thuận', 'support'],
+    ["Assess", "Understand requirements and current infrastructure", 'consulting'],
+    ["Design", "Develop a suitable solution approach", 'design'],
+    ["Supply", "Hardware, licenses and subscriptions", 'supply'],
+    ["Deploy", "Integration, testing and commissioning", 'implementation'],
+    ["Support", "Within the agreed service scope", 'support'],
   ];
   return `<ol class="lifecycle${compact ? ' lifecycle-compact' : ''}">${steps.map(([label, description, anchor], index) => `<li><${linked ? `a href="/services/#${anchor}"` : 'div'} class="lifecycle-step"><span class="step-symbol">${icon(serviceIcon(index))}<span class="step-number">${index + 1}</span></span><strong>${label}</strong><span class="step-description">${description}</span></${linked ? 'a' : 'div'}>${index < steps.length - 1 ? icon('arrow-right', 'step-arrow') : ''}</li>`).join('')}</ol>`;
 }
@@ -44,8 +44,8 @@ function connectionGraphic(image) {
 
 export function illustration(name, { reveal = false, lazy = false, responsive = false, connectionMotion = false } = {}) {
   const labels = {
-    ecosystem: 'Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud.',
-    lifecycle: 'Minh họa các giai đoạn khảo sát, thiết kế, cung cấp, triển khai và hỗ trợ.',
+    ecosystem: "Illustration of enterprise networking, data center networking, cybersecurity and cloud solution groups.",
+    lifecycle: "Illustration of the assess, design, supply, deploy and support stages.",
   };
   if (!labels[name]) throw new Error(`Unknown illustration: ${name}`);
   const basename = name === 'ecosystem' ? 'enterprise-ecosystem' : 'service-lifecycle';
@@ -56,33 +56,33 @@ export function illustration(name, { reveal = false, lazy = false, responsive = 
 
 export function technologyGraphic() {
   const groups = [
-    ['Cisco', 'Kết nối doanh nghiệp', ['Switching', 'Routing', 'Wireless', 'Collaboration']],
-    ['Palo Alto Networks', 'Bảo vệ hạ tầng số', ['Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh']],
+    ['Cisco', "Connect your business", ['Switching', 'Routing', 'Wireless', 'Collaboration']],
+    ['Palo Alto Networks', "Protect your infrastructure", ["Network Security", "Cloud Security", "Security Operations"]],
   ];
   let index = 0;
-  return `<figure class="infographic-art technology-art" aria-label="Nhóm công nghệ theo hãng"><div class="technology-stage" data-hero-graphic="technology" aria-hidden="true">${groups.map(([name, family, labels], group) => `<div class="technology-board technology-board-${group}"><div class="technology-board-heading"><strong>${name}</strong><span>${family}</span></div><div class="technology-modules">${labels.map(label => `<div class="technology-module" data-technology-module>${icon(productIcon(index++))}<span>${label}</span></div>`).join('')}</div></div>`).join('')}</div></figure>`;
+  return `<figure class="infographic-art technology-art" aria-label="Technology groups by vendor"><div class="technology-stage" data-hero-graphic="technology" aria-hidden="true">${groups.map(([name, family, labels], group) => `<div class="technology-board technology-board-${group}"><div class="technology-board-heading"><strong>${name}</strong><span>${family}</span></div><div class="technology-modules">${labels.map(label => `<div class="technology-module" data-technology-module>${icon(productIcon(index++))}<span>${label}</span></div>`).join('')}</div></div>`).join('')}</div></figure>`;
 }
 
 export function solutionOverview() {
-  return `<div class="solution-overview" aria-label="Bốn nhóm giải pháp hạ tầng"><span class="overview-core">${icon('building')}<strong>Nhu cầu doanh nghiệp</strong></span><ul>${[
-    ['Mạng doanh nghiệp', 'Văn phòng, chi nhánh, người dùng', 'enterprise-networking'],
-    ['Trung tâm dữ liệu', 'Máy chủ, lưu trữ, ứng dụng', 'data-center-networking'],
-    ['An ninh mạng', 'Truy cập và tài nguyên mạng', 'cybersecurity'],
-    ['Bảo mật Cloud', 'Workload trên môi trường Cloud', 'cloud-security'],
+  return `<div class="solution-overview" aria-label="Four infrastructure solution groups"><span class="overview-core">${icon('building')}<strong>Business requirements</strong></span><ul>${[
+    ["Enterprise Networking", "Offices, branches and users", 'enterprise-networking'],
+    ["Data Center", "Compute, storage and applications", 'data-center-networking'],
+    ["Cybersecurity", "Access and network resources", 'cybersecurity'],
+    ["Cloud Security", "Workloads in cloud environments", 'cloud-security'],
   ].map(([label, description, anchor], index) => `<li><a href="/solutions/#${anchor}">${icon(solutionIcon(index))}<span><strong>${label}</strong><span>${description}</span></span>${icon('arrow-up-right', 'overview-arrow')}</a></li>`).join('')}</ul></div>`;
 }
 
 export function technologyOverview() {
-  return `<div class="technology-overview" aria-label="Nhóm công nghệ theo hãng">${[
-    ['Cisco', ['Kết nối mạng', 'Không dây', 'Cộng tác'], 'network', 'cisco'],
-    ['Palo Alto Networks', ['Bảo mật mạng', 'Bảo mật Cloud', 'Vận hành an ninh'], 'shield-check', 'palo-alto-networks'],
+  return `<div class="technology-overview" aria-label="Technology groups by vendor">${[
+    ['Cisco', ["Networking", 'Wireless', 'Collaboration'], 'network', 'cisco'],
+    ['Palo Alto Networks', ["Network Security", "Cloud Security", "Security Operations"], 'shield-check', 'palo-alto-networks'],
   ].map(([name, groups, symbol, anchor]) => `<a href="/products/#${anchor}" class="vendor-summary">${badge(symbol)}<span><strong>${name}</strong><span>${groups.join(' · ')}</span></span>${icon('arrow-up-right')}</a>`).join('')}</div>`;
 }
 
 export function connectionScene() {
-  const stages = [['network', 'Mạng doanh nghiệp'], ['server', 'Trung tâm dữ liệu'], ['shield-check', 'An ninh mạng'], ['cloud', 'Bảo mật Cloud']];
-  const image = '<img class="connection-art" src="/assets/images/enterprise-ecosystem.webp" srcset="/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w" sizes="(max-width: 1023px) 100vw, 45vw" width="1536" height="1024" alt="Minh họa các nhóm giải pháp: mạng doanh nghiệp, trung tâm dữ liệu, an ninh mạng và Cloud." loading="lazy" decoding="async">';
-  return `<figure class="connection-scene" data-connection-scene aria-label="Các lớp kết nối và bảo mật">
+  const stages = [['network', "Enterprise Networking"], ['server', "Data Center"], ['shield-check', "Cybersecurity"], ['cloud', "Cloud Security"]];
+  const image = "<img class=\"connection-art\" src=\"/assets/images/enterprise-ecosystem.webp\" srcset=\"/assets/images/enterprise-ecosystem-720.webp 720w, /assets/images/enterprise-ecosystem.webp 1536w\" sizes=\"(max-width: 1023px) 100vw, 45vw\" width=\"1536\" height=\"1024\" alt=\"Illustration of enterprise networking, data center networking, cybersecurity and cloud solution groups.\" loading=\"lazy\" decoding=\"async\">";
+  return `<figure class="connection-scene" data-connection-scene aria-label="Layers of connectivity and security">
     ${connectionGraphic(image)}
     <div class="connection-diagram" data-connection-diagram>
       <span class="connection-track" aria-hidden="true"><span class="connection-flow" data-connection-flow></span></span>

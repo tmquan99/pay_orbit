@@ -17,7 +17,7 @@ for (const file of lenis.files) {
   assert.equal(createDigest(bytes), file.sha256, `Lenis asset integrity: ${file.path}`);
 }
 function createDigest(bytes) { return crypto.createHash('sha256').update(bytes).digest('hex'); }
-for (const file of ['src/main.js', 'src/reveals.js', 'src/connection-scene.js', 'src/about-story.js', 'src/solutions.js', 'src/services.js', 'scripts/serve.mjs', 'scripts/build.mjs', 'scripts/render-pages.mjs', 'scripts/visuals.mjs', 'scripts/about-story-markup.mjs', 'scripts/solutions-markup.mjs', 'scripts/services-markup.mjs', 'scripts/localize.mjs', 'scripts/export-logo.mjs', 'tests/pages.mjs', 'tests/bilingual.mjs', 'tests/logo.mjs', 'tests/browser.mjs', 'tests/home-motion.mjs', 'tests/about-story.mjs', 'tests/solutions.mjs', 'tests/services.mjs']) {
+for (const file of ['src/main.js', 'src/reveals.js', 'src/connection-scene.js', 'src/about-story.js', 'src/solutions.js', 'src/services.js', 'scripts/serve.mjs', 'scripts/build.mjs', 'scripts/render-pages.mjs', 'scripts/home-markup.mjs', 'tests/home-layout.mjs', 'scripts/visuals.mjs', 'scripts/about-story-markup.mjs', 'scripts/solutions-markup.mjs', 'scripts/services-markup.mjs', 'scripts/html.mjs', 'scripts/export-logo.mjs', 'tests/pages.mjs', 'tests/english-only.mjs', 'tests/english-content.mjs', 'tests/logo.mjs', 'tests/browser.mjs', 'tests/home-motion.mjs', 'tests/about-story.mjs', 'tests/solutions.mjs', 'tests/services.mjs']) {
   const result = spawnSync(process.execPath, ['--check', path.join(root, file)], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }
@@ -50,6 +50,11 @@ for (const asset of visuals.webImages || []) {
 for (const asset of icons.files) {
   const bytes = await fs.readFile(path.join(root, asset.path));
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), asset.sha256);
+}
+const vendorLogos = JSON.parse(await fs.readFile(path.join(root, 'public/assets/brand/vendors/provenance.json'), 'utf8'));
+for (const asset of vendorLogos.files) {
+  const bytes = await fs.readFile(path.join(root, asset.path));
+  assert.equal(createDigest(bytes), asset.sha256, `Vendor logo integrity: ${asset.path}`);
 }
 assert.ok((await fs.stat(path.join(root, visuals.icons.licenseFile))).isFile());
 console.log('PASS: JavaScript syntax, motion policy, image dimensions and provenance, sourced icons and license');

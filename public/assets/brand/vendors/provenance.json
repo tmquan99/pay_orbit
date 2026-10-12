@@ -1,0 +1,15 @@
+{
+  "description": "Original vendor logo SVG files used to identify technology groups. No partner designation or endorsement claim.",
+  "files": [
+    {
+      "path": "public/assets/brand/vendors/cisco.svg",
+      "source": "https://brand-assets.security.cisco.com/cisco-light.svg",
+      "sha256": "0321aefff26fd1f12d5b3276478dde7b96ef9ff664284cb5a2e2444432d52771"
+    },
+    {
+      "path": "public/assets/brand/vendors/palo-alto.svg",
+      "source": "https://www.paloaltonetworks.com/etc/clientlibs/clean/imgs/pan-logo-dark.svg",
+      "sha256": "e04c0ad0fce19b803a15633b751e3a603ab1b99bc35a6d52e64cdc57058e22ea"
+    }
+  ]
+}

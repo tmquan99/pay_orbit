@@ -92,13 +92,7 @@ p { max-width: 62ch; }
 .site-header { background: var(--dark-canvas); color: var(--dark-text); }
 .header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-.language-switch { position: relative; display: flex; align-items: center; padding-inline: 4px; gap: 2px; }
 /* Compact 40px visual control with full 44px link targets. */
-.language-switch::before { content: ''; position: absolute; inset: 2px 0; border: 1px solid var(--dark-border); border-radius: 8px; pointer-events: none; }
-.language-switch a { position: relative; isolation: isolate; justify-content: center; min-width: 44px; min-height: 44px; padding: 8px; font-size: 14px; font-weight: 600; line-height: 1.2; color: var(--dark-text); border-radius: 5px; text-decoration: none; transition: color 160ms ease-out; }
-.language-switch a::before { content: ''; position: absolute; inset: 5px 0; z-index: -1; border-radius: 5px; pointer-events: none; transition: background-color 160ms ease-out; }
-.language-switch a[aria-current='true'] { color: var(--dark-on-accent); }
-.language-switch a[aria-current='true']::before { background: var(--dark-accent); }
 .wordmark { gap: 8px; color: var(--dark-text); font-size: 24px; font-weight: 600; line-height: 1; letter-spacing: .015em; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
 .brand-name { word-spacing: -.035em; }
 .brand-symbol { width: 32px; height: 32px; max-width: none; object-fit: contain; flex-shrink: 0; }
@@ -262,7 +256,6 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
   .button-outline:hover { background: var(--surface-alt); }
   .hero .button-secondary:hover { background: var(--dark-surface-alt); }
   .site-header nav a:not([aria-current='page']):hover { background: var(--dark-surface-alt); }
-  .language-switch a:hover:not([aria-current])::before { background: var(--dark-surface-alt); }
   summary:hover { background: var(--surface-alt); }
   .button:hover > .icon:last-child, .card-link:hover > .icon, .vendor-summary:hover > .icon { transform: translate(2px, -2px); }
   .solution-overview a:hover, .vendor-summary:hover, .lifecycle-step:hover { background: var(--surface-alt); border-color: var(--accent); }
@@ -382,7 +375,7 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
   .lifecycle-compact > li > .step-arrow { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .button, .button .icon, .card-link .icon, .site-header nav a, .language-switch a, .language-switch a::before, .disclosure-indicator, input, textarea, .solution-overview a, .vendor-summary, .vendor-summary > .icon, .lifecycle-step { transition: none; }
+  .button, .button .icon, .card-link .icon, .site-header nav a, .disclosure-indicator, input, textarea, .solution-overview a, .vendor-summary, .vendor-summary > .icon, .lifecycle-step { transition: none; }
   .button:active { transform: none; }
   .button:hover > .icon:last-child, .card-link:hover > .icon, .vendor-summary:hover > .icon { transform: none; }
 }
