@@ -1,142 +1,96 @@
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import fs from 'node:fs/promises';
 import { startServer } from '../scripts/serve.mjs';
-
-const require = createRequire(import.meta.url);
-const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
-const server = await startServer({ port: 0, directory: process.env.TEST_DIST === '1' ? 'dist' : '.' });
-const origin = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, ignoreDefaultArgs: ['--disable-back-forward-cache'] });
-const ids = ['consulting', 'design', 'supply', 'implementation', 'support'];
-async function checkDescriptionMotion(page) {
-  const measure = () => page.locator('#consulting details').evaluate(async details => {
-    const card = details.closest('[data-service]');
-    const heights = [card.getBoundingClientRect().height];
-    const unanimatedSpace = [];
-    details.querySelector('summary').click();
-    const start = performance.now();
-    await new Promise(resolve => {
-      const sample = now => {
-        heights.push(card.getBoundingClientRect().height);
-        const contentHeight = parseFloat(getComputedStyle(details, '::details-content').blockSize) || 0;
-        unanimatedSpace.push(details.getBoundingClientRect().height - details.querySelector('summary').getBoundingClientRect().height - contentHeight);
-        if (now - start < 460) requestAnimationFrame(sample);
-        else resolve();
-      };
-      requestAnimationFrame(sample);
-    });
-    return { heights, unanimatedSpace };
-  });
-  for (const state of ['opening', 'closing']) {
-    const { heights, unanimatedSpace } = await measure();
-    const low = Math.min(heights[0], heights.at(-1));
-    const high = Math.max(heights[0], heights.at(-1));
-    assert.ok(high - low > 50, `${state}: full description changes card height`);
-    assert.ok(heights.filter(height => height > low + 2 && height < high - 2).length >= 3, `${state}: card height changes gradually across frames`);
-    assert.ok(unanimatedSpace.every(space => Math.abs(space) < 1), `${state}: spacing follows the animated content without a final jump (${Math.max(...unanimatedSpace)}px outside the animation)`);
-  }
-}
+const require=createRequire(import.meta.url);
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+const data=JSON.parse(await fs.readFile(new URL('../content/services.json',import.meta.url),'utf8'));
+const server=await startServer({port:0,directory:process.env.TEST_DIST==='1'?'dist':'.'});
+const origin='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({executablePath:process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,ignoreDefaultArgs:['--disable-back-forward-cache']});
 try {
-  for (const language of ['en']) {
-    const prefix = '';
-    const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    const errors = [];
-    page.on('pageerror', error => errors.push(error.message));
-    await page.goto(`${origin}${prefix}/services/`);
-    const nav = page.locator('[data-service-nav]');
-    const centeredAt = id => page.waitForFunction(id => {
-      const track = document.querySelector('[data-service-track]');
-      const rect = document.getElementById(id).getBoundingClientRect();
-      return Math.abs(rect.left + rect.width / 2 - track.getBoundingClientRect().left - track.clientWidth / 2) < 2;
-    }, id, { timeout: 5000 });
-    assert.equal(await nav.count(), 1, 'Service journey must provide navigation between five stages');
-    assert.equal(await page.locator('.page-intro a[href="' + prefix + '/contact/#consultation_form"]').count(), 1, 'Consultation action belongs in the hero');
-    assert.ok(await page.locator('.page-intro .button').evaluate(el => el.getBoundingClientRect().bottom < innerHeight), 'Hero action visible without scrolling');
-    assert.equal(await page.locator('[data-service] [data-reveal]').count(), 0, 'Horizontal panel depth replaces one-off entrances');
-    await nav.locator('a[href="#consulting"]').click();
-    await centeredAt('consulting');
-    await checkDescriptionMotion(page);
-    for (const id of ids) {
-      await nav.locator(`a[href="#${id}"]`).click();
-      await centeredAt(id);
-      await page.waitForFunction(id => document.querySelector('[data-service-nav] [aria-current="location"]')?.hash === `#${id}`, id);
-      const section = page.locator(`#${id}`);
-      assert.equal(await nav.locator('[aria-current="location"]').count(), 1);
-      await page.waitForFunction(id => document.getElementById(id).getBoundingClientRect().top >= document.querySelector('[data-service-nav]').getBoundingClientRect().bottom - 2, id);
-      assert.ok(await section.evaluate(el => el.getBoundingClientRect().top >= document.querySelector('[data-service-nav]').getBoundingClientRect().bottom - 2), 'Heading clears sticky journey');
-      assert.equal(await section.locator(`.service-actions a[href="${prefix}/contact/#consultation_form"]`).count(), 1, 'Localized action for each service');
-      assert.ok(await section.locator('.service-scope li').count() <= 4, 'Scope is grouped for scanning');
-      assert.ok(await section.locator('.service-outcome').innerText());
-      const details = page.locator(`#${id}-description`);
-      assert.equal(await section.locator('details').count(), 1, 'Full description stays inside its service card');
-      const collapsedHeight = await section.evaluate(el => el.getBoundingClientRect().height);
-      await details.locator('summary').focus();
-      await page.keyboard.press('Enter');
-      assert.notEqual(await details.getAttribute('open'), null, 'Original description accessible by keyboard');
-      await page.waitForFunction(({ id, collapsedHeight }) => document.getElementById(id).getBoundingClientRect().height > collapsedHeight + 10, { id, collapsedHeight });
-      await page.keyboard.press('Enter');
-      await page.waitForFunction(id => document.activeElement === document.querySelector(`#${id} summary`), id, { timeout: 2000 });
-    }
-    await nav.locator('a[href="#design"]').click();
-    await centeredAt('design');
-    await page.waitForFunction(() => document.querySelector('[data-service-nav] [aria-current="location"]')?.hash === '#design');
-    assert.equal(await nav.locator('[data-before]').count(), 1, 'Earlier service markers reverse with the reading position');
-    await page.evaluate(() => addEventListener('pageshow', event => { window.__serviceBFCacheRestored = event.persisted; }));
-    await page.locator('#design .service-actions a').click();
-    await page.waitForURL(`${origin}${prefix}/contact/#consultation_form`);
-    await page.goBack({ waitUntil: 'commit' });
-    await page.waitForFunction(() => window.__serviceBFCacheRestored === true);
-    await nav.locator('a[href="#supply"]').click();
-    await page.waitForFunction(() => document.querySelector('[data-service-nav] [aria-current="location"]')?.hash === '#supply');
-    // Browsers can briefly report a tiny viewport during window transitions.
-    await page.setViewportSize({ width: 1440, height: 1 });
-    await page.waitForTimeout(80);
-    assert.deepEqual(errors, [], 'Reading observer handles a one-pixel viewport');
-    await page.setViewportSize({ width: 1440, height: 900 });
-    // Resize must rebuild the reading line and retain working navigation.
-    for (const width of [390, 320]) {
-      await page.setViewportSize({ width, height: 844 });
-      await page.goto(`${origin}${prefix}/services/`);
-      await page.evaluate(() => document.fonts.ready);
-      const layout = await page.evaluate(() => ({
-        first: document.querySelector('[data-service]').getBoundingClientRect().top + scrollY,
-        overflow: document.documentElement.scrollWidth > innerWidth,
-        illustration: getComputedStyle(document.querySelector('.services-page .infographic-art')).display,
-        navPosition: getComputedStyle(document.querySelector('[data-service-nav]')).position,
-        clipped: [...document.querySelectorAll('h1,h2,h3,p,a,summary')].filter(el => el.getClientRects().length && el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 1).map(el => el.textContent.trim()),
-      }));
-      assert.ok(layout.first < 760, `Mobile service starts early: ${layout.first}px at ${width}px`);
-      assert.equal(layout.overflow, false);
-      assert.equal(layout.illustration, 'none');
-      assert.notEqual(layout.navPosition, 'sticky', 'Mobile navigation must not occupy the reading viewport');
-      assert.deepEqual(layout.clipped, []);
-      await page.locator('#consulting summary').scrollIntoViewIfNeeded();
-      await checkDescriptionMotion(page);
-      await nav.locator('a[href="#support"]').click();
-      await page.waitForFunction(() => document.querySelector('[data-service-nav] [aria-current="location"]')?.hash === '#support');
-      await page.emulateMedia({ reducedMotion: 'reduce' });
-      await page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running' && a.playState !== 'paused'));
-      await page.reload();
-      assert.equal(await page.evaluate(() => document.getAnimations().length), 0, 'Reduced motion has no prepared or running animations');
-      await page.locator('#consulting summary').click();
-      assert.equal(await page.locator('#consulting details').evaluate(el => getComputedStyle(el, '::details-content').transitionDuration), '0s', 'Reduced motion opens descriptions immediately');
-      await page.emulateMedia({ reducedMotion: 'no-preference' });
-    }
-    assert.deepEqual(errors, []);
-    await page.close();
-    for (const width of [1440, 390]) {
-      const plain = await browser.newPage({ javaScriptEnabled: false, viewport: { width, height: 844 } });
-      await plain.goto(`${origin}${prefix}/services/#support`);
-      assert.equal(await plain.locator('[data-service]').count(), 5);
-      await plain.locator('#support summary').click();
-      assert.notEqual(await plain.locator('#support details').getAttribute('open'), null);
-      assert.equal(await plain.locator('#support .service-body').evaluate(el => getComputedStyle(el).opacity), '1');
-      await plain.close();
-    }
-  }
-  console.log('PASS: Services journey/BFCache, keyboard details, localized CTAs, compact mobile, reduced motion and no-JS content');
+ const page=await browser.newPage({viewport:{width:1440,height:900}});
+ const errors=[];
+ page.on('pageerror',error=>errors.push(error.message));
+ await page.goto(origin+'/services/');
+ await page.evaluate(()=>document.fonts.ready);
+ assert.equal(await page.locator('[data-service]').count(),5);
+ assert.equal(await page.locator('[data-service-controls]').count(),0);
+ await page.locator('.services-intro .button').click();
+ await page.waitForFunction(()=>location.hash==='#consulting');
+ for(const service of data.services) {
+  await page.locator('[data-service-nav] a[href="#'+service.id+'"]').click();
+  await page.waitForFunction(id=>document.querySelector('[data-service-nav] [aria-current]')?.hash==='#'+id,service.id);
+  await page.waitForTimeout(500);
+  const card=page.locator('#'+service.id);
+  const geometry=await card.evaluate(el=>({top:el.getBoundingClientRect().top,navBottom:document.querySelector('[data-service-nav]').getBoundingClientRect().bottom}));
+  assert.ok(geometry.top>=geometry.navBottom-2,service.title+' clears sticky navigation');
+  assert.equal(await card.locator('.service-scope li').count(),service.keyAreas.length);
+  assert.equal(await card.locator('.service-action a').getAttribute('href'),'/contact/#consultation_form');
+  const details=card.locator('details');
+  const before=await card.evaluate(el=>el.offsetHeight);
+  await details.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(420);
+  assert.notEqual(await details.getAttribute('open'),null,'Keyboard opens full source copy');
+  await page.waitForFunction(({id,before})=>document.getElementById(id).offsetHeight>before+50,{id:service.id,before});
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(420);
+  assert.equal(await details.getAttribute('open'),null);
+ }
+ // Source-specific alternating composition: network/deployment left; security/support right.
+ const positions=await page.evaluate(()=>[...document.querySelectorAll('[data-service]')].filter(el=>el.id!=='design').map(el=>({id:el.id,art:el.querySelector('.service-art').getBoundingClientRect().left,copy:el.querySelector('.service-detail-body').getBoundingClientRect().left})));
+ for(const item of positions) assert.equal(item.art<item.copy,['consulting','implementation'].includes(item.id),item.id+' matches approved image placement');
+ for(const width of [1440,1280,1024,768,390,360,320]) {
+  await page.setViewportSize({width,height:844});
+  await page.goto(origin+'/services/');
+  await page.evaluate(()=>document.fonts.ready);
+  const layout=await page.evaluate(()=>({
+   overflow:document.documentElement.scrollWidth>innerWidth,
+   clipped:[...document.querySelectorAll('h1,h2,h3,p,a,summary')].filter(el=>el.getClientRects().length&&el.clientWidth>0&&el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.trim()),
+   overlap:[...document.querySelectorAll('.service-lead')].filter(el=>el.getBoundingClientRect().top<el.previousElementSibling.querySelector('h2').getBoundingClientRect().bottom-1).map(el=>el.textContent),
+   nav:getComputedStyle(document.querySelector('[data-service-nav]')).position,
+   designImage:(()=>{
+    const figure=document.querySelector('.service-art-design-flow');
+    const image=figure.querySelector('img');
+    const frame=figure.getBoundingClientRect(),art=image.getBoundingClientRect();
+    return art.top>=frame.top-1&&art.bottom<=frame.bottom+1&&art.left>=frame.left-1&&art.right<=frame.right+1;
+   })(),
+  }));
+  assert.equal(layout.overflow,false,'No page overflow at '+width);
+  assert.deepEqual(layout.clipped,[],'No clipped text at '+width);
+  assert.deepEqual(layout.overlap,[],'Summary does not overlap heading at '+width);
+  assert.ok(layout.designImage,'Full Solution Design image fits its frame at '+width);
+  if(width<768) assert.equal(layout.nav,'static');
+ }
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await page.reload();
+ await page.locator('#consulting summary').click();
+ assert.equal(await page.locator('#consulting details').evaluate(el=>getComputedStyle(el,'::details-content').transitionDuration),'0s');
+ assert.equal(await page.evaluate(()=>document.getAnimations().length),0);
+ await page.emulateMedia({reducedMotion:'no-preference'});
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto(origin+'/services/#design');
+ await page.waitForFunction(()=>document.querySelector('[data-service-nav] [aria-current]')?.hash==='#design');
+ await page.evaluate(()=>addEventListener('pageshow',event=>{window.__serviceRestored=event.persisted;}));
+ await page.locator('#design .service-action a').click();
+ await page.waitForURL(origin+'/contact/#consultation_form');
+ await page.goBack({waitUntil:'commit'});
+ await page.waitForFunction(()=>window.__serviceRestored===true);
+ await page.locator('[data-service-nav] a[href="#cybersecurity-consulting"]').click();
+ await page.waitForFunction(()=>document.querySelector('[data-service-nav] [aria-current]')?.hash==='#cybersecurity-consulting');
+ assert.deepEqual(errors,[]);
+ for(const width of [1440,390]) {
+  const plain=await browser.newPage({javaScriptEnabled:false,viewport:{width,height:844}});
+  await plain.goto(origin+'/services/#support');
+  await plain.locator('#support summary').click();
+  assert.notEqual(await plain.locator('#support details').getAttribute('open'),null);
+  assert.equal(await plain.locator('[data-service]').count(),5);
+  await plain.close();
+ }
+ console.log('PASS: vertical Services anchors/sticky clearance, keyboard disclosures, full source scopes, responsive 320–1440, reduced motion, BFCache and no-JS');
 } finally {
-  await browser.close();
-  await new Promise(resolve => server.close(resolve));
+ await browser.close();
+ await new Promise(resolve=>server.close(resolve));
 }

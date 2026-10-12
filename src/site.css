@@ -194,10 +194,30 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
 .product-card { display: flex; flex-direction: column; align-items: flex-start; }
 .product-card p { margin-bottom: 24px; }
 .product-card .button { margin-top: auto; }
-.closing-cta { background: var(--surface-alt); }
-.closing-layout { display: flex; justify-content: space-between; align-items: center; gap: 48px; }
-.closing-layout p { margin-top: 16px; color: var(--muted); }
-.closing-layout > .button { flex-shrink: 0; }
+/* Shared Home contact invitation. */
+section.home-contact { background: #0959D4; color: white; padding-block: 48px; }
+.home-contact-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: 64px; align-items: center; }
+.home-contact h2 { max-width: none; font-size: clamp(28px, 3.2vw, 46px); }
+.home-contact .home-contact-layout p { color: white; margin-top: 12px; font-size: 18px; }
+.home-contact-button { margin-top: 24px; background: white; color: var(--accent-text); }
+.home-contact-button:focus-visible { outline-color: white; }
+.home-contact-checklist { list-style: none; display: grid; gap: 20px; border-left: 1px solid #82B1F6; padding: 12px 0 12px 64px; margin: 0; }
+.home-contact-checklist li { display: flex; gap: 16px; align-items: center; }
+.home-contact-checklist .icon { width: 24px; height: 24px; flex-shrink: 0; }
+@media (hover: hover) {
+  .home-contact-button:hover { background: var(--canvas); }
+}
+@media (max-width: 767px) {
+  section.home-contact { padding-block: 40px; }
+  .home-contact-layout { grid-template-columns: 1fr; gap: 32px; }
+  .home-contact-checklist { border-left: 0; border-top: 1px solid #82B1F6; padding: 24px 0 0; gap: 16px; }
+}
+@media (max-width: 639px) {
+  .home-contact h2 { font-size: 29px; }
+}
+@media (max-width: 359px) {
+  .home-contact .container { width: calc(100% - 32px); }
+}
 .contact-copy h1 { font-size: clamp(40px, 3.4vw, 48px); font-weight: 600; line-height: 1.16; letter-spacing: -.025em; }
 .contact-invitation { color: var(--muted); margin-top: 24px; }
 .form-heading { font-size: 26px; margin-bottom: 16px; }
@@ -303,7 +323,6 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
   .consultation-form { max-width: 760px; }
   .overview-layout, .editorial-row { grid-template-columns: 1fr; gap: 24px; }
   .editorial-list { gap: 64px; }
-  .closing-layout { align-items: flex-start; flex-direction: column; gap: 32px; }
   .intro-grid, .technology-feature-grid { grid-template-columns: 1fr; gap: 40px; }
   .intro-grid > .infographic-art, .technology-feature-grid > .infographic-art { width: 100%; max-width: 760px; }
   .products-page .intro-grid { row-gap: 0; }

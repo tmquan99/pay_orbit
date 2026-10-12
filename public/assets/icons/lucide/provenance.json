@@ -146,6 +146,18 @@
       "path": "public/assets/icons/lucide/layers.svg",
       "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/layers.svg",
       "sha256": "ce16d0a955e3581cda17f6b2fd5c5bc2034b405f9cecc31c8ebb8495b4afc1bb"
+    },
+    {
+      "name": "settings",
+      "path": "public/assets/icons/lucide/settings.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/settings.svg",
+      "sha256": "0ae27fd0f81999229e3127ac96c5b32edfea448e291d509e76212b917551d66b"
+    },
+    {
+      "name": "clipboard-list",
+      "path": "public/assets/icons/lucide/clipboard-list.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/clipboard-list.svg",
+      "sha256": "2b91abc2e8ee8ba4c2e0f77d506a47a7a9774b0d4de3fa4b27e822a6376ab892"
     }
   ]
 }

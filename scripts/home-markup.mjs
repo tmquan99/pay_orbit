@@ -1,4 +1,5 @@
 import { icon, solutionIcon } from './visuals.mjs';
+import { contactInvitation } from './contact-invitation-markup.mjs';
 
 const arrow = () => icon('arrow-up-right', 'home-action-arrow');
 const link = (label, href, classes = 'home-text-link', contextId = '') => `<a class="${classes}" href="${href}"${contextId ? ` aria-labelledby="solution-link-${contextId} solution-title-${contextId}"` : ''}><span${contextId ? ` id="solution-link-${contextId}"` : ''}>${label}</span>${arrow()}</a>`;
@@ -25,7 +26,14 @@ export function home() {
       <div class="actions" data-hero>${link("Discuss your needs", '/contact/#consultation_form', 'button button-primary')}</div>
     </div></div>
     <figure class="home-panorama" data-hero><div class="container">
-      <img src="/assets/images/home-a-network-panorama.webp" srcset="/assets/images/home-a-network-panorama-720.webp 720w, /assets/images/home-a-network-panorama.webp 2172w" sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1200px" width="2172" height="724" alt="Illustration connecting an office, branch, gateway, data center and cloud" fetchpriority="high" decoding="async">
+      <div class="connection-art-frame" data-hero-graphic="panorama"><img src="/assets/images/home-a-network-panorama.webp" srcset="/assets/images/home-a-network-panorama-720.webp 720w, /assets/images/home-a-network-panorama.webp 2172w" sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1200px" width="2172" height="724" alt="Illustration connecting an office, branch, gateway, data center and cloud" fetchpriority="high" decoding="async">
+        <svg class="connection-signal-graphic" data-connection-graphic viewBox="0 0 2172 724" aria-hidden="true" focusable="false">
+          <path data-connection-signal d="M530 538 C550 535 555 540 574 550 C590 564 601 567 618 567 L660 567" pathLength="100"/>
+          <path data-connection-signal d="M903 536 C922 536 928 549 942 549 L1023 549" pathLength="100"/>
+          <path data-connection-signal d="M1165 549 L1246 549 C1254 549 1260 526 1286 526 L1294 526" pathLength="100"/>
+          <path data-connection-signal d="M1705 541 Q1719 550 1730 549 C1744 549 1750 504 1796 504" pathLength="100"/>
+        </svg>
+      </div>
       <ul class="home-panorama-labels" aria-hidden="true"><li>Head office</li><li>Branch</li><li>Gateway</li><li>Data Center</li><li>Cloud</li></ul>
     </div></figure>
   </section>
@@ -42,7 +50,7 @@ export function home() {
   </div></section>
   <section class="home-section home-approach" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
     <h2 id="approach_heading">With you at every stage</h2><p>From consulting to operations, we work alongside your team.</p>
-    <ol class="home-service-steps">${stages.map(([title, id], index) => `<li><a href="/services/#${id}"><span class="home-step-number" aria-hidden="true">0${index + 1}</span><strong>${title}</strong></a></li>`).join('')}</ol>
+    <ol class="home-service-steps">${stages.map(([title, id], index) => `<li><a href="${id === 'supply' ? '/products/' : `/services/#${id}`}"><span class="home-step-number" aria-hidden="true">0${index + 1}</span><strong>${title}</strong></a></li>`).join('')}</ol>
     ${link("Explore Our Services", '/services/')}
   </div></section>
   <section class="home-section home-technology" id="technology_focus" aria-labelledby="technology_heading"><div class="container">
@@ -55,8 +63,5 @@ export function home() {
   <section class="home-section home-company" id="company_intro" aria-labelledby="company_heading"><div class="container">
     <h2 id="company_heading">PAY ORBIT — starting with real needs.</h2><p>An Australia-based technology company focused on enterprise networking, cybersecurity and digital infrastructure.</p>${link("About PAY ORBIT", '/about/')}
   </div></section>
-  <section class="home-section home-contact" id="home_contact" aria-labelledby="home_contact_heading"><div class="container home-contact-layout">
-    <div><h2 id="home_contact_heading">Let's talk about your infrastructure.</h2><p>The right solution starts with a conversation.</p>${link("Talk to Our Team", '/contact/#consultation_form', 'button home-contact-button')}</div>
-    <ul class="home-contact-checklist">${["Your current environment", "Your priorities", "Your expected scope"].map(copy => `<li>${icon('shield-check')}<span>${copy}</span></li>`).join('')}</ul>
-  </div></section>`;
+  ${contactInvitation({ home: true })}`;
 }

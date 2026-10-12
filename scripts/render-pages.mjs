@@ -4,12 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { icon, badge, solutionIcon, productIcon, illustration, lifecycle, solutionOverview, technologyOverview, technologyGraphic, connectionScene } from './visuals.mjs';
 import { aboutStoryScene } from './about-story-markup.mjs';
 import { solutionSections } from './solutions-markup.mjs';
-import { serviceSections } from './services-markup.mjs';
+import { serviceIntro, serviceSections } from './services-markup.mjs';
 import { footerGraphic } from './footer-graphic.mjs';
 import { home } from './home-markup.mjs';
+import { contactInvitation } from './contact-invitation-markup.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workbook = JSON.parse(await fs.readFile(path.join(root, 'content/workbook.json'), 'utf8'));
+const serviceContent = JSON.parse(await fs.readFile(path.join(root, 'content/services.json'), 'utf8'));
 const text = (sheet, cell) => workbook.sheets[sheet][cell];
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const paragraph = (sheet, cell, attributes = '') => `<p${attributes}>${escape(text(sheet, cell))}</p>`;
@@ -26,20 +28,12 @@ const solutions = [
   ['cybersecurity', "Cybersecurity", "Strengthen system protection with firewalls, access controls and network segmentation."],
   ['cloud-security', "Cloud Security", "Protect workloads and improve visibility across public, private and hybrid cloud environments."],
 ];
-const services = [
-  ['consulting', "Technology Consulting", ["Requirement assessment", "Current-state review", "High-level architecture", "Solution recommendation"]],
-  ['design', "Solution Design", ["Architecture design", "BoM input", "Integration approach", "Implementation plan"]],
-  ['supply', "Product Supply", ["Hardware", "Software license", 'Subscriptions', "Project-based procurement"]],
-  ['implementation', "Implementation & Integration", ["Install", "Configure", "Integrate", "Migrate", "Test", "Commission"]],
-  ['support', "Technical Support", ["Troubleshooting", "Optimization", "Configuration support", "Vendor coordination"]],
-];
 const products = ["Enterprise & Data Center Switching", "Routing & WAN", 'Wireless', 'Collaboration', "Network Security", "Cloud Security", "Security Operations"];
 const productIds = ['switching', 'routing', 'wireless', 'collaboration', 'network-security', 'cloud-security', 'security-operations'];
 const brandSymbol = (light = false) => `<img class="brand-symbol" src="/assets/brand/pay-orbit-mark${light ? '-on-light' : ''}.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async">`;
 const companyPhoto = (attributes = 'data-reveal="slide" data-duration="700"', lazy = true) => `<figure class="company-media" ${attributes}><img src="/assets/images/company_infrastructure_photo.png" width="1536" height="1024" alt="Enterprise switch, patch panel and network cabling" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async"></figure>`;
 const intro = (heading, description, extra = '', art = '', artOptions = {}) => `<section class="page-intro"><div class="container${art ? ' intro-grid' : ''}"><div class="intro-copy"><h1 data-hero>${escape(heading)}</h1><p data-hero>${escape(description)}</p>${extra}</div>${art === 'technology' ? technologyGraphic() : art ? illustration(art, artOptions) : ''}</div></section>`;
 const jumpLinks = items => `<nav class="page-jumps" aria-label="On this page">${items.map(([id, label]) => `<a href="#${id}">${escape(label)}</a>`).join('')}</nav>`;
-const contactInvitation = () => `<section class="section closing-cta"><div class="container closing-layout" data-reveal="cta" data-duration="960"><div><h2>Discuss your business requirements</h2><p>Tell us about your networking or cybersecurity requirements.</p></div>${button("Contact Us", '/contact/')}</div></section>`;
 
 
 function about() {
@@ -93,9 +87,8 @@ function solutionPage() {
 }
 
 function servicePage() {
-  return `<div class="services-page">${intro("Technology services", "From consulting and design to deployment and infrastructure support.", `<div class="actions" data-hero>${button("Discuss your needs", '/contact/#consultation_form')}<a class="service-explore" href="#consulting"><span>Explore services</span>${icon('arrow-right')}</a></div>`, 'lifecycle', { lazy: true, responsive: true })}
-  ${serviceSections(services, workbook.sheets['04_Services'], button)}
-  <section class="section closing-cta"><div class="container closing-layout" data-reveal="cta" data-duration="960"><div><h2>Discuss your business requirements</h2><p>Service scope is agreed around your needs and operating environment.</p></div>${button("Discuss your needs", '/contact/#consultation_form')}</div></section></div>`;
+  return `<div class="services-page">${serviceIntro(serviceContent, button)}
+  ${serviceSections(serviceContent, button)}${contactInvitation()}</div>`;
 }
 
 function productPage() {
@@ -159,7 +152,7 @@ function documentPage(route, title, description, content) {
     <link rel="stylesheet" href="/src/site.css">
     <link rel="stylesheet" href="/src/footer.css">
     <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
-${['/solutions/', '/products/'].includes(route) ? '    <link rel="stylesheet" href="/src/hero-graphics.css">\n' : ''}
+${['/', '/solutions/', '/products/'].includes(route) ? '    <link rel="stylesheet" href="/src/hero-graphics.css">\n' : ''}
 ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : route === '/products/' ? '    <link rel="stylesheet" href="/src/products.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
   </head>
   <body${route === '/' ? ' class="home-page"' : ''}>
@@ -171,7 +164,7 @@ ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route =
       <div class="header-actions"><button class="menu-toggle" type="button" aria-controls="site_navigation" aria-expanded="false">Menu</button></div>
     </div></header>
     <main id="main">${pageContent}</main>
-    <footer class="site-footer" id="footer">${route === '/' ? '' : footerGraphic()}<div class="container footer-inner">
+    <footer class="site-footer" id="footer">${footerGraphic()}<div class="container footer-inner">
       <div><p class="footer-name"><span class="brand-lockup">${brandSymbol()}<span>${escape(text('00_Overview', 'B4'))}</span></span></p><p class="tagline">${t(text('00_Overview', 'B6'))}</p></div>
       <a class="button footer-contact" href="/contact/">${t("Contact")}</a><p class="trademark-notice">${t(text('07_SEO_Dev_Notes', 'B7'))}</p>
     </div></footer>
@@ -188,7 +181,7 @@ export async function renderPages() {
     ['/', text('07_SEO_Dev_Notes', 'B5'), text('07_SEO_Dev_Notes', 'B6'), home()],
     ['/about/', "About Us | PAY ORBIT", "Learn about PAY ORBIT PTY. LTD, our solution and technology approach, and support throughout the infrastructure lifecycle.", about()],
     ['/solutions/', "Solutions | PAY ORBIT", "PAY ORBIT solutions for enterprise networking, data center networking, cybersecurity and cloud security.", solutionPage()],
-    ['/services/', "Services | PAY ORBIT", "Technology consulting, solution design, product supply, implementation and integration, and technical support.", servicePage()],
+    ['/services/', "Services | PAY ORBIT", "Network and cybersecurity consulting, solution design, deployment and integration, and security and network support.", servicePage()],
     ['/products/', "Products & Technology | PAY ORBIT", "Seven Cisco and Palo Alto Networks technology groups for enterprise connectivity, cybersecurity and cloud security.", productPage()],
     ['/contact/', "Contact | PAY ORBIT", "Contact PAY ORBIT PTY. LTD in Australia at +61 433 024 689 to discuss your infrastructure requirements.", contact()],
   ];

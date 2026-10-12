@@ -57,7 +57,7 @@ export function installReferenceReveals(root = document) {
       finish(element);
       continue;
     }
-    const targets = isCTA ? [...element.querySelectorAll('h2, p, :scope > .button')] : [element];
+    const targets = isCTA ? [...element.querySelectorAll('h2, p, .button')] : [element];
     const transform = isCTA ? 'translateY(40px)' : element.dataset.reveal === 'slide' ? 'translateX(12px)' : element.dataset.reveal === 'media' ? 'scale(1.025)' : 'translateY(10px)';
     const group = targets.map((target, index) => {
       const animation = target.animate([{ opacity: 0, transform }, { opacity: 1, transform: 'none' }], {

@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-12T10:20:40.286Z",
+  "checkedAt": "2026-10-12T15:16:55.103Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 7.52783)",
+        "transform": "matrix(1, 0, 0, 1, 0, 15.5377)",
         "running": true
       }
     },
@@ -222,7 +222,7 @@
       "name": "Viewport 1440 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 30,
+        "interactiveTargets": 27,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -288,7 +288,7 @@
       "name": "Viewport 1024 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 25,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -354,7 +354,7 @@
       "name": "Viewport 768 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -420,7 +420,7 @@
       "name": "Viewport 390 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -486,7 +486,7 @@
       "name": "Viewport 360 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -552,7 +552,7 @@
       "name": "Viewport 320 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 23,
+        "interactiveTargets": 22,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,

@@ -45,16 +45,11 @@ try {
   await page.waitForFunction(() => document.documentElement.classList.contains('lenis'));
   await page.locator('[data-service-nav] a[href="#consulting"]').click();
   await page.waitForTimeout(500);
-  const track = page.locator('[data-service-track]');
   const y = await page.evaluate(() => scrollY);
-  const x = await track.evaluate(el => el.scrollLeft);
-  await track.hover();
-  await page.mouse.wheel(700, 0);
-  await page.waitForFunction(x => document.querySelector('[data-service-track]').scrollLeft > x + 100, x);
-  await page.waitForFunction(() => location.hash === '#design', null, { timeout: 3000 });
-  assert.ok(Math.abs(await page.evaluate(() => scrollY) - y) < 2, 'Horizontal wheel stays native inside the carousel');
-  await page.mouse.wheel(0, 200);
-  await page.waitForFunction(y => scrollY > y + 150, y);
+  await page.mouse.move(100,500);
+  await page.mouse.wheel(0,200);
+  await page.waitForFunction(y => scrollY > y + 150,y);
+  assert.equal(await page.locator('[data-service-track]').evaluate(el => el.scrollWidth <= el.clientWidth), true, 'Services remains a vertical reading flow');
   await page.goto(`${origin}/contact/`);
   await page.locator('textarea').first().evaluate(el => {
     const event = new WheelEvent('wheel', { deltaY: 100, bubbles: true, cancelable: true });
@@ -75,7 +70,7 @@ try {
   await touch.waitForTimeout(150);
   assert.equal(await touch.locator('html.lenis').count(), 0, 'Coarse pointer retains native touch scrolling even at desktop width');
   await touch.close();
-  console.log('PASS: Lenis wheel smoothing, distance, native comparison, mobile/touch, reduced motion, horizontal carousel, textarea and BFCache');
+  console.log('PASS: Lenis wheel smoothing, distance, native comparison, mobile/touch, reduced motion, vertical Services, textarea and BFCache');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

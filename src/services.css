@@ -1,185 +1,111 @@
-.services-page .page-intro { padding-block: 56px 48px; }
-.services-page .page-intro h1 { font-size: clamp(40px, 4.2vw, 60px); }
-.services-page .intro-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; }
-.services-page .intro-copy > p { max-width: 48ch; }
-.services-page .intro-copy .actions { margin-top: 28px; align-items: center; }
-.service-explore { font-size: 15px; font-weight: 500; gap: 8px; }
-.service-explore .icon { width: 18px; height: 18px; }
-.service-journey { position: sticky; top: 0; z-index: 3; border-block: 1px solid var(--divider); background: var(--surface); }
-.service-journey-inner { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 40px; align-items: center; }
-.service-journey h2 { font-size: 14px; line-height: 1.5; letter-spacing: 0; max-width: 18ch; font-weight: 500; color: var(--muted); }
-.service-journey ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
-.service-journey li { position: relative; min-width: 0; }
-.service-journey-steps { position: relative; min-width: 0; }
-.service-progress { display: none; }
-.service-progress-fill { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--accent); transform: scaleX(var(--service-position, 0)); transform-origin: left; }
-.service-journey a { display: flex; gap: 10px; align-items: center; min-height: 76px; text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 500; line-height: 1.4; }
-.service-stage-number { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 28px; height: 28px; border: 1px solid var(--divider); border-radius: 50%; font-size: 13px; color: var(--accent-text); background: var(--surface); }
-.service-journey a[aria-current='location'] { color: var(--accent-text); font-weight: 600; }
-.service-journey a[aria-current='location'] .service-stage-number { background: var(--accent); color: var(--on-accent); border-color: var(--accent); transform: scale(1.12); }
-.service-journey li[data-before] .service-stage-number { background: var(--surface-alt); border-color: var(--accent); }
-.service-detail { padding-block: 56px; background: var(--surface); scroll-margin-top: 100px; }
-.service-detail:nth-child(even) { background: var(--canvas); }
-.service-detail + .service-detail { border-top: 1px solid var(--divider); }
-.service-detail-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); gap: 80px; }
-.service-heading .icon-badge { width: 44px; height: 44px; border-radius: 10px; margin-bottom: 20px; }
-.service-heading .icon { width: 24px; height: 24px; }
-.service-heading h2 { font-size: clamp(30px, 3vw, 40px); max-width: 16ch; }
-.service-body { min-width: 0; }
-.service-lead { font-size: 24px; line-height: 1.5; font-weight: 500; letter-spacing: -.012em; max-width: 48ch; }
-.service-scope { margin-top: 24px; }
-.service-scope h3 { font-size: 16px; line-height: 1.5; letter-spacing: 0; }
-.service-scope ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; list-style: none; padding: 0; margin: 12px 0 0; }
-.service-scope li { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.6; }
-.service-scope .icon { width: 18px; height: 18px; margin-top: 4px; color: var(--accent-text); }
-.service-outcome { display: flex; align-items: flex-start; gap: 12px; margin-top: 24px; padding: 16px 20px; border-radius: 8px; background: var(--surface-alt); color: var(--accent-text); }
-.service-outcome p { font-size: 15px; line-height: 1.65; }
-.service-outcome .icon { width: 18px; height: 18px; margin-top: 3px; }
-.service-description { margin-top: 20px; }
-.service-description summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 0; border-bottom: 1px solid var(--divider); border-radius: 0; padding: 10px 0; background: transparent; color: var(--accent-text); font-size: 14px; font-weight: 500; list-style: none; cursor: pointer; }
-.service-description summary::-webkit-details-marker { display: none; }
-.service-description summary .icon { width: 18px; height: 18px; flex-shrink: 0; margin-inline: 4px; transform: rotate(90deg); }
-.service-description[open] summary .icon { transform: rotate(270deg); }
-/* Keep spacing inside the animated content box so it collapses to zero with the text. */
-.service-description > p { margin: 0; padding-top: 16px; color: var(--muted); font-size: 16px; line-height: 1.7; }
-.service-actions { margin-top: 20px; }
-.service-actions .button { font-size: 15px; padding-inline: 20px; }
-.service-carousel-controls[hidden] { display: none; }
-@media (min-width: 1024px) {
-  .service-journey ol { position: relative; gap: 0; }
-  .service-journey a { flex-direction: column; justify-content: center; gap: 6px; padding: 10px 4px; }
-  .service-progress { display: block; position: absolute; inset-inline: 10%; top: 24px; height: 3px; border-radius: 2px; background: var(--divider); pointer-events: none; }
-  .service-experience[data-horizontal] { padding-bottom: 40px; background: var(--canvas); timeline-scope: --service-reading; }
-  .service-experience[data-horizontal] .service-sections {
-    --panel-width: min(960px, calc((100vw - 96px) * .8));
-    --panel-gutter: calc((100% - var(--panel-width)) / 2);
-    position: relative;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: var(--panel-width);
-    align-items: start;
-    gap: 24px;
-    overflow-x: auto;
-    /* Reserve shadow paint space inside the scrollport; keep controls close below. */
-    padding: 40px var(--panel-gutter) 36px;
-    scroll-padding-inline: var(--panel-gutter);
-    scroll-snap-type: x mandatory;
-    scroll-margin-top: 100px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-timeline: --service-reading inline;
-  }
-  .service-experience[data-horizontal] .service-detail {
-    min-width: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    scroll-snap-align: center;
-    view-timeline: --service-panel inline;
-    view-timeline-inset: 0;
-  }
-  /* Keep the snap/observer article stable; its entire visible surface moves in depth. */
-  .service-experience[data-horizontal] .service-detail-grid { width: 100%; height: 100%; padding: 40px; border: 1px solid var(--divider); border-radius: 12px; background: var(--surface); grid-template-columns: minmax(0, 3.5fr) minmax(0, 6.5fr); gap: 40px; transform: perspective(1600px) scale(.84); transform-origin: center; opacity: .48; }
-  .service-experience[data-horizontal] .service-detail:has(~ [data-current]) .service-detail-grid { transform: translateX(72px) perspective(1600px) rotateY(8deg) scale(.84); }
-  .service-experience[data-horizontal] [data-current] ~ .service-detail .service-detail-grid { transform: translateX(-72px) perspective(1600px) rotateY(-8deg) scale(.84); }
-  .service-experience[data-horizontal] .service-detail[data-current] .service-detail-grid { border-color: var(--accent); transform: none; opacity: 1; box-shadow: 0 18px 36px -14px rgb(0 58 147 / .24), 0 3px 10px rgb(0 58 147 / .06); }
-  .service-experience[data-horizontal] .service-detail:not([data-current]) { cursor: pointer; }
-  .service-experience[data-horizontal] .icon { min-width: 20px; min-height: 20px; }
-  .service-experience[data-horizontal] :is(.service-description summary, .service-actions .button) { min-height: 54px; }
-  .service-experience[data-horizontal] .service-heading h2 { font-size: clamp(28px, 2.5vw, 36px); }
-  .service-experience[data-horizontal] .service-lead { font-size: 22px; }
-  .service-experience[data-horizontal] .service-scope li { font-size: 15px; }
-  .service-experience[data-horizontal] .service-outcome { padding: 14px 16px; }
-  .service-sections::-webkit-scrollbar { display: none; }
-  .service-carousel-controls { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 0; }
-  .service-carousel-controls output { color: var(--muted); font-size: 14px; }
-  .service-carousel-buttons { display: flex; gap: 10px; }
-  .service-carousel-buttons button { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--control-border); border-radius: 8px; background: var(--surface); color: var(--accent-text); cursor: pointer; }
-  .service-carousel-buttons button:disabled { color: var(--muted); background: var(--canvas); cursor: default; }
-  [data-service-prev] .icon { transform: rotate(180deg); }
-  @media (prefers-reduced-motion: no-preference) {
-    .service-experience[data-horizontal] .service-detail-grid { transition: border-color 220ms ease-out; }
-    @supports (animation-timeline: view()) {
-      .service-experience[data-horizontal] .service-detail .service-detail-grid { animation: service-panel-depth linear both; animation-timeline: --service-panel; }
-      @keyframes service-panel-depth {
-        0% { transform: translateX(-72px) perspective(1600px) rotateY(-8deg) scale(.82); opacity: .42; box-shadow: 0 4px 12px -8px rgb(0 58 147 / .08); }
-        46%, 54% { transform: translateX(0) perspective(1600px) rotateY(0deg) scale(1); opacity: 1; box-shadow: 0 18px 36px -14px rgb(0 58 147 / .24), 0 3px 10px rgb(0 58 147 / .06); }
-        100% { transform: translateX(72px) perspective(1600px) rotateY(8deg) scale(.82); opacity: .42; box-shadow: 0 4px 12px -8px rgb(0 58 147 / .08); }
-      }
-      .service-experience[data-horizontal] .service-detail:focus-within .service-detail-grid { animation: none; transform: none; opacity: 1; }
-    }
-    @supports (animation-timeline: scroll()) and (timeline-scope: --service-reading) {
-      .service-experience[data-horizontal] .service-progress-fill { animation: service-reading-progress linear both; animation-timeline: --service-reading; }
-      @keyframes service-reading-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .service-experience[data-horizontal] .service-detail[data-service] .service-detail-grid { transform: none; opacity: 1; }
-  }
+.services-page .services-intro { padding-block: 64px 48px; background:var(--surface); overflow:clip; }
+.services-intro-grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap:48px; align-items:center; }
+/* Match the shared intro typography and the Solutions heading scale. */
+.services-page .services-intro h1 { font-size:clamp(40px,4.2vw,60px); }
+.services-intro h1 > span { display:block; }
+.services-intro h1 em { font-style:normal; color:var(--accent); }
+.services-intro-description { margin-top:24px; max-width:48ch; }
+.services-intro-description p + p { margin-top:14px; color:var(--muted); }
+.services-intro .actions { margin-top:24px; }
+.service-art { margin:0; min-width:0; }
+.service-art img { display:block; width:100%; height:auto; }
+.service-art-hero { width:100%; }
+.service-art-hero img { transform:translateY(-14px); }
+.service-journey { position:sticky; top:0; z-index:3; border-block:1px solid var(--divider); background:var(--surface); }
+.service-journey ol { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); }
+.service-journey li { position:relative; min-width:0; }
+.service-journey li + li::before { content:""; position:absolute; left:0; top:24px; bottom:24px; width:1px; background:var(--divider); }
+.service-journey a { display:flex; align-items:center; justify-content:center; gap:12px; min-height:80px; text-decoration:none; font-size:15px; line-height:1.4; font-weight:500; color:var(--muted); }
+.service-journey .icon { width:28px; height:28px; color:var(--accent-text); }
+.service-journey a[aria-current="location"] { color:var(--accent-text); font-weight:600; }
+.service-detail { padding-block:40px; background:var(--surface); scroll-margin-top:104px; }
+.service-detail:nth-child(even) { background:#F2F7FF; }
+.service-detail:is(#consulting,#support) { padding-block:30px; }
+.service-detail#implementation { padding-block:28px; }
+.service-detail-grid { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:64px; align-items:center; }
+.service-detail-grid > .service-art { width:100%; max-width:460px; }
+.service-detail:is(#cybersecurity-consulting,#support) .service-detail-grid { grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); }
+.service-detail:is(#cybersecurity-consulting,#support) .service-art { grid-column:2; grid-row:1; }
+.service-detail:is(#cybersecurity-consulting,#support) .service-detail-body { grid-column:1; grid-row:1; }
+.service-heading { display:flex; align-items:center; gap:20px; min-height:52px; }
+.service-heading .icon-badge { width:52px; height:52px; border-radius:10px; flex-shrink:0; }
+.service-heading .icon-badge .icon { width:28px; height:28px; }
+.service-heading h2 { font-size:clamp(30px,3vw,40px); }
+.service-lead { margin:8px 0 0 72px; font-size:17px; font-weight:500; line-height:1.65; max-width:49ch; color:var(--muted); }
+.service-scope { margin-top:24px; }
+.service-detail:is(#consulting,#implementation) :is(.service-scope,.service-description,.service-action) { margin-left:72px; }
+.service-scope h3 { font-size:16px; font-weight:600; line-height:1.5; letter-spacing:0; color:var(--accent-text); }
+.service-area-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:12px; }
+.service-scope ul { list-style:none; padding:0; margin:0; }
+.service-scope li + li { margin-top:7px; }
+.service-scope li { display:flex; gap:9px; align-items:flex-start; font-size:16px; font-weight:500; line-height:1.55; color:var(--muted); }
+.service-scope li .icon { width:16px; height:16px; flex-shrink:0; color:var(--accent-text); margin-top:3px; }
+.service-detail:is(#consulting,#support) .service-scope { margin-top:20px; }
+.service-detail:is(#consulting,#support) .service-area-columns { margin-top:10px; }
+.service-detail:is(#consulting,#support) .service-scope li { line-height:1.55; }
+.service-detail:is(#consulting,#support) .service-scope li + li { margin-top:4px; }
+.service-detail:is(#consulting,#support) .service-description { margin-top:20px; }
+.service-art-network { aspect-ratio:1.25; overflow:hidden; }
+.service-art-network img { width:108%; max-width:none; margin:-26px 0 0 -4%; }
+.service-description { margin-top:28px; }
+.service-description summary { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:44px; padding:0 0 8px; cursor:pointer; list-style:none; font-size:14px; color:var(--accent-text); border:0; border-bottom:1px solid var(--divider); border-radius:0; background:transparent; }
+.service-description summary::-webkit-details-marker { display:none; }
+.service-description summary .icon { width:16px; height:16px; transform:rotate(90deg); transition:transform 360ms; }
+.service-description[open] summary .icon { transform:rotate(-90deg); }
+.service-description-copy { padding-top:16px; font-size:16px; line-height:1.65; color:var(--muted); }
+.service-description-copy p + p { margin-top:14px; }
+.service-action { margin-top:12px; }
+.service-action .button { font-size:15px; border-color:#6F98CD; border-radius:6px; }
+.service-art-deployment img { aspect-ratio:1.23; object-fit:cover; border-radius:10px; }
+.service-art-support img { aspect-ratio:1.6; object-fit:cover; border-radius:10px; }
+.service-art-deployment, .service-art-support { width:100%; max-width:460px; }
+.service-art-support { justify-self:end; }
+.service-design-grid { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:32px; align-items:start; }
+.service-design-grid .service-scope { margin-top:0; }
+.service-art-design-flow { width:100%; height:auto; margin:0; }
+.service-art-design-flow img { width:100%; height:auto; margin:0; }
+@supports (interpolate-size:allow-keywords) {
+  .service-description { interpolate-size:allow-keywords; }
+  .service-description::details-content { height:0; opacity:0; overflow:clip; transition:height 360ms ease,opacity 360ms ease,content-visibility 360ms allow-discrete; }
+  .service-description[open]::details-content { height:auto; opacity:1; }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .service-stage-number { transition: transform 220ms ease-out, background-color 220ms ease-out, color 220ms ease-out, border-color 220ms ease-out; }
-  .service-description summary .icon { transition: transform 360ms cubic-bezier(.22, 1, .36, 1); }
-  /* Native disclosure stays accessible; unsupported browsers retain instant toggling. */
-  @supports (interpolate-size: allow-keywords) and selector(details::details-content) {
-    .service-description { interpolate-size: allow-keywords; }
-    .service-description::details-content {
-      block-size: 0;
-      overflow: clip;
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: block-size 360ms cubic-bezier(.22, 1, .36, 1), content-visibility 360ms allow-discrete, opacity 220ms ease-out, transform 360ms cubic-bezier(.22, 1, .36, 1);
-    }
-    .service-description[open]::details-content { block-size: auto; opacity: 1; transform: none; }
-  }
-  .service-explore .icon { transition: transform 160ms ease-out; }
+@media (max-width:1100px) {
+  .services-page .services-intro { padding-block:48px; }
+  .services-intro-grid { gap:32px; }
+  .service-detail-grid { gap:36px; }
+  .service-heading { gap:14px; }
+  .service-heading .icon-badge { width:44px; height:44px; }
+  .service-heading .icon-badge .icon { width:24px; height:24px; }
+  .service-lead { margin:0 0 0 58px; font-size:17px; }
+  .service-detail:is(#consulting,#implementation) :is(.service-scope,.service-description,.service-action) { margin-left:0; }
+  .service-journey a { font-size:13px; gap:8px; }
 }
-@media (hover: hover) {
-  .service-journey a:hover, .service-description summary:hover { color: var(--accent-hover); }
-  .service-description summary:hover { background: transparent; }
-  .service-explore:hover .icon { transform: translateY(2px); }
+@media (max-width:767px) {
+  .services-page .services-intro { padding-block:36px 28px; }
+  .services-intro-grid { grid-template-columns:1fr; gap:28px; }
+  .service-art-hero { width:100%; margin-left:0; }
+  .service-art-hero img { transform:none; }
+  .service-journey { position:static; }
+  .service-journey ol { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding-block:8px; }
+  .service-journey li:last-child { grid-column:1 / -1; }
+  .service-journey li + li::before { display:none; }
+  .service-journey a { min-height:64px; font-size:14px; gap:4px; flex-direction:column; padding:6px 0; }
+  .service-journey .icon { width:22px; height:22px; }
+  .service-detail { padding-block:32px; scroll-margin-top:24px; }
+  .service-detail:is(#consulting,#support,#implementation) { padding-block:32px; }
+  .service-art-network { aspect-ratio:auto; height:auto; overflow:visible; }
+  .service-art-network img { margin:0; width:100%; }
+  .service-detail-grid, .service-detail:is(#cybersecurity-consulting,#support) .service-detail-grid { grid-template-columns:1fr; gap:24px; }
+  .service-detail:is(#cybersecurity-consulting,#support) .service-art, .service-detail:is(#cybersecurity-consulting,#support) .service-detail-body { grid-column:auto; grid-row:auto; }
+  .service-art, .service-detail-grid > .service-art { max-width:400px; margin-inline:auto; width:100%; }
+  .service-heading .icon-badge { width:40px; height:40px; }
+  .service-heading .icon-badge .icon { width:22px; height:22px; }
+  .service-heading h2 { font-size:28px; }
+  .service-heading { min-height:0; align-items:center; margin-bottom:14px; }
+  .service-lead { margin:0; font-size:17px; }
+  .service-area-columns { grid-template-columns:1fr; gap:7px; }
+  .service-art-design-flow { margin-top:0; }
 }
-@media (max-width: 1100px) {
-  .service-journey-inner { grid-template-columns: 1fr; gap: 0; }
-  .service-journey h2 { display: none; }
-  .service-detail-grid { gap: 48px; }
-}
-@media (max-width: 1023px) {
-  .services-page .infographic-art { display: none; }
-  .services-page .intro-grid { grid-template-columns: 1fr; }
-  .service-journey { position: static; padding-block: 24px; }
-  .service-journey-inner { display: block; }
-  .service-journey h2 { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -.015em; color: var(--text); max-width: none; margin-bottom: 16px; }
-  .service-journey a { min-height: 48px; }
-  .service-detail { padding-block: 40px; scroll-margin-top: 24px; }
-  .service-detail-grid { grid-template-columns: 1fr; gap: 24px; }
-  .service-heading { display: flex; gap: 14px; align-items: center; }
-  .service-heading .icon-badge { flex-shrink: 0; margin: 0; }
-  .service-heading h2 { max-width: none; }
-}
-@media (max-width: 639px) {
-  .services-page .page-intro { padding-block: 36px 32px; }
-  .services-page .page-intro h1 { font-size: 36px; }
-  .services-page .intro-copy > p { margin-top: 16px; font-size: 16px; line-height: 1.65; }
-  .services-page .intro-copy .actions { margin-top: 24px; gap: 8px 16px; }
-  .services-page .intro-copy .button { font-size: 14px; padding-inline: 16px; min-height: 48px; }
-  .service-explore { font-size: 14px; }
-  .service-journey { padding-block: 20px; }
-  .service-journey h2 { font-size: 22px; }
-  .service-journey ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; }
-  .service-journey a { min-height: 44px; font-size: 14px; gap: 10px; }
-  .service-stage-number { width: 26px; height: 26px; font-size: 12px; }
-  .service-detail { padding-block: 32px; }
-  .service-detail-grid { gap: 20px; }
-  .service-heading { align-items: flex-start; gap: 12px; }
-  .service-heading .icon-badge { width: 36px; height: 36px; border-radius: 8px; }
-  .service-heading .icon { width: 20px; height: 20px; }
-  .service-heading h2 { font-size: 28px; line-height: 1.2; text-wrap: initial; }
-  .service-lead { font-size: 20px; line-height: 1.5; }
-  .service-scope { margin-top: 20px; }
-  .service-scope ul { grid-template-columns: 1fr; gap: 8px; }
-  .service-scope li { font-size: 15px; }
-  .service-outcome { padding: 14px; margin-top: 20px; gap: 10px; }
-  .service-outcome p { font-size: 14px; }
-  .service-actions .button { font-size: 14px; min-height: 48px; }
+@media (prefers-reduced-motion:reduce) {
+  .service-description::details-content, .service-description summary .icon { transition:none; }
 }

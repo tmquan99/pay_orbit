@@ -6,20 +6,26 @@ export function installHeroGraphics(root = document) {
   let visible = false;
   let animations = [];
   const create = () => {
-    if (graphic.dataset.heroGraphic === 'connection') {
-      animations = [...graphic.querySelectorAll('[data-connection-signal]')].map((path, index) => {
-        const start = index * .34;
-        const end = start + .28;
+    if (['connection', 'panorama'].includes(graphic.dataset.heroGraphic)) {
+      const paths = [...graphic.querySelectorAll('[data-connection-signal]')];
+      const panorama = graphic.dataset.heroGraphic === 'panorama';
+      const duration = panorama ? 9000 : 6000;
+      const dashLength = panorama ? 7 : 13;
+      const step = paths.length === 3 ? .34 : 1 / paths.length;
+      animations = paths.map((path, index) => {
+        const start = index * step;
+        const end = start + step * (.28 / .34);
         return path.animate([
-          { strokeDashoffset: 13, opacity: 0, offset: 0 },
-          { strokeDashoffset: 13, opacity: 0, offset: start },
-          { strokeDashoffset: 10, opacity: 1, offset: start + .02 },
+          { strokeDashoffset: dashLength, opacity: 0, offset: 0 },
+          { strokeDashoffset: dashLength, opacity: 0, offset: start },
+          { strokeDashoffset: dashLength - 3, opacity: 1, offset: start + .02 },
           { strokeDashoffset: -100, opacity: 1, offset: end - .02 },
-          { strokeDashoffset: -113, opacity: 0, offset: end },
-          { strokeDashoffset: -113, opacity: 0, offset: 1 },
-        ], { duration: 6000, iterations: Infinity, fill: 'both' });
+          { strokeDashoffset: -100 - dashLength, opacity: 0, offset: end },
+          { strokeDashoffset: -100 - dashLength, opacity: 0, offset: 1 },
+        ], { duration, iterations: Infinity, fill: 'both' });
       });
-      animations.push(graphic.querySelector('[data-connection-firewall]').animate([
+      const firewall = graphic.querySelector('[data-connection-firewall]');
+      if (firewall) animations.push(firewall.animate([
         { opacity: 0, transform: 'scale(.85)', offset: 0 },
         { opacity: 0, transform: 'scale(.85)', offset: .28 },
         { opacity: .5, transform: 'scale(1)', offset: .31 },

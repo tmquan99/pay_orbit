@@ -28,7 +28,7 @@ export function lifecycle({ compact = false, linked = true } = {}) {
     ["Deploy", "Integration, testing and commissioning", 'implementation'],
     ["Support", "Within the agreed service scope", 'support'],
   ];
-  return `<ol class="lifecycle${compact ? ' lifecycle-compact' : ''}">${steps.map(([label, description, anchor], index) => `<li><${linked ? `a href="/services/#${anchor}"` : 'div'} class="lifecycle-step"><span class="step-symbol">${icon(serviceIcon(index))}<span class="step-number">${index + 1}</span></span><strong>${label}</strong><span class="step-description">${description}</span></${linked ? 'a' : 'div'}>${index < steps.length - 1 ? icon('arrow-right', 'step-arrow') : ''}</li>`).join('')}</ol>`;
+  return `<ol class="lifecycle${compact ? ' lifecycle-compact' : ''}">${steps.map(([label, description, anchor], index) => `<li><${linked ? `a href="${anchor === 'supply' ? '/products/' : `/services/#${anchor}`}"` : 'div'} class="lifecycle-step"><span class="step-symbol">${icon(serviceIcon(index))}<span class="step-number">${index + 1}</span></span><strong>${label}</strong><span class="step-description">${description}</span></${linked ? 'a' : 'div'}>${index < steps.length - 1 ? icon('arrow-right', 'step-arrow') : ''}</li>`).join('')}</ol>`;
 }
 
 function connectionGraphic(image) {

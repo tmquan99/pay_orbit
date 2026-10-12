@@ -5,7 +5,6 @@
 .solutions-page .page-intro h1 { font-size: clamp(40px, 4.2vw, 60px); }
 .solutions-page .overview-core { padding: 0; background: none; }
 .solutions-page .solution-overview a { padding: 14px; }
-.solutions-page .closing-cta { background: var(--surface); border-top: 1px solid var(--divider); }
 .solution-nav { position: sticky; top: 0; z-index: 3; background: var(--surface); border-block: 1px solid var(--divider); }
 .solution-nav-inner { display: flex; align-items: center; gap: 32px; }
 .solution-nav-inner > span { flex-shrink: 0; font-size: 14px; color: var(--muted); }

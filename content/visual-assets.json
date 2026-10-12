@@ -143,6 +143,108 @@
         "bytes": 1217594,
         "sha256": "91f05e7d47298fcc7a9220c51312a975f9cba0247e3c532dc3d0dd791778cabf"
       }
+    },
+    {
+      "id": "services-editorial-hero",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-hero.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-6849df0a-439e-4d60-bc51-bb22ef2fa6a1.png"
+      },
+      "prompt": "Use case: background-extraction. Extract/recreate only the TOP RIGHT HERO DIAGRAM from the provided Services website mockup, source region approximately x400..810,y85..290 in the 841x1870 image. Produce a standalone 1200x640 landscape transparent PNG website illustration. Faithfully preserve the exact reference arrangement, pale white/blue isometric 3D style, object proportions, blue palette, soft shadows, all 5 labels and arrows. On upper left a small navy blue network switch on a white oval plinth with a small icon and label 'Network' above. On lower left a blue security shield on white oval plinth, label 'Security' beneath. Both connect via smooth blue curved arrows pointing into the middle white round raised plinth with a blue blueprint/document tilted on it, label 'Design' below. Straight blue arrow right to a navy server rack on white plinth with 'Deployment' label below. Straight blue arrow right to a laptop on white plinth showing a white gear on its blue screen and 'Support' label below. Match positions precisely to the mockup hero. Keep the illustration as a compact horizontal sequence with the input pair on left, ample transparent space around the complete illustration, and subtle diffuse blue shadow under objects. Text verbatim: Network, Security, Design, Deployment, Support. NO webpage header, no headline, no body text, no buttons, no borders, no extra icons or objects, no cartons, no watermark. Use actual alpha transparency outside the isolated diagram, not a flat colored background. This is a faithful extraction of the approved visual, not a redesign.",
+      "metadata": {
+        "width": 1717,
+        "height": 916,
+        "bytes": 1075992,
+        "sha256": "01a7d87d60fda9b571f1ec80d0b39718590a6242fe2c190641fa3f416e986522"
+      }
+    },
+    {
+      "id": "services-editorial-deployment",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-deployment.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-dd0b582a-76b6-47ed-852e-c2e9044ff9a1.png"
+      },
+      "prompt": "Use case: background-extraction. Asset type: Deployment & Integration service section photo. Input image: approved Services mockup, edit/reference target specifically the rectangular rack photo at x60..350,y1163..1399 of the 841x1870 source. Extract/recreate ONLY this exact photo as a standalone full-bleed rectangular 1024x840 landscape image. Match the reference composition and realism: close-up black enterprise network/server racks dominate the left foreground, dense neatly routed vivid blue patch cables at the extreme left, rows of black and silver rack-mounted network devices with realistic vent panels and ports. Camera peers down the racks to a clean narrow data center aisle receding toward the right rear. Dark rack doors farther down the row and a pale gray technical ceiling with lights/panels in upper right, cool gray polished floor at lower right. The left rack face is large in frame, the aisle is at the right edge, strong converging perspective to the rear right. Cool blue-gray natural professional lighting, crisp practical enterprise infrastructure photography, restrained contrast, no futuristic glows. Preserve the reference viewpoint, cable color, rack proportions and depth as closely as possible. Opaque image filling the entire rectangle edge-to-edge; no rounded corners (handled in CSS), no border, no frame, no margins, no website UI, no text or labels, no brand names, no watermarks, no people, no other objects.",
+      "metadata": {
+        "width": 1385,
+        "height": 1136,
+        "bytes": 2496038,
+        "sha256": "2cdae67e24df51715b9a2c4a3790f3347553350c1eead124576efb123a5361e1"
+      }
+    },
+    {
+      "id": "services-editorial-network",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-network.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-e9ab-7e11-b762-d3cf6303cbb5/exec-c4818118-a7b9-4678-ba13-feac33021ef2.png"
+      },
+      "prompt": "Use case: background-extraction. Asset type: website Network Consulting illustration, one transparent PNG, target canvas 1024x768 landscape. Input image is the approved full-page mockup. Extract/recreate ONLY the isometric network topology illustration at x60..370, y410..635 of the 841x1870 reference; discard the entire rest of the page. Precisely match this illustration's camera, arrangement, objects, soft lighting, blue and white glossy 3D style. Main subject: central blue globe on low circular white platform; blue server rack upper center-left; slim white WiFi tower upper-right on square platform; laptop on platform at left; laptop on platform lower-right; dark network appliance lower-left; white network appliance below central globe. Thin blue connector lines and arrows connect them in the same arrangement. Keep the whole topology centered and large with modest clear margins, fully visible; camera isometric 3/4. Genuine transparent background with soft contact shadows, suited to #FCFDFF webpage. No text, captions, numbers, title, bullets, UI, card background, border, logos, watermarks. Preserve all visual details of the approved network illustration as closely as possible. Do not redesign or add unrelated objects.",
+      "metadata": {
+        "width": 1448,
+        "height": 1086,
+        "bytes": 1187659,
+        "sha256": "07131b6b0ad8db51ec30b5852b2861d0b8bb79f8bd617fca554910781b74e18e"
+      }
+    },
+    {
+      "id": "services-editorial-support",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-support.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-e9ab-7e11-b762-d3cf6303cbb5/exec-578e1b27-17e8-49e9-a39b-e206c7be566e.png"
+      },
+      "prompt": "Use case: precise-object-edit. Asset type: photorealistic website Security & Network Support section photograph, target 1280x800 landscape. Input image is the approved full-page Services mockup (841x1870). Extract/recreate ONLY the photograph at x495..785, y1450..1640 of that reference, completely excluding the rest of the page. Preserve the approved photo composition, subject positions, camera angle and cool natural lighting. Clean off-white enterprise network operations desk in a bright modern office. A pair of adjoining large black widescreen monitors upright across the center and right show navy and blue world network-health consoles with abstract status panels; no readable metrics, words or numbers. At lower left, a small dark upright display/tablet stands on the desk, matching the reference. Black monitor bases, keyboard and a small unbranded black network appliance with blue ports at front right. Softly blurred windows and green foliage in the background with natural cool daylight. Photographic realism, believable professional hardware, clean quiet scene. Full-bleed opaque photograph, landscape ratio 8:5, no border, rounded corners, framing card, UI outside monitor screens, readable lettering, company logos, watermark, captions or people. This must be a photograph, not a diagram, 3D icon illustration or cartoon. Match the reference crop closely.",
+      "metadata": {
+        "width": 1586,
+        "height": 992,
+        "bytes": 1740305,
+        "sha256": "d745483eb0a29467f27231f01ed434a97c30610823b98ba6c71e996ac5adf557"
+      }
+    },
+    {
+      "id": "services-editorial-security",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-security.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-f65e5807-fe04-4988-806b-1b502e9c86ed.png"
+      },
+      "prompt": "Use case: background-extraction\nAsset type: production illustration for Cybersecurity Consulting section of the provided website mockup.\nInput image: exact approved mockup reference. Extract and recreate ONLY the cybersecurity illustration in rectangle x485..790, y675..915 of this 841 by 1870 reference. Do not recreate the website.\nPrimary request: produce a high fidelity isolated 3D illustration of that exact cluster at 1024x768 with genuine transparency. Composition and positions must match the reference: large vivid blue upright shield with pale blue beveled rim and white padlock centered on a low white/light-blue plinth; small open dark-blue laptop to left; short blue brick firewall in lower left on a small white base; rounded blue cloud upper right; compact three-unit dark-blue server rack on white base at right. Thin cyan rounded orthogonal connector cables connect these items.\nStyle: clean polished isometric 3D enterprise technology illustration. Match the reference object silhouettes, relative proportions, perspective, blue and white palette, cool soft lighting, restrained shadows, and generous spaces between objects. Recreate the scene faithfully rather than invent a new composition.\nBackground: completely transparent outside the objects and subtle contact shadows, meant for display on #F2F7FF.\nConstraints: no headings, no text, no UI, no card frame, no border, no extra objects, no logo, no watermark. Keep all objects fully visible with modest transparent outer margin. Landscape 4:3 output target 1024x768.",
+      "metadata": {
+        "width": 1448,
+        "height": 1086,
+        "bytes": 1024875,
+        "sha256": "e29600a55a94f7edfe9d876486fa5b6b6c086336813ad601a985298f0d1d3223"
+      }
+    },
+    {
+      "id": "services-editorial-design-flow",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-design-flow.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-75e804ee-4f2b-42ce-9313-134d71f7bf23.png"
+      },
+      "prompt": "Use case: background-extraction\nAsset type: production horizontal four-step Solution Design diagram, isolated from the approved website mockup.\nInput image: exact reference website mockup, 841x1870 pixels. The edit target is ONLY the horizontal flow in rectangle x61..449, y1045..1114. Extract/recreate precisely this four-node flow, not the page or section.\nPrimary request: isolated horizontal diagram at target 1400x270. Four evenly spaced white tiles with thin pale-blue borders, approximately 8px corner rounding, subtle soft shadows and a small crisp electric-blue line icon above each label. Three separate small electric-blue right-pointing arrows sit between tiles at vertical center. The fourth tile is somewhat wider to fit its label. Keep the exact reference composition, silhouette, spacing, proportions, restrained palette and delicate stroke weight.\nExact labels, left to right: \"Requirement\", \"Architecture\", \"Technology\", \"Implementation Plan\". All four labels must be readable, spelled exactly, dark navy, clean sans-serif, centered below icons. First icon is a blue document/clipboard with text lines, second is a connected network topology, third is three small isometric cubes, fourth is a clipboard/checklist with a check mark.\nBackground: genuinely transparent around tiles, arrows and subtle shadows. White/pale-blue tile surfaces should be opaque; meant for display on #F8FBFF.\nConstraints: landscape horizontal strip, all four full tiles and all three arrows visible, balanced small transparent margins; no headings, no extra text or objects, no website UI or page, no watermark or logos. Target1400x270, preserve wide and shallow composition.",
+      "metadata": {
+        "width": 2022,
+        "height": 778,
+        "bytes": 696557,
+        "sha256": "59900181452c5dc17e9327e8bf78d9ffd10c7a29e4b69e03f5aae038757b8170"
+      }
     }
   ],
   "icons": {
@@ -313,6 +415,114 @@
       "height": 360,
       "bytes": 10880,
       "sha256": "9e6ccdfa01cf8cd14e7be214ca2a4b663256c944b25f4da954626dcece16f028"
+    },
+    {
+      "source": "public/assets/images/services-editorial-hero.png",
+      "destination": "public/assets/images/services-editorial-hero.webp",
+      "quality": 88,
+      "width": 1717,
+      "height": 916,
+      "bytes": 256294,
+      "sha256": "5d94a91f0ae01503720d1c542e8ab65b3626b114c1ec045392dfb8499b1880f5"
+    },
+    {
+      "source": "public/assets/images/services-editorial-hero.png",
+      "destination": "public/assets/images/services-editorial-hero-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 384,
+      "bytes": 70730,
+      "sha256": "e5de2bb9d5d951122544ec362bd90347aef227d610b3c08dcd493a289426fed7"
+    },
+    {
+      "source": "public/assets/images/services-editorial-deployment.png",
+      "destination": "public/assets/images/services-editorial-deployment.webp",
+      "quality": 88,
+      "width": 1385,
+      "height": 1136,
+      "bytes": 278460,
+      "sha256": "f5734a168c84c4830fb44650bcfaed5567a86cc613e14710a225c5214cefcaed"
+    },
+    {
+      "source": "public/assets/images/services-editorial-deployment.png",
+      "destination": "public/assets/images/services-editorial-deployment-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 591,
+      "bytes": 97330,
+      "sha256": "9583a279b5a56c723026a2fef6f380c783ebe4212e325c5592e5cd02b43a46db"
+    },
+    {
+      "source": "public/assets/images/services-editorial-network.png",
+      "destination": "public/assets/images/services-editorial-network.webp",
+      "quality": 88,
+      "width": 1448,
+      "height": 1086,
+      "bytes": 291928,
+      "sha256": "2a8a44d4dd2370525731b7d98e5086d492a2a7c359d19033298f94a827459ea8"
+    },
+    {
+      "source": "public/assets/images/services-editorial-network.png",
+      "destination": "public/assets/images/services-editorial-network-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 540,
+      "bytes": 99292,
+      "sha256": "318b859c3261b5351f53ca4811c09b79c64b861d0b87c5608654325fe1af3301"
+    },
+    {
+      "source": "public/assets/images/services-editorial-support.png",
+      "destination": "public/assets/images/services-editorial-support.webp",
+      "quality": 88,
+      "width": 1586,
+      "height": 992,
+      "bytes": 122030,
+      "sha256": "df619807c8f7be7d6893a8331ace57ae7c499cd6145e32ba8ca6722f87dbcbc1"
+    },
+    {
+      "source": "public/assets/images/services-editorial-support.png",
+      "destination": "public/assets/images/services-editorial-support-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 450,
+      "bytes": 41208,
+      "sha256": "1770376ed7f3e0daaa6177e3a9d280ac920f465d46bd4ab52a029818e13c767f"
+    },
+    {
+      "source": "public/assets/images/services-editorial-security.png",
+      "destination": "public/assets/images/services-editorial-security.webp",
+      "quality": 88,
+      "width": 1448,
+      "height": 1086,
+      "bytes": 201914,
+      "sha256": "55d1f482e7edb15b4f20af291034c71d77024fa95db3a05c764f0b1341faba65"
+    },
+    {
+      "source": "public/assets/images/services-editorial-security.png",
+      "destination": "public/assets/images/services-editorial-security-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 540,
+      "bytes": 76014,
+      "sha256": "0ab4cf40e3f9a94dc92add688dcfad720e91ce9ea674ded9c98eabed7cc21ad4"
+    },
+    {
+      "source": "public/assets/images/services-editorial-design-flow.png",
+      "destination": "public/assets/images/services-editorial-design-flow.webp",
+      "quality": 88,
+      "width": 2022,
+      "height": 778,
+      "bytes": 126716,
+      "sha256": "8b2afddc47988f7248b54d26dea6f8da5c6f8dc36293bc940b0fb85b8d310965"
+    },
+    {
+      "source": "public/assets/images/services-editorial-design-flow.png",
+      "destination": "public/assets/images/services-editorial-design-flow-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 277,
+      "bytes": 28684,
+      "sha256": "62ed665b68a050d5c85c0fdf1ca11fca31fd3e332556cb70b786b68a43f9fb60"
     }
   ]
 }

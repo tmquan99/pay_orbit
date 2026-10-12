@@ -11,6 +11,7 @@
 .home-panorama { margin-top: 24px; padding-bottom: 32px; }
 .home-panorama > .container { position: relative; }
 .home-panorama img { width: 100%; height: auto; }
+.home-panorama [data-connection-signal] { stroke: #EAF8FF; stroke-width: 3; stroke-dasharray: 7 200; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 3px #299BFF); }
 /* The artwork's ground line is at 80%; captions sit on the empty floor. */
 .home-panorama-labels { position: absolute; z-index: 1; top: 82%; left: 0; right: 0; display: grid; grid-template-columns: 1.5fr .6fr .8fr 1.1fr 1fr; list-style: none; margin: 0; padding: 0; text-align: center; font-size: 13px; font-weight: 500; line-height: 1.4; }
 .home-section { padding-block: 56px; scroll-margin-top: 24px; }
@@ -63,23 +64,9 @@
 .home-company h2 { font-size: clamp(25px, 2.4vw, 32px); }
 .home-company p { max-width: 75ch; }
 .home-company .home-text-link { margin-top: 12px; }
-.home-contact { background: #0959D4; color: white; padding-block: 48px; }
-.home-contact-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: 64px; align-items: center; }
-.home-contact p { color: white; }
-.home-contact-button { margin-top: 24px; background: white; color: var(--accent-text); }
-.home-contact-button:focus-visible { outline-color: white; }
-.home-contact-checklist { list-style: none; display: grid; gap: 20px; border-left: 1px solid #82B1F6; padding: 12px 0 12px 64px; margin: 0; }
-.home-contact-checklist li { display: flex; gap: 16px; align-items: center; }
-.home-contact-checklist .icon { width: 24px; height: 24px; flex-shrink: 0; }
-.home-page .site-footer { padding-block: 28px; }
-.home-page .footer-inner { row-gap: 16px; align-items: center; }
-.home-page .footer-name { font-size: 18px; }
-.home-page .tagline { font-size: 13px; }
-.home-page .trademark-notice { font-size: 12px; line-height: 1.6; max-width: none; }
 @media (hover: hover) and (pointer: fine) {
   .home-needs-list a:hover .need-copy strong, .home-service-steps a:hover strong { color: var(--accent-text); text-decoration: underline; }
   .home-vendors a:hover { background: var(--canvas); }
-  .home-contact-button:hover { background: var(--canvas); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .home-action-arrow { transition: transform 160ms ease-out; }
@@ -123,11 +110,9 @@
   .vendor-logo-palo-alto { width: 200px; }
   .vendor-capabilities { grid-column: 1 / -1; grid-row: 2; min-height: 0; padding: 0; border: 0; font-size: 14px; }
   .home-vendors .icon { grid-column: 2; grid-row: 1; }
-  .home-contact-layout { grid-template-columns: 1fr; gap: 32px; }
-  .home-contact-checklist { border-left: 0; border-top: 1px solid #82B1F6; padding: 24px 0 0; gap: 16px; }
 }
 @media (max-width: 639px) {
-  .home-page main .container, .home-page .site-footer .container { width: calc(100% - 40px); }
+  .home-page main .container { width: calc(100% - 40px); }
   .hero-domain { font-size: 11px; max-width: 28ch; }
   .home-hero { padding-top: 28px; }
   .home-hero h1 { font-size: clamp(40px, 10vw, 58px); }
@@ -157,11 +142,9 @@
   .home-service-steps a { flex-direction: row; gap: 20px; text-align: left; padding: 0; }
   .home-service-steps strong { font-size: 16px; }
   .home-company h2 { font-size: 25px; }
-  .home-page .footer-inner { grid-template-columns: 1fr; gap: 16px; }
-  .home-page .footer-contact { justify-self: start; }
 }
 @media (max-width: 359px) {
-  .home-page main .container, .home-page .site-footer .container { width: calc(100% - 32px); }
+  .home-page main .container { width: calc(100% - 32px); }
   .home-hero h1 { font-size: 38px; }
   .home-hero h1 { font-size: 26px; }
 }

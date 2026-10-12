@@ -8,7 +8,9 @@ Thứ tự: hero sáng toàn chiều ngang với một CTA; panorama; ba nhu c�
 
 Mobile chuyển nhu cầu, giải pháp và timeline thành danh sách dọc, giữ menu hiện có và vùng bấm ít nhất 44px. Ảnh company chỉ trang trí ở desktop nên dùng CSS background, ẩn ở mobile. Hai minh họa nội dung có alt và kích thước cố định; nhãn panorama là HTML. Không có claim dự án, số liệu khách hàng hoặc quan hệ đối tác mới.
 
-Hero có bốn entrance 650ms. Nhu cầu và minh họa giải pháp xuất hiện nhẹ khi cuộn; không còn vòng lặp dây cáp trên Home. Reduced motion hủy animation; không JavaScript vẫn có nội dung và link đầy đủ. Trang Giải pháp tiếp tục dùng chuyển động cáp riêng.
+Hero có bốn entrance 650ms. Nhu cầu và minh họa giải pháp xuất hiện nhẹ khi cuộn. Panorama có một tín hiệu sáng chạy lần lượt qua bốn đoạn cáp Office → Branch → Gateway → Data Center → Cloud, chu kỳ 9 giây với vệt sáng ngắn, dùng chung controller với Solutions. SVG dùng đúng tọa độ ảnh 2172×724 và co giãn theo ảnh; nét sáng giữ độ rõ ở mobile. Chỉ một đoạn có tín hiệu tại mỗi thời điểm, chạy hết tuyến mới lặp. Animation tạm dừng ngoài viewport hoặc khi tab ẩn; reduced motion hủy animation và không JavaScript giữ ảnh gốc. Trang Giải pháp giữ hình và chu kỳ cáp hiện có.
+
+Footer dùng chung trên cả sáu trang, gồm graphic logo bản E, tên công ty, tagline, Contact outline và thông báo nhãn hiệu. Style tập trung tại `src/footer.css`, bỏ các override riêng của Home. Desktop rộng 1440px có footer khoảng 182px; mobile tự tăng chiều cao theo nội dung, không đặt chiều cao cố định. Graphic nằm ở lớp nền và được crop theo khung footer gọn.
 
 Nguồn mockup và prompt: `design/home-a-mockup-2026-10-12/`. Ba ảnh khái niệm được tạo riêng, không phải công trình thực tế. PNG gốc và WebP 720/full-size được lưu local; `node scripts/optimize-home-a-images.mjs` tái xuất WebP quality 88 và cập nhật SHA-256 trong `content/visual-assets.json`. Không thêm dependency ứng dụng.
 

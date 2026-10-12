@@ -1,73 +1,163 @@
-# Home A design QA — 2026-10-12
+# Services editorial design QA — 2026-10-12
 
 final result: passed
 
+The previous Home A report is preserved in docs/home-a-design-qa.md.
+
 ## Comparison target and normalization
 
-- Source visual truth: `design/home-a-mockup-2026-10-12/home-a-desktop.png` (804×1956) and `home-a-mobile.png` (1024×1536), approved in this chat.
-- Implementation: `http://127.0.0.1:3001/vi/`, light theme, no form data, Home loaded; lazy solution illustration loaded by visiting its section, then returned to top.
-- Desktop CSS viewport 1440×1000, DPR 1. Full-page screenshot `design/home-a-mockup-2026-10-12/verification/desktop-final.jpg` is 1425×3422 (scrollbar excluded). Normalize width to 804, giving 804×1931.
-- Mobile CSS viewport 390×844, DPR 1. Full-page `verification/mobile-final.jpg` is 390×4326. Source normalized to 390×585; compare implementation's first 1200px, covering the same hero/needs content. Source is a generated concept image, not a literal 390px phone screenshot: fitting its three rows into 585px would require much smaller copy and targets. Implementation intentionally keeps 14px need descriptions, 44px targets and natural wrapping. Mobile sections below needs are responsive adaptations because the mobile mock does not show them. No pixel-identical mobile claim.
-- Combined inputs opened and inspected: `verification/desktop-initial-comparison.png`, `desktop-final-comparison.png`, `mobile-final-comparison.png`. Left = source, right = implementation.
-- Focused combined comparison: `verification/desktop-solutions-comparison.png`; source crop y748–1148, implementation normalized crop y732–1132. Hero detail evidence: `verification/desktop-hero.png`; mobile menu and solution captures also saved. `compare.mjs` recreates combined inputs without editing originals.
+- Selected option 1: design/services-editorial-2026-10-12/selected-mockup.png,
+  841×1870 raster pixels. This exact displayed result was used, not option 2 or 3.
+- Implementation: http://127.0.0.1:3000/services/, English, light theme, all
+  descriptions closed, all images loaded and entrances finished, scrollY=0.
+- Desktop CSS viewport 1440×1000, DPR 1. Screenshot content is 1425×3232 pixels
+  because Chromium reserves 15px for its vertical scrollbar.
+- Source and implementation are independently normalized to 720px width in
+  comparison-final-full.png: 720×1601 and 720×1633. The roughly 2% difference
+  in normalized full-page height is accounted for by native 44px disclosure
+  targets, actual source copy wrapping and the shared production footer.
+- Combined full and focused source/implementation inputs were opened together,
+  left=source, right=implementation. Focused inputs: comparison-final-hero.png,
+  comparison-final-network.png, comparison-final-design.png and
+  comparison-final-deployment-support.png. compare-final.mjs reproduces these.
+- Mobile CSS viewport 390×844, DPR 1; screenshot content width 375px with the
+  scrollbar reserved, full height 5606px. implementation-final-mobile.png,
+  mobile-hero.png, mobile-network.png and mobile-menu.png were opened.
+  There is no approved mobile source screenshot; mobile is a responsive
+  adaptation, not a claim of pixel identity to a mobile mock.
 
-All verification paths above are relative to `design/home-a-mockup-2026-10-12/` unless prefixed otherwise.
+All evidence above is in design/services-editorial-2026-10-12/.
 
-## Findings and comparison history
+## Findings and iteration history
 
-1. Initial pass blocked: [P1] panorama painted over bottom of hero CTA due to negative figure margin. Initial screenshot and geometry test reproduced it. Changed margin to 24px and cropped only empty upper image space through object-fit. Final combined input shows separated CTA and complete panorama; geometry regression passes.
-2. Initial pass blocked: [P2] mobile needs rows overflowed 4px because the grid allocated 20px to a 24px icon. Expanded track to 24px. Full browser test reproduced the failure before correction; all six widths now pass. Final mobile input shows all arrows inside the page.
-3. Initial visual pass blocked: [P2] multiply blending made a visible darker rectangle around the solution illustration; center art and icons were too small relative to the four text nodes. Removed multiply, enlarged raster placement to 130%, increased desktop symbols to 80px and moved left symbols toward the diagram. Increased desktop heading scale to restore mock hierarchy. Final full/focused comparisons show one coherent pale surface and readable four-node composition.
-4. Initial visual pass blocked: [P2] missing company corner decoration. Generated a separate matching glass-building asset and placed it bottom right, reserving copy space. Final comparison shows the architecture strip; mobile omits this decorative background to protect reading space.
-5. Independent code review: [P2] dark blue keyboard focus ring had low contrast on blue contact background. Changed it to white and added a browser assertion; focused Home test passes. Minor repeated solution link names were also improved with aria-labelledby referencing their localized heading and label. Final DOM inspection confirms distinct accessible names.
-6. Recapture: full-page capture while scrolled produced a floating skip-link artifact and unloaded lazy image in one intermediate capture. Visited the image, returned to top, confirmed scrollY=0 and captured again. Final evidence has the image and no floating skip-link artifact.
-7. User-reported regression reopened QA: [P1] panorama caption margin -8px hid the top of label text; [P2] the 130%-wide solution raster crossed its grid column and covered parts of the adjacent icons during its reveal stacking context. The earlier visual acceptance missed this state. Reproduced both in the new Home layout assertion: caption overlap plus all four solution-node collisions failed at VI 1440px. Changed caption margin to +12px and clipped raster overflow at `.home-map-art`; retained the artwork size and all connections. The regression now checks actual painted bounds against nodes and caption separation in both languages at all six widths. Focused Home test passed after the two-line fix.
-
-   Post-fix evidence: `verification/overlap-fixed-en-full.png`, `overlap-fixed-details.png`, `overlap-fixed-mobile.png` and combined user-before/implementation-after `overlap-before-after.png` (left before, right after). Desktop viewport 1440×1000 DPR1; mobile 390×844 DPR1. User images are cropped regions with unknown original viewport, so comparison aligns their content and width rather than claiming pixel-perfect framing. Both focused regions were inspected: complete captions and four complete solution icons are visible. These captures supersede earlier final captures for image overlap verification.
-
-   Corrective verification completed: `npm run build`, `npm run check`, focused Home regression and the complete `npm test` all exited 0. The fresh full suite included 93 browser checks and all detail-page, motion, back-to-top and closing-CTA suites.
-
-8. User-directed spacing correction supersedes panorama caption separation in item 7: preserve the complete uncropped image and overlay the HTML captions on its empty floor, close to the buildings. Removed the forced 4.2:1 cover frame; the image now retains its natural 3:1 ratio. Captions start at 82% of the image height, just below the hand-checked 80% foreground baseline, with columns aligned to the subjects and an explicit foreground stacking layer. The solution-image containment fix is retained. The updated regression failed on the previous crop, then passed for VI/EN at 320, 360, 390, 768, 1024 and 1440px. Build and static checks passed. Inspected evidence: `verification/panorama-overlay-desktop.png`, its full-page original `panorama-overlay-desktop-full.png`, and `panorama-overlay-mobile.png`. These supersede earlier panorama captures; the intentional caption/image overlap is confined to the empty floor.
-
-   Final verification after this spacing correction: complete `npm test` exited 0, including 93 browser checks, Home layout/motion and all detail-page interaction suites. `npm run build`, `npm run check` and `git diff --check` also passed.
-
-9. Home action-arrow consistency: all 13 existing action arrows now use the same Lucide `arrow-up-right` asset as detail-page CTAs. Their hover displacement is 2px right / 2px up over 160ms ease-out; reduced motion disables the displacement and transition. Back-to-top remains an upward control. The regression first failed on `arrow-right`, then passed for every action in VI/EN, including hover and reduced motion. Fresh build/check, Home layout/motion, bilingual and whitespace checks passed. Browser inspection confirmed the hovered hero arrow matrix `(1, 0, 0, 1, 2, -2)` and duration `0.16s`; proof is `verification/home-arrow-hover.png`. The full suite recorded above belongs to the preceding panorama correction; this bounded arrow change used focused verification.
-
-10. Text-link arrow color correction: the Home icon rule assigned bright `--accent` to `.home-text-link .icon`, overriding the darker link text. Removed that selector so SVG `currentColor` inherits the link color. Fresh browser measurements show both labels and arrows as `rgb(0, 58, 147)` for all six text links. A regression comparing computed SVG stroke with label color failed for those six links before the fix, then passed in VI/EN along with the existing layout/hover/reduced-motion checks. Build, static checks and whitespace verification passed. Evidence: `verification/home-arrow-color.png`.
-
-11. English-only website, requested 12 October 2026: removed all six Vietnamese HTML routes, VI/EN controls, alternate-language metadata, language-anchor synchronization, the translation module and its dictionary. All shared templates now contain English UI copy and read the workbook's original English descriptions directly. Compared generated detail-page diffs: their content remains unchanged; only the shared language controls and alternate metadata are removed. Desktop Home and mobile menu/contact were inspected in the browser; evidence is `verification/english-only-desktop.png` and `verification/english-only-mobile-menu.png`. The English-only regression first failed on the language controls, then passed on source and built output, including 404 responses for every removed Vietnamese route. Complete `npm test` exited 0 with 55 browser checks and all page/motion/form/keyboard/reduced-motion/no-JS suites. Fresh build/check/whitespace checks passed; the deployment asset/link check passed for `/pay_orbit`, followed by restoring the normal local build. This decision supersedes earlier bilingual route counts and verification scope in this report. See `docs/english-only.md`.
-
-12. Shared Home header, requested 12 October 2026: removed Home-specific header, navigation, wordmark and mobile-control overrides. Home now uses the detail pages' dark header, dark-background logo, active navigation fill, hover/focus states and mobile menu spacing. Home content container overrides no longer affect the header. The browser comparison regression first failed on the original Home colors/logo/active state, then passed across six widths from 320 to 1440px, including expanded menus. Build, static checks, logo and Home layout tests passed. Desktop and mobile browser evidence: `verification/home-shared-header-desktop.png` and `verification/home-shared-header-mobile.png`. This user-requested adaptation supersedes the white mockup header. Verification for this bounded change is focused; earlier full-suite results above refer to preceding work.
-
-13. Approved vendor-logo mockup implemented: original Cisco and Palo Alto Networks SVG assets replace the two plain-text vendor names, with intrinsic dimensions, lazy loading and accessible alt text. Capability copy, Products deep links, diagonal arrows and reduced-motion behavior remain. Desktop has two 128px rows with centered logo columns and vertical dividers; mobile places copy below the logos and removes vertical dividers. A focused regression first failed because vendor images were absent, then passed including decoded logos, natural aspect ratio, row containment and separation from copy at six widths (320–1440px), together with existing Home navigation/hover/reduced-motion/no-JS checks. Build/static/English-only checks passed. Real browser evidence is `design/technology-logos-mockup-2026-10-12/implemented-desktop.png` and `implemented-mobile.png`; source mockup is `desktop-mobile-mockup.png`. The generated mockup is a concept; implementation uses the original SVG files, whose sources and checksums are recorded in `public/assets/brand/vendors/provenance.json`.
-
-14. Pre-push verification: fresh build, static checks and complete `npm test` passed after the vendor-logo implementation, including 55 browser checks and all Home/header/detail-page/motion/navigation/form/reduced-motion/no-JS suites. The first full run exposed the browser suite's obsolete two-image Home expectation; it now explicitly checks two illustrations and two vendor logos. Published-route/asset validation also passed for the normal root build. Vendor SVG hashes are checked by `scripts/check.mjs`, and Git attributes preserve their upstream bytes. Staged whitespace and credential-pattern checks passed before committing this work.
+1. Initial comparison blocked, P1: Deployment and Support inherited the wrong
+   alternating columns. Corrected explicit service placement: network/rack left,
+   security/support right; the design flow remains in its own left column.
+2. Initial comparison blocked, P2: generic summary borders made an extra card
+   treatment; strong blue even-row backgrounds and excess vertical space drifted
+   from the source. Removed the summary box, used the pale brand canvas, aligned
+   content beneath headings, and tuned section dimensions. Final combined full
+   input restores the editorial rhythm.
+3. Second comparison blocked, P2: stretched grid rows caused large blank gaps
+   in checklists; the flow asset's transparent margin made Design too tall.
+   Split checklists into independent semantic lists and framed the raster flow
+   through CSS. Final focused Design input shows all four nodes and labels,
+   with no clipped image content.
+4. Responsive checks blocked, P2: enlarged hero overflowed at 1280px; the
+   Cybersecurity label overflowed the three-column mobile index at 360px.
+   Contained hero paint and stacked mobile index icons above labels.
+   Regression checks pass at 320,360,390,768,1024,1280,1440px.
+5. Functional check blocked, P2: the last index item did not become current
+   when the short final section could not reach the reading line. Added a
+   document-bottom condition. Support now becomes current at the bottom.
+6. Broad browser check blocked, P2: compact disclosure rows were 34px high.
+   Restored 44px controls and retuned the Network/Support spacing. Keyboard
+   and target-size checks pass.
+7. Final visual refinement: enlarged hero/network artwork and reduced photo
+   width to better match the source composition. Recaptured and inspected the
+   final combined full and focused Network input after the changes. Final
+   desktop section heights: hero519, Network455, Cybersecurity482, Design358,
+   Deployment481, Support455, closing145px; shared footer182px.
+8. Existing header comparison had a timing-dependent hover-color assertion
+   across two tabs. Its test now compares settled styles under reduced motion;
+   product header styles were unchanged. The header suite passes at six widths.
 
 ## Required fidelity surfaces
 
-- **Fonts/typography:** preserves local Bricolage Grotesque, Be Vietnam Pro and approved Manrope logo. Two-line slogan, blue second line, heading hierarchy and wrapping verified. Desktop h1 up to108px; section headings up to46px. VI/EN text does not clip at 320–1440px. Mock raster's text density is adapted to real readable mobile UI.
-- **Spacing/layout:** all seven major sections and their order match A; full-width hero replaces former split hero. Three needs, central four-solution composition, horizontal five-stage desktop timeline, two technology rows and compact closing area are present. Mobile uses vertical lists/timeline. No overflow or overlap in browser checks.
-- **Colors/tokens:** white #FCFDFF, pale canvas #F2F7FF and brand blue preserve the source direction. Dark footer retained. Text contrast and focus/selected menu states checked. No custom CSS illustration substitutes.
-- **Imagery:** three individually generated raster assets match pale blue isometric/architectural direction. WebP full/720 variants and provenance are local. Source subjects and connection order are retained; details of fictional buildings are naturally different from the generated mock. The panorama now shows the complete image without cropping, as requested, with labels over its empty floor. Center image and decorative corner remain sharp at intended sizes.
-- **Copy/content:** approved slogan, needs and overall section copy retained; concise solution descriptions use existing factual product scope. VI/EN localizer and native anchors verified. No invented metrics, customers or partnership claims. Existing trademark notice and footer contact link retained as product constraints, although absent from the mock.
+- Fonts/typography: existing self-hosted Bricolage Grotesque headings,
+  Be Vietnam Pro reading/UI, Manrope brand. Three-line desktop hero, blue
+  keywords, 32px service headings, 14px checklists and source hierarchy retained.
+  Real font loading and unclipped text checked at all seven responsive widths.
+- Spacing/layout: section order, icon/title alignment, alternating artwork,
+  independent two-column lists, Design flow, native disclosure and outline CTA
+  match the source composition. Mobile becomes a single-column reading flow.
+  No heading/summary overlap or horizontal page overflow.
+- Colors/tokens: dark existing header/footer, near-white surface, pale blue
+  alternate rows, restrained blue accent and outlined service CTAs. Source's
+  slight raster background texture is represented by clean production surfaces.
+- Image quality/assets: all six source subjects are supplied as separate generated
+  raster assets, with local WebP exports and provenance. Globe topology,
+  coordinated shield/cloud/firewall, four design nodes, rack aisle and support
+  desk are present. No CSS/handcrafted SVG replaces illustration subjects.
+  Existing approved logo background and pinned Lucide icon family are retained.
+- Copy/content: full new workbook descriptions and all 38 key areas are available;
+  quick benefit summaries and five source CTAs are visible. Correct workbook
+  sheet is recorded. No SLA, support time or fabricated customer claim added.
 
-## Functional evidence and limits
+## States and validation
 
-- `npm test` passed all suites, including 93 browser checks over 12 localized routes at six widths. After final CSS sizing, `tests/browser.mjs` rerun also passed 93 checks. Latest build/check, Home layout and bilingual tests passed after accessible-name change.
-- Tested localized navigation, solution/service/vendor anchors, mobile menu, consultation CTA, keyboard access/focus, no-JS contact journey, reduced motion, decoded images and console/page errors. Existing detail-page motion, forms, BFCache and service navigation remain covered by their suites.
-- Fresh read-only review found no critical issues; its important focus issue is fixed.
-- No production deployment, real-device Safari/Firefox run, Lighthouse score or live Core Web Vitals claim. Browser evidence uses Chromium/in-app browser.
+Passed static syntax, routes, internal anchors, workbook copy and asset integrity.
+Passed Services browser suite for sticky clearance, bottom current state,
+keyboard expansion, complete scopes, responsive sizes, reduced motion,
+BFCache and no-JavaScript content. Existing browser/Home/About/Solutions/
+Products/motion/back-to-top/closing-CTA suites passed. GitHub Pages build and
+all published route/asset/import checks under /pay_orbit passed.
+In-app browser verified mobile menu, disclosure opening/closing and console:
+no errors.
 
-## Accepted adaptations / P3 polish
+## Residual P3 differences / limits
 
-- Existing outline Lucide family replaces the mock's heavier filled icons; approved logo, fonts, menu text and accessible control sizing take precedence over raster approximation.
-- Desktop center illustration remains a slightly smaller share of the section than the source, leaving comfortable long-English text columns. Five-step and footer typography retain site conventions.
-- Mobile density is intentionally lower than the generated concept. This is documented rather than presented as a 1:1 pixel recreation.
+Standalone generated assets reproduce the subjects and art direction, but minor
+lighting, equipment detail, icon stroke/shape and perspective differ from the
+generated mockup. Native browser text rendering, actual content wrapping, 44px
+targets and shared production footer also differ slightly. These are explicit
+minor fidelity limits; this report does not claim 99.99% pixel identity.
+The entire new page remains local and uncommitted for user review.
 
 ## Implementation checklist
 
-- [x] Fix blocking visual/layout issues and recapture.
-- [x] Inspect combined full-view and focused comparisons.
-- [x] Verify all five fidelity surfaces and primary interactions.
-- [x] Build/check/tests and whitespace checks pass.
-- [x] Preserve a local preview; no publication requested.
+- [x] Approved first visual resolved and preserved.
+- [x] Revised workbook content and Dev/UI notes applied.
+- [x] Generated raster assets, responsive exports and provenance.
+- [x] Desktop and mobile functional and visual verification.
+- [x] Combined full and focused comparisons, fixes and recapture.
+- [x] Build and GitHub Pages base-path validation.
+- [x] User review and explicit authorization to commit.
+- [ ] Push/deployment (not requested).
+
+## Typography follow-up — 2026-10-12
+
+User requested consistency with the rest of the website after reviewing the
+implementation. This supersedes the mockup's smaller typography: Services now
+inherits shared heading/body weight, tracking and line-height, with the Solutions
+heading scale (desktop H1 60px and section H2 40px; responsive H2 28px on mobile).
+Checklist text is 16px and shared hero/closing CTA button typography is restored.
+Heading spacing and hero column proportions accommodate the larger text. Mobile
+service navigation uses two columns and a full-width Support item for readable
+14px labels. Section order, illustrations, content and animation are preserved.
+
+Evidence: `design/services-editorial-2026-10-12/typography-desktop.jpg` and
+`design/services-editorial-2026-10-12/typography-mobile.jpg`.
+Services browser checks passed at 320–1440px, including sticky clearance,
+keyboard disclosure, reduced motion, BFCache and no-JavaScript content.
+Closing CTA animation checks passed on desktop/mobile. In-app browser console
+reported no errors. Changes remain local and uncommitted.
+
+Subsequent user refinements: scope checklist weight is 500; title badges are
+52px with 28px icons on desktop and 40px with 22px icons on mobile. Services
+containers now inherit the shared site width rather than overriding it at
+1232px. Content/footer alignment was measured at 1510px (both 1200px wide),
+900px (both left edges 32px), and 390px (both left edges 20px), with no horizontal
+overflow. Detail illustrations are capped at 460px, and hero oversizing removed.
+Services browser suite passed after the width and image changes. Visual evidence:
+`design/services-editorial-2026-10-12/aligned-width-desktop.jpg`.
+
+Shared contact invitation follow-up: Home and About/Solutions/Services/Products
+now use `scripts/contact-invitation-markup.mjs` and shared styles in `src/site.css`.
+The approved blue Home section, title, description, white button and three
+checklist items replace the old detail-page invitation. Detail-page staggered
+entrance still animates the heading, description and nested button once.
+The CTA suite compares computed styles with Home at 390px and 1440px, verifies
+copy/form destination and overflow, and checks entrance/reduced-motion/no-JS
+behavior. CTA, Home layout, page routes and static checks passed.
+Evidence: `design/services-editorial-2026-10-12/shared-contact-cta-desktop.jpg`
+and `shared-contact-cta-mobile.jpg`. No commit or push performed.
+
+Solution Design image follow-up: removed the fixed 150px clipping frame and
+negative 66px image offset. The flow now uses its natural aspect ratio at every
+breakpoint. The Services suite first reproduced the clipping failure, then
+passed the new image containment assertion at 320–1440px after the CSS fix.
+Evidence: `design/services-editorial-2026-10-12/design-flow-fixed-tablet.jpg`
+and `design-flow-fixed-mobile.jpg`.
+
+The user subsequently requested a local commit of the completed changes.

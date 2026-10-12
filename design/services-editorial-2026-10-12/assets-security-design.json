@@ -1,0 +1,20 @@
+{
+  "assets": [
+    {
+      "path": "public/assets/images/services-editorial-security.png",
+      "generatedSource": "exec-f65e5807-fe04-4988-806b-1b502e9c86ed.png",
+      "generatedSourcePath": "C:/Users/tmq/.codex/generated_images/01a13036-1948-7923-bf51-e12464d69b28/exec-f65e5807-fe04-4988-806b-1b502e9c86ed.png",
+      "prompt": "Use case: background-extraction\nAsset type: production illustration for Cybersecurity Consulting section of the provided website mockup.\nInput image: exact approved mockup reference. Extract and recreate ONLY the cybersecurity illustration in rectangle x485..790, y675..915 of this 841 by 1870 reference. Do not recreate the website.\nPrimary request: produce a high fidelity isolated 3D illustration of that exact cluster at 1024x768 with genuine transparency. Composition and positions must match the reference: large vivid blue upright shield with pale blue beveled rim and white padlock centered on a low white/light-blue plinth; small open dark-blue laptop to left; short blue brick firewall in lower left on a small white base; rounded blue cloud upper right; compact three-unit dark-blue server rack on white base at right. Thin cyan rounded orthogonal connector cables connect these items.\nStyle: clean polished isometric 3D enterprise technology illustration. Match the reference object silhouettes, relative proportions, perspective, blue and white palette, cool soft lighting, restrained shadows, and generous spaces between objects. Recreate the scene faithfully rather than invent a new composition.\nBackground: completely transparent outside the objects and subtle contact shadows, meant for display on #F2F7FF.\nConstraints: no headings, no text, no UI, no card frame, no border, no extra objects, no logo, no watermark. Keep all objects fully visible with modest transparent outer margin. Landscape 4:3 output target 1024x768.",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "path": "public/assets/images/services-editorial-design-flow.png",
+      "generatedSource": "exec-75e804ee-4f2b-42ce-9313-134d71f7bf23.png",
+      "generatedSourcePath": "C:/Users/tmq/.codex/generated_images/01a13036-1948-7923-bf51-e12464d69b28/exec-75e804ee-4f2b-42ce-9313-134d71f7bf23.png",
+      "prompt": "Use case: background-extraction\nAsset type: production horizontal four-step Solution Design diagram, isolated from the approved website mockup.\nInput image: exact reference website mockup, 841x1870 pixels. The edit target is ONLY the horizontal flow in rectangle x61..449, y1045..1114. Extract/recreate precisely this four-node flow, not the page or section.\nPrimary request: isolated horizontal diagram at target 1400x270. Four evenly spaced white tiles with thin pale-blue borders, approximately 8px corner rounding, subtle soft shadows and a small crisp electric-blue line icon above each label. Three separate small electric-blue right-pointing arrows sit between tiles at vertical center. The fourth tile is somewhat wider to fit its label. Keep the exact reference composition, silhouette, spacing, proportions, restrained palette and delicate stroke weight.\nExact labels, left to right: \"Requirement\", \"Architecture\", \"Technology\", \"Implementation Plan\". All four labels must be readable, spelled exactly, dark navy, clean sans-serif, centered below icons. First icon is a blue document/clipboard with text lines, second is a connected network topology, third is three small isometric cubes, fourth is a clipboard/checklist with a check mark.\nBackground: genuinely transparent around tiles, arrows and subtle shadows. White/pale-blue tile surfaces should be opaque; meant for display on #F8FBFF.\nConstraints: landscape horizontal strip, all four full tiles and all three arrows visible, balanced small transparent margins; no headings, no extra text or objects, no website UI or page, no watermark or logos. Target1400x270, preserve wide and shallow composition.",
+      "width": 2022,
+      "height": 778
+    }
+  ]
+}

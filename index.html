@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/src/site.css">
     <link rel="stylesheet" href="/src/footer.css">
     <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css">
+    <link rel="stylesheet" href="/src/hero-graphics.css">
 
     <link rel="stylesheet" href="/src/home.css">
     <script type="module" src="/src/main.js"></script>
@@ -51,7 +52,14 @@
 </a></div>
     </div></div>
     <figure class="home-panorama" data-hero><div class="container">
-      <img src="/assets/images/home-a-network-panorama.webp" srcset="/assets/images/home-a-network-panorama-720.webp 720w, /assets/images/home-a-network-panorama.webp 2172w" sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1200px" width="2172" height="724" alt="Illustration connecting an office, branch, gateway, data center and cloud" fetchpriority="high" decoding="async">
+      <div class="connection-art-frame" data-hero-graphic="panorama"><img src="/assets/images/home-a-network-panorama.webp" srcset="/assets/images/home-a-network-panorama-720.webp 720w, /assets/images/home-a-network-panorama.webp 2172w" sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1200px" width="2172" height="724" alt="Illustration connecting an office, branch, gateway, data center and cloud" fetchpriority="high" decoding="async">
+        <svg class="connection-signal-graphic" data-connection-graphic viewBox="0 0 2172 724" aria-hidden="true" focusable="false">
+          <path data-connection-signal d="M530 538 C550 535 555 540 574 550 C590 564 601 567 618 567 L660 567" pathLength="100"/>
+          <path data-connection-signal d="M903 536 C922 536 928 549 942 549 L1023 549" pathLength="100"/>
+          <path data-connection-signal d="M1165 549 L1246 549 C1254 549 1260 526 1286 526 L1294 526" pathLength="100"/>
+          <path data-connection-signal d="M1705 541 Q1719 550 1730 549 C1744 549 1750 504 1796 504" pathLength="100"/>
+        </svg>
+      </div>
       <ul class="home-panorama-labels" aria-hidden="true"><li>Head office</li><li>Branch</li><li>Gateway</li><li>Data Center</li><li>Cloud</li></ul>
     </div></figure>
   </section>
@@ -226,7 +234,7 @@
   </div></section>
   <section class="home-section home-approach" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
     <h2 id="approach_heading">With you at every stage</h2><p>From consulting to operations, we work alongside your team.</p>
-    <ol class="home-service-steps"><li><a href="/services/#consulting"><span class="home-step-number" aria-hidden="true">01</span><strong>Consult</strong></a></li><li><a href="/services/#design"><span class="home-step-number" aria-hidden="true">02</span><strong>Design</strong></a></li><li><a href="/services/#supply"><span class="home-step-number" aria-hidden="true">03</span><strong>Supply</strong></a></li><li><a href="/services/#implementation"><span class="home-step-number" aria-hidden="true">04</span><strong>Deploy</strong></a></li><li><a href="/services/#support"><span class="home-step-number" aria-hidden="true">05</span><strong>Support</strong></a></li></ol>
+    <ol class="home-service-steps"><li><a href="/services/#consulting"><span class="home-step-number" aria-hidden="true">01</span><strong>Consult</strong></a></li><li><a href="/services/#design"><span class="home-step-number" aria-hidden="true">02</span><strong>Design</strong></a></li><li><a href="/products/"><span class="home-step-number" aria-hidden="true">03</span><strong>Supply</strong></a></li><li><a href="/services/#implementation"><span class="home-step-number" aria-hidden="true">04</span><strong>Deploy</strong></a></li><li><a href="/services/#support"><span class="home-step-number" aria-hidden="true">05</span><strong>Support</strong></a></li></ol>
     <a class="home-text-link" href="/services/"><span>Explore Our Services</span><svg class="icon home-action-arrow" data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -355,7 +363,10 @@
 </svg>
 <span>Your expected scope</span></li></ul>
   </div></section></main>
-    <footer class="site-footer" id="footer"><div class="container footer-inner">
+    <footer class="site-footer" id="footer"><div class="footer-fold-art" aria-hidden="true"><div class="footer-fold-scene" data-footer-fold>
+    <svg class="footer-fold-piece footer-fold-upper" data-footer-graphic="upper" aria-hidden="true" viewBox="40 40 176 104" preserveAspectRatio="none"><defs><linearGradient id="footer-fold-upper-color" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#64B0FF"/><stop offset=".4" stop-color="#257EEF"/><stop offset="1" stop-color="#0B438D"/></linearGradient></defs><path d="M40 144V88A48 48 0 0 1 88 40H216V72H88A16 16 0 0 0 72 88V144Z" fill="url(#footer-fold-upper-color)"/><path class="footer-fold-seam" d="M40 144V88A48 48 0 0 1 88 40H216V72H88A16 16 0 0 0 72 88V144Z"/></svg>
+    <svg class="footer-fold-piece footer-fold-lower" data-footer-graphic="lower" aria-hidden="true" viewBox="40 112 176 104" preserveAspectRatio="none"><defs><linearGradient id="footer-fold-lower-color" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0A3E83"/><stop offset=".6" stop-color="#166BE0"/><stop offset="1" stop-color="#61ACFF"/></linearGradient></defs><path d="M216 112V168A48 48 0 0 1 168 216H40V184H168A16 16 0 0 0 184 168V112Z" fill="url(#footer-fold-lower-color)"/><path class="footer-fold-seam" d="M216 112V168A48 48 0 0 1 168 216H40V184H168A16 16 0 0 0 184 168V112Z"/></svg>
+  </div></div><div class="container footer-inner">
       <div><p class="footer-name"><span class="brand-lockup"><img class="brand-symbol" src="/assets/brand/pay-orbit-mark.svg" width="32" height="32" alt="" aria-hidden="true" decoding="async"><span>PAY ORBIT PTY. LTD</span></span></p><p class="tagline">Connecting Business. Securing the Future.</p></div>
       <a class="button footer-contact" href="/contact/">Contact</a><p class="trademark-notice">Cisco, Palo Alto Networks and other trademarks mentioned on this website are the property of their respective owners. Product names are used for identification and solution-reference purposes.</p>
     </div></footer>

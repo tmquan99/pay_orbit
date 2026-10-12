@@ -223,7 +223,7 @@ try {
   assert.ok(await page.locator('#cybersecurity').evaluate(element => element.getBoundingClientRect().top < innerHeight));
   await page.goto(origin + '/services/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('[data-service]').count(), 5);
-  assert.equal(await page.locator('[data-service] h2').first().textContent(), "Technology Consulting");
+  assert.equal(await page.locator('[data-service] h2').first().textContent(), "Network Consulting");
   await page.goto(origin + '/products/', { waitUntil: 'networkidle' });
   assert.equal(await page.locator('#cisco .product-card').count(), 4);
   assert.equal(await page.locator('#palo-alto-networks .product-card').count(), 3);

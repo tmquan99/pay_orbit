@@ -28,9 +28,27 @@ try {
       };
     });
     const page = await context.newPage();
+    await page.goto(origin + '/');
+    const invitationStyles = () => page.locator('.home-contact').evaluate(element => {
+      const pick = (node, properties) => Object.fromEntries(properties.map(property => [property, getComputedStyle(node)[property]]));
+      return {
+        section: pick(element, ['backgroundColor', 'color', 'paddingTop', 'paddingBottom']),
+        layout: pick(element.querySelector('.home-contact-layout'), ['display', 'gridTemplateColumns', 'gap']),
+        heading: pick(element.querySelector('h2'), ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight']),
+        copy: pick(element.querySelector('p'), ['color', 'fontSize', 'marginTop']),
+        button: pick(element.querySelector('.button'), ['color', 'backgroundColor', 'fontSize']),
+      };
+    });
+    const homeStyles = await invitationStyles();
     for (const route of ['/about/', '/solutions/', '/services/', '/products/']) {
       await page.goto(origin + route);
       await page.evaluate(() => document.fonts.ready);
+      assert.deepEqual(await invitationStyles(), homeStyles, `Contact invitation must match Home on ${route} at ${width}px`);
+      assert.equal(await page.locator('.closing-cta h2').innerText(), "Let's talk about your infrastructure.");
+      assert.deepEqual((await page.locator('.home-contact-checklist li').allTextContents()).map(text => text.trim()), ['Your current environment', 'Your priorities', 'Your expected scope']);
+      assert.equal(await page.locator('.closing-cta .button').getAttribute('href'), '/contact/#consultation_form');
+      assert.equal(await page.locator('.closing-cta .button').innerText(), 'Talk to Our Team');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No horizontal overflow on ${route}`);
       await page.locator('.closing-layout').evaluate(element => scrollTo({ top: scrollY + element.getBoundingClientRect().top - innerHeight - 50, behavior: 'instant' }));
       await page.waitForTimeout(850);
       assert.equal(await page.evaluate(() => window.__ctaPlays), 0, `CTA must not finish offscreen at ${width}px on ${route}`);

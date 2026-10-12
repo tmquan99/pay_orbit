@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "path": "public/assets/images/services-editorial-hero.png",
+      "generatedSource": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-6849df0a-439e-4d60-bc51-bb22ef2fa6a1.png",
+      "referenceSource": "C:/Users/tmq/.codex/generated_images/01a120dc-bf10-7550-baf0-f27d0c86d136/exec-9f9f331b-8754-4420-8833-2128d3499788.png",
+      "tool": "image_gen",
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Extract/recreate only the TOP RIGHT HERO DIAGRAM from the provided Services website mockup, source region approximately x400..810,y85..290 in the 841x1870 image. Produce a standalone 1200x640 landscape transparent PNG website illustration. Faithfully preserve the exact reference arrangement, pale white/blue isometric 3D style, object proportions, blue palette, soft shadows, all 5 labels and arrows. On upper left a small navy blue network switch on a white oval plinth with a small icon and label 'Network' above. On lower left a blue security shield on white oval plinth, label 'Security' beneath. Both connect via smooth blue curved arrows pointing into the middle white round raised plinth with a blue blueprint/document tilted on it, label 'Design' below. Straight blue arrow right to a navy server rack on white plinth with 'Deployment' label below. Straight blue arrow right to a laptop on white plinth showing a white gear on its blue screen and 'Support' label below. Match positions precisely to the mockup hero. Keep the illustration as a compact horizontal sequence with the input pair on left, ample transparent space around the complete illustration, and subtle diffuse blue shadow under objects. Text verbatim: Network, Security, Design, Deployment, Support. NO webpage header, no headline, no body text, no buttons, no borders, no extra icons or objects, no cartons, no watermark. Use actual alpha transparency outside the isolated diagram, not a flat colored background. This is a faithful extraction of the approved visual, not a redesign.",
+      "width": 1717,
+      "height": 916
+    },
+    {
+      "path": "public/assets/images/services-editorial-deployment.png",
+      "generatedSource": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-dd0b582a-76b6-47ed-852e-c2e9044ff9a1.png",
+      "referenceSource": "C:/Users/tmq/.codex/generated_images/01a120dc-bf10-7550-baf0-f27d0c86d136/exec-9f9f331b-8754-4420-8833-2128d3499788.png",
+      "tool": "image_gen",
+      "transparentBackground": false,
+      "prompt": "Use case: background-extraction. Asset type: Deployment & Integration service section photo. Input image: approved Services mockup, edit/reference target specifically the rectangular rack photo at x60..350,y1163..1399 of the 841x1870 source. Extract/recreate ONLY this exact photo as a standalone full-bleed rectangular 1024x840 landscape image. Match the reference composition and realism: close-up black enterprise network/server racks dominate the left foreground, dense neatly routed vivid blue patch cables at the extreme left, rows of black and silver rack-mounted network devices with realistic vent panels and ports. Camera peers down the racks to a clean narrow data center aisle receding toward the right rear. Dark rack doors farther down the row and a pale gray technical ceiling with lights/panels in upper right, cool gray polished floor at lower right. The left rack face is large in frame, the aisle is at the right edge, strong converging perspective to the rear right. Cool blue-gray natural professional lighting, crisp practical enterprise infrastructure photography, restrained contrast, no futuristic glows. Preserve the reference viewpoint, cable color, rack proportions and depth as closely as possible. Opaque image filling the entire rectangle edge-to-edge; no rounded corners (handled in CSS), no border, no frame, no margins, no website UI, no text or labels, no brand names, no watermarks, no people, no other objects.",
+      "width": 1385,
+      "height": 1136
+    }
+  ]
+}

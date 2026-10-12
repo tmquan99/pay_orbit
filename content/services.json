@@ -1,0 +1,144 @@
+{
+  "source": {
+    "filename": "PAY_ORBIT_Website_Content_v2_Simplified.xlsx",
+    "sheet": "04_Services.",
+    "sha256": "7fa79d19f428b398b1506fb675e98fb7325f1a07a9464864073331476f21ab01",
+    "importedOn": "2026-10-12"
+  },
+  "intro": {
+    "title": "Technology Services Built Around Connectivity and Security",
+    "description": "PAY ORBIT provides professional technology services focused on enterprise networking and cybersecurity. From technical consulting and solution design to deployment and ongoing support, we help organizations build and maintain secure, reliable and scalable digital infrastructure.",
+    "cta": "Explore Our Services"
+  },
+  "services": [
+    {
+      "id": "consulting",
+      "navLabel": "Network",
+      "icon": "network",
+      "title": "Network Consulting",
+      "summary": "Assess, improve and modernize your enterprise connectivity infrastructure.",
+      "paragraphs": [
+        "PAY ORBIT provides network consulting services to help organizations assess, improve and modernize their enterprise connectivity infrastructure.",
+        "We work with customers to review existing LAN, WAN, wireless, branch and data center network environments, identify performance or scalability limitations, and define a practical network strategy aligned with business requirements.",
+        "Our consulting approach focuses on building network environments that are reliable, manageable and ready to support future growth, cloud applications and distributed operations."
+      ],
+      "keyAreas": [
+        "Enterprise LAN & WAN assessment",
+        "Routing and switching architecture",
+        "Wireless network planning",
+        "Branch and remote-site connectivity",
+        "SD-WAN strategy",
+        "Data center connectivity",
+        "Network performance and scalability review"
+      ],
+      "cta": "Discuss Your Network",
+      "devUiNote": "Dùng icon network / topology. Có thể bố trí hình bên trái, text bên phải.",
+      "priority": "High",
+      "sourceRow": 6
+    },
+    {
+      "id": "cybersecurity-consulting",
+      "navLabel": "Cybersecurity",
+      "icon": "shield-check",
+      "title": "Cybersecurity Consulting",
+      "summary": "Strengthen protection across networks, users, applications and cloud environments.",
+      "paragraphs": [
+        "PAY ORBIT helps organizations evaluate cybersecurity risks and strengthen protection across networks, users, applications and cloud environments.",
+        "Our cybersecurity consulting services focus on understanding the customer's current security posture, identifying potential exposure and recommending appropriate controls based on operational priorities and infrastructure requirements.",
+        "Rather than applying isolated security products, PAY ORBIT aims to develop a coordinated security approach covering prevention, access control, visibility and response."
+      ],
+      "keyAreas": [
+        "Network security assessment",
+        "Firewall and security architecture review",
+        "Secure access and remote connectivity",
+        "Network segmentation",
+        "Zero Trust considerations",
+        "Threat prevention",
+        "Cloud security",
+        "Security visibility and monitoring"
+      ],
+      "cta": "Strengthen Your Security",
+      "devUiNote": "Dùng icon shield / cybersecurity. Nên trình bày lợi ích trước, thuật ngữ kỹ thuật sau.",
+      "priority": "High",
+      "sourceRow": 7
+    },
+    {
+      "id": "design",
+      "navLabel": "Design",
+      "icon": "clipboard-list",
+      "title": "Solution Design",
+      "summary": "Bring networking, cybersecurity and integration into a practical architecture.",
+      "paragraphs": [
+        "PAY ORBIT develops technology solutions based on the customer's technical requirements, existing infrastructure and expected business growth.",
+        "Our solution design service brings together networking, cybersecurity and system integration considerations into a practical architecture that can be implemented and operated effectively.",
+        "The design process may include technology selection, high-level architecture, capacity considerations, integration requirements and recommended implementation approaches.",
+        "Where appropriate, solutions can incorporate technologies from Cisco and Palo Alto Networks to address both connectivity and cybersecurity requirements."
+      ],
+      "keyAreas": [
+        "Requirement analysis",
+        "High-level solution architecture",
+        "Technology and product selection",
+        "Capacity and scalability planning",
+        "Network and security integration design",
+        "Bill of Materials input",
+        "Implementation recommendations"
+      ],
+      "cta": "Design Your Solution",
+      "devUiNote": "Có thể minh họa flow: Requirement → Architecture → Technology → Implementation Plan.",
+      "priority": "High",
+      "sourceRow": 8
+    },
+    {
+      "id": "implementation",
+      "navLabel": "Deployment",
+      "icon": "server",
+      "title": "Deployment & Integration",
+      "summary": "Bring new solutions into operation with careful integration, testing and handover.",
+      "paragraphs": [
+        "PAY ORBIT provides deployment and integration support to help customers bring networking and cybersecurity solutions into production environments.",
+        "Depending on project scope, our services may cover equipment installation, configuration, integration with existing systems, migration support, testing and commissioning.",
+        "Particular attention is given to interoperability between new technologies and the customer's existing infrastructure in order to reduce disruption and support a smooth transition into operation."
+      ],
+      "keyAreas": [
+        "Equipment installation",
+        "Network device configuration",
+        "Firewall and security configuration",
+        "Integration with existing infrastructure",
+        "Migration and system transition",
+        "Connectivity testing",
+        "Functional verification",
+        "Commissioning and handover support"
+      ],
+      "cta": "Plan Your Deployment",
+      "devUiNote": "Dùng ảnh kỹ sư / thiết bị / rack nếu có. Nội dung nên thể hiện năng lực triển khai thực tế.",
+      "priority": "High",
+      "sourceRow": 9
+    },
+    {
+      "id": "support",
+      "navLabel": "Support",
+      "icon": "settings",
+      "title": "Security & Network Support",
+      "summary": "Maintain stable operations and improve network and security performance.",
+      "paragraphs": [
+        "PAY ORBIT provides ongoing technical support for enterprise networking and cybersecurity environments following implementation.",
+        "Our support services are designed to help customers maintain stable operations, identify configuration issues, resolve incidents and continuously improve network and security performance.",
+        "Where required, PAY ORBIT can also assist customers in coordinating technical cases with technology vendors and reviewing recommended upgrades or configuration changes."
+      ],
+      "keyAreas": [
+        "Network troubleshooting",
+        "Security incident technical support",
+        "Configuration review",
+        "Performance optimization",
+        "Firewall and network policy review",
+        "Software and firmware upgrade assistance",
+        "Vendor technical coordination",
+        "System health checks"
+      ],
+      "cta": "Get Technical Support",
+      "devUiNote": "Không ghi SLA cụ thể nếu chưa có chính sách hỗ trợ chính thức.",
+      "priority": "Medium",
+      "sourceRow": 10
+    }
+  ]
+}

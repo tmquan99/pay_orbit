@@ -10,6 +10,8 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
 const home = await browser.newPage();
 const detail = await browser.newPage();
+// Compare settled styles, independent of how two tabs advance hover transitions.
+for (const page of [home, detail]) await page.emulateMedia({ reducedMotion: 'reduce' });
 const appearance = page => page.locator('.site-header').evaluate(header => {
   const style = (selector, properties) => {
     const element = header.querySelector(selector);

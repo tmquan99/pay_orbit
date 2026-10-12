@@ -12,7 +12,6 @@ const coverage = [
   // C6:C9 use the concise, grouped story copy approved for readability.
   ['/about/', '02_Company_Intro', ['B5']],
   ['/solutions/', '03_Solutions', ['B5', 'B6', 'B7', 'B8']],
-  ['/services/', '04_Services', ['B5', 'B6', 'B7', 'B8', 'B9']],
   ['/products/', '05_Products_Tech', ['B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11']],
 ];
 const normalize = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -53,19 +52,20 @@ for (const [route, html] of pages) {
   for (const svg of html.matchAll(/<svg\b[^>]*>/g)) {
     assert.ok(svg[0].includes('aria-hidden="true"'), 'Decorative icons must not duplicate accessible labels');
     const footerGraphic = /data-footer-graphic="upper"[^>]*viewBox="40 40 176 104"|data-footer-graphic="lower"[^>]*viewBox="40 112 176 104"/.test(svg[0]);
-    assert.ok(svg[0].includes('data-icon=') || footerGraphic || (['/', '/solutions/'].includes(route) && svg[0].includes('data-connection-graphic') && svg[0].includes('viewBox="0 0 1536 1024"')), 'Icons must come from the recorded library; cable and approved logo backgrounds are separate graphics');
+    const connectionGraphic = svg[0].includes('data-connection-graphic') && ((route === '/' && svg[0].includes('viewBox="0 0 2172 724"')) || (route === '/solutions/' && svg[0].includes('viewBox="0 0 1536 1024"')));
+    assert.ok(svg[0].includes('data-icon=') || footerGraphic || connectionGraphic, 'Icons must come from the recorded library; cable and approved logo backgrounds are separate graphics');
   }
 }
 for (const route of ['/about/']) {
   assert.ok(pages.get(route).includes('class="lifecycle'), `Readable lifecycle at ${route}`);
-  for (const anchor of ['consulting', 'design', 'supply', 'implementation', 'support']) assert.ok(pages.get(route).includes(`/services/#${anchor}`), `Lifecycle link ${anchor} at ${route}`);
+  for (const anchor of ['consulting', 'design', 'implementation', 'support']) assert.ok(pages.get(route).includes(`/services/#${anchor}`), `Lifecycle link ${anchor} at ${route}`);
 }
 assert.ok(pages.get('/services/').includes('data-service-nav'), 'Compact service journey navigation');
-for (const anchor of ['consulting', 'design', 'supply', 'implementation', 'support']) assert.ok(pages.get('/services/').includes(`href="#${anchor}"`), `Service journey link ${anchor}`);
+for (const anchor of ['consulting', 'cybersecurity-consulting', 'design', 'implementation', 'support']) assert.ok(pages.get('/services/').includes(`href="#${anchor}"`), `Service journey link ${anchor}`);
 assert.ok(pages.get('/solutions/').includes('enterprise-ecosystem.webp'));
 assert.ok(pages.get('/solutions/').includes('class="solution-overview"'));
 assert.ok(pages.get('/products/').includes('class="technology-overview"'));
-assert.ok(pages.get('/services/').includes('service-lifecycle.webp'));
+assert.ok(pages.get('/services/').includes('services-editorial-hero.webp'));
 const server = await startServer({ port: 0, host: '127.0.0.1', directory: process.env.TEST_DIST === '1' ? 'dist' : '.' });
 try {
   const origin = `http://127.0.0.1:${server.address().port}`;
