@@ -178,7 +178,7 @@ const baseRoutes = ['/', '/about/', '/solutions/', '/services/', '/products/', '
 export const pageRoutes = baseRoutes;
 export async function renderPages() {
   const pages = [
-    ['/', text('07_SEO_Dev_Notes', 'B5'), text('07_SEO_Dev_Notes', 'B6'), home()],
+    ['/', text('07_SEO_Dev_Notes', 'B5'), text('07_SEO_Dev_Notes', 'B6'), home(serviceContent)],
     ['/about/', "About Us | PAY ORBIT", "Learn about PAY ORBIT PTY. LTD, our solution and technology approach, and support throughout the infrastructure lifecycle.", about()],
     ['/solutions/', "Solutions | PAY ORBIT", "PAY ORBIT solutions for enterprise networking, data center networking, cybersecurity and cloud security.", solutionPage()],
     ['/services/', "Services | PAY ORBIT", "Network and cybersecurity consulting, solution design, deployment and integration, and security and network support.", servicePage()],

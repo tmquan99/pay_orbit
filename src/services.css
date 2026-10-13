@@ -15,9 +15,11 @@
 .service-journey ol { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); }
 .service-journey li { position:relative; min-width:0; }
 .service-journey li + li::before { content:""; position:absolute; left:0; top:24px; bottom:24px; width:1px; background:var(--divider); }
-.service-journey a { display:flex; align-items:center; justify-content:center; gap:12px; min-height:80px; text-decoration:none; font-size:15px; line-height:1.4; font-weight:500; color:var(--muted); }
+.service-journey a { position:relative; display:flex; align-items:center; justify-content:center; gap:12px; min-height:80px; text-decoration:none; font-size:15px; line-height:1.4; font-weight:500; color:var(--muted); }
+.service-journey a::after { position:absolute; content:''; height:3px; inset:auto 10% -1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 180ms ease-out; }
 .service-journey .icon { width:28px; height:28px; color:var(--accent-text); }
 .service-journey a[aria-current="location"] { color:var(--accent-text); font-weight:600; }
+.service-journey a[aria-current="location"]::after { transform:scaleX(1); }
 .service-detail { padding-block:40px; background:var(--surface); scroll-margin-top:104px; }
 .service-detail:nth-child(even) { background:#F2F7FF; }
 .service-detail:is(#consulting,#support) { padding-block:30px; }
@@ -85,7 +87,7 @@
   .services-intro-grid { grid-template-columns:1fr; gap:28px; }
   .service-art-hero { width:100%; margin-left:0; }
   .service-art-hero img { transform:none; }
-  .service-journey { position:static; }
+  .service-journey { display:none; }
   .service-journey ol { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding-block:8px; }
   .service-journey li:last-child { grid-column:1 / -1; }
   .service-journey li + li::before { display:none; }
@@ -107,5 +109,5 @@
   .service-art-design-flow { margin-top:0; }
 }
 @media (prefers-reduced-motion:reduce) {
-  .service-description::details-content, .service-description summary .icon { transition:none; }
+  .service-journey a::after, .service-description::details-content, .service-description summary .icon { transition:none; }
 }

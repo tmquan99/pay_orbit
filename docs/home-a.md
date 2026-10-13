@@ -22,6 +22,12 @@ Mã nguồn của thay đổi được quản lý trên nhánh `codex/home-needs
 
 Arrow Home: toàn bộ 13 link/CTA có mũi tên dùng Lucide `arrow-up-right`. Hover dịch icon chéo lên phải 2px trong 160ms ease-out, cùng thông số với các trang chi tiết; chế độ reduced motion giữ icon đứng yên. Nút lên đầu trang giữ hướng lên theo chức năng. Test Home kiểm tra từng arrow ở cả VI/EN, hiệu ứng hover và reduced motion, cùng các kiểm tra layout hiện có.
 
+CTA liên hệ chung (13/10/2026): Home và bốn trang chi tiết dùng cùng animation.
+Tiêu đề, mô tả và nút bên trái xuất hiện cách nhau 160ms, mỗi phần chạy 960ms.
+Ba dòng checklist bên phải lần lượt bắt đầu ở 160/320/480ms, theo ngay sau
+tiêu đề bên trái với cùng hiệu ứng mờ dần và trượt lên 40px. Chạy một lần khi
+khối đi vào vùng nhìn; reduced motion và không JavaScript hiển thị ngay toàn bộ.
+
 Màu arrow ở các text link kế thừa màu chữ thay vì bị ép sang accent xanh sáng. Test đối chiếu màu nét SVG với màu nhãn của các text link và button để tránh lệch màu khi đổi theme hoặc style.
 
 Header Home đã chuyển sang dùng chung style với các trang chi tiết theo yêu cầu mới: nền tối, logo dành cho nền tối, màu chữ, Contact, trạng thái active/hover/focus và menu mobile. Bỏ các CSS ghi đè header riêng của Home; khoảng cách container riêng chỉ áp dụng cho nội dung và footer. `tests/header-consistency.mjs` đối chiếu Home với About tại 1440, 1024, 768, 390, 360 và 320px, gồm cả menu mở rộng. Thay đổi này thay thế header trắng trong mockup A.

@@ -57,12 +57,15 @@ export function installReferenceReveals(root = document) {
       finish(element);
       continue;
     }
-    const targets = isCTA ? [...element.querySelectorAll('h2, p, .button')] : [element];
+    const copyTargets = isCTA ? [...element.querySelectorAll('h2, p, .button')] : [];
+    const targets = isCTA ? [...copyTargets, ...element.querySelectorAll('.home-contact-checklist li')] : [element];
+    const duration = Number(element.dataset.duration) || 600;
     const transform = isCTA ? 'translateY(40px)' : element.dataset.reveal === 'slide' ? 'translateX(12px)' : element.dataset.reveal === 'media' ? 'scale(1.025)' : 'translateY(10px)';
     const group = targets.map((target, index) => {
       const animation = target.animate([{ opacity: 0, transform }, { opacity: 1, transform: 'none' }], {
-        duration: Number(element.dataset.duration) || 600,
-        delay: isCTA ? index * 160 : Math.min(240, Number(element.dataset.delay) || 0),
+        duration,
+        // Let the checklist follow the heading closely while both columns enter.
+        delay: isCTA ? (index < copyTargets.length ? index * 160 : 160 + (index - copyTargets.length) * 160) : Math.min(240, Number(element.dataset.delay) || 0),
         easing: isCTA ? 'cubic-bezier(0.22, 0.68, 0.2, 1)' : 'cubic-bezier(0.22, 1, 0.36, 1)',
         fill: 'backwards',
       });

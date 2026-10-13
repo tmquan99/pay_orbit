@@ -40,14 +40,14 @@ try {
       };
     });
     const homeStyles = await invitationStyles();
-    for (const route of ['/about/', '/solutions/', '/services/', '/products/']) {
+    for (const route of ['/services/', '/', '/about/', '/solutions/', '/products/']) {
       await page.goto(origin + route);
       await page.evaluate(() => document.fonts.ready);
       assert.deepEqual(await invitationStyles(), homeStyles, `Contact invitation must match Home on ${route} at ${width}px`);
-      assert.equal(await page.locator('.closing-cta h2').innerText(), "Let's talk about your infrastructure.");
+      assert.equal(await page.locator('.home-contact h2').innerText(), "Let's talk about your infrastructure.");
       assert.deepEqual((await page.locator('.home-contact-checklist li').allTextContents()).map(text => text.trim()), ['Your current environment', 'Your priorities', 'Your expected scope']);
-      assert.equal(await page.locator('.closing-cta .button').getAttribute('href'), '/contact/#consultation_form');
-      assert.equal(await page.locator('.closing-cta .button').innerText(), 'Talk to Our Team');
+      assert.equal(await page.locator('.home-contact .button').getAttribute('href'), '/contact/#consultation_form');
+      assert.equal(await page.locator('.home-contact .button').innerText(), 'Talk to Our Team');
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No horizontal overflow on ${route}`);
       await page.locator('.closing-layout').evaluate(element => scrollTo({ top: scrollY + element.getBoundingClientRect().top - innerHeight - 50, behavior: 'instant' }));
       await page.waitForTimeout(850);
@@ -58,8 +58,8 @@ try {
         duration: animation.effect.getTiming().duration,
         from: animation.effect.getKeyframes()[0].transform,
       })));
-      assert.deepEqual(entrance.map(item => item.target), ['H2', 'P', 'A'], 'Heading, description and action must animate separately');
-      assert.deepEqual(entrance.map(item => item.delay), [0, 160, 320], 'CTA elements must enter in reading order');
+      assert.deepEqual(entrance.map(item => item.target), ['H2', 'P', 'A', 'LI', 'LI', 'LI'], 'Left copy and each checklist row must animate separately');
+      assert.deepEqual(entrance.map(item => item.delay), [0, 160, 320, 160, 320, 480], 'Checklist follows the heading closely, with rows entering in order');
       assert.ok(entrance.every(item => item.duration >= 900 && item.from === 'translateY(40px)'), 'Entrance must have a visible travel distance and duration');
       await page.locator('.closing-layout').evaluate(element => scrollTo({ top: scrollY + element.getBoundingClientRect().top - innerHeight + 280, behavior: 'instant' }));
       await page.waitForFunction(() => {
@@ -68,14 +68,21 @@ try {
         return opacity > .05 && opacity < .95 && getComputedStyle(element).transform !== 'none';
       });
       assert.ok(await page.locator('.closing-layout').evaluate(element => Number(getComputedStyle(element.querySelector('h2')).opacity) > Number(getComputedStyle(element.querySelector('.button')).opacity)), 'Heading must visibly lead the button');
+      await page.waitForFunction(() => {
+        const rows = [...document.querySelectorAll('.home-contact-checklist li')];
+        const first = Number(getComputedStyle(rows[0]).opacity);
+        return first > .05 && first < .95;
+      });
+      assert.ok(await page.locator('.closing-layout .button').evaluate(element => Number(getComputedStyle(element).opacity) < 1), 'Checklist begins while the left column is still entering');
+      assert.ok(await page.locator('.home-contact-checklist').evaluate(element => Number(getComputedStyle(element.children[0]).opacity) > Number(getComputedStyle(element.children[2]).opacity)), 'Checklist rows visibly enter in sequence');
       await page.waitForFunction(() => document.querySelector('.closing-layout').dataset.revealPlayed === 'true' && document.querySelector('.closing-layout').getAnimations({ subtree: true }).length === 0);
-      assert.equal(await page.evaluate(() => window.__ctaPlays), 3);
+      assert.equal(await page.evaluate(() => window.__ctaPlays), 6);
       await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
-      await page.locator('.closing-cta').scrollIntoViewIfNeeded();
-      assert.equal(await page.evaluate(() => window.__ctaPlays), 3, 'Revisiting the CTA must not replay its entrance');
+      await page.locator('.home-contact').scrollIntoViewIfNeeded();
+      assert.equal(await page.evaluate(() => window.__ctaPlays), 6, 'Revisiting the CTA must not replay its entrance');
       await page.goto(origin + '/contact/');
       await page.goto(origin + route + '#footer');
-      await page.waitForFunction(() => window.__ctaPlays === 3);
+      await page.waitForFunction(() => window.__ctaPlays === 6);
       await page.waitForFunction(() => document.querySelector('.closing-layout').getAnimations({ subtree: true }).length === 0);
     }
     await context.close();
@@ -87,10 +94,10 @@ try {
     assert.ok(await page.locator('.closing-layout').isVisible());
     assert.equal(await page.locator('.closing-layout').evaluate(element => getComputedStyle(element).opacity), '1');
     assert.equal(await page.locator('.closing-layout').evaluate(element => element.getAnimations({ subtree: true }).length), 0);
-    assert.ok(await page.locator('.closing-layout').evaluate(element => [...element.querySelectorAll('h2, p, .button')].every(child => getComputedStyle(child).opacity === '1')));
+    assert.ok(await page.locator('.closing-layout').evaluate(element => [...element.querySelectorAll('h2, p, .button, .home-contact-checklist li')].every(child => getComputedStyle(child).opacity === '1')));
     await context.close();
   }
-  console.log('PASS: CTA heading, description and action stagger visibly on all four detail pages at desktop/mobile sizes, support footer links, play once and remain readable with reduced motion or no JavaScript');
+  console.log('PASS: CTA checklist follows the heading with a short overlapping stagger on Home and all four detail pages at desktop/mobile sizes, support footer links, play once and remain readable with reduced motion or no JavaScript');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

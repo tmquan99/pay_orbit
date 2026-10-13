@@ -3,7 +3,7 @@
 .home-hero { padding-top: 64px; background: var(--surface); color: var(--text); }
 .home-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .hero-domain { color: var(--muted); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .025em; }
-.home-hero h1 { margin: 0; font-size: clamp(64px, 7.5vw, 108px); line-height: 1.05; font-weight: 600; letter-spacing: -.045em; text-wrap: initial; }
+.home-hero h1 { margin: 0; font-size: clamp(52px, 6vw, 86px); line-height: 1.05; font-weight: 600; letter-spacing: -.045em; text-wrap: initial; }
 .home-hero h1 span { display: block; }
 .home-hero h1 span:last-child { color: var(--accent); }
 .home-hero p { font-size: 22px; max-width: 60ch; color: var(--muted); }
@@ -86,7 +86,7 @@
 }
 @media (max-width: 767px) {
   .home-hero { padding-top: 40px; }
-  .home-hero h1 { font-size: clamp(44px, 8vw, 64px); }
+  .home-hero h1 { font-size: clamp(36px, 6.4vw, 52px); }
   .home-hero p { font-size: 18px; }
   .home-section { padding-block: 40px; }
   .home-needs-layout { grid-template-columns: 1fr; gap: 24px; }
@@ -115,7 +115,6 @@
   .home-page main .container { width: calc(100% - 40px); }
   .hero-domain { font-size: 11px; max-width: 28ch; }
   .home-hero { padding-top: 28px; }
-  .home-hero h1 { font-size: clamp(40px, 10vw, 58px); }
   .home-hero h1 { font-size: clamp(26px, 7.2vw, 43px); }
   .home-hero-copy { gap: 20px; }
   .home-hero p { font-size: 16px; }
@@ -145,6 +144,5 @@
 }
 @media (max-width: 359px) {
   .home-page main .container { width: calc(100% - 32px); }
-  .home-hero h1 { font-size: 38px; }
   .home-hero h1 { font-size: 26px; }
 }

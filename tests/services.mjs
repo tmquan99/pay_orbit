@@ -50,7 +50,7 @@ try {
    overflow:document.documentElement.scrollWidth>innerWidth,
    clipped:[...document.querySelectorAll('h1,h2,h3,p,a,summary')].filter(el=>el.getClientRects().length&&el.clientWidth>0&&el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.trim()),
    overlap:[...document.querySelectorAll('.service-lead')].filter(el=>el.getBoundingClientRect().top<el.previousElementSibling.querySelector('h2').getBoundingClientRect().bottom-1).map(el=>el.textContent),
-   nav:getComputedStyle(document.querySelector('[data-service-nav]')).position,
+   navDisplay:getComputedStyle(document.querySelector('[data-service-nav]')).display,
    designImage:(()=>{
     const figure=document.querySelector('.service-art-design-flow');
     const image=figure.querySelector('img');
@@ -62,7 +62,7 @@ try {
   assert.deepEqual(layout.clipped,[],'No clipped text at '+width);
   assert.deepEqual(layout.overlap,[],'Summary does not overlap heading at '+width);
   assert.ok(layout.designImage,'Full Solution Design image fits its frame at '+width);
-  if(width<768) assert.equal(layout.nav,'static');
+  assert.equal(layout.navDisplay,width<768?'none':'block','Service navigation is desktop only at '+width);
  }
  await page.emulateMedia({reducedMotion:'reduce'});
  await page.reload();

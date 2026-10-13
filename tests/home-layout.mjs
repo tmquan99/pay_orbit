@@ -65,8 +65,9 @@ try {
     }
     const steps = page.locator('.home-service-steps a');
     assert.equal(await steps.count(), 5);
-    for (const [index, anchor] of ['consulting', 'design', 'supply', 'implementation', 'support'].entries()) {
-      assert.equal(await steps.nth(index).getAttribute('href'), anchor === 'supply' ? `${prefix}/products/` : `${prefix}/services/#${anchor}`);
+    for (const [index, anchor, title] of [[0, 'consulting', 'Network Consulting'], [1, 'cybersecurity-consulting', 'Cybersecurity Consulting'], [2, 'design', 'Solution Design'], [3, 'implementation', 'Deployment & Integration'], [4, 'support', 'Security & Network Support']]) {
+      assert.equal(await steps.nth(index).innerText(), `0${index + 1}\n${title}`);
+      assert.equal(await steps.nth(index).getAttribute('href'), `${prefix}/services/#${anchor}`);
     }
     await page.locator('#customer_needs a').first().focus();
     await page.keyboard.press('Enter');

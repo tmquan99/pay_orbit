@@ -1,5 +1,6 @@
 import { icon, solutionIcon } from './visuals.mjs';
 import { contactInvitation } from './contact-invitation-markup.mjs';
+import { escape } from './html.mjs';
 
 const arrow = () => icon('arrow-up-right', 'home-action-arrow');
 const link = (label, href, classes = 'home-text-link', contextId = '') => `<a class="${classes}" href="${href}"${contextId ? ` aria-labelledby="solution-link-${contextId} solution-title-${contextId}"` : ''}><span${contextId ? ` id="solution-link-${contextId}"` : ''}>${label}</span>${arrow()}</a>`;
@@ -14,10 +15,9 @@ const needs = [
   ["Upgrade data center networking", "Scalable infrastructure that is easier to manage.", 'data-center-networking'],
   ["Protect your systems &amp; cloud", "Control access and protect your digital environment.", 'cybersecurity'],
 ];
-const stages = [["Consult", 'consulting'], ["Design", 'design'], ["Supply", 'supply'], ["Deploy", 'implementation'], ["Support", 'support']];
 
 /** Home A keeps all destinations and diagram labels in native HTML. */
-export function home() {
+export function home(serviceContent) {
   return `<section class="home-hero" id="hero" aria-labelledby="hero_heading">
     <div class="container"><div class="home-hero-copy">
       <span class="hero-domain">Enterprise networking &amp; cybersecurity</span>
@@ -49,8 +49,8 @@ export function home() {
     </div>
   </div></section>
   <section class="home-section home-approach" id="why_pay_orbit" aria-labelledby="approach_heading"><div class="container">
-    <h2 id="approach_heading">With you at every stage</h2><p>From consulting to operations, we work alongside your team.</p>
-    <ol class="home-service-steps">${stages.map(([title, id], index) => `<li><a href="${id === 'supply' ? '/products/' : `/services/#${id}`}"><span class="home-step-number" aria-hidden="true">0${index + 1}</span><strong>${title}</strong></a></li>`).join('')}</ol>
+    <h2 id="approach_heading">Network and cybersecurity services</h2><p>Consulting, solution design, deployment and ongoing support for your infrastructure.</p>
+    <ol class="home-service-steps">${serviceContent.services.map(({ title, id }, index) => `<li><a href="/services/#${escape(id)}"><span class="home-step-number" aria-hidden="true">0${index + 1}</span><strong>${escape(title)}</strong></a></li>`).join('')}</ol>
     ${link("Explore Our Services", '/services/')}
   </div></section>
   <section class="home-section home-technology" id="technology_focus" aria-labelledby="technology_heading"><div class="container">

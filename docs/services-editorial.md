@@ -14,6 +14,13 @@ Deployment & Integration, Security & Network Support. All source paragraphs,
 benefit summaries precede technical lists. No SLA or turnaround promise added.
 Supply links from the Home/About lifecycle now lead to Products.
 
+Home Services summary updated on 2026-10-13: the five labels and deep links now
+come from the same `content/services.json` data as the Services page. Names and
+order were checked against `PAY_ORBIT_Website_Content_v2_Simplified_1.xlsx`,
+sheet `04_Services.`, cells B6:B10. The Home section now introduces network and
+cybersecurity services; Product Supply remains on Products and the About
+lifecycle. The five-item desktop row and mobile list are retained.
+
 Images are conceptual generated illustrations/photographs, not customer projects.
 Full prompts and source references are in assets-*.json and content/visual-assets.json.
 Production uses locally hosted WebP and 720px variants.
