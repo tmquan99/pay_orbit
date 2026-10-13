@@ -245,6 +245,23 @@
         "bytes": 696557,
         "sha256": "59900181452c5dc17e9327e8bf78d9ffd10c7a29e4b69e03f5aae038757b8170"
       }
+    },
+    {
+      "id": "home-hero-security",
+      "purpose": "Conceptual abstract security illustration for Home desktop hero; hidden on mobile",
+      "destination": "public/assets/images/home-hero-security.png",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tamin/.codex/generated_images/01a13335-d6bd-7c90-b9d1-46e65e48dc4d/exec-15713e65-08f8-490a-b5e5-2c0384934fb0.png"
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: transparent raster illustration for PAY ORBIT Home desktop hero, approximately 500x400 CSS pixels.\nInput image 1 is a style and subject reference only: recreate ONLY the glass shield and its orbital ribbons in the upper-right of the reference. Do not reproduce the webpage or its lower panorama.\nPrimary request: one refined pale icy-blue translucent glass security shield, tilted very slightly in three-quarter view, with a prominent cobalt blue check mark on its front. Thin delicate blue and cyan elliptical orbital data ribbons wrap around the shield in front and behind, with a few tiny spherical signal dots on the paths. Match the reference shield's shape, proportions, airy softness, translucent beveled rim, pale internal facets, and understated glossy render. Mostly pale glass with crisp blue #1768E8 edges, a cobalt check, and restrained cyan accents. A few very faint hairline orbital circles may surround the subject, as in the reference.\nComposition/framing: a single isolated subject, natural landscape 5:4 canvas, target roughly 1200x1000 pixels or higher. Tightly frame the full shield AND all orbital paths with about 4% transparent padding. No cropped paths or clipped dots. Shield sits centrally in the compact composition. All backdrop pixels must be truly transparent alpha, including empty areas inside orbital loops; no white rectangle or fake checkerboard.\nLighting: high-key, soft studio reflections, tasteful enterprise cybersecurity aesthetic. No pedestal, floor, cast ground shadow or environmental backdrop.\nAvoid: all text, numbers, logo, watermark, UI, webpage, panels, buildings, offices, servers, clouds, panorama, landscapes, people, dark base, dark or neon background, neon glow, excessive particles. No other objects beyond the shield, check, orbital ribbons and tiny signal dots.",
+      "metadata": {
+        "width": 1402,
+        "height": 1122,
+        "bytes": 978454,
+        "sha256": "980b082aa10fca748ba9c887d5bbb3249f3994f9e533d4467e189b6af6d696f0"
+      }
     }
   ],
   "icons": {
@@ -523,6 +540,24 @@
       "height": 277,
       "bytes": 28684,
       "sha256": "62ed665b68a050d5c85c0fdf1ca11fca31fd3e332556cb70b786b68a43f9fb60"
+    },
+    {
+      "source": "public/assets/images/home-hero-security.png",
+      "destination": "public/assets/images/home-hero-security.webp",
+      "quality": 88,
+      "width": 1200,
+      "height": 1000,
+      "bytes": 231222,
+      "sha256": "729c0896177bebdf70e2962906d748ac25599585298e8b343f474b7ac9300010"
+    },
+    {
+      "source": "public/assets/images/home-hero-security.png",
+      "destination": "public/assets/images/home-hero-security-720.webp",
+      "quality": 88,
+      "width": 720,
+      "height": 600,
+      "bytes": 101944,
+      "sha256": "889ea8245d01851babd545ea736b761bb931babf3cc054ca466ceccf2f1b470d"
     }
   ]
 }

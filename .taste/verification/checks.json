@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-12T15:16:55.103Z",
+  "checkedAt": "2026-10-13T03:10:15.984Z",
   "checks": [
     {
       "name": "Hero actual playback",
       "detail": {
-        "transform": "matrix(1, 0, 0, 1, 0, 15.5377)",
+        "transform": "matrix(1, 0, 0, 1, 0, 9.45454)",
         "running": true
       }
     },
@@ -139,6 +139,25 @@
               "easing": "linear",
               "composite": "auto",
               "transform": "translateY(12px)",
+              "computedOffset": 0
+            },
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "none",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "duration": 650,
+          "keyframes": [
+            {
+              "offset": null,
+              "easing": "linear",
+              "composite": "auto",
+              "transform": "translateY(16px)",
               "computedOffset": 0
             },
             {
@@ -420,7 +439,7 @@
       "name": "Viewport 390 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -486,7 +505,7 @@
       "name": "Viewport 360 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -552,7 +571,7 @@
       "name": "Viewport 320 /services/",
       "detail": {
         "overflow": false,
-        "interactiveTargets": 22,
+        "interactiveTargets": 17,
         "minimumHitSize": 44,
         "minimumTextContrast": 5.021765105198983,
         "clippedText": false,
@@ -604,7 +623,7 @@
     {
       "name": "Restored scroll",
       "detail": {
-        "scrollY": 1249,
+        "scrollY": 1208,
         "visible": true
       }
     },

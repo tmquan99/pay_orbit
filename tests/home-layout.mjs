@@ -77,6 +77,17 @@ try {
     for (const width of [1440, 1024, 768, 390, 360, 320]) {
       await page.setViewportSize({ width, height: 900 });
       await page.evaluate(() => document.fonts.ready);
+      const securityArt = page.locator('.home-hero-security');
+      assert.equal(await securityArt.isVisible(), width >= 768, `New security illustration is desktop only at ${width}px`);
+      if (width >= 768) {
+        assert.ok(await securityArt.evaluate(art => {
+          const bounds = art.getBoundingClientRect();
+          return [...document.querySelectorAll('.home-hero-copy h1, .home-hero-copy p, .home-hero-copy .actions')].every(copy => {
+            const rect = copy.getBoundingClientRect();
+            return rect.right <= bounds.left + 1 || rect.bottom <= bounds.top || rect.top >= bounds.bottom;
+          });
+        }), `Security illustration stays clear of hero copy at ${width}px`);
+      }
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Home A fits ${language} ${width}px`);
       const clipped = await page.locator('h1,h2,h3,.need-copy,.home-needs-list a').evaluateAll(elements => elements.filter(el => el.scrollWidth > el.clientWidth + 1).map(el => el.textContent));
       assert.deepEqual(clipped, [], `Home copy wraps at ${language} ${width}px`);
@@ -157,7 +168,14 @@ try {
     await staticPage.waitForURL(`${origin}${prefix}/contact/#consultation_form`);
     await staticContext.close();
   }
-  console.log('PASS: Home A localized needs, solution/service deep links, keyboard navigation, responsive imagery, reduced motion and no-JS contact journey');
+  const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const securityRequests = [];
+  mobile.on('request', request => { if (request.url().includes('/home-hero-security')) securityRequests.push(request.url()); });
+  await mobile.goto(origin + '/', { waitUntil: 'networkidle' });
+  assert.equal(await mobile.locator('.home-hero-security').isVisible(), false);
+  assert.deepEqual(securityRequests, [], 'Mobile does not download the desktop-only security artwork');
+  await mobile.close();
+  console.log('PASS: Home A localized needs, desktop-only security artwork without mobile downloads, solution/service deep links, keyboard navigation, responsive imagery, reduced motion and no-JS contact journey');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

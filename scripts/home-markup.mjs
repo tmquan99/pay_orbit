@@ -19,12 +19,17 @@ const needs = [
 /** Home A keeps all destinations and diagram labels in native HTML. */
 export function home(serviceContent) {
   return `<section class="home-hero" id="hero" aria-labelledby="hero_heading">
-    <div class="container"><div class="home-hero-copy">
+    <div class="container home-hero-stage"><div class="home-hero-copy">
       <span class="hero-domain">Enterprise networking &amp; cybersecurity</span>
       <h1 id="hero_heading" data-hero><span>Built to Connect.</span><span>Designed to Protect.</span></h1>
       <p data-hero>Networking and security solutions, designed around your business.</p>
       <div class="actions" data-hero>${link("Discuss your needs", '/contact/#consultation_form', 'button button-primary')}</div>
-    </div></div>
+    </div>
+      <figure class="home-hero-security" data-hero aria-hidden="true"><picture>
+        <source media="(min-width: 768px)" type="image/webp" srcset="/assets/images/home-hero-security-720.webp 720w, /assets/images/home-hero-security.webp 1200w" sizes="(max-width: 1100px) 38vw, 480px">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1200" height="1000" alt="" decoding="async">
+      </picture></figure>
+    </div>
     <figure class="home-panorama" data-hero><div class="container">
       <div class="connection-art-frame" data-hero-graphic="panorama"><img src="/assets/images/home-a-network-panorama.webp" srcset="/assets/images/home-a-network-panorama-720.webp 720w, /assets/images/home-a-network-panorama.webp 2172w" sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1200px" width="2172" height="724" alt="Illustration connecting an office, branch, gateway, data center and cloud" fetchpriority="high" decoding="async">
         <svg class="connection-signal-graphic" data-connection-graphic viewBox="0 0 2172 724" aria-hidden="true" focusable="false">

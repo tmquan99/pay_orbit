@@ -33,3 +33,11 @@ Màu arrow ở các text link kế thừa màu chữ thay vì bị ép sang acce
 Header Home đã chuyển sang dùng chung style với các trang chi tiết theo yêu cầu mới: nền tối, logo dành cho nền tối, màu chữ, Contact, trạng thái active/hover/focus và menu mobile. Bỏ các CSS ghi đè header riêng của Home; khoảng cách container riêng chỉ áp dụng cho nội dung và footer. `tests/header-consistency.mjs` đối chiếu Home với About tại 1440, 1024, 768, 390, 360 và 320px, gồm cả menu mở rộng. Thay đổi này thay thế header trắng trong mockup A.
 
 Section Technology đã áp mockup logo được duyệt: hai hàng dùng SVG gốc Cisco và Palo Alto Networks, giữ màu và tỷ lệ; mô tả nằm cùng cột với đường phân cách trên desktop, xuống dưới logo trên mobile. Link giữ nguyên `/products/#cisco` và `/products/#palo-alto-networks`, arrow giữ hiệu ứng chéo và reduced motion. Nguồn và SHA-256 nằm tại `public/assets/brand/vendors/provenance.json`. Mockup và ảnh thực tế desktop/mobile nằm tại `design/technology-logos-mockup-2026-10-12/`. Logo có alt làm tên hãng cho link; test Home kiểm tra ảnh tải, tỷ lệ, không giao với chữ và không tràn hàng ở sáu chiều rộng.
+
+Hero desktop bổ sung minh họa khiên kính và quỹ đạo dữ liệu theo mockup đã duyệt
+ngày 13/10/2026. Ảnh WebP có alpha thật, đứng cạnh cụm chữ và dùng cùng entrance
+650ms. Ở màn hình dưới 768px, cả khung ảnh bị ẩn; picture chỉ chọn WebP trên
+desktop nên mobile không tải minh họa mới. Panorama gốc vẫn hiện đủ, không crop.
+Prompt, PNG/WebP, nguồn và SHA-256 được ghi tại
+`design/home-hero-security-2026-10-13/asset.json` và `content/visual-assets.json`.
+Ảnh đối chiếu và kết quả browser nằm trong thư mục `verification` cùng bộ thiết kế.

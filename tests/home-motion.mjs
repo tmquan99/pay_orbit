@@ -20,7 +20,7 @@ try {
     };
   });
   await page.goto(origin+'/',{waitUntil:'networkidle'});
-  assert.deepEqual(await page.evaluate(() => window.__homeEntrances),[650,650,650,650]);
+  assert.deepEqual(await page.evaluate(() => window.__homeEntrances),[650,650,650,650,650]);
   const image = page.locator('.home-panorama img');
   await image.evaluate(el => el.decode());
   assert.ok(await image.evaluate(el => el.naturalWidth >= el.getBoundingClientRect().width),'Panoramic illustration is sharp at desktop size');

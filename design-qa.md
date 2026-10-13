@@ -161,3 +161,69 @@ Evidence: `design/services-editorial-2026-10-12/design-flow-fixed-tablet.jpg`
 and `design-flow-fixed-mobile.jpg`.
 
 The user subsequently requested a local commit of the completed changes.
+
+## Home desktop security illustration — 2026-10-13
+
+Scope: implement the selected revised desktop hero; the user's latest instruction
+explicitly hides the new illustration on mobile. Existing Home copy, smaller
+heading scale, shared header, CTA, and complete panorama remain the baseline.
+
+Source visual truth: `design/home-hero-security-2026-10-13/approved-desktop.png`
+(1586×992). The mobile reference is `approved-mobile-before-hide-request.png`
+(853×1844), superseded specifically for illustration visibility by the latest
+user instruction. Current implementation captures are
+`verification/desktop.jpg` (1425×891, CSS viewport 1440×900) and
+`verification/mobile.jpg` (375×812, CSS viewport 390×844), relative to the same
+design folder. Browser screenshots are slightly scaled by the in-app surface;
+references were normalized to the corresponding captured pixel dimensions.
+State: Home at scrollY 0 after its one-time entrance settles, menu closed.
+
+Full-view evidence: `verification/desktop-comparison.png` and
+`verification/mobile-comparison.png` (reference left, implementation right).
+Focused typography/CTA/asset evidence: `verification/hero-detail-comparison.png`.
+
+Findings and comparison history:
+- Initial desktop art was visually smaller than the selected direction. The
+  wide-screen frame was enlarged within the existing page margin without
+  moving text or introducing horizontal overflow. Initial comparison is retained
+  as `verification/desktop-comparison-initial.png`; final captures show the fix.
+- No actionable P0/P1/P2 findings remain. Preserving the established page width,
+  font scale, header and original uncropped panorama is intentional. The mockup's
+  more compact panorama composition is not recreated by clipping the source.
+- Mobile omits the shield and its space by explicit user request. The original
+  panorama and primary action remain visible; no desktop WebP is requested in a
+  fresh 390px browser context.
+
+Required fidelity surfaces:
+- Fonts/typography: existing Bricolage Grotesque and Be Vietnam Pro load; black
+  and blue slogan lines preserve their approved reduced scale and wrap without
+  clipping at all six tested widths.
+- Spacing/layout: desktop grid separates copy and art, including at 768px;
+  mobile collapses to the original single column. CTA remains clear of art and
+  panorama, with no horizontal overflow.
+- Colors/tokens: existing surface, dark header, blue accent and text colors are
+  retained. Transparent artwork blends with the surface without a white box.
+- Image quality: generated glass shield/check and orbital data tracks match the
+  selected subject; no repeated buildings, servers or cloud nodes. PNG alpha and
+  both WebP dimensions/digests verified; full panorama is uncropped.
+- Copy/content: slogan, description, CTA and panorama captions are unchanged;
+  raster illustration contains no UI text. Decorative art is hidden from AT.
+
+Interaction/verification: fresh build and static/provenance checks passed;
+Home layout checks passed at 1440/1024/768/390/360/320px, including mobile asset
+visibility and no download. Home motion/reduced-motion/no-JS checks passed.
+The 55-check browser suite passed all six English routes at all six widths,
+including menu, anchors, primary journey, fonts and console/page-error checks.
+After enlarging only the wide-screen frame, build, whitespace and Home layout
+checks were rerun and passed. Manual mobile hero CTA reaches
+`/contact/#consultation_form` and Back returns to Home.
+
+Follow-up polish: the generated shield's glass facets are a close conceptual
+recreation, not an exact pixel extraction. No functional or accessibility gap
+was introduced by this decorative variation.
+
+Implementation checklist: asset and provenance registered; desktop composition
+implemented; mobile visibility/download exclusion verified; screenshots reviewed;
+responsive and motion checks passed.
+
+final result: passed

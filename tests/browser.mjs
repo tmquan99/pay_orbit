@@ -56,7 +56,7 @@ async function assertVisibleContent() {
 }
 try {
   await page.goto(origin + '/', { waitUntil: 'domcontentloaded' });
-  await page.waitForFunction(() => window.__motionChecks.filter(entry => entry.hero).length === 4);
+  await page.waitForFunction(() => window.__motionChecks.filter(entry => entry.hero).length === 5);
   const heroPlayback = await page.locator('h1').evaluate(element => ({ transform: getComputedStyle(element).transform, running: element.getAnimations().some(animation => animation.playState === 'running' && animation.currentTime !== null) }));
   assert.ok(heroPlayback.running && heroPlayback.transform !== 'none', 'Hero must visibly move, not merely declare a timeline');
   record('Hero actual playback', heroPlayback);
@@ -79,7 +79,7 @@ try {
   for (const weight of ['400', '500', '600']) assert.ok(font.faces.some(face => face.family.includes('Be Vietnam Pro') && face.weight === weight && face.status === 'loaded'), `Real body font weight ${weight} loads without synthetic bold`);
   record('Font load', font);
   const images = await page.locator('main img').evaluateAll(elements => elements.map(element => ({ src: element.getAttribute('src'), complete: element.complete, width: element.naturalWidth, height: element.naturalHeight })));
-  assert.equal(images.length, 4, 'Home contains two illustrations and two vendor logos');
+  assert.equal(images.length, 5, 'Home contains three illustrations and two vendor logos');
   assert.equal(await page.locator('.home-panorama img, .home-map-art img').count(), 2);
   assert.deepEqual(await page.locator('.home-vendors img').evaluateAll(elements => elements.map(image => image.alt)), ['Cisco', 'Palo Alto Networks']);
   await page.waitForFunction(() => {
@@ -88,7 +88,7 @@ try {
   });
   record('Initial imagery', 'Panoramic hero decodes; the lazy solutions illustration and two vendor logos are checked after scrolling');
   const hero = await page.evaluate(() => window.__motionChecks.filter(entry => entry.hero));
-  assert.equal(hero.length, 4);
+  assert.equal(hero.length, 5);
   assert.ok(hero.every(entry => entry.duration === 650 && entry.keyframes.some(frame => frame.transform !== 'none')));
   record('Hero entrance', hero.map(entry => ({ duration: entry.duration, keyframes: entry.keyframes })));
   await page.locator('#customer_needs').scrollIntoViewIfNeeded();

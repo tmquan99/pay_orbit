@@ -1,7 +1,13 @@
 /* Home A: customer needs first; scoped to preserve detail pages. */
 .home-page { background: var(--surface); }
 .home-hero { padding-top: 64px; background: var(--surface); color: var(--text); }
-.home-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.home-hero-stage { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: 32px; }
+.home-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; min-width: 0; }
+.home-hero-security { margin: -32px -24px 0 0; pointer-events: none; }
+.home-hero-security img { display: block; width: 100%; height: auto; }
+@media (min-width: 1280px) {
+  .home-hero-security { margin: -48px calc(-1 * clamp(24px, calc((100vw - 1200px) / 2 - 24px), 96px)) -48px 0; }
+}
 .hero-domain { color: var(--muted); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .025em; }
 .home-hero h1 { margin: 0; font-size: clamp(52px, 6vw, 86px); line-height: 1.05; font-weight: 600; letter-spacing: -.045em; text-wrap: initial; }
 .home-hero h1 span { display: block; }
@@ -86,6 +92,8 @@
 }
 @media (max-width: 767px) {
   .home-hero { padding-top: 40px; }
+  .home-hero-stage { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .home-hero-security { display: none; }
   .home-hero h1 { font-size: clamp(36px, 6.4vw, 52px); }
   .home-hero p { font-size: 18px; }
   .home-section { padding-block: 40px; }
