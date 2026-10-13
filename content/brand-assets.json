@@ -185,8 +185,7 @@
     "method": "Static Manrope 600 shaped with HarfBuzz and outlined with fontTools",
     "font": "public/assets/fonts/manrope/Manrope-600-brand.woff2",
     "license": "public/assets/fonts/manrope/OFL.txt",
-    "exportScript": "scripts/export-logo.mjs",
-    "vectorBuildScript": "scripts/build-logo-vectors.py"
+    "exportScript": "scripts/export-logo.mjs"
   },
   "colors": {
     "lightBlue": "#1768E8",
@@ -196,7 +195,7 @@
     "darkBackground": "#02060F"
   },
   "websiteUse": [
-    "Shared header and footer on all 12 VI/EN routes",
+    "Shared header and footer on all six English routes",
     "SVG favicon with PNG fallback, Apple touch icon, webmanifest"
   ]
 }

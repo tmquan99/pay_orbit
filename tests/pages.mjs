@@ -30,7 +30,7 @@ for (const [route, sheet, cells] of coverage) {
   for (const cell of cells) assert.ok(text.includes(normalize(workbook.sheets[sheet][cell])), `${sheet}!${cell} must appear in full at ${route}`);
 }
 // Home A replaces the previous overview with the approved needs-led composition.
-for (const copy of ["What does your business need?", "With you at every stage", "Technology that fits your needs"]) assert.ok(normalize(pages.get('/')).includes(copy), `Approved Home A copy: ${copy}`);
+for (const copy of ["What does your business need?", "Network and cybersecurity services", "Technology that fits your needs"]) assert.ok(normalize(pages.get('/')).includes(copy), `Approved Home A copy: ${copy}`);
 const linkPages = pages;
 for (const [route, html] of pages) {
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {

@@ -1,31 +1,44 @@
 {
-  "version": 2,
+  "version": 3,
   "assumptions": [
     "Ảnh minh họa khái niệm, không phải cấu hình, sản phẩm hãng hoặc dự án PAY ORBIT thực tế.",
     "Infographic dùng nhãn HTML để đọc được trên mobile và khi ảnh không tải."
   ],
   "images": [
     {
-      "id": "infrastructure-team",
-      "purpose": "Minh họa phối hợp kiểm tra kết nối trong môi trường hạ tầng doanh nghiệp trên Home",
-      "destination": "public/assets/images/infrastructure-team-illustration.png",
+      "id": "company_infrastructure_photo",
+      "purpose": "Ảnh minh họa thiết bị mạng và hệ thống cáp cho phần giới thiệu công ty.",
+      "destination": "public/assets/images/company_infrastructure_photo.webp",
       "source": {
         "kind": "generated",
-        "tool": "image_gen.imagegen",
-        "reference": "exec-45304319-f972-4e19-a338-506096fa0f84"
+        "reference": "image_gen.imagegen:01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-4032aac6-2e6a-481b-88ac-6beee4c43ab8"
       },
-      "prompt": "Use case: photorealistic-natural. Asset type: a supporting editorial photograph for the PAY ORBIT enterprise networking and cybersecurity website, landscape 3:2. Create a restrained, believable documentary photograph of two adult network engineers collaborating at an open network cabinet in a clean, modest enterprise equipment room. One engineer in a navy overshirt is seen from behind and slightly to the side, calmly checking an unbranded laptop on a pull-out shelf, while a colleague's hand points at a tidy patch panel with blue Ethernet cables. Emphasis is on the actual process of checking connections together, not posing for the camera. Human presence at left third, detailed switch and cable equipment at right two thirds. Natural cool overhead lighting, navy and pale blue palette, realistic skin and fabric texture, balanced exposure, softly blurred background with depth. Professional B2B editorial quality, no dramatic sci-fi lighting, no glowing effects, no hologram, no shields, no text, letters, visible brand logos, identifiable company marks, watermark, dashboards, or readable laptop content. This is an illustrative fictional scene, not a photo of actual PAY ORBIT staff, customers, or projects. Keep faces mostly turned away. Entire composition should crop well to 4:3 on mobile and 3:2 on desktop.",
       "metadata": {
         "width": 1536,
         "height": 1024,
-        "bytes": 2061681,
-        "sha256": "66403b323f2bddd9ae5e07ec5bf168ffdc73c92fcad6676ecadc511235f298e1"
+        "bytes": 163706,
+        "sha256": "9d957130797420672698b97a7c894a3554e0841b1be12194f1c9ffdfc5e4c720"
       }
     },
     {
-      "id": "ecosystem",
+      "id": "company_infrastructure_photo-720",
+      "purpose": "Ảnh minh họa thiết bị mạng và hệ thống cáp cho phần giới thiệu công ty.",
+      "destination": "public/assets/images/company_infrastructure_photo-720.webp",
+      "source": {
+        "kind": "generated",
+        "reference": "image_gen.imagegen:01a11eae-dafe-7900-a3fa-6bcb3292bede/exec-4032aac6-2e6a-481b-88ac-6beee4c43ab8"
+      },
+      "metadata": {
+        "width": 720,
+        "height": 480,
+        "bytes": 53294,
+        "sha256": "b17d09b09a60f1c45c7ad97eb19b3a1049700c708b55c931bd54c64291950a47"
+      }
+    },
+    {
+      "id": "enterprise-ecosystem",
       "purpose": "Giải thích bốn nhóm hạ tầng mạng và bảo mật",
-      "destination": "public/assets/images/enterprise-ecosystem.png",
+      "destination": "public/assets/images/enterprise-ecosystem.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -35,68 +48,31 @@
       "metadata": {
         "width": 1536,
         "height": 1024,
-        "bytes": 1473756,
-        "sha256": "271fb6e609aad425f513cd16659b0cc809dd6dc8801d76947151344b6144b594"
+        "bytes": 62034,
+        "sha256": "9acc1f8f54361de98e89252194e688cc55c341ab702aee70cfa718ada24d105e"
       }
     },
     {
-      "id": "lifecycle",
-      "purpose": "Minh họa quy trình khảo sát, thiết kế, cung cấp, triển khai, hỗ trợ",
-      "destination": "public/assets/images/service-lifecycle.png",
+      "id": "enterprise-ecosystem-720",
+      "purpose": "Giải thích bốn nhóm hạ tầng mạng và bảo mật",
+      "destination": "public/assets/images/enterprise-ecosystem-720.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
-        "reference": "exec-33ae2d10-9eb0-49d5-a511-0c2e9c397309"
+        "reference": "exec-6f4c4986-39ef-4a33-8d9d-c3fbfc992967"
       },
-      "prompt": "Use case: infographic-diagram. Create an original companion editorial illustration for a Vietnamese B2B technology services website. Landscape 3:2, approximately 1536x1024. A clear five-stage project lifecycle in one isometric scene, arranged in a gently curved path from upper left through center to lower right with five evenly spaced visual islands: 1 assessment shown by a clipboard and magnifying lens next to a small network device; 2 solution design shown by architecture plan papers and a ruler; 3 supply shown by an unbranded switch and closed shipping carton; 4 implementation shown by a server rack with neatly connected cables and a small wrench; 5 support shown by a laptop with a simple gear mark and a headset. Purposeful short blue path segments connect the five islands in that order. No people, no charts or made-up measurements, no monitoring dashboard. Premium soft 3D editorial style, matte white and dark navy devices, electric blue #1768E8 primary detail and subtle cyan accents, soft grounded shadows on solid pale blue #F2F7FF background. Strong simple silhouettes and enough separation to be readable at 350 CSS pixels wide. No text, letters, digits, logo, watermark, decorative grid, orbit, unrelated symbols or neon. Entire scene contained with at least 8% edge margin. This is a conceptual illustration of assessment, design, supply, implementation and support, not proof of a real project.",
+      "prompt": "Use case: infographic-diagram. Create a finished editorial illustration for a Vietnamese enterprise networking and cybersecurity company website. Landscape 3:2, approximately 1536x1024. The illustration explains four related infrastructure domains without any embedded text: a modest office building with laptops and a wireless access point at the lower left; two recognizable network/server racks at the center; a restrained secure-access firewall gateway with a small shield symbol between the office and racks; a cloud-computing cluster of servers at the upper right. Arrange these four areas as one coherent isometric scene, with a few purposeful blue connection paths showing the office connects to data-center and cloud resources through security controls. Clear silhouettes readable at 350 CSS pixels wide, generous whitespace around subjects, no extra areas. Premium soft 3D editorial style, matte white and navy devices, electric blue #1768E8 connections, subtle cyan details, soft grounded shadows. Solid pale blue #F2F7FF background. This is a general illustrative overview of enterprise networking, data-center networking, cybersecurity and cloud security, never an actual client topology or a vendor product. No numbers, labels, letters, logos, watermark, globe, orbit, dashboards, graphs, meaningless decorative network lines or glowing neon. Keep all subjects fully inside frame with at least 8% clear edge margin.",
       "metadata": {
-        "width": 1536,
-        "height": 1024,
-        "bytes": 1332040,
-        "sha256": "b43a4a884df97d7bbad1bf58de084e12248b1fecfc16efa93ea15f493419fdf7"
-      }
-    },
-    {
-      "id": "security-gateway",
-      "purpose": "Ảnh đồng bộ với panel mạng, minh họa thiết bị bảo mật trên trang chủ",
-      "destination": "public/assets/images/security-gateway-illustration.png",
-      "source": {
-        "kind": "generated",
-        "tool": "image_gen.imagegen",
-        "reference": "exec-3e5416b6-5ce7-49c2-baa8-1552fd91a055",
-        "styleReference": "public/assets/images/company_infrastructure_photo.webp"
-      },
-      "prompt": "Use case: photorealistic-natural. Asset type: a companion wide photograph for the cybersecurity solution panel on PAY ORBIT's B2B infrastructure website. Input image 1 is a style and lighting reference only: match its photographic realism, cool navy palette, dark textured metal, restrained blue Ethernet cables and equipment-room setting. Generate a NEW scene, not an edited website screenshot. Subject: a pair of unbranded rack-mounted enterprise security gateway appliances in a black equipment cabinet, viewed close-up from a subtle three-quarter angle. Clear believable front panels with a modest number of network and fiber ports, tidy blue cables routed to the sides, tiny neutral green status lights. Include a second softly blurred equipment rack behind for depth. The security appliances, metal texture and orderly connections are the focal point, visually distinct from the dense patch-panel reference but belonging to the same photo shoot. Composition: landscape about 3:2, appliances in the central horizontal band, all important hardware inside middle 55 percent of image height so it crops naturally into a wide 2.5:1 website panel; purposeful close framing, no large blank area. Lighting: soft cool overhead equipment-room light with subtle blue reflections, realistic exposure, crisp foreground hardware, gentle background blur. Constraints: photograph only, no text, letters, numbers, company marks, product branding, logos, watermark, people, monitor screen, dashboard, hologram, overlay, lock icon, shield, cloud graphic, glowing circuit patterns or sci-fi effects. This is fictional illustrative equipment, not a specific vendor product or proof of an actual PAY ORBIT installation.",
-      "metadata": {
-        "width": 1536,
-        "height": 1024,
-        "bytes": 2116044,
-        "sha256": "f0781d10dff152f11ceb1e745f03ae1ead56da5e9dc2a400a528441a4e50f979"
-      },
-      "status": "superseded"
-    },
-    {
-      "id": "digital-infrastructure-protection",
-      "purpose": "Minh họa lớp bảo mật bảo vệ hệ thống máy chủ và Cloud trên panel Bảo vệ hạ tầng số",
-      "destination": "public/assets/images/digital-infrastructure-protection.png",
-      "source": {
-        "kind": "generated",
-        "tool": "image_gen.imagegen",
-        "reference": "exec-deca3914-5166-4b83-8fd8-9ff1e39f7890",
-        "styleReference": "public/assets/images/company_infrastructure_photo.webp"
-      },
-      "prompt": "Use case: ads-marketing. Create a NEW conceptual image that immediately communicates PROTECTING DIGITAL INFRASTRUCTURE, for the cybersecurity and cloud-security panel of an enterprise website. The attached photo is ONLY a reference for dark navy colors, cool blue lighting and realistic equipment materials; do not simply generate another network equipment photograph. Main visual story: a large dimensional translucent blue security shield in the foreground visibly protecting a small group of realistic enterprise server cabinets behind it. A simple frosted-glass cloud-computing form is beside the cabinets, connected to them by two tidy blue paths, and these infrastructure elements are within the shield's protective boundary. Shield must be instantly recognizable and visibly surround/cover the vulnerable infrastructure; include a subtle engraved lock shape at its center, not a flat vector icon. Premium photorealistic 3D advertising illustration with carefully rendered dark metal rack hardware, blue optical glass and softly lit environment, restrained corporate style. Make the shield the clear main subject and server/cloud infrastructure the supporting subjects, so even a small thumbnail reads as cyber protection, not generic networking. Composition: very wide landscape 16:9, centered horizontal arrangement. Entire shield silhouette, the cloud and server cabinets must fit within the middle 55 percent of the image height with spacious dark navy margins above and below, because this will be cropped into a 2.5:1 banner. Large simple silhouettes, no excessive tiny details. Palette: deep navy, charcoal, cool blue matching reference, subtle cyan glass edges; gentle lighting with crisp subject separation, no extreme neon. No text, labels, digits, logos, vendor marks, watermark, people, hacker hoodies, UI screens, dashboards, charts, floating code, green matrix rain, stock padlock-only composition, arrows, red attack beams, excessive glow, or meaningless circuit web. This is a conceptual illustration, not a real deployment or vendor product.",
-      "metadata": {
-        "width": 1672,
-        "height": 941,
-        "bytes": 1854382,
-        "sha256": "22a081c411c9a3e4f4e3babe1f81ef0ab41a3c88ce8e6fade0c23425b886920d"
+        "width": 720,
+        "height": 480,
+        "bytes": 19702,
+        "sha256": "35c19d3d5ea2a9e189b631fa690059bf29b3e3dce653fc545f9975bfe72934fb"
       }
     },
     {
       "id": "home-a-network-panorama",
       "purpose": "Home A conceptual illustration; not an actual company project",
-      "destination": "public/assets/images/home-a-network-panorama.png",
+      "destination": "public/assets/images/home-a-network-panorama.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -106,14 +82,31 @@
       "metadata": {
         "width": 2172,
         "height": 724,
-        "bytes": 1277843,
-        "sha256": "7811753d99c8d47665fc1d0374695f1c34d567172b7bcf6a274d44dac9c9c8b8"
+        "bytes": 60892,
+        "sha256": "9e2bc04eb4f31d84cc568f1835bc3d4879f08b48550260f0ad053867813780f6"
+      }
+    },
+    {
+      "id": "home-a-network-panorama-720",
+      "purpose": "Home A conceptual illustration; not an actual company project",
+      "destination": "public/assets/images/home-a-network-panorama-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tamin/.codex/generated_images/01a12f1c-05f7-79e1-9592-6a77c6266404/exec-e8a4b24d-b2ac-4a9d-a651-cd3e3bc1ee67.png"
+      },
+      "prompt": "Use case: stylized-concept. Asset type: PAY ORBIT homepage hero infrastructure panorama. Input image 1 is a style and composition reference only: study the narrow network panorama in the supplied full-page mockup, and generate just that artwork, not the webpage. Create a polished airy pale blue and white isometric 3D illustration on a solid almost-white #FCFDFF background. Wide low panoramic 3:1 composition, all subjects across the lower half with generous clean whitespace above and around them: from left to right a white glass mid-rise main office with blue windows and small soft green trees, a smaller branch office, a small dark blue network gateway appliance, a taller dark navy and cyan glass data center group, and a sculptural pale blue cloud. Connect all five nodes with a thin cobalt blue gently curving network route and small blue endpoint dots at ground level. Pale desaturated blue distant city silhouette behind, extremely soft shadows, clean architectural detail, restrained elegant corporate aesthetic. Match reference scale, spacing, palette and illustration medium closely. Objects remain fully inside canvas with whitespace at left and right; intended display 1200x280. Absolutely NO text, captions, labels, letters, numerals, logos, watermark, icons, webpage navigation or UI. Output only the infrastructure illustration.",
+      "metadata": {
+        "width": 720,
+        "height": 240,
+        "bytes": 12966,
+        "sha256": "f4dea941bd5f36d630fd050d5cb4f1f591768fdba0c1af54e75309b33c418a78"
       }
     },
     {
       "id": "home-a-solutions-map",
       "purpose": "Home A conceptual illustration; not an actual company project",
-      "destination": "public/assets/images/home-a-solutions-map.png",
+      "destination": "public/assets/images/home-a-solutions-map.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -123,14 +116,31 @@
       "metadata": {
         "width": 1448,
         "height": 1086,
-        "bytes": 1275920,
-        "sha256": "ddfd566f612cec7857753c406025a01273ceb686b8ff4e8533fadb077f5b9281"
+        "bytes": 55432,
+        "sha256": "0f9533c45bbf6d49e27399fb251a985b54180a17f9ff20600991d5de2c70f78b"
+      }
+    },
+    {
+      "id": "home-a-solutions-map-720",
+      "purpose": "Home A conceptual illustration; not an actual company project",
+      "destination": "public/assets/images/home-a-solutions-map-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tamin/.codex/generated_images/01a12f1c-05f7-79e1-9592-6a77c6266404/exec-6350fe05-4056-45df-82c9-6ec313034ff8.png"
+      },
+      "prompt": "Use case: stylized-concept. Asset type: center illustration for PAY ORBIT solutions diagram. Input image 1 is style and composition reference only: use the central isometric enterprise building and server group in the pale blue solutions section of the supplied homepage mockup. Generate ONLY that central artwork with surrounding connector routes, no webpage, no text. Near square 4:3 composition. Solid restrained pale blue #F2F7FF backdrop, generous whitespace all around. In center, a white and blue modern mid-rise enterprise tower, lower white office wings, and a dark navy/cyan data-center server building on a floating rounded white isometric plinth. Small minimal rooftop details and soft pale blue shadows. Four delicate cobalt blue curved connector routes radiate symmetrically to four small endpoint dots near the upper-left, upper-right, lower-left and lower-right, without icons at their ends. A thin oval network orbit encircles the central group. Keep the buildings centered and small enough to leave room for HTML icons outside the asset boundaries in final layout. Match reference illustration style closely: clean airy polished isometric 3D, blue glass, white architecture, elegant corporate network infrastructure. Intended displayed image about450x330. Do not include any circular icon containers, network node icons, shield, cloud icon, server icon, logos, labels, text, letters, numerals, watermark, webpage navigation or UI. Only central building cluster and four simple routes.",
+      "metadata": {
+        "width": 720,
+        "height": 540,
+        "bytes": 21158,
+        "sha256": "cdb575e7482c20a0b22d1ce604d24294d5fb88b0febd672632f8c2735506bfa8"
       }
     },
     {
       "id": "home-a-company-corner",
       "purpose": "Home A conceptual illustration; not an actual company project",
-      "destination": "public/assets/images/home-a-company-corner.png",
+      "destination": "public/assets/images/home-a-company-corner.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -140,14 +150,14 @@
       "metadata": {
         "width": 1774,
         "height": 887,
-        "bytes": 1217594,
-        "sha256": "91f05e7d47298fcc7a9220c51312a975f9cba0247e3c532dc3d0dd791778cabf"
+        "bytes": 35962,
+        "sha256": "5ca36534cceea5ce61b145b8a0ecfe157cd8e00eef92887bfe5e259af59bf061"
       }
     },
     {
       "id": "services-editorial-hero",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-hero.png",
+      "destination": "public/assets/images/services-editorial-hero.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -157,14 +167,31 @@
       "metadata": {
         "width": 1717,
         "height": 916,
-        "bytes": 1075992,
-        "sha256": "01a7d87d60fda9b571f1ec80d0b39718590a6242fe2c190641fa3f416e986522"
+        "bytes": 256294,
+        "sha256": "5d94a91f0ae01503720d1c542e8ab65b3626b114c1ec045392dfb8499b1880f5"
+      }
+    },
+    {
+      "id": "services-editorial-hero-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-hero-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-6849df0a-439e-4d60-bc51-bb22ef2fa6a1.png"
+      },
+      "prompt": "Use case: background-extraction. Extract/recreate only the TOP RIGHT HERO DIAGRAM from the provided Services website mockup, source region approximately x400..810,y85..290 in the 841x1870 image. Produce a standalone 1200x640 landscape transparent PNG website illustration. Faithfully preserve the exact reference arrangement, pale white/blue isometric 3D style, object proportions, blue palette, soft shadows, all 5 labels and arrows. On upper left a small navy blue network switch on a white oval plinth with a small icon and label 'Network' above. On lower left a blue security shield on white oval plinth, label 'Security' beneath. Both connect via smooth blue curved arrows pointing into the middle white round raised plinth with a blue blueprint/document tilted on it, label 'Design' below. Straight blue arrow right to a navy server rack on white plinth with 'Deployment' label below. Straight blue arrow right to a laptop on white plinth showing a white gear on its blue screen and 'Support' label below. Match positions precisely to the mockup hero. Keep the illustration as a compact horizontal sequence with the input pair on left, ample transparent space around the complete illustration, and subtle diffuse blue shadow under objects. Text verbatim: Network, Security, Design, Deployment, Support. NO webpage header, no headline, no body text, no buttons, no borders, no extra icons or objects, no cartons, no watermark. Use actual alpha transparency outside the isolated diagram, not a flat colored background. This is a faithful extraction of the approved visual, not a redesign.",
+      "metadata": {
+        "width": 720,
+        "height": 384,
+        "bytes": 70730,
+        "sha256": "e5de2bb9d5d951122544ec362bd90347aef227d610b3c08dcd493a289426fed7"
       }
     },
     {
       "id": "services-editorial-deployment",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-deployment.png",
+      "destination": "public/assets/images/services-editorial-deployment.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -174,14 +201,31 @@
       "metadata": {
         "width": 1385,
         "height": 1136,
-        "bytes": 2496038,
-        "sha256": "2cdae67e24df51715b9a2c4a3790f3347553350c1eead124576efb123a5361e1"
+        "bytes": 278460,
+        "sha256": "f5734a168c84c4830fb44650bcfaed5567a86cc613e14710a225c5214cefcaed"
+      }
+    },
+    {
+      "id": "services-editorial-deployment-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-deployment-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-ba67-7472-bb4c-a6eb4817fc0a/exec-dd0b582a-76b6-47ed-852e-c2e9044ff9a1.png"
+      },
+      "prompt": "Use case: background-extraction. Asset type: Deployment & Integration service section photo. Input image: approved Services mockup, edit/reference target specifically the rectangular rack photo at x60..350,y1163..1399 of the 841x1870 source. Extract/recreate ONLY this exact photo as a standalone full-bleed rectangular 1024x840 landscape image. Match the reference composition and realism: close-up black enterprise network/server racks dominate the left foreground, dense neatly routed vivid blue patch cables at the extreme left, rows of black and silver rack-mounted network devices with realistic vent panels and ports. Camera peers down the racks to a clean narrow data center aisle receding toward the right rear. Dark rack doors farther down the row and a pale gray technical ceiling with lights/panels in upper right, cool gray polished floor at lower right. The left rack face is large in frame, the aisle is at the right edge, strong converging perspective to the rear right. Cool blue-gray natural professional lighting, crisp practical enterprise infrastructure photography, restrained contrast, no futuristic glows. Preserve the reference viewpoint, cable color, rack proportions and depth as closely as possible. Opaque image filling the entire rectangle edge-to-edge; no rounded corners (handled in CSS), no border, no frame, no margins, no website UI, no text or labels, no brand names, no watermarks, no people, no other objects.",
+      "metadata": {
+        "width": 720,
+        "height": 591,
+        "bytes": 97330,
+        "sha256": "9583a279b5a56c723026a2fef6f380c783ebe4212e325c5592e5cd02b43a46db"
       }
     },
     {
       "id": "services-editorial-network",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-network.png",
+      "destination": "public/assets/images/services-editorial-network.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -191,14 +235,31 @@
       "metadata": {
         "width": 1448,
         "height": 1086,
-        "bytes": 1187659,
-        "sha256": "07131b6b0ad8db51ec30b5852b2861d0b8bb79f8bd617fca554910781b74e18e"
+        "bytes": 291928,
+        "sha256": "2a8a44d4dd2370525731b7d98e5086d492a2a7c359d19033298f94a827459ea8"
+      }
+    },
+    {
+      "id": "services-editorial-network-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-network-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-e9ab-7e11-b762-d3cf6303cbb5/exec-c4818118-a7b9-4678-ba13-feac33021ef2.png"
+      },
+      "prompt": "Use case: background-extraction. Asset type: website Network Consulting illustration, one transparent PNG, target canvas 1024x768 landscape. Input image is the approved full-page mockup. Extract/recreate ONLY the isometric network topology illustration at x60..370, y410..635 of the 841x1870 reference; discard the entire rest of the page. Precisely match this illustration's camera, arrangement, objects, soft lighting, blue and white glossy 3D style. Main subject: central blue globe on low circular white platform; blue server rack upper center-left; slim white WiFi tower upper-right on square platform; laptop on platform at left; laptop on platform lower-right; dark network appliance lower-left; white network appliance below central globe. Thin blue connector lines and arrows connect them in the same arrangement. Keep the whole topology centered and large with modest clear margins, fully visible; camera isometric 3/4. Genuine transparent background with soft contact shadows, suited to #FCFDFF webpage. No text, captions, numbers, title, bullets, UI, card background, border, logos, watermarks. Preserve all visual details of the approved network illustration as closely as possible. Do not redesign or add unrelated objects.",
+      "metadata": {
+        "width": 720,
+        "height": 540,
+        "bytes": 99292,
+        "sha256": "318b859c3261b5351f53ca4811c09b79c64b861d0b87c5608654325fe1af3301"
       }
     },
     {
       "id": "services-editorial-support",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-support.png",
+      "destination": "public/assets/images/services-editorial-support.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -208,14 +269,31 @@
       "metadata": {
         "width": 1586,
         "height": 992,
-        "bytes": 1740305,
-        "sha256": "d745483eb0a29467f27231f01ed434a97c30610823b98ba6c71e996ac5adf557"
+        "bytes": 122030,
+        "sha256": "df619807c8f7be7d6893a8331ace57ae7c499cd6145e32ba8ca6722f87dbcbc1"
+      }
+    },
+    {
+      "id": "services-editorial-support-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-support-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tmq/.codex/generated_images/01a13035-e9ab-7e11-b762-d3cf6303cbb5/exec-578e1b27-17e8-49e9-a39b-e206c7be566e.png"
+      },
+      "prompt": "Use case: precise-object-edit. Asset type: photorealistic website Security & Network Support section photograph, target 1280x800 landscape. Input image is the approved full-page Services mockup (841x1870). Extract/recreate ONLY the photograph at x495..785, y1450..1640 of that reference, completely excluding the rest of the page. Preserve the approved photo composition, subject positions, camera angle and cool natural lighting. Clean off-white enterprise network operations desk in a bright modern office. A pair of adjoining large black widescreen monitors upright across the center and right show navy and blue world network-health consoles with abstract status panels; no readable metrics, words or numbers. At lower left, a small dark upright display/tablet stands on the desk, matching the reference. Black monitor bases, keyboard and a small unbranded black network appliance with blue ports at front right. Softly blurred windows and green foliage in the background with natural cool daylight. Photographic realism, believable professional hardware, clean quiet scene. Full-bleed opaque photograph, landscape ratio 8:5, no border, rounded corners, framing card, UI outside monitor screens, readable lettering, company logos, watermark, captions or people. This must be a photograph, not a diagram, 3D icon illustration or cartoon. Match the reference crop closely.",
+      "metadata": {
+        "width": 720,
+        "height": 450,
+        "bytes": 41208,
+        "sha256": "1770376ed7f3e0daaa6177e3a9d280ac920f465d46bd4ab52a029818e13c767f"
       }
     },
     {
       "id": "services-editorial-security",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-security.png",
+      "destination": "public/assets/images/services-editorial-security.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -225,14 +303,31 @@
       "metadata": {
         "width": 1448,
         "height": 1086,
-        "bytes": 1024875,
-        "sha256": "e29600a55a94f7edfe9d876486fa5b6b6c086336813ad601a985298f0d1d3223"
+        "bytes": 201914,
+        "sha256": "55d1f482e7edb15b4f20af291034c71d77024fa95db3a05c764f0b1341faba65"
+      }
+    },
+    {
+      "id": "services-editorial-security-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-security-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-f65e5807-fe04-4988-806b-1b502e9c86ed.png"
+      },
+      "prompt": "Use case: background-extraction\nAsset type: production illustration for Cybersecurity Consulting section of the provided website mockup.\nInput image: exact approved mockup reference. Extract and recreate ONLY the cybersecurity illustration in rectangle x485..790, y675..915 of this 841 by 1870 reference. Do not recreate the website.\nPrimary request: produce a high fidelity isolated 3D illustration of that exact cluster at 1024x768 with genuine transparency. Composition and positions must match the reference: large vivid blue upright shield with pale blue beveled rim and white padlock centered on a low white/light-blue plinth; small open dark-blue laptop to left; short blue brick firewall in lower left on a small white base; rounded blue cloud upper right; compact three-unit dark-blue server rack on white base at right. Thin cyan rounded orthogonal connector cables connect these items.\nStyle: clean polished isometric 3D enterprise technology illustration. Match the reference object silhouettes, relative proportions, perspective, blue and white palette, cool soft lighting, restrained shadows, and generous spaces between objects. Recreate the scene faithfully rather than invent a new composition.\nBackground: completely transparent outside the objects and subtle contact shadows, meant for display on #F2F7FF.\nConstraints: no headings, no text, no UI, no card frame, no border, no extra objects, no logo, no watermark. Keep all objects fully visible with modest transparent outer margin. Landscape 4:3 output target 1024x768.",
+      "metadata": {
+        "width": 720,
+        "height": 540,
+        "bytes": 76014,
+        "sha256": "0ab4cf40e3f9a94dc92add688dcfad720e91ce9ea674ded9c98eabed7cc21ad4"
       }
     },
     {
       "id": "services-editorial-design-flow",
       "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
-      "destination": "public/assets/images/services-editorial-design-flow.png",
+      "destination": "public/assets/images/services-editorial-design-flow.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -242,14 +337,31 @@
       "metadata": {
         "width": 2022,
         "height": 778,
-        "bytes": 696557,
-        "sha256": "59900181452c5dc17e9327e8bf78d9ffd10c7a29e4b69e03f5aae038757b8170"
+        "bytes": 126716,
+        "sha256": "8b2afddc47988f7248b54d26dea6f8da5c6f8dc36293bc940b0fb85b8d310965"
+      }
+    },
+    {
+      "id": "services-editorial-design-flow-720",
+      "purpose": "Services editorial illustration; conceptual imagery, not actual customer projects",
+      "destination": "public/assets/images/services-editorial-design-flow-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "exec-75e804ee-4f2b-42ce-9313-134d71f7bf23.png"
+      },
+      "prompt": "Use case: background-extraction\nAsset type: production horizontal four-step Solution Design diagram, isolated from the approved website mockup.\nInput image: exact reference website mockup, 841x1870 pixels. The edit target is ONLY the horizontal flow in rectangle x61..449, y1045..1114. Extract/recreate precisely this four-node flow, not the page or section.\nPrimary request: isolated horizontal diagram at target 1400x270. Four evenly spaced white tiles with thin pale-blue borders, approximately 8px corner rounding, subtle soft shadows and a small crisp electric-blue line icon above each label. Three separate small electric-blue right-pointing arrows sit between tiles at vertical center. The fourth tile is somewhat wider to fit its label. Keep the exact reference composition, silhouette, spacing, proportions, restrained palette and delicate stroke weight.\nExact labels, left to right: \"Requirement\", \"Architecture\", \"Technology\", \"Implementation Plan\". All four labels must be readable, spelled exactly, dark navy, clean sans-serif, centered below icons. First icon is a blue document/clipboard with text lines, second is a connected network topology, third is three small isometric cubes, fourth is a clipboard/checklist with a check mark.\nBackground: genuinely transparent around tiles, arrows and subtle shadows. White/pale-blue tile surfaces should be opaque; meant for display on #F8FBFF.\nConstraints: landscape horizontal strip, all four full tiles and all three arrows visible, balanced small transparent margins; no headings, no extra text or objects, no website UI or page, no watermark or logos. Target1400x270, preserve wide and shallow composition.",
+      "metadata": {
+        "width": 720,
+        "height": 277,
+        "bytes": 28684,
+        "sha256": "62ed665b68a050d5c85c0fdf1ca11fca31fd3e332556cb70b786b68a43f9fb60"
       }
     },
     {
       "id": "home-hero-security",
       "purpose": "Conceptual abstract security illustration for Home desktop hero; hidden on mobile",
-      "destination": "public/assets/images/home-hero-security.png",
+      "destination": "public/assets/images/home-hero-security.webp",
       "source": {
         "kind": "generated",
         "tool": "image_gen.imagegen",
@@ -257,10 +369,27 @@
       },
       "prompt": "Use case: stylized-concept\nAsset type: transparent raster illustration for PAY ORBIT Home desktop hero, approximately 500x400 CSS pixels.\nInput image 1 is a style and subject reference only: recreate ONLY the glass shield and its orbital ribbons in the upper-right of the reference. Do not reproduce the webpage or its lower panorama.\nPrimary request: one refined pale icy-blue translucent glass security shield, tilted very slightly in three-quarter view, with a prominent cobalt blue check mark on its front. Thin delicate blue and cyan elliptical orbital data ribbons wrap around the shield in front and behind, with a few tiny spherical signal dots on the paths. Match the reference shield's shape, proportions, airy softness, translucent beveled rim, pale internal facets, and understated glossy render. Mostly pale glass with crisp blue #1768E8 edges, a cobalt check, and restrained cyan accents. A few very faint hairline orbital circles may surround the subject, as in the reference.\nComposition/framing: a single isolated subject, natural landscape 5:4 canvas, target roughly 1200x1000 pixels or higher. Tightly frame the full shield AND all orbital paths with about 4% transparent padding. No cropped paths or clipped dots. Shield sits centrally in the compact composition. All backdrop pixels must be truly transparent alpha, including empty areas inside orbital loops; no white rectangle or fake checkerboard.\nLighting: high-key, soft studio reflections, tasteful enterprise cybersecurity aesthetic. No pedestal, floor, cast ground shadow or environmental backdrop.\nAvoid: all text, numbers, logo, watermark, UI, webpage, panels, buildings, offices, servers, clouds, panorama, landscapes, people, dark base, dark or neon background, neon glow, excessive particles. No other objects beyond the shield, check, orbital ribbons and tiny signal dots.",
       "metadata": {
-        "width": 1402,
-        "height": 1122,
-        "bytes": 978454,
-        "sha256": "980b082aa10fca748ba9c887d5bbb3249f3994f9e533d4467e189b6af6d696f0"
+        "width": 1200,
+        "height": 1000,
+        "bytes": 231222,
+        "sha256": "729c0896177bebdf70e2962906d748ac25599585298e8b343f474b7ac9300010"
+      }
+    },
+    {
+      "id": "home-hero-security-720",
+      "purpose": "Conceptual abstract security illustration for Home desktop hero; hidden on mobile",
+      "destination": "public/assets/images/home-hero-security-720.webp",
+      "source": {
+        "kind": "generated",
+        "tool": "image_gen.imagegen",
+        "reference": "C:/Users/tamin/.codex/generated_images/01a13335-d6bd-7c90-b9d1-46e65e48dc4d/exec-15713e65-08f8-490a-b5e5-2c0384934fb0.png"
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: transparent raster illustration for PAY ORBIT Home desktop hero, approximately 500x400 CSS pixels.\nInput image 1 is a style and subject reference only: recreate ONLY the glass shield and its orbital ribbons in the upper-right of the reference. Do not reproduce the webpage or its lower panorama.\nPrimary request: one refined pale icy-blue translucent glass security shield, tilted very slightly in three-quarter view, with a prominent cobalt blue check mark on its front. Thin delicate blue and cyan elliptical orbital data ribbons wrap around the shield in front and behind, with a few tiny spherical signal dots on the paths. Match the reference shield's shape, proportions, airy softness, translucent beveled rim, pale internal facets, and understated glossy render. Mostly pale glass with crisp blue #1768E8 edges, a cobalt check, and restrained cyan accents. A few very faint hairline orbital circles may surround the subject, as in the reference.\nComposition/framing: a single isolated subject, natural landscape 5:4 canvas, target roughly 1200x1000 pixels or higher. Tightly frame the full shield AND all orbital paths with about 4% transparent padding. No cropped paths or clipped dots. Shield sits centrally in the compact composition. All backdrop pixels must be truly transparent alpha, including empty areas inside orbital loops; no white rectangle or fake checkerboard.\nLighting: high-key, soft studio reflections, tasteful enterprise cybersecurity aesthetic. No pedestal, floor, cast ground shadow or environmental backdrop.\nAvoid: all text, numbers, logo, watermark, UI, webpage, panels, buildings, offices, servers, clouds, panorama, landscapes, people, dark base, dark or neon background, neon glow, excessive particles. No other objects beyond the shield, check, orbital ribbons and tiny signal dots.",
+      "metadata": {
+        "width": 720,
+        "height": 600,
+        "bytes": 101944,
+        "sha256": "889ea8245d01851babd545ea736b761bb931babf3cc054ca466ceccf2f1b470d"
       }
     }
   ],
@@ -269,295 +398,5 @@
     "license": "ISC and MIT for Feather-derived icons",
     "provenance": "public/assets/icons/lucide/provenance.json",
     "licenseFile": "public/assets/icons/lucide/LICENSE.txt"
-  },
-  "webImages": [
-    {
-      "source": "public/assets/images/hero_infrastructure_photo.png",
-      "destination": "public/assets/images/hero_infrastructure_photo.webp",
-      "quality": 82,
-      "width": 1672,
-      "height": 941,
-      "bytes": 141976,
-      "sha256": "840556f47f4d2f5bbc47c2d2a7a9278234249f5eb79dd089de48f77180f2c7c0"
-    },
-    {
-      "source": "public/assets/images/hero_infrastructure_photo.png",
-      "destination": "public/assets/images/hero_infrastructure_photo-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 405,
-      "bytes": 41666,
-      "sha256": "fa748e9969aaf4c162651a08b708d2a0f70a2e140ab3a292454f724cc902c52a"
-    },
-    {
-      "source": "public/assets/images/company_infrastructure_photo.png",
-      "destination": "public/assets/images/company_infrastructure_photo.webp",
-      "quality": 82,
-      "width": 1536,
-      "height": 1024,
-      "bytes": 163706,
-      "sha256": "9d957130797420672698b97a7c894a3554e0841b1be12194f1c9ffdfc5e4c720"
-    },
-    {
-      "source": "public/assets/images/company_infrastructure_photo.png",
-      "destination": "public/assets/images/company_infrastructure_photo-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 480,
-      "bytes": 53294,
-      "sha256": "b17d09b09a60f1c45c7ad97eb19b3a1049700c708b55c931bd54c64291950a47"
-    },
-    {
-      "source": "public/assets/images/infrastructure-team-illustration.png",
-      "destination": "public/assets/images/infrastructure-team-illustration.webp",
-      "quality": 82,
-      "width": 1536,
-      "height": 1024,
-      "bytes": 118102,
-      "sha256": "9c11dd15b0125025007f2e347525cf4c3e2759622fbf4e2be5d94fffd7635387"
-    },
-    {
-      "source": "public/assets/images/infrastructure-team-illustration.png",
-      "destination": "public/assets/images/infrastructure-team-illustration-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 480,
-      "bytes": 42626,
-      "sha256": "35d814c2ce49792f4c28612a2e6bb7a9629b36ce058ef29d9dbfe9e64ba9128b"
-    },
-    {
-      "source": "public/assets/images/enterprise-ecosystem.png",
-      "destination": "public/assets/images/enterprise-ecosystem.webp",
-      "quality": 82,
-      "width": 1536,
-      "height": 1024,
-      "bytes": 62034,
-      "sha256": "9acc1f8f54361de98e89252194e688cc55c341ab702aee70cfa718ada24d105e"
-    },
-    {
-      "source": "public/assets/images/enterprise-ecosystem.png",
-      "destination": "public/assets/images/enterprise-ecosystem-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 480,
-      "bytes": 19702,
-      "sha256": "35c19d3d5ea2a9e189b631fa690059bf29b3e3dce653fc545f9975bfe72934fb"
-    },
-    {
-      "source": "public/assets/images/digital-infrastructure-protection.png",
-      "destination": "public/assets/images/digital-infrastructure-protection.webp",
-      "quality": 82,
-      "width": 1672,
-      "height": 941,
-      "bytes": 83778,
-      "sha256": "2c66ed1edd9d5199746699aefec572e6a8f1c682425e9d4220bb18ec1f5485e5"
-    },
-    {
-      "source": "public/assets/images/digital-infrastructure-protection.png",
-      "destination": "public/assets/images/digital-infrastructure-protection-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 405,
-      "bytes": 23318,
-      "sha256": "82b7e287b101418e1c318d1fb4a2687cb9667e1174d2d1e0d99d0b9ecbf90208"
-    },
-    {
-      "source": "public/assets/images/service-lifecycle.png",
-      "destination": "public/assets/images/service-lifecycle.webp",
-      "quality": 82,
-      "width": 1536,
-      "height": 1024,
-      "bytes": 52502,
-      "sha256": "df5f657e36f0a313f1557667be4a96db79e730523c2dde73ca96cb7939953639"
-    },
-    {
-      "source": "public/assets/images/service-lifecycle.png",
-      "destination": "public/assets/images/service-lifecycle-720.webp",
-      "quality": 82,
-      "width": 720,
-      "height": 480,
-      "bytes": 17498,
-      "sha256": "c345e466c967444cc2ff714575d4a8660082157f9dd4e4eb841e6240832fece9"
-    },
-    {
-      "source": "public/assets/images/home-a-network-panorama.png",
-      "destination": "public/assets/images/home-a-network-panorama.webp",
-      "quality": 88,
-      "width": 2172,
-      "height": 724,
-      "bytes": 60892,
-      "sha256": "9e2bc04eb4f31d84cc568f1835bc3d4879f08b48550260f0ad053867813780f6"
-    },
-    {
-      "source": "public/assets/images/home-a-network-panorama.png",
-      "destination": "public/assets/images/home-a-network-panorama-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 240,
-      "bytes": 12966,
-      "sha256": "f4dea941bd5f36d630fd050d5cb4f1f591768fdba0c1af54e75309b33c418a78"
-    },
-    {
-      "source": "public/assets/images/home-a-solutions-map.png",
-      "destination": "public/assets/images/home-a-solutions-map.webp",
-      "quality": 88,
-      "width": 1448,
-      "height": 1086,
-      "bytes": 55432,
-      "sha256": "0f9533c45bbf6d49e27399fb251a985b54180a17f9ff20600991d5de2c70f78b"
-    },
-    {
-      "source": "public/assets/images/home-a-solutions-map.png",
-      "destination": "public/assets/images/home-a-solutions-map-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 540,
-      "bytes": 21158,
-      "sha256": "cdb575e7482c20a0b22d1ce604d24294d5fb88b0febd672632f8c2735506bfa8"
-    },
-    {
-      "source": "public/assets/images/home-a-company-corner.png",
-      "destination": "public/assets/images/home-a-company-corner.webp",
-      "quality": 88,
-      "width": 1774,
-      "height": 887,
-      "bytes": 35962,
-      "sha256": "5ca36534cceea5ce61b145b8a0ecfe157cd8e00eef92887bfe5e259af59bf061"
-    },
-    {
-      "source": "public/assets/images/home-a-company-corner.png",
-      "destination": "public/assets/images/home-a-company-corner-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 360,
-      "bytes": 10880,
-      "sha256": "9e6ccdfa01cf8cd14e7be214ca2a4b663256c944b25f4da954626dcece16f028"
-    },
-    {
-      "source": "public/assets/images/services-editorial-hero.png",
-      "destination": "public/assets/images/services-editorial-hero.webp",
-      "quality": 88,
-      "width": 1717,
-      "height": 916,
-      "bytes": 256294,
-      "sha256": "5d94a91f0ae01503720d1c542e8ab65b3626b114c1ec045392dfb8499b1880f5"
-    },
-    {
-      "source": "public/assets/images/services-editorial-hero.png",
-      "destination": "public/assets/images/services-editorial-hero-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 384,
-      "bytes": 70730,
-      "sha256": "e5de2bb9d5d951122544ec362bd90347aef227d610b3c08dcd493a289426fed7"
-    },
-    {
-      "source": "public/assets/images/services-editorial-deployment.png",
-      "destination": "public/assets/images/services-editorial-deployment.webp",
-      "quality": 88,
-      "width": 1385,
-      "height": 1136,
-      "bytes": 278460,
-      "sha256": "f5734a168c84c4830fb44650bcfaed5567a86cc613e14710a225c5214cefcaed"
-    },
-    {
-      "source": "public/assets/images/services-editorial-deployment.png",
-      "destination": "public/assets/images/services-editorial-deployment-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 591,
-      "bytes": 97330,
-      "sha256": "9583a279b5a56c723026a2fef6f380c783ebe4212e325c5592e5cd02b43a46db"
-    },
-    {
-      "source": "public/assets/images/services-editorial-network.png",
-      "destination": "public/assets/images/services-editorial-network.webp",
-      "quality": 88,
-      "width": 1448,
-      "height": 1086,
-      "bytes": 291928,
-      "sha256": "2a8a44d4dd2370525731b7d98e5086d492a2a7c359d19033298f94a827459ea8"
-    },
-    {
-      "source": "public/assets/images/services-editorial-network.png",
-      "destination": "public/assets/images/services-editorial-network-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 540,
-      "bytes": 99292,
-      "sha256": "318b859c3261b5351f53ca4811c09b79c64b861d0b87c5608654325fe1af3301"
-    },
-    {
-      "source": "public/assets/images/services-editorial-support.png",
-      "destination": "public/assets/images/services-editorial-support.webp",
-      "quality": 88,
-      "width": 1586,
-      "height": 992,
-      "bytes": 122030,
-      "sha256": "df619807c8f7be7d6893a8331ace57ae7c499cd6145e32ba8ca6722f87dbcbc1"
-    },
-    {
-      "source": "public/assets/images/services-editorial-support.png",
-      "destination": "public/assets/images/services-editorial-support-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 450,
-      "bytes": 41208,
-      "sha256": "1770376ed7f3e0daaa6177e3a9d280ac920f465d46bd4ab52a029818e13c767f"
-    },
-    {
-      "source": "public/assets/images/services-editorial-security.png",
-      "destination": "public/assets/images/services-editorial-security.webp",
-      "quality": 88,
-      "width": 1448,
-      "height": 1086,
-      "bytes": 201914,
-      "sha256": "55d1f482e7edb15b4f20af291034c71d77024fa95db3a05c764f0b1341faba65"
-    },
-    {
-      "source": "public/assets/images/services-editorial-security.png",
-      "destination": "public/assets/images/services-editorial-security-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 540,
-      "bytes": 76014,
-      "sha256": "0ab4cf40e3f9a94dc92add688dcfad720e91ce9ea674ded9c98eabed7cc21ad4"
-    },
-    {
-      "source": "public/assets/images/services-editorial-design-flow.png",
-      "destination": "public/assets/images/services-editorial-design-flow.webp",
-      "quality": 88,
-      "width": 2022,
-      "height": 778,
-      "bytes": 126716,
-      "sha256": "8b2afddc47988f7248b54d26dea6f8da5c6f8dc36293bc940b0fb85b8d310965"
-    },
-    {
-      "source": "public/assets/images/services-editorial-design-flow.png",
-      "destination": "public/assets/images/services-editorial-design-flow-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 277,
-      "bytes": 28684,
-      "sha256": "62ed665b68a050d5c85c0fdf1ca11fca31fd3e332556cb70b786b68a43f9fb60"
-    },
-    {
-      "source": "public/assets/images/home-hero-security.png",
-      "destination": "public/assets/images/home-hero-security.webp",
-      "quality": 88,
-      "width": 1200,
-      "height": 1000,
-      "bytes": 231222,
-      "sha256": "729c0896177bebdf70e2962906d748ac25599585298e8b343f474b7ac9300010"
-    },
-    {
-      "source": "public/assets/images/home-hero-security.png",
-      "destination": "public/assets/images/home-hero-security-720.webp",
-      "quality": 88,
-      "width": 720,
-      "height": 600,
-      "bytes": 101944,
-      "sha256": "889ea8245d01851babd545ea736b761bb931babf3cc054ca466ceccf2f1b470d"
-    }
-  ]
+  }
 }

@@ -39,4 +39,22 @@ const manifest = JSON.parse(await fs.readFile(path.join(destination, 'assets/bra
 assert.equal(manifest.start_url, `${base}/`);
 assert.ok(manifest.icons.every(icon => icon.src.startsWith(`${base}/assets/brand/`)));
 assert.ok((await fs.stat(path.join(destination, '.nojekyll'))).isFile());
+// Production bundles contain runtime files and required notices only.
+for (const directory of ['design', 'docs', 'content', 'tests', 'scripts', '.taste']) {
+  assert.equal(await fs.stat(path.join(destination, directory)).catch(() => null), null, `No development directory in production: ${directory}`);
+}
+const imageFiles = await fs.readdir(path.join(destination, 'assets/images'));
+assert.ok(imageFiles.every(filename => filename.endsWith('.webp')), 'Only optimized WebP illustrations are published');
+assert.ok(!imageFiles.some(filename => /hero_infrastructure|infrastructure-team|digital-infrastructure|security-gateway|service-lifecycle/.test(filename)), 'Retired illustrations stay out of the bundle');
+for (const filename of await fs.readdir(path.join(destination, 'src'))) {
+  if (!/\.(css|js)$/.test(filename)) continue;
+  const source = await fs.readFile(path.join(destination, 'src', filename), 'utf8');
+  for (const [url] of source.matchAll(/\/assets\/[A-Za-z0-9_./-]+/g)) {
+    const relative = url.startsWith(`${base}/`) ? url.slice(base.length + 1) : url.slice(1);
+    assert.ok((await fs.stat(path.join(destination, relative))).isFile(), `Published stylesheet/module asset exists: ${url}`);
+  }
+}
+for (const license of ['assets/fonts/be-vietnam-pro/OFL.txt', 'assets/fonts/bricolage-grotesque/OFL.txt', 'assets/fonts/manrope/OFL.txt', 'assets/icons/lucide/LICENSE.txt', 'assets/vendor/lenis/LICENSE']) {
+  assert.ok((await fs.stat(path.join(destination, license))).isFile(), `Redistribution license retained: ${license}`);
+}
 console.log(`PASS: all six published routes, assets, fonts, dynamic imports and manifest under ${base || '/'}`);

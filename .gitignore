@@ -1,7 +1,9 @@
 node_modules/
 dist/
-.taste/verification/*.png
-.taste/verification/lighthouse-*.json
+.taste/
+design/
+tmp/
+output/
 *.log
 .env
 .env.*

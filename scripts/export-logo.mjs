@@ -58,9 +58,9 @@ const ledger = {
   decision:'Hai nhánh kết nối phẳng màu xanh; tên PAY ORBIT bằng Manrope 600, tracking .015em, chữ SVG đã outline.',
   symbol:{...symbol,kind:'original geometric vector rendered to transparent PNG',source:'public/assets/brand/pay-orbit-mark.svg',transparent:true},
   lockups, webAssets, vectorAssets,
-  typesetting:{family:'Manrope',weight:600,trackingEm:.015,wordGapEm:15/72,method:'Static Manrope 600 shaped with HarfBuzz and outlined with fontTools',font:'public/assets/fonts/manrope/Manrope-600-brand.woff2',license:'public/assets/fonts/manrope/OFL.txt',exportScript:'scripts/export-logo.mjs',vectorBuildScript:'scripts/build-logo-vectors.py'},
+  typesetting:{family:'Manrope',weight:600,trackingEm:.015,wordGapEm:15/72,method:'Static Manrope 600 shaped with HarfBuzz and outlined with fontTools',font:'public/assets/fonts/manrope/Manrope-600-brand.woff2',license:'public/assets/fonts/manrope/OFL.txt',exportScript:'scripts/export-logo.mjs'},
   colors:{lightBlue:'#1768E8',darkBlue:'#4098FF',lightText:'#0D1218',darkText:'#E5ECF6',darkBackground:'#02060F'},
-  websiteUse:['Shared header and footer on all 12 VI/EN routes','SVG favicon with PNG fallback, Apple touch icon, webmanifest'],
+  websiteUse:['Shared header and footer on all six English routes','SVG favicon with PNG fallback, Apple touch icon, webmanifest'],
 };
 await fs.writeFile(path.join(root,'content/brand-assets.json'),JSON.stringify(ledger,null,2)+'\n');
 console.log(`Exported ${vectorAssets.length} outlined SVG masters, transparent PNG logo variants, icon set and provenance.`);

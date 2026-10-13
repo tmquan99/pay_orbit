@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderPages, pageRoutes } from './render-pages.mjs';
 import { normalizeBasePath, rebaseSiteFile } from './site-base.mjs';
+import { collectProductionAssets } from './production-assets.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const destination = path.join(root, 'dist');
@@ -17,7 +18,11 @@ for (const route of pageRoutes) {
   await fs.copyFile(path.join(root, relative), path.join(destination, relative));
 }
 await fs.cp(path.join(root, 'src'), path.join(destination, 'src'), { recursive: true });
-await fs.cp(path.join(root, 'public'), destination, { recursive: true });
+for (const relative of await collectProductionAssets(root, pageRoutes)) {
+  const target = path.join(destination, relative);
+  await fs.mkdir(path.dirname(target), { recursive: true });
+  await fs.copyFile(path.join(root, 'public', relative), target);
+}
 if (basePath) {
   const rebaseDirectory = async directory => {
     for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
