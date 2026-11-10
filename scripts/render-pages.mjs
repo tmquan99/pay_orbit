@@ -21,6 +21,8 @@ function formatCompanyIntroduction(copy, hero = false) {
   return `<div class="company-introduction"${hero ? ' data-hero' : ''}>${paragraphs.map(value => `<p>${keywords.reduce((markup, keyword) => markup.replace(escape(keyword), `<strong>${escape(keyword)}</strong>`), value)}</p>`).join('')}</div>`;
 }
 const button = (label, href, classes = 'button-primary') => `<a class="button ${classes}" href="${href}">${href.startsWith('tel:') ? icon('phone') : ''}<span>${escape(label)}</span>${href.startsWith('tel:') ? '' : icon('arrow-up-right')}</a>`;
+const salesEmail = 'sales@payorbit.com.au';
+const emailIcon = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
 const links = [["Home", '/'], ["About Us", '/about/'], ["Solutions", '/solutions/'], ["Services", '/services/'], ["Products & Technology", '/products/'], ["Contact", '/contact/']];
 const solutions = [
   ['enterprise-networking', "Enterprise Networking", "Connect offices, branches and users with manageable, scalable network infrastructure."],
@@ -102,7 +104,7 @@ function productPage() {
 function contact() {
   return `<section class="section contact" id="contact"><div class="container contact-layout">
     <div class="contact-copy"><h1 data-hero>Discuss your infrastructure needs with PAY ORBIT</h1><p class="contact-invitation" data-hero>Tell us about your networking or cybersecurity requirements.</p>
-      <p class="company-name">${escape(text('06_Contact', 'B5'))}</p><address><p class="contact-detail">${icon('phone')}<span>Phone: <a href="tel:+61433024689">${escape(text('06_Contact', 'B8'))}</a></span></p><p class="contact-detail">${icon('map-pin')}<span>Address: ${escape(text('06_Contact', 'B7'))}</span></p></address><p class="contact-detail">${icon('user-round')}<span>Representative: ${escape(text('06_Contact', 'B6'))}</span></p>
+      <p class="company-name">${escape(text('06_Contact', 'B5'))}</p><address><p class="contact-detail">${icon('phone')}<span>Phone: <a href="tel:+61433024689">${escape(text('06_Contact', 'B8'))}</a></span></p><p class="contact-detail">${emailIcon}<span>Email: <a href="mailto:${salesEmail}">${salesEmail}</a></span></p><p class="contact-detail">${icon('map-pin')}<span>Address: ${escape(text('06_Contact', 'B7'))}</span></p></address><p class="contact-detail">${icon('user-round')}<span>Representative: ${escape(text('06_Contact', 'B6'))}</span></p>
       ${button("Contact Us", 'tel:+61433024689', 'button-primary section-action')}
     </div>
     <form id="consultation_form" class="consultation-form" action="/api/enquiry.php" method="post" novalidate>
@@ -167,7 +169,7 @@ ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route =
     </div></header>
     <main id="main">${pageContent}</main>
     <footer class="site-footer" id="footer">${footerGraphic()}<div class="container footer-inner">
-      <div><p class="footer-name"><span class="brand-lockup">${brandSymbol()}<span>${escape(text('00_Overview', 'B4'))}</span></span></p><p class="tagline">${t(text('00_Overview', 'B6'))}</p></div>
+      <div><p class="footer-name"><span class="brand-lockup">${brandSymbol()}<span>${escape(text('00_Overview', 'B4'))}</span></span></p><p class="tagline">${t(text('00_Overview', 'B6'))}</p><a class="footer-email" href="mailto:${salesEmail}">${emailIcon}<span>${salesEmail}</span></a></div>
       <a class="button footer-contact" href="/contact/">${t("Contact")}</a><p class="trademark-notice">${t(text('07_SEO_Dev_Notes', 'B7'))}</p>
     </div></footer>
     <button class="back-to-top" data-back-to-top type="button" aria-label="${t("Back to top")}" title="${t("Back to top")}" hidden>${icon('arrow-right')}</button>

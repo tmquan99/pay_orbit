@@ -144,6 +144,9 @@ details > p { margin-top: 16px; color: var(--muted); }
 .contact-page > main { display: flex; flex: 1; flex-direction: column; }
 .contact-page .contact { display: flex; flex: 1; align-items: center; }
 .contact { background: var(--surface-alt); }
+@media (min-width: 1024px) {
+  .contact-page .contact { padding-block: 64px; }
+}
 .contact-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
 .contact-copy .company-name { margin-top: 32px; font-weight: 600; }
 .contact-copy address { font-style: normal; color: var(--muted); }

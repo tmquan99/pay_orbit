@@ -4,7 +4,10 @@
 .site-footer .footer-name { font-size: 18px; }
 .site-footer .tagline { font-size: 13px; margin-top: 8px; }
 .site-footer .footer-contact { min-height: 44px; padding: 8px 20px; border: 1px solid currentColor; background: transparent; color: var(--dark-accent-text); text-decoration: none; }
+.site-footer .footer-email { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 4px; padding: 0; font-size: 14px; text-underline-offset: 4px; }
+.site-footer .footer-email .icon { width: 18px; height: 18px; }
 @media (hover: hover) {
+  .site-footer .footer-email:hover { color: var(--dark-accent-hover); }
   .site-footer .footer-contact:hover { color: var(--dark-accent-hover); }
 }
 .site-footer .trademark-notice { max-width: none; font-size: 12px; line-height: 1.6; }
