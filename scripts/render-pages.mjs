@@ -22,7 +22,7 @@ function formatCompanyIntroduction(copy, hero = false) {
 }
 const button = (label, href, classes = 'button-primary') => `<a class="button ${classes}" href="${href}">${href.startsWith('tel:') ? icon('phone') : ''}<span>${escape(label)}</span>${href.startsWith('tel:') ? '' : icon('arrow-up-right')}</a>`;
 const salesEmail = 'sales@payorbit.com.au';
-const emailIcon = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+const emailIcon = icon('mail');
 const links = [["Home", '/'], ["About Us", '/about/'], ["Solutions", '/solutions/'], ["Services", '/services/'], ["Products & Technology", '/products/'], ["Contact", '/contact/']];
 const solutions = [
   ['enterprise-networking', "Enterprise Networking", "Connect offices, branches and users with manageable, scalable network infrastructure."],

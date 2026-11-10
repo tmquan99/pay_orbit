@@ -158,6 +158,12 @@
       "path": "public/assets/icons/lucide/clipboard-list.svg",
       "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/clipboard-list.svg",
       "sha256": "2b91abc2e8ee8ba4c2e0f77d506a47a7a9774b0d4de3fa4b27e822a6376ab892"
+    },
+    {
+      "name": "mail",
+      "path": "public/assets/icons/lucide/mail.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/a04f228cd01185e09c188b7227b9600c08c565ec/icons/mail.svg",
+      "sha256": "3236a51d5b8ce9b0528cf2e6ad07e527bd636dded6f5a9d656072052b99caea8"
     }
   ]
 }
