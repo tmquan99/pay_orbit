@@ -12,7 +12,7 @@ export function rebaseSiteFile(source, extension, base) {
   if (!base) return source;
   const prefix = value => value.startsWith('/') && !value.startsWith('//') ? base + value : value;
   if (extension === '.html') {
-    return source.replace(/(\b(?:href|src|srcset)=)(["'])(.*?)\2/gs, (match, attribute, quote, value) => {
+    return source.replace(/(\b(?:href|src|srcset|action)=)(["'])(.*?)\2/gs, (match, attribute, quote, value) => {
       const rebased = attribute === 'srcset=' ? value.replace(/(^|,\s*)\/(?!\/)/g, `$1${base}/`) : prefix(value);
       return `${attribute}${quote}${rebased}${quote}`;
     });

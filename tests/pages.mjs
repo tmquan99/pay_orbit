@@ -34,7 +34,7 @@ for (const copy of ["What does your business need?", "Network and cybersecurity 
 const linkPages = pages;
 for (const [route, html] of pages) {
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
-    if (href.startsWith('tel:') || href.startsWith('/src/') || href.startsWith('/assets/')) continue;
+    if (/^(?:tel|mailto):/.test(href) || href.startsWith('/src/') || href.startsWith('/assets/')) continue;
     const parsed = new URL(href, `https://pay-orbit.invalid${route}`);
     const anchor = parsed.hash.slice(1);
     const target = linkPages.get(parsed.pathname);

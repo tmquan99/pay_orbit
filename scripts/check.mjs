@@ -6,6 +6,16 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+for (const file of ['src/enquiry-form.js', 'tests/contact-form.mjs', 'tests/contact-layout.mjs', 'tests/enquiry-http.mjs']) {
+  const result = spawnSync(process.execPath, ['--check', path.join(root, file)], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+}
+const mailer = JSON.parse(await fs.readFile(path.join(root, 'api/lib/phpmailer/provenance.json'), 'utf8'));
+assert.equal(mailer.version, '7.1.1');
+for (const file of mailer.files) {
+  const bytes = await fs.readFile(path.join(root, 'api/lib/phpmailer', file.path));
+  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), file.sha256, `PHPMailer integrity: ${file.path}`);
+}
 for (const file of ['tests/default-language.mjs', 'src/smooth-scroll.js', 'src/back-to-top.js', 'src/products.js', 'src/hero-graphics.js', 'src/footer.js', 'scripts/footer-graphic.mjs', 'scripts/vendor-lenis.mjs', 'scripts/site-base.mjs', 'scripts/production-assets.mjs', 'tests/deployment.mjs', 'tests/smooth-scroll.mjs', 'tests/back-to-top.mjs', 'tests/products-motion.mjs', 'tests/hero-graphics.mjs', 'tests/connection-regression.mjs']) {
   const result = spawnSync(process.execPath, ['--check', path.join(root, file)], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);

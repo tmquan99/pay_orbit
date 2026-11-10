@@ -18,6 +18,7 @@ for (const route of pageRoutes) {
   await fs.copyFile(path.join(root, relative), path.join(destination, relative));
 }
 await fs.cp(path.join(root, 'src'), path.join(destination, 'src'), { recursive: true });
+await fs.cp(path.join(root, 'api'), path.join(destination, 'api'), { recursive: true });
 for (const relative of await collectProductionAssets(root, pageRoutes)) {
   const target = path.join(destination, relative);
   await fs.mkdir(path.dirname(target), { recursive: true });
@@ -37,4 +38,4 @@ if (basePath) {
   await rebaseDirectory(destination);
 }
 await fs.writeFile(path.join(destination, '.nojekyll'), '');
-console.log('Build complete: dist/ (6 English-only static pages, CSS, JavaScript and local assets)');
+console.log('Build complete: dist/ (6 English pages, local assets and PHP enquiry endpoint)');

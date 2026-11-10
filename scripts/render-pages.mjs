@@ -105,18 +105,19 @@ function contact() {
       <p class="company-name">${escape(text('06_Contact', 'B5'))}</p><address><p class="contact-detail">${icon('phone')}<span>Phone: <a href="tel:+61433024689">${escape(text('06_Contact', 'B8'))}</a></span></p><p class="contact-detail">${icon('map-pin')}<span>Address: ${escape(text('06_Contact', 'B7'))}</span></p></address><p class="contact-detail">${icon('user-round')}<span>Representative: ${escape(text('06_Contact', 'B6'))}</span></p>
       ${button("Contact Us", 'tel:+61433024689', 'button-primary section-action')}
     </div>
-    <form id="consultation_form" class="consultation-form" novalidate>
-      <h2 class="form-heading">Prepare your enquiry</h2><p class="form-introduction">Complete the fields to copy your enquiry for a conversation with PAY ORBIT.</p>
+    <form id="consultation_form" class="consultation-form" action="/api/enquiry.php" method="post" novalidate>
+      <h2 class="form-heading">Send your enquiry</h2><p class="form-introduction">Tell us what you need. Our team will respond by email.</p>
       <div class="form-grid">
         <div class="field"><label for="name">Name <span class="required-label">(required)</span></label><input id="name" name="name" autocomplete="name" required maxlength="160" aria-describedby="name_error"><p class="field-error" id="name_error" hidden></p></div>
         <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" maxlength="200"></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="email_error"><p class="field-error" id="email_error" hidden></p></div>
+        <div class="field"><label for="email">Email <span class="required-label">(required)</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email_error"><p class="field-error" id="email_error" hidden></p></div>
         <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="60"></div>
         <div class="field field-wide"><label for="requirement">Requirement <span class="required-label">(required)</span></label><textarea id="requirement" name="requirement" rows="4" required maxlength="6000" aria-describedby="requirement_error"></textarea><p class="field-error" id="requirement_error" hidden></p></div>
       </div>
-      <button id="copy_button" class="button button-outline" type="button" disabled>${icon('clipboard-copy')}<span>Copy enquiry</span></button>
+      <div hidden aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" tabindex="-1" autocomplete="off" maxlength="200"></div>
+      <button id="send_button" class="button button-outline" type="submit" disabled><span>Send enquiry</span>${icon('arrow-up-right')}</button>
       <p id="form_status" class="form-status" role="status" aria-live="polite"></p>
-      <div id="copy_fallback" class="copy-fallback" hidden><label for="copy_text">Enquiry to copy</label><textarea id="copy_text" rows="7" readonly></textarea></div>
+      <noscript><p>Please enable JavaScript to send this form, or email <a href="mailto:sales@payorbit.com.au">sales@payorbit.com.au</a>.</p></noscript>
     </form>
   </div></section>`;
 }
@@ -127,8 +128,9 @@ function documentPage(route, title, description, content) {
   if (pageContent.includes('id="consultation_form"')) {
     const messages = JSON.stringify({
       labels: { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', requirement: 'Requirement' },
-      nameRequired: 'Enter your name.', requirementRequired: 'Enter your requirements.', emailInvalid: 'Enter a valid email address.',
-      copied: 'Enquiry copied.', manualCopy: 'Select the text below to copy it manually.',
+      nameRequired: 'Enter your name.', requirementRequired: 'Enter your requirements.', emailRequired: 'Enter your email address.', emailInvalid: 'Enter a valid email address.', fieldInvalid: 'Check this field and try again.',
+      send: 'Send enquiry', sending: 'Sending…', sent: 'Your enquiry has been sent. Our team will be in touch.',
+      sendFailed: 'We couldn’t send your enquiry. Please try again, or email sales@payorbit.com.au.', rateLimited: 'Too many enquiries. Please wait 10 minutes, or email sales@payorbit.com.au.',
       products: Object.fromEntries(productIds.map((id, index) => [id, `${index < 4 ? 'Cisco' : 'Palo Alto Networks'}: ${products[index]}`])),
     }).replaceAll('<', '\\u003c');
     pageContent = pageContent.replace('</form>', `<script type="application/json" id="form_messages">${messages}</script></form>`);
@@ -155,7 +157,7 @@ function documentPage(route, title, description, content) {
 ${['/', '/solutions/', '/products/'].includes(route) ? '    <link rel="stylesheet" href="/src/hero-graphics.css">\n' : ''}
 ${route === '/' ? '    <link rel="stylesheet" href="/src/home.css">\n' : route === '/about/' ? '    <link rel="stylesheet" href="/src/about-story.css">\n' : route === '/solutions/' ? '    <link rel="stylesheet" href="/src/solutions.css">\n' : route === '/services/' ? '    <link rel="stylesheet" href="/src/services.css">\n' : route === '/products/' ? '    <link rel="stylesheet" href="/src/products.css">\n' : ''}    <script type="module" src="/src/main.js"></script>
   </head>
-  <body${route === '/' ? ' class="home-page"' : ''}>
+  <body${route === '/' ? ' class="home-page"' : route === '/contact/' ? ' class="contact-page"' : ''}>
     <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">${t("Skip to main content")}</a>
     <header class="site-header"><div class="container header-inner">

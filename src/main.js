@@ -1,3 +1,4 @@
+import { installEnquiryForm } from './enquiry-form.js';
 import { installReferenceReveals } from './reveals.js';
 import { installConnectionScene } from './connection-scene.js';
 import { installAboutStory } from './about-story.js';
@@ -86,57 +87,4 @@ document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') closeMenu(true);
 });
 
-const form = document.getElementById('consultation_form');
-if (form) {
-  const messages = JSON.parse(document.getElementById('form_messages').textContent);
-  const requestedProduct = new URLSearchParams(location.search).get('product');
-  const selectedProduct = Object.hasOwn(messages.products || {}, requestedProduct) ? messages.products[requestedProduct] : null;
-  if (selectedProduct && !form.elements.requirement.value.trim()) form.elements.requirement.value = selectedProduct;
-  const status = document.getElementById('form_status');
-  const fallback = document.getElementById('copy_fallback');
-  const copyText = document.getElementById('copy_text');
-  const copyButton = document.getElementById('copy_button');
-  function validateField(field) {
-    const message = field.id === 'name' && !field.value.trim() ? messages.nameRequired
-      : field.id === 'requirement' && !field.value.trim() ? messages.requirementRequired
-        : field.id === 'email' && field.validity.typeMismatch ? messages.emailInvalid : '';
-    const error = document.getElementById(`${field.id}_error`);
-    field.setAttribute('aria-invalid', String(Boolean(message)));
-    if (error) { error.textContent = message; error.hidden = !message; }
-    return !message;
-  }
-  form.addEventListener('input', event => {
-    status.textContent = '';
-    fallback.hidden = true;
-    if (event.target.getAttribute('aria-invalid') === 'true') validateField(event.target);
-  });
-  const prepareInquiry = async event => {
-    event.preventDefault();
-    status.textContent = '';
-    fallback.hidden = true;
-    const fields = ['name', 'email', 'requirement'].map(id => document.getElementById(id));
-    const invalid = fields.filter(field => !validateField(field));
-    if (invalid.length) { invalid[0].focus(); return; }
-    const labels = messages.labels;
-    const text = Object.entries(labels).map(([id, label]) => {
-      const value = form.elements.namedItem(id).value.trim();
-      return value ? `${label}: ${value}` : '';
-    }).filter(Boolean).join('\n');
-    const button = copyButton;
-    button.disabled = true;
-    try {
-      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText(text);
-      status.textContent = messages.copied;
-    } catch {
-      copyText.value = text;
-      fallback.hidden = false;
-      status.textContent = messages.manualCopy;
-      copyText.focus();
-      copyText.select();
-    } finally { button.disabled = false; }
-  };
-  form.addEventListener('submit', prepareInquiry);
-  copyButton.addEventListener('click', prepareInquiry);
-  copyButton.disabled = false;
-}
+installEnquiryForm();

@@ -11,6 +11,14 @@ export async function startServer({ port = 3000, host = '127.0.0.1', directory =
     try {
       const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
       const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+      // This development server cannot execute PHP. Never serve backend source.
+      if (relative === 'api/enquiry.php') {
+        response.writeHead(request.method === 'POST' ? 503 : 405, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', Allow: 'POST' });
+        response.end(JSON.stringify({ ok: false })); return;
+      }
+      if (relative.startsWith('api/lib/') || path.extname(relative).toLowerCase() === '.php') {
+        response.writeHead(403); response.end('Forbidden'); return;
+      }
       const assetRoot = directory === '.' && relative.startsWith('assets/') ? path.join(siteRoot, 'public') : siteRoot;
       let filename = path.resolve(assetRoot, relative);
       if (!filename.startsWith(assetRoot + path.sep) || relative.split(/[\\/]/).some(part => part.startsWith('.'))) {

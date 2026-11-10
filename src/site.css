@@ -139,6 +139,10 @@ summary::-webkit-details-marker { display: none; }
 .disclosure-indicator { font-size: 26px; flex: 0 0 26px; text-align: center; line-height: 1; transform-origin: center; transition: transform 160ms cubic-bezier(.23, 1, .32, 1); }
 details[open] .disclosure-indicator { transform: rotate(45deg); }
 details > p { margin-top: 16px; color: var(--muted); }
+.contact-page { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+.contact-page > .site-header, .contact-page > .site-footer { flex-shrink: 0; }
+.contact-page > main { display: flex; flex: 1; flex-direction: column; }
+.contact-page .contact { display: flex; flex: 1; align-items: center; }
 .contact { background: var(--surface-alt); }
 .contact-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
 .contact-copy .company-name { margin-top: 32px; font-weight: 600; }
@@ -159,8 +163,6 @@ input[aria-invalid='true'], textarea[aria-invalid='true'] { border: 2px solid va
 .consultation-form > .button { margin-top: 24px; width: 100%; }
 .form-status { margin-top: 12px; font-size: 15px; color: var(--accent-text); }
 .form-status:empty { margin-top: 0; }
-.copy-fallback { margin-top: 20px; }
-.copy-fallback textarea { background: var(--canvas); }
 .site-footer { background: var(--dark-canvas); color: var(--dark-text); padding-block: 64px; }
 .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 48px; row-gap: 40px; align-items: start; }
 .footer-name { font-size: 22px; font-weight: 600; letter-spacing: .015em; }

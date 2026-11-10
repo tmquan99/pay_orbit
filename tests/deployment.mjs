@@ -18,7 +18,7 @@ for (const route of routes) {
   const html = await fs.readFile(path.join(destination, route.slice(1), 'index.html'), 'utf8');
   assert.ok(html.includes(`<html lang="${'en'}">`), `Published language matches URL: ${route}`);
   assert.ok(!html.includes('/src/language.js'), 'Language is served directly without preference redirects');
-  for (const match of html.matchAll(/\b(href|src|srcset)="([^"]*)"/g)) {
+  for (const match of html.matchAll(/\b(href|src|srcset|action)="([^"]*)"/g)) {
     const urls = match[1] === 'srcset' ? match[2].split(',').map(value => value.trim().split(/\s+/)[0]) : [match[2]];
     for (const url of urls) {
       if (!url.startsWith('/') || url.startsWith('//')) continue;
@@ -39,6 +39,12 @@ const manifest = JSON.parse(await fs.readFile(path.join(destination, 'assets/bra
 assert.equal(manifest.start_url, `${base}/`);
 assert.ok(manifest.icons.every(icon => icon.src.startsWith(`${base}/assets/brand/`)));
 assert.ok((await fs.stat(path.join(destination, '.nojekyll'))).isFile());
+const contact = await fs.readFile(path.join(destination, 'contact/index.html'), 'utf8');
+assert.ok(contact.includes(`action="${base}/api/enquiry.php"`), 'Enquiry endpoint follows deployment base path');
+assert.ok((await fs.stat(path.join(destination, 'api/enquiry.php'))).isFile());
+assert.equal((await fs.readFile(path.join(destination, 'api/lib/.htaccess'), 'utf8')).trim(), 'Require all denied');
+assert.equal(await fs.stat(path.join(destination, 'config')).catch(() => null), null, 'Mail config templates stay outside public output');
+assert.equal(await fs.stat(path.join(destination, 'payorbit-mail.php')).catch(() => null), null, 'Credentials must never be published');
 // Production bundles contain runtime files and required notices only.
 for (const directory of ['design', 'docs', 'content', 'tests', 'scripts', '.taste']) {
   assert.equal(await fs.stat(path.join(destination, directory)).catch(() => null), null, `No development directory in production: ${directory}`);

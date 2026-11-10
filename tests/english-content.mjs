@@ -65,7 +65,7 @@ for (const language of ['en']) {
 }
 for (const [url, html] of pages) {
   for (const [, tag, href] of html.matchAll(/(<a\b[^>]*href="([^"]+)"[^>]*>)/g)) {
-    if (href.startsWith('tel:')) continue;
+    if (/^(?:tel|mailto):/.test(href)) continue;
     const parsed = new URL(href, `https://pay-orbit.invalid${url}`);
     const destination = parsed.pathname;
     const anchor = parsed.hash.slice(1);

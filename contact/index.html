@@ -20,7 +20,7 @@
 
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
+  <body class="contact-page">
     <span class="back-to-top-sentinel" data-back-to-top-sentinel aria-hidden="true"></span>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header"><div class="container header-inner">
@@ -87,16 +87,17 @@
 </svg>
 <span>Contact Us</span></a>
     </div>
-    <form id="consultation_form" class="consultation-form" novalidate>
-      <h2 class="form-heading">Prepare your enquiry</h2><p class="form-introduction">Complete the fields to copy your enquiry for a conversation with PAY ORBIT.</p>
+    <form id="consultation_form" class="consultation-form" action="/api/enquiry.php" method="post" novalidate>
+      <h2 class="form-heading">Send your enquiry</h2><p class="form-introduction">Tell us what you need. Our team will respond by email.</p>
       <div class="form-grid">
         <div class="field"><label for="name">Name <span class="required-label">(required)</span></label><input id="name" name="name" autocomplete="name" required maxlength="160" aria-describedby="name_error"><p class="field-error" id="name_error" hidden></p></div>
         <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" maxlength="200"></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="email_error"><p class="field-error" id="email_error" hidden></p></div>
+        <div class="field"><label for="email">Email <span class="required-label">(required)</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email_error"><p class="field-error" id="email_error" hidden></p></div>
         <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="60"></div>
         <div class="field field-wide"><label for="requirement">Requirement <span class="required-label">(required)</span></label><textarea id="requirement" name="requirement" rows="4" required maxlength="6000" aria-describedby="requirement_error"></textarea><p class="field-error" id="requirement_error" hidden></p></div>
       </div>
-      <button id="copy_button" class="button button-outline" type="button" disabled><svg class="icon " data-icon="clipboard-copy" aria-hidden="true" focusable="false"
+      <div hidden aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" tabindex="-1" autocomplete="off" maxlength="200"></div>
+      <button id="send_button" class="button button-outline" type="submit" disabled><span>Send enquiry</span><svg class="icon " data-icon="arrow-up-right" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -107,16 +108,13 @@
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
-  <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-  <path d="M16 4h2a2 2 0 0 1 2 2v4" />
-  <path d="M21 14H11" />
-  <path d="m15 10-4 4 4 4" />
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
 </svg>
-<span>Copy enquiry</span></button>
+</button>
       <p id="form_status" class="form-status" role="status" aria-live="polite"></p>
-      <div id="copy_fallback" class="copy-fallback" hidden><label for="copy_text">Enquiry to copy</label><textarea id="copy_text" rows="7" readonly></textarea></div>
-    <script type="application/json" id="form_messages">{"labels":{"name":"Name","company":"Company","email":"Email","phone":"Phone","requirement":"Requirement"},"nameRequired":"Enter your name.","requirementRequired":"Enter your requirements.","emailInvalid":"Enter a valid email address.","copied":"Enquiry copied.","manualCopy":"Select the text below to copy it manually.","products":{"switching":"Cisco: Enterprise & Data Center Switching","routing":"Cisco: Routing & WAN","wireless":"Cisco: Wireless","collaboration":"Cisco: Collaboration","network-security":"Palo Alto Networks: Network Security","cloud-security":"Palo Alto Networks: Cloud Security","security-operations":"Palo Alto Networks: Security Operations"}}</script></form>
+      <noscript><p>Please enable JavaScript to send this form, or email <a href="mailto:sales@payorbit.com.au">sales@payorbit.com.au</a>.</p></noscript>
+    <script type="application/json" id="form_messages">{"labels":{"name":"Name","company":"Company","email":"Email","phone":"Phone","requirement":"Requirement"},"nameRequired":"Enter your name.","requirementRequired":"Enter your requirements.","emailRequired":"Enter your email address.","emailInvalid":"Enter a valid email address.","fieldInvalid":"Check this field and try again.","send":"Send enquiry","sending":"Sending…","sent":"Your enquiry has been sent. Our team will be in touch.","sendFailed":"We couldn’t send your enquiry. Please try again, or email sales@payorbit.com.au.","rateLimited":"Too many enquiries. Please wait 10 minutes, or email sales@payorbit.com.au.","products":{"switching":"Cisco: Enterprise & Data Center Switching","routing":"Cisco: Routing & WAN","wireless":"Cisco: Wireless","collaboration":"Cisco: Collaboration","network-security":"Palo Alto Networks: Network Security","cloud-security":"Palo Alto Networks: Cloud Security","security-operations":"Palo Alto Networks: Security Operations"}}</script></form>
   </div></section></main>
     <footer class="site-footer" id="footer"><div class="footer-fold-art" aria-hidden="true"><div class="footer-fold-scene" data-footer-fold>
     <svg class="footer-fold-piece footer-fold-upper" data-footer-graphic="upper" aria-hidden="true" viewBox="40 40 176 104" preserveAspectRatio="none"><defs><linearGradient id="footer-fold-upper-color" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#64B0FF"/><stop offset=".4" stop-color="#257EEF"/><stop offset="1" stop-color="#0B438D"/></linearGradient></defs><path d="M40 144V88A48 48 0 0 1 88 40H216V72H88A16 16 0 0 0 72 88V144Z" fill="url(#footer-fold-upper-color)"/><path class="footer-fold-seam" d="M40 144V88A48 48 0 0 1 88 40H216V72H88A16 16 0 0 0 72 88V144Z"/></svg>
